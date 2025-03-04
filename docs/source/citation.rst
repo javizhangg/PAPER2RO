@@ -35,7 +35,7 @@ If you use LaTeX, include this citation in your references:
 For APA-style citation, use:
 
 > Zhang, Z. (2025). *task1-AIAOSIRSE* (Version 1.0.0) [Software].  
-> DOI: `10.5281/zenodo.1234 <https://doi.org/10.5281/zenodo.1234>`_
+> DOI: `10.5281/zenodo.14969138 <https://doi.org/10.5281/zenodo.14969138>`_
 
 ---
 
@@ -57,9 +57,5 @@ To use it, simply download the `CITATION.cff` file from the repository and impor
    :caption: Contents:
 
    introduction
-   installation
    execution_methods
-   usage
-   api_reference
-   contribution
    citation
