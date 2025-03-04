@@ -1,0 +1,19 @@
+# Dependencias generales
+requests
+lxml
+beautifulsoup4
+numpy
+pandas
+matplotlib
+wordcloud
+nltk
+seaborn
+
+# Cliente para Grobid
+grobid-client
+
+# Dependencias para procesamiento de textos
+scikit-learn
+regex
+unidecode
+tqdm

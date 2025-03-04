@@ -1,10 +1,10 @@
 {
-    "@context": "https://w3id.org/codemeta/3.0",
+    "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
     "type": "SoftwareSourceCode",
     "applicationCategory": "Artificial Intelligence, Research Software Engineering",
     "author": [
         {
-            "id": "_:author_1",
+            "id": "https://github.com/javizhangg",
             "type": "Person",
             "email": "zhiwei.zha@alumnos.upm.es",
             "familyName": "Zhang",
@@ -13,7 +13,7 @@
     ],
     "codeRepository": "git+https://github.com/javizhangg/task1-AIAOSIRSE.git",
     "dateCreated": "2025-02-05",
-    "dateModified": "2025-02-21",
+    "dateModified": "2025-03-04",
     "datePublished": "2025-02-21",
     "description": "Este repositorio contiene scripts en Python diseñados para procesar documentos PDF mediante Grobid.\nIncluye varios archivos PDF de investigación que van a ser analizados y procesados automáticamente.\nEl script principal (`main.py`) inicializa y ejecuta Grobid, permitiendo la extracción de información de los documentos.\nTambién se proporciona documentación relevante en README.md y rationale.md.\n",
     "downloadUrl": "https://github.com/javizhangg/task1-AIAOSIRSE.git",
@@ -33,19 +33,21 @@
         "macOS"
     ],
     "programmingLanguage": "Python",
-    "releaseNotes": "- Procesamiento automático de PDFs con Grobid.\n- Scripts en Python listos para su ejecución sencilla.\n- Falta para que analize PDF en profundidad.",
-    "review": {
-        "type": "Review",
-        "reviewAspect": "Object facet",
-        "reviewBody": "Software para la extracción automática de datos desde documentos PDF en investigación."
+    "schema:releaseNotes": "-Automatic processing of PDFs with Grobid.\n-Python scripts ready for easy execution.\n-Lacks deep PDF analysis.",
+    "schema:review": {
+        "type": "schema:Review",
+        "schema:reviewAspect": "Object facet",
+        "schema:reviewBody": "Software para la extracción automática de datos desde documentos PDF en investigación."
     },
     "runtimePlatform": "Docker",
     "softwareRequirements": [
         "Python 3.x",
         "Grobid (Ejecutado mediante Docker)"
     ],
-    "version": "1.0.0",
+    "version": "2.0.0",
     "developmentStatus": "active",
-    "isSourceCodeOf": "Research Software",
+    "codemeta:isSourceCodeOf": {
+        "id": "Research Software"
+    },
     "issueTracker": "https://github.com/javizhangg/task1-AIAOSIRSE/issues"
 }

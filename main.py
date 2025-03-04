@@ -5,15 +5,38 @@ import re
 import matplotlib.pyplot as plt
 from wordcloud import WordCloud
 import pandas as pd
+import unittest
+from unittest.mock import patch
 
-# GROBID Server URL
-GROBID_URL = "http://localhost:8070/api/processFulltextDocument"
+# GROBID Server URLs
+GROBID_DOCKER_URL = "http://grobid:8070/api/isalive"
+GROBID_LOCAL_URL = "http://localhost:8070/api/isalive"
+
+def check_grobid_status(url):
+    """Checks if the GROBID service is active."""
+    try:
+        response = requests.get(url, timeout=5)
+        if response.status_code == 200:
+            return True
+    except requests.exceptions.RequestException:
+        pass
+    return False
+
+# Automatically select the GROBID URL
+if check_grobid_status(GROBID_DOCKER_URL):
+    GROBID_URL = "http://grobid:8070/api/processFulltextDocument"
+    print(f"Using GROBID at {GROBID_URL}")
+elif check_grobid_status(GROBID_LOCAL_URL):
+    GROBID_URL = "http://localhost:8070/api/processFulltextDocument"
+    print(f"Using GROBID at {GROBID_URL}")
+else:
+    raise ConnectionError("No instance of GROBID (Docker or Local) is available!")
 
 # Directories
 PDF_DIR = "pdfs/"
 OUTPUT_DIR = "outputs/"
 
-# Ensure output directory exists
+# Ensure the output directory exists
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 # Store extracted data
@@ -118,4 +141,4 @@ plt.tight_layout()
 plt.savefig(os.path.join(OUTPUT_DIR, "figures_chart.png"))
 plt.show()
 
-print("Processing complete! Results saved in 'outputs/' directory.")
+print("Processing complete! Results saved in the 'outputs/' directory.")

@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+  grobid:
+    image: grobid/grobid:0.8.1
+    container_name: grobid
+    ports:
+      - "8070:8070"
+      - "8071:8071"
+    restart: always
+
+  app:
+    build: .
+    container_name: mi_proyecto
+    depends_on:
+      - grobid
+    volumes:
+      - .:/app
+    ports:
+      - "5000:5000"
+    restart: always
