@@ -8,7 +8,7 @@ If you use this project in your research, please cite it using the **CITATION.cf
 - **Title**: task1-AIAOSIRSE
 - **Author**: Zhiwei Zhang
 - **Version**: 1.0.0
-- **DOI**: `10.5281/zenodo.1234 <https://doi.org/10.5281/zenodo.1234>`_
+- **DOI**: `10.5281/zenodo.14969138 <https://doi.org/10.5281/zenodo.14969138>`_
 - **Release Date**: February 26, 2025
 - **Project URL**: `GitHub Repository <https://github.com/javizhangg/task1-AIAOSIRSE>`_
 
