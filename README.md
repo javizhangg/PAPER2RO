@@ -114,6 +114,17 @@ git push origin main
 ```
 CI/CD workflows validate the installation and execution of tests.
 
+## 📄 **Documentation**
+Complete documentation is available on **ReadTheDocs**:
+[![ReadTheDocs](https://readthedocs.org/projects/task1-aiaosirse/badge/?version=latest)](https://task1-aiaosirse.readthedocs.io/en/latest/)
+
+It includes:
+- **Introduction**
+- **Execution Methods**
+- **Citation**
+---
+
+
 ## Preferred Citation
 If you use this work, please cite it as:
 ```bibtex
