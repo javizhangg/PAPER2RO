@@ -1,0 +1,29 @@
+# Directorio de salida de Maven
+target/
+
+# Archivos de configuración de Eclipse
+.classpath
+.project
+.settings/
+
+# Archivos de configuración de IntelliJ
+*.iml
+.idea/
+*.ipr
+*.iws
+
+# Archivos de configuración de NetBeans
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+*.nb-gradle/
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
