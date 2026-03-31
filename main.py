@@ -1,4 +1,5 @@
 import os
+import json
 import requests
 import xml.etree.ElementTree as ET
 import re
@@ -55,7 +56,7 @@ def process_pdf(pdf_path):
         print(f"Error processing {pdf_path}: {response.status_code}")
         return None
 
-# Extract abstract, figures, and all links from TEI XML
+# Extract abstract and figures from TEI XML
 def extract_info(tei_xml, filename):
     root = ET.fromstring(tei_xml)
 
@@ -63,19 +64,18 @@ def extract_info(tei_xml, filename):
     abstract = ""
     for ab in root.findall(".//{http://www.tei-c.org/ns/1.0}abstract"):
         abstract += " ".join(ab.itertext()).strip()
-    
+
     abstracts.append(abstract)
 
     # Count figures
     num_figures = len(root.findall(".//{http://www.tei-c.org/ns/1.0}figure"))
     figures_count[filename] = num_figures
 
-# Function to extract all links from different sections of the TEI XML
+# Extract all links from TEI XML
 def extract_links(tei_xml, filename):
     root = ET.fromstring(tei_xml)
     links = []
 
-    # Define different sections to extract links
     sections = {
         "abstract": ".//{http://www.tei-c.org/ns/1.0}abstract",
         "body": ".//{http://www.tei-c.org/ns/1.0}body",
@@ -84,12 +84,23 @@ def extract_links(tei_xml, filename):
         "table": ".//{http://www.tei-c.org/ns/1.0}table"
     }
 
+    seen = set()
+
     for section, path in sections.items():
         for element in root.findall(path):
             text = "".join(element.itertext()).strip()
-            found_links = re.findall(r'https?://[^\s<>"]+|www\.[^\s<>"]+', text)
+            found_links = re.findall(r'https?://[^\s<>"\']+|www\.[^\s<>"\']+', text)
+
             for link in found_links:
-                links.append({"paper": filename, "section": section, "link": link})
+                clean_link = link.rstrip(".,);]")
+                key = (section, clean_link)
+
+                if key not in seen:
+                    seen.add(key)
+                    links.append({
+                        "section": section,
+                        "link": clean_link
+                    })
 
     links_per_paper[filename] = links
 
@@ -101,9 +112,9 @@ for pdf in os.listdir(PDF_DIR):
         tei_xml = process_pdf(pdf_path)
         if tei_xml:
             extract_info(tei_xml, pdf)
-            extract_links(tei_xml, pdf)  # Extract all links
+            extract_links(tei_xml, pdf)
 
-# Save extracted abstracts to a text file
+# Save abstracts to text file
 with open(os.path.join(OUTPUT_DIR, "abstracts.txt"), "w", encoding="utf-8") as f:
     f.write("\n".join(abstracts))
 
@@ -114,31 +125,42 @@ figures_df.to_csv(os.path.join(OUTPUT_DIR, "figures.csv"), index=False)
 # Save extracted links to CSV
 all_links = []
 for paper, links in links_per_paper.items():
-    all_links.extend(links)
+    for item in links:
+        all_links.append({
+            "paper": paper,
+            "section": item["section"],
+            "link": item["link"]
+        })
 
 links_df = pd.DataFrame(all_links, columns=["paper", "section", "link"])
 links_df.to_csv(os.path.join(OUTPUT_DIR, "all_links.csv"), index=False)
 
-# Generate and display word cloud from abstracts
-abstract_text = " ".join(abstracts)
-wordcloud = WordCloud(width=800, height=400, background_color="white").generate(abstract_text)
+# Save extracted links to JSON
+with open(os.path.join(OUTPUT_DIR, "all_links.json"), "w", encoding="utf-8") as f:
+    json.dump(links_per_paper, f, indent=4, ensure_ascii=False)
 
-plt.figure(figsize=(10, 5))
-plt.imshow(wordcloud, interpolation="bilinear")
-plt.axis("off")
-plt.title("Keyword Cloud from Abstracts")
-plt.savefig(os.path.join(OUTPUT_DIR, "wordcloud.png"))
-plt.show()
+# Generate word cloud from abstracts
+abstract_text = " ".join(abstracts)
+if abstract_text.strip():
+    wordcloud = WordCloud(width=800, height=400, background_color="white").generate(abstract_text)
+
+    plt.figure(figsize=(10, 5))
+    plt.imshow(wordcloud, interpolation="bilinear")
+    plt.axis("off")
+    plt.title("Keyword Cloud from Abstracts")
+    plt.savefig(os.path.join(OUTPUT_DIR, "wordcloud.png"))
+    plt.show()
 
 # Generate bar chart for figure count
-plt.figure(figsize=(10, 5))
-plt.bar(figures_count.keys(), figures_count.values(), color="skyblue")
-plt.xlabel("Paper")
-plt.ylabel("Number of Figures")
-plt.title("Figures Count per Paper")
-plt.xticks(rotation=45, ha="right")
-plt.tight_layout()
-plt.savefig(os.path.join(OUTPUT_DIR, "figures_chart.png"))
-plt.show()
+if figures_count:
+    plt.figure(figsize=(10, 5))
+    plt.bar(figures_count.keys(), figures_count.values(), color="skyblue")
+    plt.xlabel("Paper")
+    plt.ylabel("Number of Figures")
+    plt.title("Figures Count per Paper")
+    plt.xticks(rotation=45, ha="right")
+    plt.tight_layout()
+    plt.savefig(os.path.join(OUTPUT_DIR, "figures_chart.png"))
+    plt.show()
 
 print("Processing complete! Results saved in the 'outputs/' directory.")

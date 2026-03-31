@@ -1,0 +1,208 @@
+{
+    "1505.04597v1.pdf": [
+        {
+            "section": "body",
+            "link": "http://lmb.informatik.uni-freiburg.de/people/ronneber/u-net"
+        },
+        {
+            "section": "note",
+            "link": "http://lmb.informatik.uni-freiburg.de/people/ronneber/u-net"
+        }
+    ],
+    "1506.02640v5.pdf": [
+        {
+            "section": "body",
+            "link": "http://pjreddie.com/yolo/.Second"
+        },
+        {
+            "section": "body",
+            "link": "http://pjreddie.com/yolo/"
+        }
+    ],
+    "1702.05373v2.pdf": [
+        {
+            "section": "body",
+            "link": "https://www.westernsydney.edu.au/bens/home/"
+        }
+    ],
+    "1702.05747v2.pdf": [
+        {
+            "section": "body",
+            "link": "www.grand-challenge.org"
+        }
+    ],
+    "1706.03762v7.pdf": [
+        {
+            "section": "body",
+            "link": "https://github.com/"
+        }
+    ],
+    "1707.02919v2.pdf": [
+        {
+            "section": "body",
+            "link": "http://www.lemurproject.org/"
+        },
+        {
+            "section": "body",
+            "link": "http://www.crisp-dm.org/"
+        },
+        {
+            "section": "body",
+            "link": "http://en.wikipedia.org/wiki/Statistics"
+        },
+        {
+            "section": "body",
+            "link": "http://www.cs.waikato.ac.nz/ml/weka/"
+        },
+        {
+            "section": "body",
+            "link": "http://www.w3.org/TR/webont-req/"
+        },
+        {
+            "section": "body",
+            "link": "http://www.obofoundry.org/"
+        },
+        {
+            "section": "body",
+            "link": "http://www.bioontology.org/"
+        },
+        {
+            "section": "body",
+            "link": "http://bioportal.bioontology.org/"
+        },
+        {
+            "section": "body",
+            "link": "https://uts.nlm.nih.gov/home.html"
+        },
+        {
+            "section": "body",
+            "link": "http://www.pharmgkb.org/"
+        },
+        {
+            "section": "note",
+            "link": "http://www.crisp-dm.org/"
+        },
+        {
+            "section": "note",
+            "link": "http://en.wikipedia.org/wiki/Statistics"
+        },
+        {
+            "section": "note",
+            "link": "http://www.cs.waikato.ac.nz/ml/weka/"
+        },
+        {
+            "section": "note",
+            "link": "http://www.w3.org/TR/webont-req/"
+        },
+        {
+            "section": "note",
+            "link": "http://www.obofoundry.org/"
+        },
+        {
+            "section": "note",
+            "link": "http://www.bioontology.org/"
+        },
+        {
+            "section": "note",
+            "link": "http://bioportal.bioontology.org/"
+        },
+        {
+            "section": "note",
+            "link": "https://uts.nlm.nih.gov/home.html"
+        },
+        {
+            "section": "note",
+            "link": "http://www.pharmgkb.org/"
+        }
+    ],
+    "1708.05031v2.pdf": [
+        {
+            "section": "body",
+            "link": "http://alex.smola.org/teaching/berkeley2012/slides/8_"
+        },
+        {
+            "section": "body",
+            "link": "http://grouplens.org/datasets/movielens/1m/"
+        },
+        {
+            "section": "body",
+            "link": "https://sites.google.com/site/xueatalphabeta/"
+        },
+        {
+            "section": "body",
+            "link": "https://github.com/hexiangnan/neural_"
+        },
+        {
+            "section": "note",
+            "link": "http://alex.smola.org/teaching/berkeley2012/slides/8_"
+        },
+        {
+            "section": "note",
+            "link": "http://grouplens.org/datasets/movielens/1m/"
+        },
+        {
+            "section": "note",
+            "link": "https://sites.google.com/site/xueatalphabeta/"
+        },
+        {
+            "section": "note",
+            "link": "https://github.com/hexiangnan/neural_"
+        }
+    ],
+    "1810.04805v2.pdf": [
+        {
+            "section": "body",
+            "link": "https://github.com/"
+        },
+        {
+            "section": "body",
+            "link": "https://gluebenchmark.com/leaderboard"
+        },
+        {
+            "section": "body",
+            "link": "https://cloudplatform.googleblog.com/2018/06/Cloud-TPU-now-offers-preemptible-pricing-and-globalavailability.html•"
+        },
+        {
+            "section": "body",
+            "link": "https://github.com/tensorflow/tensor2tensor"
+        },
+        {
+            "section": "body",
+            "link": "http://nlp.seas.harvard.edu/2018/04/03/attention.html"
+        },
+        {
+            "section": "body",
+            "link": "https://gluebenchmark.com/faq"
+        },
+        {
+            "section": "note",
+            "link": "https://github.com/tensorflow/tensor2tensor"
+        },
+        {
+            "section": "note",
+            "link": "http://nlp.seas.harvard.edu/2018/04/03/attention.html"
+        },
+        {
+            "section": "note",
+            "link": "https://gluebenchmark.com/faq"
+        }
+    ],
+    "1812.08434v6.pdf": [],
+    "1907.07374v5.pdf": [
+        {
+            "section": "body",
+            "link": "https://distill.pub/2018/building-blocks/"
+        }
+    ],
+    "NIPS-2012-imagenet-classification-with-deep-convolutional-neural-networks-Paper.pdf": [
+        {
+            "section": "body",
+            "link": "http://code.google.com/p/cuda-convnet/"
+        },
+        {
+            "section": "note",
+            "link": "http://code.google.com/p/cuda-convnet/"
+        }
+    ],
+    "TSP_IASC_36323.pdf": []
+}
