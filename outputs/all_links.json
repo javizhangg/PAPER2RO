@@ -1,40 +1,84 @@
 {
     "1505.04597v1.pdf": [
         {
+            "section": "reference",
+            "link": "http://www.codesolorzano.com/celltrackingchallenge/Cell_Tracking_Challenge/Welcome.html"
+        },
+        {
+            "section": "reference",
+            "link": "http://brainiac2.mit.edu/isbi_challenge/"
+        },
+        {
             "section": "body",
             "link": "http://lmb.informatik.uni-freiburg.de/people/ronneber/u-net"
         },
         {
             "section": "note",
-            "link": "http://lmb.informatik.uni-freiburg.de/people/ronneber/u-net"
+            "link": "https://www.codesolorzano.com/celltrackingchallenge/Cell_Tracking_Challenge/Welcome.html"
         }
     ],
     "1506.02640v5.pdf": [
         {
             "section": "body",
-            "link": "http://pjreddie.com/yolo/.Second"
+            "link": "http://pjreddie.com/yolo/"
         },
         {
-            "section": "body",
-            "link": "http://pjreddie.com/yolo/"
+            "section": "reference",
+            "link": "https://github.com/BVLC/caffe/wiki/Models-accuracy-on-ImageNet-2012-val"
+        },
+        {
+            "section": "reference",
+            "link": "http://pjreddie.com/darknet/"
         }
     ],
     "1702.05373v2.pdf": [
         {
             "section": "body",
-            "link": "https://www.westernsydney.edu.au/bens/home/"
+            "link": "https://www.westernsydney.edu.au/bens/home/reproducibleresearch/emnist"
+        },
+        {
+            "section": "reference",
+            "link": "http://www.nist.gov/srd/upload/nistsd19.pdf"
+        },
+        {
+            "section": "reference",
+            "link": "http://portal.acm.org/citation.cfm?doid=1141277.1141468"
+        },
+        {
+            "section": "body",
+            "link": "https://www.westernsydney.edu.au/bens/home/reproducible"
+        },
+        {
+            "section": "note",
+            "link": "https://www.nist.gov/srd/upload/nistsd19.pdf"
         }
     ],
     "1702.05747v2.pdf": [
         {
             "section": "body",
-            "link": "www.grand-challenge.org"
+            "link": "https://github.com/Lasagne/Lasagne"
+        },
+        {
+            "section": "body",
+            "link": "https://keras.io/"
+        },
+        {
+            "section": "reference",
+            "link": "https://doi.org/10.1109/TMI.2015.2476509"
+        },
+        {
+            "section": "body",
+            "link": "https://www.grand-challenge.org"
         }
     ],
     "1706.03762v7.pdf": [
         {
             "section": "body",
-            "link": "https://github.com/"
+            "link": "https://github.com/tensorflow/tensor2tensor"
+        },
+        {
+            "section": "body",
+            "link": "https://github.com/tensorflow/tensor2tensor.Input-Input"
         }
     ],
     "1707.02919v2.pdf": [
@@ -43,8 +87,20 @@
             "link": "http://www.lemurproject.org/"
         },
         {
+            "section": "reference",
+            "link": "https://doi.org/10.3115/1119176.1119199"
+        },
+        {
+            "section": "reference",
+            "link": "https://www.emc.com/collateral/analyst-reports/idc-the-digital-universe-in-2020.pdf"
+        },
+        {
             "section": "body",
-            "link": "http://www.crisp-dm.org/"
+            "link": "https://www.lemurproject.org/"
+        },
+        {
+            "section": "body",
+            "link": "https://www.crisp-dm.org/"
         },
         {
             "section": "body",
@@ -52,19 +108,19 @@
         },
         {
             "section": "body",
-            "link": "http://www.cs.waikato.ac.nz/ml/weka/"
+            "link": "https://www.cs.waikato.ac.nz/ml/weka/"
         },
         {
             "section": "body",
-            "link": "http://www.w3.org/TR/webont-req/"
+            "link": "https://www.w3.org/TR/webont-req/"
         },
         {
             "section": "body",
-            "link": "http://www.obofoundry.org/"
+            "link": "https://www.obofoundry.org/"
         },
         {
             "section": "body",
-            "link": "http://www.bioontology.org/"
+            "link": "https://www.bioontology.org/"
         },
         {
             "section": "body",
@@ -76,47 +132,15 @@
         },
         {
             "section": "body",
-            "link": "http://www.pharmgkb.org/"
-        },
-        {
-            "section": "note",
-            "link": "http://www.crisp-dm.org/"
-        },
-        {
-            "section": "note",
-            "link": "http://en.wikipedia.org/wiki/Statistics"
-        },
-        {
-            "section": "note",
-            "link": "http://www.cs.waikato.ac.nz/ml/weka/"
-        },
-        {
-            "section": "note",
-            "link": "http://www.w3.org/TR/webont-req/"
-        },
-        {
-            "section": "note",
-            "link": "http://www.obofoundry.org/"
-        },
-        {
-            "section": "note",
-            "link": "http://www.bioontology.org/"
-        },
-        {
-            "section": "note",
-            "link": "http://bioportal.bioontology.org/"
-        },
-        {
-            "section": "note",
-            "link": "https://uts.nlm.nih.gov/home.html"
-        },
-        {
-            "section": "note",
-            "link": "http://www.pharmgkb.org/"
+            "link": "https://www.pharmgkb.org/"
         }
     ],
     "1708.05031v2.pdf": [
         {
+            "section": "doi",
+            "link": "https://doi.org/10.1145/3038912.3052569"
+        },
+        {
             "section": "body",
             "link": "http://alex.smola.org/teaching/berkeley2012/slides/8_"
         },
@@ -126,41 +150,29 @@
         },
         {
             "section": "body",
-            "link": "https://sites.google.com/site/xueatalphabeta/"
+            "link": "https://sites.google.com/site/xueatalphabeta/academic-projects"
         },
         {
             "section": "body",
-            "link": "https://github.com/hexiangnan/neural_"
-        },
-        {
-            "section": "note",
-            "link": "http://alex.smola.org/teaching/berkeley2012/slides/8_"
-        },
-        {
-            "section": "note",
-            "link": "http://grouplens.org/datasets/movielens/1m/"
-        },
-        {
-            "section": "note",
-            "link": "https://sites.google.com/site/xueatalphabeta/"
-        },
-        {
-            "section": "note",
             "link": "https://github.com/hexiangnan/neural_"
         }
     ],
     "1810.04805v2.pdf": [
         {
             "section": "body",
-            "link": "https://github.com/"
+            "link": "https://github.com/google-research/bert"
         },
         {
             "section": "body",
             "link": "https://gluebenchmark.com/leaderboard"
         },
         {
+            "section": "doi",
+            "link": "https://doi.org/10.18653/v1/S17-2001"
+        },
+        {
             "section": "body",
-            "link": "https://cloudplatform.googleblog.com/2018/06/Cloud-TPU-now-offers-preemptible-pricing-and-globalavailability.html•"
+            "link": "https://cloudplatform.googleblog.com/2018/06/Cloud-TPU-now-offers-preemptible-pricing-and-globalavailability.html"
         },
         {
             "section": "body",
@@ -172,37 +184,251 @@
         },
         {
             "section": "body",
-            "link": "https://gluebenchmark.com/faq"
-        },
-        {
-            "section": "note",
-            "link": "https://github.com/tensorflow/tensor2tensor"
-        },
-        {
-            "section": "note",
-            "link": "http://nlp.seas.harvard.edu/2018/04/03/attention.html"
-        },
-        {
-            "section": "note",
             "link": "https://gluebenchmark.com/faq"
         }
     ],
-    "1812.08434v6.pdf": [],
+    "1812.08434v6.pdf": [
+        {
+            "section": "reference",
+            "link": "https://doi.org/10.24963/ijcai.2017/250"
+        },
+        {
+            "section": "reference",
+            "link": "http://socialcomputing.asu.edu"
+        },
+        {
+            "section": "back",
+            "link": "https://github.com/ShinKyuY/Representation_Learning_on_Graphs_with_Jumping_Knowledge_Networks"
+        },
+        {
+            "section": "back",
+            "link": "https://github.com/Hanjun-Dai/steady_state_embedding"
+        },
+        {
+            "section": "back",
+            "link": "https://github.com/divelab/lgcn/"
+        },
+        {
+            "section": "back",
+            "link": "https://github.com/matenure/FastGCN"
+        },
+        {
+            "section": "back",
+            "link": "https://github.com/RexYing/diffpool"
+        },
+        {
+            "section": "back",
+            "link": "https://github.com/snap-stanford/GraphRNN"
+        },
+        {
+            "section": "back",
+            "link": "https://github.com/nicola-decao/MolGAN"
+        },
+        {
+            "section": "back",
+            "link": "https://github.com/danielzuegner/netgan"
+        },
+        {
+            "section": "back",
+            "link": "https://github.com/liyaguang/DCRNN"
+        },
+        {
+            "section": "back",
+            "link": "https://github.com/yysijie/st-gcn"
+        },
+        {
+            "section": "back",
+            "link": "https://github.com/tkipf/relational-gcn"
+        },
+        {
+            "section": "back",
+            "link": "https://github.com/huangwb/AS-GCN"
+        },
+        {
+            "section": "back",
+            "link": "https://github.com/ZhuangCY/DGCN"
+        },
+        {
+            "section": "back",
+            "link": "https://github.com/jennyzhang0215/GaAN"
+        },
+        {
+            "section": "back",
+            "link": "https://github.com/PetarV-/DGI"
+        },
+        {
+            "section": "back",
+            "link": "https://github.com/nnzhan/Graph-WaveNet"
+        },
+        {
+            "section": "back",
+            "link": "https://github.com/Jhy1993/HAN"
+        },
+        {
+            "section": "back",
+            "link": "https://github.com/thunlp/gnnpapers"
+        },
+        {
+            "section": "doi",
+            "link": "https://doi.org/10.1016/j.aiopen.2021.01.001"
+        },
+        {
+            "section": "note",
+            "link": "http://soci"
+        },
+        {
+            "section": "note",
+            "link": "https://WWW.ACM"
+        },
+        {
+            "section": "back",
+            "link": "https://github.com/divelab/lgcn/FastGCN"
+        }
+    ],
     "1907.07374v5.pdf": [
+        {
+            "section": "reference",
+            "link": "http://www.heatmapping.org/slides/2018WCCI.pdf"
+        },
+        {
+            "section": "reference",
+            "link": "http://iphome.hhi.de/samek/pdf/MonICML16.pdf"
+        },
+        {
+            "section": "reference",
+            "link": "https://pair-code.github.io/saliency/"
+        },
+        {
+            "section": "reference",
+            "link": "https://cs.stanford.edu/people/karpathy/cnnembed"
+        },
+        {
+            "section": "reference",
+            "link": "https://distill.pub/2019/activation-atlas"
+        },
         {
             "section": "body",
             "link": "https://distill.pub/2018/building-blocks/"
+        },
+        {
+            "section": "note",
+            "link": "https://www.heatmapping.org/slides/2018"
         }
     ],
     "NIPS-2012-imagenet-classification-with-deep-convolutional-neural-networks-Paper.pdf": [
         {
+            "section": "reference",
+            "link": "https://www.image-net.org/challenges"
+        },
+        {
+            "section": "reference",
+            "link": "http://www.image-net.org/challenges/LSVRC/2012/"
+        },
+        {
+            "section": "reference",
+            "link": "http://authors.library.caltech.edu/7694"
+        },
+        {
             "section": "body",
             "link": "http://code.google.com/p/cuda-convnet/"
         },
         {
             "section": "note",
-            "link": "http://code.google.com/p/cuda-convnet/"
+            "link": "https://www.imagenet.org/challenges.2010"
+        },
+        {
+            "section": "note",
+            "link": "https://www.image-net.org/challenges/LSVRC/2012/"
+        },
+        {
+            "section": "reference",
+            "link": "http://authors.library.caltech.edu/7694.GEHinton"
         }
     ],
-    "TSP_IASC_36323.pdf": []
+    "TSP_IASC_36323.pdf": [
+        {
+            "section": "reference",
+            "link": "https://doi.org/10.1016/j.media.2021.102188"
+        },
+        {
+            "section": "reference",
+            "link": "https://doi.org/10.1142/9789811239014_0005"
+        },
+        {
+            "section": "reference",
+            "link": "https://doi.org/10.1016/j.inffus.2020.04.002"
+        },
+        {
+            "section": "reference",
+            "link": "https://doi.org/10.1016/j.patcog.2021.108146"
+        },
+        {
+            "section": "reference",
+            "link": "https://doi.org/10.1088/1755-1315/428/1/012097"
+        },
+        {
+            "section": "reference",
+            "link": "https://doi.org/10.1016/j.neucom.2022.03.062"
+        },
+        {
+            "section": "reference",
+            "link": "https://doi.org/10.1016/j.neunet.2018.03.019"
+        },
+        {
+            "section": "reference",
+            "link": "https://doi.org/10.1145/3357254.3357276"
+        },
+        {
+            "section": "reference",
+            "link": "https://doi.org/10.1016/j.patcog.2020.107420"
+        },
+        {
+            "section": "reference",
+            "link": "https://doi.org/10.1016/j.neucom.2021.03.108"
+        },
+        {
+            "section": "reference",
+            "link": "https://doi.org/10.1016/j.patcog.2018.04.012"
+        },
+        {
+            "section": "reference",
+            "link": "https://doi.org/10.1109/SPIN.2019.8711703"
+        },
+        {
+            "section": "reference",
+            "link": "https://doi.org/10.1016/j.procs.2020.04.206"
+        },
+        {
+            "section": "reference",
+            "link": "https://doi.org/10.1016/j.inffus.2020.10.0082021"
+        },
+        {
+            "section": "reference",
+            "link": "https://arxiv.org/abs/1409.4842v1"
+        },
+        {
+            "section": "reference",
+            "link": "https://arxiv.org/abs/1512.00567v3"
+        },
+        {
+            "section": "reference",
+            "link": "https://arxiv.org/abs/1610.02357"
+        },
+        {
+            "section": "reference",
+            "link": "https://arxiv.org/abs/1409.1556"
+        },
+        {
+            "section": "doi",
+            "link": "https://doi.org/10.32604/iasc.2023.036323"
+        },
+        {
+            "section": "reference",
+            "link": "https://arxiv.org/abs/1512.00567v3.FChollet"
+        },
+        {
+            "section": "reference",
+            "link": "https://arxiv.org/abs/1610.02357.KSimonyan"
+        }
+    ]
 }
