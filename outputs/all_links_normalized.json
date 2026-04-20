@@ -1,0 +1,1919 @@
+[
+  {
+    "paper": "1505.04597v1.pdf",
+    "section": "reference",
+    "original_url": "http://www.codesolorzano.com/celltrackingchallenge/Cell_Tracking_Challenge/Welcome.html",
+    "normalized_url": "http://www.codesolorzano.com/celltrackingchallenge/Cell_Tracking_Challenge/Welcome.html",
+    "domain": "www.codesolorzano.com",
+    "extension": ".html",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1505.04597v1.pdf",
+    "section": "reference",
+    "original_url": "http://brainiac2.mit.edu/isbi_challenge/",
+    "normalized_url": "http://brainiac2.mit.edu/isbi_challenge/",
+    "domain": "brainiac2.mit.edu",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1505.04597v1.pdf",
+    "section": "body",
+    "original_url": "http://lmb.informatik.uni-freiburg.de/people/ronneber/u-net",
+    "normalized_url": "http://lmb.informatik.uni-freiburg.de/people/ronneber/u-net",
+    "domain": "lmb.informatik.uni-freiburg.de",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1505.04597v1.pdf",
+    "section": "note",
+    "original_url": "https://www.codesolorzano.com/celltrackingchallenge/Cell_Tracking_Challenge/Welcome.html",
+    "normalized_url": "https://www.codesolorzano.com/celltrackingchallenge/Cell_Tracking_Challenge/Welcome.html",
+    "domain": "www.codesolorzano.com",
+    "extension": ".html",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1506.02640v5.pdf",
+    "section": "body",
+    "original_url": "http://pjreddie.com/yolo/",
+    "normalized_url": "http://pjreddie.com/yolo/",
+    "domain": "pjreddie.com",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1506.02640v5.pdf",
+    "section": "reference",
+    "original_url": "https://github.com/BVLC/caffe/wiki/Models-accuracy-on-ImageNet-2012-val",
+    "normalized_url": "https://github.com/BVLC/caffe/wiki/Models-accuracy-on-ImageNet-2012-val",
+    "domain": "github.com",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1506.02640v5.pdf",
+    "section": "reference",
+    "original_url": "http://pjreddie.com/darknet/",
+    "normalized_url": "http://pjreddie.com/darknet/",
+    "domain": "pjreddie.com",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1512.02595v1.pdf",
+    "section": "body",
+    "original_url": "http://www.voxforge.org",
+    "normalized_url": "http://www.voxforge.org",
+    "domain": "www.voxforge.org",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1512.02595v1.pdf",
+    "section": "reference",
+    "original_url": "http://arxiv.org/abs/1508.04395",
+    "normalized_url": "http://arxiv.org/abs/1508.04395",
+    "domain": "arxiv.org",
+    "extension": ".04395",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1512.02595v1.pdf",
+    "section": "reference",
+    "original_url": "https://nvlabs.github.io/moderngpu/",
+    "normalized_url": "https://nvlabs.github.io/moderngpu/",
+    "domain": "nvlabs.github.io",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1512.02595v1.pdf",
+    "section": "reference",
+    "original_url": "http://arxiv.org/abs/1508.01211",
+    "normalized_url": "http://arxiv.org/abs/1508.01211",
+    "domain": "arxiv.org",
+    "extension": ".01211",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1512.02595v1.pdf",
+    "section": "reference",
+    "original_url": "http://arxiv.org/abs/1412.1602",
+    "normalized_url": "http://arxiv.org/abs/1412.1602",
+    "domain": "arxiv.org",
+    "extension": ".1602",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1512.02595v1.pdf",
+    "section": "reference",
+    "original_url": "http://svail.github.io/rnn_perf",
+    "normalized_url": "http://svail.github.io/rnn_perf",
+    "domain": "svail.github.io",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1512.02595v1.pdf",
+    "section": "reference",
+    "original_url": "http://arxiv.org/abs/1412.5567",
+    "normalized_url": "http://arxiv.org/abs/1412.5567",
+    "domain": "arxiv.org",
+    "extension": ".5567",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1512.02595v1.pdf",
+    "section": "reference",
+    "original_url": "http://arxiv.org/abs/1408.2873",
+    "normalized_url": "http://arxiv.org/abs/1408.2873",
+    "domain": "arxiv.org",
+    "extension": ".2873",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1512.02595v1.pdf",
+    "section": "reference",
+    "original_url": "http://arxiv.org/abs/1510.01378",
+    "normalized_url": "http://arxiv.org/abs/1510.01378",
+    "domain": "arxiv.org",
+    "extension": ".01378",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1512.02595v1.pdf",
+    "section": "reference",
+    "original_url": "https://github.com/NervanaSystems/nervanagpu",
+    "normalized_url": "https://github.com/NervanaSystems/nervanagpu",
+    "domain": "github.com",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1512.02595v1.pdf",
+    "section": "reference",
+    "original_url": "http://arxiv.org/abs/1211.5063",
+    "normalized_url": "http://arxiv.org/abs/1211.5063",
+    "domain": "arxiv.org",
+    "extension": ".5063",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1512.02595v1.pdf",
+    "section": "reference",
+    "original_url": "http://arxiv.org/abs/1507.06947",
+    "normalized_url": "http://arxiv.org/abs/1507.06947",
+    "domain": "arxiv.org",
+    "extension": ".06947",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1512.02595v1.pdf",
+    "section": "reference",
+    "original_url": "http://arxiv.org/abs/1409.3215",
+    "normalized_url": "http://arxiv.org/abs/1409.3215",
+    "domain": "arxiv.org",
+    "extension": ".3215",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1512.02595v1.pdf",
+    "section": "reference",
+    "original_url": "http://arxiv.org/abs/1502.03167",
+    "normalized_url": "http://arxiv.org/abs/1502.03167",
+    "domain": "arxiv.org",
+    "extension": ".03167",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1512.02595v1.pdf",
+    "section": "reference",
+    "original_url": "http://arxiv.org/abs/1410.4615",
+    "normalized_url": "http://arxiv.org/abs/1410.4615",
+    "domain": "arxiv.org",
+    "extension": ".4615",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1512.02595v1.pdf",
+    "section": "body",
+    "original_url": "https://www.voxforge.org",
+    "normalized_url": "https://www.voxforge.org",
+    "domain": "www.voxforge.org",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1512.02595v1.pdf",
+    "section": "body",
+    "original_url": "http://commoncrawl.org",
+    "normalized_url": "http://commoncrawl.org",
+    "domain": "commoncrawl.org",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1512.02595v1.pdf",
+    "section": "reference",
+    "original_url": "http://arxiv.org/abs/1508.01211.cuDNN",
+    "normalized_url": "http://arxiv.org/abs/1508.01211.cuDNN",
+    "domain": "arxiv.org",
+    "extension": ".cudnn",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1512.02595v1.pdf",
+    "section": "reference",
+    "original_url": "http://arxiv.org/abs/1412.5567.First-pass",
+    "normalized_url": "http://arxiv.org/abs/1412.5567.First-pass",
+    "domain": "arxiv.org",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1512.02595v1.pdf",
+    "section": "reference",
+    "original_url": "http://arxiv.org/abs/1408.2873.Scalable",
+    "normalized_url": "http://arxiv.org/abs/1408.2873.Scalable",
+    "domain": "arxiv.org",
+    "extension": ".scalable",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1512.02595v1.pdf",
+    "section": "reference",
+    "original_url": "http://arxiv.org/abs/1510.01378.Building",
+    "normalized_url": "http://arxiv.org/abs/1510.01378.Building",
+    "domain": "arxiv.org",
+    "extension": ".building",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1512.02595v1.pdf",
+    "section": "reference",
+    "original_url": "http://arxiv.org/abs/1211.5063.Bandwidth",
+    "normalized_url": "http://arxiv.org/abs/1211.5063.Bandwidth",
+    "domain": "arxiv.org",
+    "extension": ".bandwidth",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1512.02595v1.pdf",
+    "section": "reference",
+    "original_url": "http://arxiv.org/abs/1507.06947.Sequence",
+    "normalized_url": "http://arxiv.org/abs/1507.06947.Sequence",
+    "domain": "arxiv.org",
+    "extension": ".sequence",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1512.02595v1.pdf",
+    "section": "reference",
+    "original_url": "http://arxiv.org/abs/1409.3215.Batch",
+    "normalized_url": "http://arxiv.org/abs/1409.3215.Batch",
+    "domain": "arxiv.org",
+    "extension": ".batch",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1512.02595v1.pdf",
+    "section": "reference",
+    "original_url": "http://arxiv.org/abs/1502.03167.Going",
+    "normalized_url": "http://arxiv.org/abs/1502.03167.Going",
+    "domain": "arxiv.org",
+    "extension": ".going",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1604.01685v2.pdf",
+    "section": "note",
+    "original_url": "https://www.cityscapes",
+    "normalized_url": "https://www.cityscapes",
+    "domain": "www.cityscapes",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1606.05250v3.pdf",
+    "section": "body",
+    "original_url": "https://stanford-qa.com",
+    "normalized_url": "https://stanford-qa.com",
+    "domain": "stanford-qa.com",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1606.05250v3.pdf",
+    "section": "body",
+    "original_url": "https://worksheets.codalab.org/worksheets/0xd53d03a48ef64b329c16b9baf0f99b0c/",
+    "normalized_url": "https://worksheets.codalab.org/worksheets/0xd53d03a48ef64b329c16b9baf0f99b0c/",
+    "domain": "worksheets.codalab.org",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1702.05373v2.pdf",
+    "section": "body",
+    "original_url": "https://www.westernsydney.edu.au/bens/home/reproducibleresearch/emnist",
+    "normalized_url": "https://www.westernsydney.edu.au/bens/home/reproducibleresearch/emnist",
+    "domain": "www.westernsydney.edu.au",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1702.05373v2.pdf",
+    "section": "reference",
+    "original_url": "http://www.nist.gov/srd/upload/nistsd19.pdf",
+    "normalized_url": "http://www.nist.gov/srd/upload/nistsd19.pdf",
+    "domain": "www.nist.gov",
+    "extension": ".pdf",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1702.05373v2.pdf",
+    "section": "reference",
+    "original_url": "http://portal.acm.org/citation.cfm?doid=1141277.1141468",
+    "normalized_url": "http://portal.acm.org/citation.cfm?doid=1141277.1141468",
+    "domain": "portal.acm.org",
+    "extension": ".cfm",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1702.05373v2.pdf",
+    "section": "body",
+    "original_url": "https://www.westernsydney.edu.au/bens/home/reproducible",
+    "normalized_url": "https://www.westernsydney.edu.au/bens/home/reproducible",
+    "domain": "www.westernsydney.edu.au",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1702.05373v2.pdf",
+    "section": "note",
+    "original_url": "https://www.nist.gov/srd/upload/nistsd19.pdf",
+    "normalized_url": "https://www.nist.gov/srd/upload/nistsd19.pdf",
+    "domain": "www.nist.gov",
+    "extension": ".pdf",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1702.05747v2.pdf",
+    "section": "body",
+    "original_url": "https://github.com/Lasagne/Lasagne",
+    "normalized_url": "https://github.com/Lasagne/Lasagne",
+    "domain": "github.com",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1702.05747v2.pdf",
+    "section": "body",
+    "original_url": "https://keras.io/",
+    "normalized_url": "https://keras.io/",
+    "domain": "keras.io",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1702.05747v2.pdf",
+    "section": "reference",
+    "original_url": "https://doi.org/10.1109/TMI.2015.2476509",
+    "normalized_url": "https://doi.org/10.1109/TMI.2015.2476509",
+    "domain": "doi.org",
+    "extension": ".2476509",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1702.05747v2.pdf",
+    "section": "body",
+    "original_url": "https://www.grand-challenge.org",
+    "normalized_url": "https://www.grand-challenge.org",
+    "domain": "www.grand-challenge.org",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1706.03762v7.pdf",
+    "section": "body",
+    "original_url": "https://github.com/tensorflow/tensor2tensor",
+    "normalized_url": "https://github.com/tensorflow/tensor2tensor",
+    "domain": "github.com",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1706.03762v7.pdf",
+    "section": "body",
+    "original_url": "https://github.com/tensorflow/tensor2tensor.Input-Input",
+    "normalized_url": "https://github.com/tensorflow/tensor2tensor.Input-Input",
+    "domain": "github.com",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1707.02919v2.pdf",
+    "section": "body",
+    "original_url": "http://www.lemurproject.org/",
+    "normalized_url": "http://www.lemurproject.org/",
+    "domain": "www.lemurproject.org",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1707.02919v2.pdf",
+    "section": "reference",
+    "original_url": "https://doi.org/10.3115/1119176.1119199",
+    "normalized_url": "https://doi.org/10.3115/1119176.1119199",
+    "domain": "doi.org",
+    "extension": ".1119199",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1707.02919v2.pdf",
+    "section": "reference",
+    "original_url": "https://www.emc.com/collateral/analyst-reports/idc-the-digital-universe-in-2020.pdf",
+    "normalized_url": "https://www.emc.com/collateral/analyst-reports/idc-the-digital-universe-in-2020.pdf",
+    "domain": "www.emc.com",
+    "extension": ".pdf",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1707.02919v2.pdf",
+    "section": "body",
+    "original_url": "https://www.lemurproject.org/",
+    "normalized_url": "https://www.lemurproject.org/",
+    "domain": "www.lemurproject.org",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1707.02919v2.pdf",
+    "section": "body",
+    "original_url": "https://www.crisp-dm.org/",
+    "normalized_url": "https://www.crisp-dm.org/",
+    "domain": "www.crisp-dm.org",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1707.02919v2.pdf",
+    "section": "body",
+    "original_url": "http://en.wikipedia.org/wiki/Statistics",
+    "normalized_url": "http://en.wikipedia.org/wiki/Statistics",
+    "domain": "en.wikipedia.org",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1707.02919v2.pdf",
+    "section": "body",
+    "original_url": "https://www.cs.waikato.ac.nz/ml/weka/",
+    "normalized_url": "https://www.cs.waikato.ac.nz/ml/weka/",
+    "domain": "www.cs.waikato.ac.nz",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1707.02919v2.pdf",
+    "section": "body",
+    "original_url": "https://www.w3.org/TR/webont-req/",
+    "normalized_url": "https://www.w3.org/TR/webont-req/",
+    "domain": "www.w3.org",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1707.02919v2.pdf",
+    "section": "body",
+    "original_url": "https://www.obofoundry.org/",
+    "normalized_url": "https://www.obofoundry.org/",
+    "domain": "www.obofoundry.org",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1707.02919v2.pdf",
+    "section": "body",
+    "original_url": "https://www.bioontology.org/",
+    "normalized_url": "https://www.bioontology.org/",
+    "domain": "www.bioontology.org",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1707.02919v2.pdf",
+    "section": "body",
+    "original_url": "http://bioportal.bioontology.org/",
+    "normalized_url": "http://bioportal.bioontology.org/",
+    "domain": "bioportal.bioontology.org",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1707.02919v2.pdf",
+    "section": "body",
+    "original_url": "https://uts.nlm.nih.gov/home.html",
+    "normalized_url": "https://uts.nlm.nih.gov/home.html",
+    "domain": "uts.nlm.nih.gov",
+    "extension": ".html",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1707.02919v2.pdf",
+    "section": "body",
+    "original_url": "https://www.pharmgkb.org/",
+    "normalized_url": "https://www.pharmgkb.org/",
+    "domain": "www.pharmgkb.org",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1708.05031v2.pdf",
+    "section": "doi",
+    "original_url": "https://doi.org/10.1145/3038912.3052569",
+    "normalized_url": "https://doi.org/10.1145/3038912.3052569",
+    "domain": "doi.org",
+    "extension": ".3052569",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1708.05031v2.pdf",
+    "section": "body",
+    "original_url": "http://alex.smola.org/teaching/berkeley2012/slides/8_",
+    "normalized_url": "http://alex.smola.org/teaching/berkeley2012/slides/8_",
+    "domain": "alex.smola.org",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1708.05031v2.pdf",
+    "section": "body",
+    "original_url": "http://grouplens.org/datasets/movielens/1m/",
+    "normalized_url": "http://grouplens.org/datasets/movielens/1m/",
+    "domain": "grouplens.org",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1708.05031v2.pdf",
+    "section": "body",
+    "original_url": "https://sites.google.com/site/xueatalphabeta/academic-projects",
+    "normalized_url": "https://sites.google.com/site/xueatalphabeta/academic-projects",
+    "domain": "sites.google.com",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1708.05031v2.pdf",
+    "section": "body",
+    "original_url": "https://github.com/hexiangnan/neural_",
+    "normalized_url": "https://github.com/hexiangnan/neural_",
+    "domain": "github.com",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1710.10903v3.pdf",
+    "section": "reference",
+    "original_url": "https://www.tensorflow.org/",
+    "normalized_url": "https://www.tensorflow.org/",
+    "domain": "www.tensorflow.org",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1710.10903v3.pdf",
+    "section": "reference",
+    "original_url": "http://arxiv.org/abs/1611.02344",
+    "normalized_url": "http://arxiv.org/abs/1611.02344",
+    "domain": "arxiv.org",
+    "extension": ".02344",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1710.10903v3.pdf",
+    "section": "reference",
+    "original_url": "http://papers.nips.cc/paper/6863-vain-attentional-multi-agent-predictive-modeling.pdf",
+    "normalized_url": "http://papers.nips.cc/paper/6863-vain-attentional-multi-agent-predictive-modeling.pdf",
+    "domain": "papers.nips.cc",
+    "extension": ".pdf",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1710.10903v3.pdf",
+    "section": "reference",
+    "original_url": "http://arxiv.org/abs/1410.3916",
+    "normalized_url": "http://arxiv.org/abs/1410.3916",
+    "domain": "arxiv.org",
+    "extension": ".3916",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1710.10903v3.pdf",
+    "section": "doi",
+    "original_url": "https://doi.org/10.1109/72.572108",
+    "normalized_url": "https://doi.org/10.1109/72.572108",
+    "domain": "doi.org",
+    "extension": ".572108",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1710.10903v3.pdf",
+    "section": "body",
+    "original_url": "https://github.com/PetarV-/GAT",
+    "normalized_url": "https://github.com/PetarV-/GAT",
+    "domain": "github.com",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1710.10903v3.pdf",
+    "section": "reference",
+    "original_url": "http://arxiv.org/abs/1611.02344.Understanding",
+    "normalized_url": "http://arxiv.org/abs/1611.02344.Understanding",
+    "domain": "arxiv.org",
+    "extension": ".understanding",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1710.10903v3.pdf",
+    "section": "reference",
+    "original_url": "http://arxiv.org/abs/1410.3916.Revisiting",
+    "normalized_url": "http://arxiv.org/abs/1410.3916.Revisiting",
+    "domain": "arxiv.org",
+    "extension": ".revisiting",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1710.10903v3.pdf",
+    "section": "reference",
+    "original_url": "https://doi.org/10.1109/72.572108.Dropout",
+    "normalized_url": "https://doi.org/10.1109/72.572108.Dropout",
+    "domain": "doi.org",
+    "extension": ".dropout",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1810.04805v2.pdf",
+    "section": "body",
+    "original_url": "https://github.com/google-research/bert",
+    "normalized_url": "https://github.com/google-research/bert",
+    "domain": "github.com",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1810.04805v2.pdf",
+    "section": "body",
+    "original_url": "https://gluebenchmark.com/leaderboard",
+    "normalized_url": "https://gluebenchmark.com/leaderboard",
+    "domain": "gluebenchmark.com",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1810.04805v2.pdf",
+    "section": "doi",
+    "original_url": "https://doi.org/10.18653/v1/S17-2001",
+    "normalized_url": "https://doi.org/10.18653/v1/S17-2001",
+    "domain": "doi.org",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1810.04805v2.pdf",
+    "section": "body",
+    "original_url": "https://cloudplatform.googleblog.com/2018/06/Cloud-TPU-now-offers-preemptible-pricing-and-globalavailability.html",
+    "normalized_url": "https://cloudplatform.googleblog.com/2018/06/Cloud-TPU-now-offers-preemptible-pricing-and-globalavailability.html",
+    "domain": "cloudplatform.googleblog.com",
+    "extension": ".html",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1810.04805v2.pdf",
+    "section": "body",
+    "original_url": "http://nlp.seas.harvard.edu/2018/04/03/attention.html",
+    "normalized_url": "http://nlp.seas.harvard.edu/2018/04/03/attention.html",
+    "domain": "nlp.seas.harvard.edu",
+    "extension": ".html",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1810.04805v2.pdf",
+    "section": "body",
+    "original_url": "https://gluebenchmark.com/faq",
+    "normalized_url": "https://gluebenchmark.com/faq",
+    "domain": "gluebenchmark.com",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1812.08434v6.pdf",
+    "section": "reference",
+    "original_url": "https://doi.org/10.24963/ijcai.2017/250",
+    "normalized_url": "https://doi.org/10.24963/ijcai.2017/250",
+    "domain": "doi.org",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1812.08434v6.pdf",
+    "section": "reference",
+    "original_url": "http://socialcomputing.asu.edu",
+    "normalized_url": "http://socialcomputing.asu.edu",
+    "domain": "socialcomputing.asu.edu",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1812.08434v6.pdf",
+    "section": "back",
+    "original_url": "https://github.com/ShinKyuY/Representation_Learning_on_Graphs_with_Jumping_Knowledge_Networks",
+    "normalized_url": "https://github.com/ShinKyuY/Representation_Learning_on_Graphs_with_Jumping_Knowledge_Networks",
+    "domain": "github.com",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1812.08434v6.pdf",
+    "section": "back",
+    "original_url": "https://github.com/Hanjun-Dai/steady_state_embedding",
+    "normalized_url": "https://github.com/Hanjun-Dai/steady_state_embedding",
+    "domain": "github.com",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1812.08434v6.pdf",
+    "section": "back",
+    "original_url": "https://github.com/divelab/lgcn/",
+    "normalized_url": "https://github.com/divelab/lgcn/",
+    "domain": "github.com",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1812.08434v6.pdf",
+    "section": "back",
+    "original_url": "https://github.com/matenure/FastGCN",
+    "normalized_url": "https://github.com/matenure/FastGCN",
+    "domain": "github.com",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1812.08434v6.pdf",
+    "section": "back",
+    "original_url": "https://github.com/RexYing/diffpool",
+    "normalized_url": "https://github.com/RexYing/diffpool",
+    "domain": "github.com",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1812.08434v6.pdf",
+    "section": "back",
+    "original_url": "https://github.com/snap-stanford/GraphRNN",
+    "normalized_url": "https://github.com/snap-stanford/GraphRNN",
+    "domain": "github.com",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1812.08434v6.pdf",
+    "section": "back",
+    "original_url": "https://github.com/nicola-decao/MolGAN",
+    "normalized_url": "https://github.com/nicola-decao/MolGAN",
+    "domain": "github.com",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1812.08434v6.pdf",
+    "section": "back",
+    "original_url": "https://github.com/danielzuegner/netgan",
+    "normalized_url": "https://github.com/danielzuegner/netgan",
+    "domain": "github.com",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1812.08434v6.pdf",
+    "section": "back",
+    "original_url": "https://github.com/liyaguang/DCRNN",
+    "normalized_url": "https://github.com/liyaguang/DCRNN",
+    "domain": "github.com",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1812.08434v6.pdf",
+    "section": "back",
+    "original_url": "https://github.com/yysijie/st-gcn",
+    "normalized_url": "https://github.com/yysijie/st-gcn",
+    "domain": "github.com",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1812.08434v6.pdf",
+    "section": "back",
+    "original_url": "https://github.com/tkipf/relational-gcn",
+    "normalized_url": "https://github.com/tkipf/relational-gcn",
+    "domain": "github.com",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1812.08434v6.pdf",
+    "section": "back",
+    "original_url": "https://github.com/huangwb/AS-GCN",
+    "normalized_url": "https://github.com/huangwb/AS-GCN",
+    "domain": "github.com",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1812.08434v6.pdf",
+    "section": "back",
+    "original_url": "https://github.com/ZhuangCY/DGCN",
+    "normalized_url": "https://github.com/ZhuangCY/DGCN",
+    "domain": "github.com",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1812.08434v6.pdf",
+    "section": "back",
+    "original_url": "https://github.com/jennyzhang0215/GaAN",
+    "normalized_url": "https://github.com/jennyzhang0215/GaAN",
+    "domain": "github.com",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1812.08434v6.pdf",
+    "section": "back",
+    "original_url": "https://github.com/PetarV-/DGI",
+    "normalized_url": "https://github.com/PetarV-/DGI",
+    "domain": "github.com",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1812.08434v6.pdf",
+    "section": "back",
+    "original_url": "https://github.com/nnzhan/Graph-WaveNet",
+    "normalized_url": "https://github.com/nnzhan/Graph-WaveNet",
+    "domain": "github.com",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1812.08434v6.pdf",
+    "section": "back",
+    "original_url": "https://github.com/Jhy1993/HAN",
+    "normalized_url": "https://github.com/Jhy1993/HAN",
+    "domain": "github.com",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1812.08434v6.pdf",
+    "section": "back",
+    "original_url": "https://github.com/thunlp/gnnpapers",
+    "normalized_url": "https://github.com/thunlp/gnnpapers",
+    "domain": "github.com",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1812.08434v6.pdf",
+    "section": "doi",
+    "original_url": "https://doi.org/10.1016/j.aiopen.2021.01.001",
+    "normalized_url": "https://doi.org/10.1016/j.aiopen.2021.01.001",
+    "domain": "doi.org",
+    "extension": ".001",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1812.08434v6.pdf",
+    "section": "note",
+    "original_url": "http://soci",
+    "normalized_url": "http://soci",
+    "domain": "soci",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1812.08434v6.pdf",
+    "section": "note",
+    "original_url": "https://WWW.ACM",
+    "normalized_url": "https://www.acm",
+    "domain": "www.acm",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1812.08434v6.pdf",
+    "section": "back",
+    "original_url": "https://github.com/divelab/lgcn/FastGCN",
+    "normalized_url": "https://github.com/divelab/lgcn/FastGCN",
+    "domain": "github.com",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1907.07374v5.pdf",
+    "section": "reference",
+    "original_url": "http://www.heatmapping.org/slides/2018WCCI.pdf",
+    "normalized_url": "http://www.heatmapping.org/slides/2018WCCI.pdf",
+    "domain": "www.heatmapping.org",
+    "extension": ".pdf",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1907.07374v5.pdf",
+    "section": "reference",
+    "original_url": "http://iphome.hhi.de/samek/pdf/MonICML16.pdf",
+    "normalized_url": "http://iphome.hhi.de/samek/pdf/MonICML16.pdf",
+    "domain": "iphome.hhi.de",
+    "extension": ".pdf",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1907.07374v5.pdf",
+    "section": "reference",
+    "original_url": "https://pair-code.github.io/saliency/",
+    "normalized_url": "https://pair-code.github.io/saliency/",
+    "domain": "pair-code.github.io",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1907.07374v5.pdf",
+    "section": "reference",
+    "original_url": "https://cs.stanford.edu/people/karpathy/cnnembed",
+    "normalized_url": "https://cs.stanford.edu/people/karpathy/cnnembed",
+    "domain": "cs.stanford.edu",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1907.07374v5.pdf",
+    "section": "reference",
+    "original_url": "https://distill.pub/2019/activation-atlas",
+    "normalized_url": "https://distill.pub/2019/activation-atlas",
+    "domain": "distill.pub",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1907.07374v5.pdf",
+    "section": "body",
+    "original_url": "https://distill.pub/2018/building-blocks/",
+    "normalized_url": "https://distill.pub/2018/building-blocks/",
+    "domain": "distill.pub",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1907.07374v5.pdf",
+    "section": "note",
+    "original_url": "https://www.heatmapping.org/slides/2018",
+    "normalized_url": "https://www.heatmapping.org/slides/2018",
+    "domain": "www.heatmapping.org",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "1908.04515v1.pdf",
+    "section": "doi",
+    "original_url": "https://doi.org/10.1364/optica.XX.XXXXXX",
+    "normalized_url": "https://doi.org/10.1364/optica.XX.XXXXXX",
+    "domain": "doi.org",
+    "extension": ".xxxxxx",
+    "is_data_extension": false
+  },
+  {
+    "paper": "2101.00027v1.pdf",
+    "section": "body",
+    "original_url": "https://pile.eleuther.ai/",
+    "normalized_url": "https://pile.eleuther.ai/",
+    "domain": "pile.eleuther.ai",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "2101.00027v1.pdf",
+    "section": "body",
+    "original_url": "https://archiveofourown.org/",
+    "normalized_url": "https://archiveofourown.org/",
+    "domain": "archiveofourown.org",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "2101.00027v1.pdf",
+    "section": "body",
+    "original_url": "https://github.com/SpamScope/mail-parser",
+    "normalized_url": "https://github.com/SpamScope/mail-parser",
+    "domain": "github.com",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "2101.00027v1.pdf",
+    "section": "body",
+    "original_url": "https://www.google.com/recaptcha/api.js?render=",
+    "normalized_url": "https://www.google.com/recaptcha/api.js?render=",
+    "domain": "www.google.com",
+    "extension": ".js",
+    "is_data_extension": false
+  },
+  {
+    "paper": "2101.00027v1.pdf",
+    "section": "reference",
+    "original_url": "http://Skylion007.github.io/OpenWebTextCorpus",
+    "normalized_url": "http://skylion007.github.io/OpenWebTextCorpus",
+    "domain": "skylion007.github.io",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "2101.00027v1.pdf",
+    "section": "reference",
+    "original_url": "https://github.com/BIGBALLON/cifar-10-cnn",
+    "normalized_url": "https://github.com/BIGBALLON/cifar-10-cnn",
+    "domain": "github.com",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "2101.00027v1.pdf",
+    "section": "reference",
+    "original_url": "http://arXiv.org/abs/cs/0205028",
+    "normalized_url": "http://arxiv.org/abs/cs/0205028",
+    "domain": "arxiv.org",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "2101.00027v1.pdf",
+    "section": "reference",
+    "original_url": "https://twitter.com/theshawwn/status/1320282149329784833",
+    "normalized_url": "https://twitter.com/theshawwn/status/1320282149329784833",
+    "domain": "twitter.com",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "2101.00027v1.pdf",
+    "section": "doi",
+    "original_url": "https://doi.org/10.5281/zenodo.2591652",
+    "normalized_url": "https://doi.org/10.5281/zenodo.2591652",
+    "domain": "doi.org",
+    "extension": ".2591652",
+    "is_data_extension": false
+  },
+  {
+    "paper": "2101.00027v1.pdf",
+    "section": "body",
+    "original_url": "https://pile.eleuther.ai/versity",
+    "normalized_url": "https://pile.eleuther.ai/versity",
+    "domain": "pile.eleuther.ai",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "2101.00027v1.pdf",
+    "section": "body",
+    "original_url": "https://www.fanfiction.net",
+    "normalized_url": "https://www.fanfiction.net",
+    "domain": "www.fanfiction.net",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "2101.00027v1.pdf",
+    "section": "body",
+    "original_url": "https://www",
+    "normalized_url": "https://www",
+    "domain": "www",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "2101.00027v1.pdf",
+    "section": "body",
+    "original_url": "https://www.google.com/recaptcha/api.js?render=*site",
+    "normalized_url": "https://www.google.com/recaptcha/api.js?render=%2Asite",
+    "domain": "www.google.com",
+    "extension": ".js",
+    "is_data_extension": false
+  },
+  {
+    "paper": "2101.00027v1.pdf",
+    "section": "body",
+    "original_url": "https://arxiv.org/help/stats/2019_by_area/",
+    "normalized_url": "https://arxiv.org/help/stats/2019_by_area/",
+    "domain": "arxiv.org",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "2101.00027v1.pdf",
+    "section": "body",
+    "original_url": "https://launchpad.net/bugs/1627643",
+    "normalized_url": "https://launchpad.net/bugs/1627643",
+    "domain": "launchpad.net",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "2101.00027v1.pdf",
+    "section": "body",
+    "original_url": "https://github.com/EleutherAI/the-pile",
+    "normalized_url": "https://github.com/EleutherAI/the-pile",
+    "domain": "github.com",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "2101.00027v1.pdf",
+    "section": "body",
+    "original_url": "https://www.courtlistener.com/",
+    "normalized_url": "https://www.courtlistener.com/",
+    "domain": "www.courtlistener.com",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "2101.00027v1.pdf",
+    "section": "body",
+    "original_url": "https://archive.org/details/stackexchange",
+    "normalized_url": "https://archive.org/details/stackexchange",
+    "domain": "archive.org",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "2101.00027v1.pdf",
+    "section": "body",
+    "original_url": "https://bulkdata.uspto.gov/",
+    "normalized_url": "https://bulkdata.uspto.gov/",
+    "domain": "bulkdata.uspto.gov",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "2101.00027v1.pdf",
+    "section": "body",
+    "original_url": "https://irclogs.ubuntu.com/",
+    "normalized_url": "https://irclogs.ubuntu.com/",
+    "domain": "irclogs.ubuntu.com",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "2101.00027v1.pdf",
+    "section": "body",
+    "original_url": "https://philpapers.org/",
+    "normalized_url": "https://philpapers.org/",
+    "domain": "philpapers.org",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "2101.00027v1.pdf",
+    "section": "body",
+    "original_url": "https://exporter.nih.gov/",
+    "normalized_url": "https://exporter.nih.gov/",
+    "domain": "exporter.nih.gov",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "2101.00027v1.pdf",
+    "section": "body",
+    "original_url": "https://news.ycombinator.com",
+    "normalized_url": "https://news.ycombinator.com",
+    "domain": "news.ycombinator.com",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "2101.00027v1.pdf",
+    "section": "body",
+    "original_url": "http://data.statmt.org/cc-100/",
+    "normalized_url": "http://data.statmt.org/cc-100/",
+    "domain": "data.statmt.org",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "2101.00027v1.pdf",
+    "section": "body",
+    "original_url": "https://www.tensorflow.org/datasets/catalog/c4",
+    "normalized_url": "https://www.tensorflow.org/datasets/catalog/c4",
+    "domain": "www.tensorflow.org",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "2101.00027v1.pdf",
+    "section": "body",
+    "original_url": "https://arxiv.org/help/bulk_data_s3",
+    "normalized_url": "https://arxiv.org/help/bulk_data_s3",
+    "domain": "arxiv.org",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "2101.00027v1.pdf",
+    "section": "body",
+    "original_url": "https://www.courtlistener.com/api/bulk-info/",
+    "normalized_url": "https://www.courtlistener.com/api/bulk-info/",
+    "domain": "www.courtlistener.com",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "2101.00027v1.pdf",
+    "section": "body",
+    "original_url": "https://www.tensorflow.org/datasets/catalog/wikipedia#wikipedia20200301enC.15",
+    "normalized_url": "https://www.tensorflow.org/datasets/catalog/wikipedia",
+    "domain": "www.tensorflow.org",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "2101.00027v1.pdf",
+    "section": "body",
+    "original_url": "https://www.statmt.org/europarl/",
+    "normalized_url": "https://www.statmt.org/europarl/",
+    "domain": "www.statmt.org",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "2101.00027v1.pdf",
+    "section": "body",
+    "original_url": "https://github.com/jdepoix/youtube-transcript-api",
+    "normalized_url": "https://github.com/jdepoix/youtube-transcript-api",
+    "domain": "github.com",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "2101.00027v1.pdf",
+    "section": "body",
+    "original_url": "https://github.com/vphill/pyoaiharvester/",
+    "normalized_url": "https://github.com/vphill/pyoaiharvester/",
+    "domain": "github.com",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "2101.00027v1.pdf",
+    "section": "body",
+    "original_url": "https://github.com/sdtblck/PDFextract",
+    "normalized_url": "https://github.com/sdtblck/PDFextract",
+    "domain": "github.com",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "2101.00027v1.pdf",
+    "section": "body",
+    "original_url": "https://github.com/ekzhu/datasketch",
+    "normalized_url": "https://github.com/ekzhu/datasketch",
+    "domain": "github.com",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "2101.00027v1.pdf",
+    "section": "note",
+    "original_url": "http://Skylion007.github.io/OpenWebTextCorpus.Authors",
+    "normalized_url": "http://skylion007.github.io/OpenWebTextCorpus.Authors",
+    "domain": "skylion007.github.io",
+    "extension": ".authors",
+    "is_data_extension": false
+  },
+  {
+    "paper": "2101.00027v1.pdf",
+    "section": "reference",
+    "original_url": "https://github.com/BIGBALLON/cifar-10-cnn.Europarl",
+    "normalized_url": "https://github.com/BIGBALLON/cifar-10-cnn.Europarl",
+    "domain": "github.com",
+    "extension": ".europarl",
+    "is_data_extension": false
+  },
+  {
+    "paper": "2101.00027v1.pdf",
+    "section": "reference",
+    "original_url": "http://arXiv.org/abs/cs/0205028.Pandoc",
+    "normalized_url": "http://arxiv.org/abs/cs/0205028.Pandoc",
+    "domain": "arxiv.org",
+    "extension": ".pandoc",
+    "is_data_extension": false
+  },
+  {
+    "paper": "2105.03011v1.pdf",
+    "section": "doi",
+    "original_url": "https://doi.org/10.18653/v1/2020.findings-emnlp.66",
+    "normalized_url": "https://doi.org/10.18653/v1/2020.findings-emnlp.66",
+    "domain": "doi.org",
+    "extension": ".66",
+    "is_data_extension": false
+  },
+  {
+    "paper": "2105.03011v1.pdf",
+    "section": "doi",
+    "original_url": "https://doi.org/10.18653/v1/D18-1241",
+    "normalized_url": "https://doi.org/10.18653/v1/D18-1241",
+    "domain": "doi.org",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "2105.03011v1.pdf",
+    "section": "doi",
+    "original_url": "https://doi.org/10.1162/tacl_a_00317",
+    "normalized_url": "https://doi.org/10.1162/tacl_a_00317",
+    "domain": "doi.org",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "2105.03011v1.pdf",
+    "section": "doi",
+    "original_url": "https://doi.org/10.18653/v1/D19-1606",
+    "normalized_url": "https://doi.org/10.18653/v1/D19-1606",
+    "domain": "doi.org",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "2105.03011v1.pdf",
+    "section": "doi",
+    "original_url": "https://doi.org/10.18653/v1/N19-1423",
+    "normalized_url": "https://doi.org/10.18653/v1/N19-1423",
+    "domain": "doi.org",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "2105.03011v1.pdf",
+    "section": "doi",
+    "original_url": "https://doi.org/10.18653/v1/N19-1246",
+    "normalized_url": "https://doi.org/10.18653/v1/N19-1246",
+    "domain": "doi.org",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "2105.03011v1.pdf",
+    "section": "doi",
+    "original_url": "https://doi.org/10.18653/v1/2020.emnlp-main.86",
+    "normalized_url": "https://doi.org/10.18653/v1/2020.emnlp-main.86",
+    "domain": "doi.org",
+    "extension": ".86",
+    "is_data_extension": false
+  },
+  {
+    "paper": "2105.03011v1.pdf",
+    "section": "doi",
+    "original_url": "https://doi.org/10.18653/v1/P18-1031",
+    "normalized_url": "https://doi.org/10.18653/v1/P18-1031",
+    "domain": "doi.org",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "2105.03011v1.pdf",
+    "section": "doi",
+    "original_url": "https://doi.org/10.18653/v1/D19-1259",
+    "normalized_url": "https://doi.org/10.18653/v1/D19-1259",
+    "domain": "doi.org",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "2105.03011v1.pdf",
+    "section": "doi",
+    "original_url": "https://doi.org/10.18653/v1/P17-1147",
+    "normalized_url": "https://doi.org/10.18653/v1/P17-1147",
+    "domain": "doi.org",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "2105.03011v1.pdf",
+    "section": "doi",
+    "original_url": "https://doi.org/10.18653/v1/2020.findings-emnlp.171",
+    "normalized_url": "https://doi.org/10.18653/v1/2020.findings-emnlp.171",
+    "domain": "doi.org",
+    "extension": ".171",
+    "is_data_extension": false
+  },
+  {
+    "paper": "2105.03011v1.pdf",
+    "section": "doi",
+    "original_url": "https://doi.org/10.1162/tacl_a_00023",
+    "normalized_url": "https://doi.org/10.1162/tacl_a_00023",
+    "domain": "doi.org",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "2105.03011v1.pdf",
+    "section": "doi",
+    "original_url": "https://doi.org/10.1162/tacl_a_00276",
+    "normalized_url": "https://doi.org/10.1162/tacl_a_00276",
+    "domain": "doi.org",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "2105.03011v1.pdf",
+    "section": "doi",
+    "original_url": "https://doi.org/10.18653/v1/2020.acl-main.703",
+    "normalized_url": "https://doi.org/10.18653/v1/2020.acl-main.703",
+    "domain": "doi.org",
+    "extension": ".703",
+    "is_data_extension": false
+  },
+  {
+    "paper": "2105.03011v1.pdf",
+    "section": "doi",
+    "original_url": "https://doi.org/10.18653/v1/2020.acl-main.604",
+    "normalized_url": "https://doi.org/10.18653/v1/2020.acl-main.604",
+    "domain": "doi.org",
+    "extension": ".604",
+    "is_data_extension": false
+  },
+  {
+    "paper": "2105.03011v1.pdf",
+    "section": "doi",
+    "original_url": "https://doi.org/10.18653/v1/2020.acl-main.447",
+    "normalized_url": "https://doi.org/10.18653/v1/2020.acl-main.447",
+    "domain": "doi.org",
+    "extension": ".447",
+    "is_data_extension": false
+  },
+  {
+    "paper": "2105.03011v1.pdf",
+    "section": "doi",
+    "original_url": "https://doi.org/10.18653/v1/W18-5301",
+    "normalized_url": "https://doi.org/10.18653/v1/W18-5301",
+    "domain": "doi.org",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "2105.03011v1.pdf",
+    "section": "doi",
+    "original_url": "https://doi.org/10.18653/v1/2020.emnlp-demos.17",
+    "normalized_url": "https://doi.org/10.18653/v1/2020.emnlp-demos.17",
+    "domain": "doi.org",
+    "extension": ".17",
+    "is_data_extension": false
+  },
+  {
+    "paper": "2105.03011v1.pdf",
+    "section": "doi",
+    "original_url": "https://doi.org/10.18653/v1/D18-1258",
+    "normalized_url": "https://doi.org/10.18653/v1/D18-1258",
+    "domain": "doi.org",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "2105.03011v1.pdf",
+    "section": "doi",
+    "original_url": "https://doi.org/10.18653/v1/2020.bionlp-1.15",
+    "normalized_url": "https://doi.org/10.18653/v1/2020.bionlp-1.15",
+    "domain": "doi.org",
+    "extension": ".15",
+    "is_data_extension": false
+  },
+  {
+    "paper": "2105.03011v1.pdf",
+    "section": "doi",
+    "original_url": "https://doi.org/10.18653/v1/D16-1264",
+    "normalized_url": "https://doi.org/10.18653/v1/D16-1264",
+    "domain": "doi.org",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "2105.03011v1.pdf",
+    "section": "doi",
+    "original_url": "https://doi.org/10.18653/v1/D19-1500",
+    "normalized_url": "https://doi.org/10.18653/v1/D19-1500",
+    "domain": "doi.org",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "2105.03011v1.pdf",
+    "section": "doi",
+    "original_url": "https://doi.org/10.1162/tacl_a_00266",
+    "normalized_url": "https://doi.org/10.1162/tacl_a_00266",
+    "domain": "doi.org",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "2105.03011v1.pdf",
+    "section": "doi",
+    "original_url": "https://doi.org/10.18653/v1/W17-2623",
+    "normalized_url": "https://doi.org/10.18653/v1/W17-2623",
+    "domain": "doi.org",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "2105.03011v1.pdf",
+    "section": "doi",
+    "original_url": "https://doi.org/10.1162/tacl_a_00021",
+    "normalized_url": "https://doi.org/10.1162/tacl_a_00021",
+    "domain": "doi.org",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "2105.03011v1.pdf",
+    "section": "doi",
+    "original_url": "https://doi.org/10.18653/v1/D15-1237",
+    "normalized_url": "https://doi.org/10.18653/v1/D15-1237",
+    "domain": "doi.org",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "2105.03011v1.pdf",
+    "section": "doi",
+    "original_url": "https://doi.org/10.18653/v1/D18-1259",
+    "normalized_url": "https://doi.org/10.18653/v1/D18-1259",
+    "domain": "doi.org",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "2105.03011v1.pdf",
+    "section": "body",
+    "original_url": "https://allenai.org/project/qasper.We",
+    "normalized_url": "https://allenai.org/project/qasper.We",
+    "domain": "allenai.org",
+    "extension": ".we",
+    "is_data_extension": false
+  },
+  {
+    "paper": "2105.03011v1.pdf",
+    "section": "body",
+    "original_url": "http://semanticscholar.org",
+    "normalized_url": "http://semanticscholar.org",
+    "domain": "semanticscholar.org",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "2105.03011v1.pdf",
+    "section": "body",
+    "original_url": "https://www.upwork.com/Two",
+    "normalized_url": "https://www.upwork.com/Two",
+    "domain": "www.upwork.com",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "2105.03011v1.pdf",
+    "section": "body",
+    "original_url": "https://paperswithcode.com/task/question-answering",
+    "normalized_url": "https://paperswithcode.com/task/question-answering",
+    "domain": "paperswithcode.com",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "2105.03011v1.pdf",
+    "section": "note",
+    "original_url": "https://allenai.org/project/qasper",
+    "normalized_url": "https://allenai.org/project/qasper",
+    "domain": "allenai.org",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "2105.03011v1.pdf",
+    "section": "note",
+    "original_url": "https://www.upwork.com/",
+    "normalized_url": "https://www.upwork.com/",
+    "domain": "www.upwork.com",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "2111.02114v1.pdf",
+    "section": "body",
+    "original_url": "https://laion.ai/laion-400-open-dataset/Preprint.Under",
+    "normalized_url": "https://laion.ai/laion-400-open-dataset/Preprint.Under",
+    "domain": "laion.ai",
+    "extension": ".under",
+    "is_data_extension": false
+  },
+  {
+    "paper": "2111.02114v1.pdf",
+    "section": "body",
+    "original_url": "https://rom1504.github.io/clip-retrieval/",
+    "normalized_url": "https://rom1504.github.io/clip-retrieval/",
+    "domain": "rom1504.github.io",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "2111.02114v1.pdf",
+    "section": "body",
+    "original_url": "https://github.com/rom1504/img2dataset",
+    "normalized_url": "https://github.com/rom1504/img2dataset",
+    "domain": "github.com",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "4449.pdf",
+    "section": "reference",
+    "original_url": "http://research.microsoft.com/barc/SortBenchmark/",
+    "normalized_url": "http://research.microsoft.com/barc/SortBenchmark/",
+    "domain": "research.microsoft.com",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "4449.pdf",
+    "section": "reference",
+    "original_url": "http://alme1.almaden.ibm.com/cs/spsort.pdf",
+    "normalized_url": "http://alme1.almaden.ibm.com/cs/spsort.pdf",
+    "domain": "alme1.almaden.ibm.com",
+    "extension": ".pdf",
+    "is_data_extension": false
+  },
+  {
+    "paper": "NIPS-2012-imagenet-classification-with-deep-convolutional-neural-networks-Paper.pdf",
+    "section": "reference",
+    "original_url": "https://www.image-net.org/challenges",
+    "normalized_url": "https://www.image-net.org/challenges",
+    "domain": "www.image-net.org",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "NIPS-2012-imagenet-classification-with-deep-convolutional-neural-networks-Paper.pdf",
+    "section": "reference",
+    "original_url": "http://www.image-net.org/challenges/LSVRC/2012/",
+    "normalized_url": "http://www.image-net.org/challenges/LSVRC/2012/",
+    "domain": "www.image-net.org",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "NIPS-2012-imagenet-classification-with-deep-convolutional-neural-networks-Paper.pdf",
+    "section": "reference",
+    "original_url": "http://authors.library.caltech.edu/7694",
+    "normalized_url": "http://authors.library.caltech.edu/7694",
+    "domain": "authors.library.caltech.edu",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "NIPS-2012-imagenet-classification-with-deep-convolutional-neural-networks-Paper.pdf",
+    "section": "body",
+    "original_url": "http://code.google.com/p/cuda-convnet/",
+    "normalized_url": "http://code.google.com/p/cuda-convnet/",
+    "domain": "code.google.com",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "NIPS-2012-imagenet-classification-with-deep-convolutional-neural-networks-Paper.pdf",
+    "section": "note",
+    "original_url": "https://www.imagenet.org/challenges.2010",
+    "normalized_url": "https://www.imagenet.org/challenges.2010",
+    "domain": "www.imagenet.org",
+    "extension": ".2010",
+    "is_data_extension": false
+  },
+  {
+    "paper": "NIPS-2012-imagenet-classification-with-deep-convolutional-neural-networks-Paper.pdf",
+    "section": "note",
+    "original_url": "https://www.image-net.org/challenges/LSVRC/2012/",
+    "normalized_url": "https://www.image-net.org/challenges/LSVRC/2012/",
+    "domain": "www.image-net.org",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "NIPS-2012-imagenet-classification-with-deep-convolutional-neural-networks-Paper.pdf",
+    "section": "reference",
+    "original_url": "http://authors.library.caltech.edu/7694.GEHinton",
+    "normalized_url": "http://authors.library.caltech.edu/7694.GEHinton",
+    "domain": "authors.library.caltech.edu",
+    "extension": ".gehinton",
+    "is_data_extension": false
+  },
+  {
+    "paper": "TSP_IASC_36323.pdf",
+    "section": "reference",
+    "original_url": "https://doi.org/10.1016/j.media.2021.102188",
+    "normalized_url": "https://doi.org/10.1016/j.media.2021.102188",
+    "domain": "doi.org",
+    "extension": ".102188",
+    "is_data_extension": false
+  },
+  {
+    "paper": "TSP_IASC_36323.pdf",
+    "section": "reference",
+    "original_url": "https://doi.org/10.1142/9789811239014_0005",
+    "normalized_url": "https://doi.org/10.1142/9789811239014_0005",
+    "domain": "doi.org",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "TSP_IASC_36323.pdf",
+    "section": "reference",
+    "original_url": "https://doi.org/10.1016/j.inffus.2020.04.002",
+    "normalized_url": "https://doi.org/10.1016/j.inffus.2020.04.002",
+    "domain": "doi.org",
+    "extension": ".002",
+    "is_data_extension": false
+  },
+  {
+    "paper": "TSP_IASC_36323.pdf",
+    "section": "reference",
+    "original_url": "https://doi.org/10.1016/j.patcog.2021.108146",
+    "normalized_url": "https://doi.org/10.1016/j.patcog.2021.108146",
+    "domain": "doi.org",
+    "extension": ".108146",
+    "is_data_extension": false
+  },
+  {
+    "paper": "TSP_IASC_36323.pdf",
+    "section": "reference",
+    "original_url": "https://doi.org/10.1088/1755-1315/428/1/012097",
+    "normalized_url": "https://doi.org/10.1088/1755-1315/428/1/012097",
+    "domain": "doi.org",
+    "extension": "",
+    "is_data_extension": false
+  },
+  {
+    "paper": "TSP_IASC_36323.pdf",
+    "section": "reference",
+    "original_url": "https://doi.org/10.1016/j.neucom.2022.03.062",
+    "normalized_url": "https://doi.org/10.1016/j.neucom.2022.03.062",
+    "domain": "doi.org",
+    "extension": ".062",
+    "is_data_extension": false
+  },
+  {
+    "paper": "TSP_IASC_36323.pdf",
+    "section": "reference",
+    "original_url": "https://doi.org/10.1016/j.neunet.2018.03.019",
+    "normalized_url": "https://doi.org/10.1016/j.neunet.2018.03.019",
+    "domain": "doi.org",
+    "extension": ".019",
+    "is_data_extension": false
+  },
+  {
+    "paper": "TSP_IASC_36323.pdf",
+    "section": "reference",
+    "original_url": "https://doi.org/10.1145/3357254.3357276",
+    "normalized_url": "https://doi.org/10.1145/3357254.3357276",
+    "domain": "doi.org",
+    "extension": ".3357276",
+    "is_data_extension": false
+  },
+  {
+    "paper": "TSP_IASC_36323.pdf",
+    "section": "reference",
+    "original_url": "https://doi.org/10.1016/j.patcog.2020.107420",
+    "normalized_url": "https://doi.org/10.1016/j.patcog.2020.107420",
+    "domain": "doi.org",
+    "extension": ".107420",
+    "is_data_extension": false
+  },
+  {
+    "paper": "TSP_IASC_36323.pdf",
+    "section": "reference",
+    "original_url": "https://doi.org/10.1016/j.neucom.2021.03.108",
+    "normalized_url": "https://doi.org/10.1016/j.neucom.2021.03.108",
+    "domain": "doi.org",
+    "extension": ".108",
+    "is_data_extension": false
+  },
+  {
+    "paper": "TSP_IASC_36323.pdf",
+    "section": "reference",
+    "original_url": "https://doi.org/10.1016/j.patcog.2018.04.012",
+    "normalized_url": "https://doi.org/10.1016/j.patcog.2018.04.012",
+    "domain": "doi.org",
+    "extension": ".012",
+    "is_data_extension": false
+  },
+  {
+    "paper": "TSP_IASC_36323.pdf",
+    "section": "reference",
+    "original_url": "https://doi.org/10.1109/SPIN.2019.8711703",
+    "normalized_url": "https://doi.org/10.1109/SPIN.2019.8711703",
+    "domain": "doi.org",
+    "extension": ".8711703",
+    "is_data_extension": false
+  },
+  {
+    "paper": "TSP_IASC_36323.pdf",
+    "section": "reference",
+    "original_url": "https://doi.org/10.1016/j.procs.2020.04.206",
+    "normalized_url": "https://doi.org/10.1016/j.procs.2020.04.206",
+    "domain": "doi.org",
+    "extension": ".206",
+    "is_data_extension": false
+  },
+  {
+    "paper": "TSP_IASC_36323.pdf",
+    "section": "reference",
+    "original_url": "https://doi.org/10.1016/j.inffus.2020.10.0082021",
+    "normalized_url": "https://doi.org/10.1016/j.inffus.2020.10.0082021",
+    "domain": "doi.org",
+    "extension": ".0082021",
+    "is_data_extension": false
+  },
+  {
+    "paper": "TSP_IASC_36323.pdf",
+    "section": "reference",
+    "original_url": "https://arxiv.org/abs/1409.4842v1",
+    "normalized_url": "https://arxiv.org/abs/1409.4842v1",
+    "domain": "arxiv.org",
+    "extension": ".4842v1",
+    "is_data_extension": false
+  },
+  {
+    "paper": "TSP_IASC_36323.pdf",
+    "section": "reference",
+    "original_url": "https://arxiv.org/abs/1512.00567v3",
+    "normalized_url": "https://arxiv.org/abs/1512.00567v3",
+    "domain": "arxiv.org",
+    "extension": ".00567v3",
+    "is_data_extension": false
+  },
+  {
+    "paper": "TSP_IASC_36323.pdf",
+    "section": "reference",
+    "original_url": "https://arxiv.org/abs/1610.02357",
+    "normalized_url": "https://arxiv.org/abs/1610.02357",
+    "domain": "arxiv.org",
+    "extension": ".02357",
+    "is_data_extension": false
+  },
+  {
+    "paper": "TSP_IASC_36323.pdf",
+    "section": "reference",
+    "original_url": "https://arxiv.org/abs/1409.1556",
+    "normalized_url": "https://arxiv.org/abs/1409.1556",
+    "domain": "arxiv.org",
+    "extension": ".1556",
+    "is_data_extension": false
+  },
+  {
+    "paper": "TSP_IASC_36323.pdf",
+    "section": "doi",
+    "original_url": "https://doi.org/10.32604/iasc.2023.036323",
+    "normalized_url": "https://doi.org/10.32604/iasc.2023.036323",
+    "domain": "doi.org",
+    "extension": ".036323",
+    "is_data_extension": false
+  },
+  {
+    "paper": "TSP_IASC_36323.pdf",
+    "section": "reference",
+    "original_url": "https://arxiv.org/abs/1512.00567v3.FChollet",
+    "normalized_url": "https://arxiv.org/abs/1512.00567v3.FChollet",
+    "domain": "arxiv.org",
+    "extension": ".fchollet",
+    "is_data_extension": false
+  },
+  {
+    "paper": "TSP_IASC_36323.pdf",
+    "section": "reference",
+    "original_url": "https://arxiv.org/abs/1610.02357.KSimonyan",
+    "normalized_url": "https://arxiv.org/abs/1610.02357.KSimonyan",
+    "domain": "arxiv.org",
+    "extension": ".ksimonyan",
+    "is_data_extension": false
+  }
+]
