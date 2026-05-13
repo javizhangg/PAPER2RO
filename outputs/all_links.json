@@ -1,11 +1,11 @@
 {
     "1505.04597v1.pdf": [
         {
-            "section": "reference",
+            "section": "target",
             "link": "http://www.codesolorzano.com/celltrackingchallenge/Cell_Tracking_Challenge/Welcome.html"
         },
         {
-            "section": "reference",
+            "section": "target",
             "link": "http://brainiac2.mit.edu/isbi_challenge/"
         },
         {
@@ -14,211 +14,323 @@
         },
         {
             "section": "note",
-            "link": "https://www.codesolorzano.com/celltrackingchallenge/Cell_Tracking_Challenge/Welcome.html"
+            "link": "http://www.codesolorzano.com/"
+        },
+        {
+            "section": "note",
+            "link": "http://brainiac2.mit.edu/"
+        },
+        {
+            "section": "raw_tei",
+            "link": "http://www.tei-c.org/ns/1.0"
+        },
+        {
+            "section": "raw_tei",
+            "link": "http://www.w3.org/2001/XMLSchema-instance"
+        },
+        {
+            "section": "raw_tei",
+            "link": "https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+        },
+        {
+            "section": "raw_tei",
+            "link": "http://www.w3.org/1999/xlink"
         }
     ],
     "1506.02640v5.pdf": [
         {
-            "section": "body",
+            "section": "target",
             "link": "http://pjreddie.com/yolo/"
         },
         {
-            "section": "reference",
-            "link": "https://github.com/BVLC/caffe/wiki/Models-accuracy-on-ImageNet-2012-val"
+            "section": "target",
+            "link": "https://github.com/BVLC/caffe/wiki/Models-accuracy-on-ImageNet-2012-val.Ac-cessed:2015-10-2"
         },
         {
-            "section": "reference",
+            "section": "target",
+            "link": "http://pjreddie.com/darknet/,2013-2016"
+        },
+        {
+            "section": "body",
+            "link": "http://pjreddie.com/yolo/.Second"
+        },
+        {
+            "section": "note",
+            "link": "https://github.com/BVLC/caffe/wiki/"
+        },
+        {
+            "section": "note",
             "link": "http://pjreddie.com/darknet/"
+        },
+        {
+            "section": "raw_tei",
+            "link": "http://www.tei-c.org/ns/1.0"
+        },
+        {
+            "section": "raw_tei",
+            "link": "http://www.w3.org/2001/XMLSchema-instance"
+        },
+        {
+            "section": "raw_tei",
+            "link": "https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+        },
+        {
+            "section": "raw_tei",
+            "link": "http://www.w3.org/1999/xlink"
         }
     ],
     "1512.02595v1.pdf": [
         {
-            "section": "body",
+            "section": "target",
             "link": "http://www.voxforge.org"
         },
         {
-            "section": "reference",
+            "section": "target",
             "link": "http://arxiv.org/abs/1508.04395"
         },
         {
-            "section": "reference",
+            "section": "target",
             "link": "https://nvlabs.github.io/moderngpu/"
         },
         {
-            "section": "reference",
+            "section": "target",
             "link": "http://arxiv.org/abs/1508.01211"
         },
         {
-            "section": "reference",
+            "section": "target",
             "link": "http://arxiv.org/abs/1412.1602"
         },
         {
-            "section": "reference",
+            "section": "target",
             "link": "http://svail.github.io/rnn_perf"
         },
         {
-            "section": "reference",
+            "section": "target",
             "link": "http://arxiv.org/abs/1412.5567"
         },
         {
-            "section": "reference",
+            "section": "target",
             "link": "http://arxiv.org/abs/1408.2873"
         },
         {
-            "section": "reference",
+            "section": "target",
             "link": "http://arxiv.org/abs/1510.01378"
         },
         {
-            "section": "reference",
+            "section": "target",
             "link": "https://github.com/NervanaSystems/nervanagpu"
         },
         {
-            "section": "reference",
+            "section": "target",
             "link": "http://arxiv.org/abs/1211.5063"
         },
         {
-            "section": "reference",
+            "section": "target",
             "link": "http://arxiv.org/abs/1507.06947"
         },
         {
-            "section": "reference",
+            "section": "target",
             "link": "http://arxiv.org/abs/1409.3215"
         },
         {
-            "section": "reference",
+            "section": "target",
             "link": "http://arxiv.org/abs/1502.03167"
         },
         {
-            "section": "reference",
+            "section": "target",
             "link": "http://arxiv.org/abs/1410.4615"
-        },
-        {
-            "section": "body",
-            "link": "https://www.voxforge.org"
         },
         {
             "section": "body",
             "link": "http://commoncrawl.org"
         },
         {
-            "section": "reference",
-            "link": "http://arxiv.org/abs/1508.01211.cuDNN"
+            "section": "raw_tei",
+            "link": "http://www.tei-c.org/ns/1.0"
         },
         {
-            "section": "reference",
-            "link": "http://arxiv.org/abs/1412.5567.First-pass"
+            "section": "raw_tei",
+            "link": "http://www.w3.org/2001/XMLSchema-instance"
         },
         {
-            "section": "reference",
-            "link": "http://arxiv.org/abs/1408.2873.Scalable"
+            "section": "raw_tei",
+            "link": "https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
         },
         {
-            "section": "reference",
-            "link": "http://arxiv.org/abs/1510.01378.Building"
-        },
-        {
-            "section": "reference",
-            "link": "http://arxiv.org/abs/1211.5063.Bandwidth"
-        },
-        {
-            "section": "reference",
-            "link": "http://arxiv.org/abs/1507.06947.Sequence"
-        },
-        {
-            "section": "reference",
-            "link": "http://arxiv.org/abs/1409.3215.Batch"
-        },
-        {
-            "section": "reference",
-            "link": "http://arxiv.org/abs/1502.03167.Going"
+            "section": "raw_tei",
+            "link": "http://www.w3.org/1999/xlink"
         }
     ],
     "1604.01685v2.pdf": [
         {
-            "section": "note",
-            "link": "https://www.cityscapes"
+            "section": "raw_tei",
+            "link": "http://www.tei-c.org/ns/1.0"
+        },
+        {
+            "section": "raw_tei",
+            "link": "http://www.w3.org/2001/XMLSchema-instance"
+        },
+        {
+            "section": "raw_tei",
+            "link": "https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+        },
+        {
+            "section": "raw_tei",
+            "link": "http://www.w3.org/1999/xlink"
         }
     ],
     "1606.05250v3.pdf": [
         {
-            "section": "body",
+            "section": "target",
             "link": "https://stanford-qa.com"
         },
         {
-            "section": "body",
+            "section": "target",
             "link": "https://worksheets.codalab.org/worksheets/0xd53d03a48ef64b329c16b9baf0f99b0c/"
+        },
+        {
+            "section": "body",
+            "link": "https://worksheets.codalab.org/worksheets/"
+        },
+        {
+            "section": "raw_tei",
+            "link": "http://www.tei-c.org/ns/1.0"
+        },
+        {
+            "section": "raw_tei",
+            "link": "http://www.w3.org/2001/XMLSchema-instance"
+        },
+        {
+            "section": "raw_tei",
+            "link": "https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+        },
+        {
+            "section": "raw_tei",
+            "link": "http://www.w3.org/1999/xlink"
         }
     ],
     "1702.05373v2.pdf": [
         {
-            "section": "body",
+            "section": "target",
             "link": "https://www.westernsydney.edu.au/bens/home/reproducibleresearch/emnist"
         },
         {
-            "section": "reference",
+            "section": "target",
             "link": "http://www.nist.gov/srd/upload/nistsd19.pdf"
         },
         {
-            "section": "reference",
+            "section": "target",
             "link": "http://portal.acm.org/citation.cfm?doid=1141277.1141468"
         },
         {
             "section": "body",
-            "link": "https://www.westernsydney.edu.au/bens/home/reproducible"
+            "link": "https://www.westernsydney.edu.au/bens/home/"
         },
         {
             "section": "note",
-            "link": "https://www.nist.gov/srd/upload/nistsd19.pdf"
+            "link": "http://www.nist.gov/"
+        },
+        {
+            "section": "raw_tei",
+            "link": "http://www.tei-c.org/ns/1.0"
+        },
+        {
+            "section": "raw_tei",
+            "link": "http://www.w3.org/2001/XMLSchema-instance"
+        },
+        {
+            "section": "raw_tei",
+            "link": "https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+        },
+        {
+            "section": "raw_tei",
+            "link": "http://www.w3.org/1999/xlink"
         }
     ],
     "1702.05747v2.pdf": [
         {
-            "section": "body",
+            "section": "target",
             "link": "https://github.com/Lasagne/Lasagne"
         },
         {
-            "section": "body",
+            "section": "target",
             "link": "https://keras.io/"
         },
         {
-            "section": "reference",
-            "link": "https://doi.org/10.1109/TMI.2015.2476509"
+            "section": "target",
+            "link": "http://dx.doi.org/10.1109/TMI.2015.2476509"
+        },
+        {
+            "section": "doi",
+            "link": "10.1109/TMI.2015.2476509"
         },
         {
             "section": "body",
-            "link": "https://www.grand-challenge.org"
+            "link": "www.grand-challenge.org"
+        },
+        {
+            "section": "raw_tei",
+            "link": "http://www.tei-c.org/ns/1.0"
+        },
+        {
+            "section": "raw_tei",
+            "link": "http://www.w3.org/2001/XMLSchema-instance"
+        },
+        {
+            "section": "raw_tei",
+            "link": "https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+        },
+        {
+            "section": "raw_tei",
+            "link": "http://www.w3.org/1999/xlink"
         }
     ],
     "1706.03762v7.pdf": [
         {
-            "section": "body",
+            "section": "target",
             "link": "https://github.com/tensorflow/tensor2tensor"
         },
         {
             "section": "body",
-            "link": "https://github.com/tensorflow/tensor2tensor.Input-Input"
+            "link": "https://github.com/"
+        },
+        {
+            "section": "raw_tei",
+            "link": "http://www.tei-c.org/ns/1.0"
+        },
+        {
+            "section": "raw_tei",
+            "link": "http://www.w3.org/2001/XMLSchema-instance"
+        },
+        {
+            "section": "raw_tei",
+            "link": "https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+        },
+        {
+            "section": "raw_tei",
+            "link": "http://www.w3.org/1999/xlink"
         }
     ],
     "1707.02919v2.pdf": [
         {
-            "section": "body",
+            "section": "target",
             "link": "http://www.lemurproject.org/"
         },
         {
-            "section": "reference",
+            "section": "target",
             "link": "https://doi.org/10.3115/1119176.1119199"
         },
         {
-            "section": "reference",
+            "section": "target",
             "link": "https://www.emc.com/collateral/analyst-reports/idc-the-digital-universe-in-2020.pdf"
         },
         {
-            "section": "body",
-            "link": "https://www.lemurproject.org/"
+            "section": "doi",
+            "link": "10.3115/1119176.1119199"
         },
         {
             "section": "body",
-            "link": "https://www.crisp-dm.org/"
+            "link": "http://www.crisp-dm.org/"
         },
         {
             "section": "body",
@@ -226,19 +338,19 @@
         },
         {
             "section": "body",
-            "link": "https://www.cs.waikato.ac.nz/ml/weka/"
+            "link": "http://www.cs.waikato.ac.nz/ml/weka/"
         },
         {
             "section": "body",
-            "link": "https://www.w3.org/TR/webont-req/"
+            "link": "http://www.w3.org/TR/webont-req/"
         },
         {
             "section": "body",
-            "link": "https://www.obofoundry.org/"
+            "link": "http://www.obofoundry.org/"
         },
         {
             "section": "body",
-            "link": "https://www.bioontology.org/"
+            "link": "http://www.bioontology.org/"
         },
         {
             "section": "body",
@@ -250,13 +362,37 @@
         },
         {
             "section": "body",
-            "link": "https://www.pharmgkb.org/"
+            "link": "http://www.pharmgkb.org/"
+        },
+        {
+            "section": "note",
+            "link": "https://doi.org/10"
+        },
+        {
+            "section": "note",
+            "link": "https://www.emc.com/collateral/analyst-reports/"
+        },
+        {
+            "section": "raw_tei",
+            "link": "http://www.tei-c.org/ns/1.0"
+        },
+        {
+            "section": "raw_tei",
+            "link": "http://www.w3.org/2001/XMLSchema-instance"
+        },
+        {
+            "section": "raw_tei",
+            "link": "https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+        },
+        {
+            "section": "raw_tei",
+            "link": "http://www.w3.org/1999/xlink"
         }
     ],
     "1708.05031v2.pdf": [
         {
             "section": "doi",
-            "link": "https://doi.org/10.1145/3038912.3052569"
+            "link": "10.1145/3038912.3052569"
         },
         {
             "section": "body",
@@ -268,67 +404,103 @@
         },
         {
             "section": "body",
-            "link": "https://sites.google.com/site/xueatalphabeta/academic-projects"
+            "link": "https://sites.google.com/site/xueatalphabeta/"
         },
         {
             "section": "body",
             "link": "https://github.com/hexiangnan/neural_"
+        },
+        {
+            "section": "raw_tei",
+            "link": "http://www.tei-c.org/ns/1.0"
+        },
+        {
+            "section": "raw_tei",
+            "link": "http://www.w3.org/2001/XMLSchema-instance"
+        },
+        {
+            "section": "raw_tei",
+            "link": "https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+        },
+        {
+            "section": "raw_tei",
+            "link": "http://www.w3.org/1999/xlink"
         }
     ],
     "1710.10903v3.pdf": [
         {
-            "section": "reference",
-            "link": "https://www.tensorflow.org/"
+            "section": "target",
+            "link": "https://www.tensorflow.org/.Softwareavail-ablefromtensorflow.org"
         },
         {
-            "section": "reference",
+            "section": "target",
             "link": "http://arxiv.org/abs/1611.02344"
         },
         {
-            "section": "reference",
+            "section": "target",
             "link": "http://papers.nips.cc/paper/6863-vain-attentional-multi-agent-predictive-modeling.pdf"
         },
         {
-            "section": "reference",
+            "section": "target",
             "link": "http://arxiv.org/abs/1410.3916"
         },
         {
             "section": "doi",
-            "link": "https://doi.org/10.1109/72.572108"
+            "link": "10.1109/72.572108"
         },
         {
             "section": "body",
             "link": "https://github.com/PetarV-/GAT"
         },
         {
-            "section": "reference",
-            "link": "http://arxiv.org/abs/1611.02344.Understanding"
+            "section": "note",
+            "link": "https://www.tensorflow.org/"
         },
         {
-            "section": "reference",
-            "link": "http://arxiv.org/abs/1410.3916.Revisiting"
+            "section": "note",
+            "link": "http://arxiv"
         },
         {
-            "section": "reference",
-            "link": "https://doi.org/10.1109/72.572108.Dropout"
+            "section": "note",
+            "link": "http://papers.nips.cc/paper/"
+        },
+        {
+            "section": "raw_tei",
+            "link": "http://www.tei-c.org/ns/1.0"
+        },
+        {
+            "section": "raw_tei",
+            "link": "http://www.w3.org/2001/XMLSchema-instance"
+        },
+        {
+            "section": "raw_tei",
+            "link": "https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+        },
+        {
+            "section": "raw_tei",
+            "link": "http://www.w3.org/1999/xlink"
         }
     ],
     "1810.04805v2.pdf": [
         {
-            "section": "body",
+            "section": "target",
             "link": "https://github.com/google-research/bert"
         },
         {
-            "section": "body",
+            "section": "target",
             "link": "https://gluebenchmark.com/leaderboard"
         },
         {
             "section": "doi",
-            "link": "https://doi.org/10.18653/v1/S17-2001"
+            "link": "10.18653/v1/S17-2001"
         },
         {
             "section": "body",
-            "link": "https://cloudplatform.googleblog.com/2018/06/Cloud-TPU-now-offers-preemptible-pricing-and-globalavailability.html"
+            "link": "https://github.com/"
+        },
+        {
+            "section": "body",
+            "link": "https://cloudplatform.googleblog.com/2018/06/Cloud-TPU-now-offers-preemptible-pricing-and-globalavailability.html•"
         },
         {
             "section": "body",
@@ -341,92 +513,112 @@
         {
             "section": "body",
             "link": "https://gluebenchmark.com/faq"
+        },
+        {
+            "section": "raw_tei",
+            "link": "http://www.tei-c.org/ns/1.0"
+        },
+        {
+            "section": "raw_tei",
+            "link": "http://www.w3.org/2001/XMLSchema-instance"
+        },
+        {
+            "section": "raw_tei",
+            "link": "https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+        },
+        {
+            "section": "raw_tei",
+            "link": "http://www.w3.org/1999/xlink"
         }
     ],
     "1812.08434v6.pdf": [
         {
-            "section": "reference",
-            "link": "https://doi.org/10.24963/ijcai.2017/250"
-        },
-        {
-            "section": "reference",
-            "link": "http://socialcomputing.asu.edu"
-        },
-        {
-            "section": "back",
+            "section": "target",
             "link": "https://github.com/ShinKyuY/Representation_Learning_on_Graphs_with_Jumping_Knowledge_Networks"
         },
         {
-            "section": "back",
+            "section": "target",
             "link": "https://github.com/Hanjun-Dai/steady_state_embedding"
         },
         {
-            "section": "back",
+            "section": "target",
             "link": "https://github.com/divelab/lgcn/"
         },
         {
-            "section": "back",
+            "section": "target",
             "link": "https://github.com/matenure/FastGCN"
         },
         {
-            "section": "back",
+            "section": "target",
             "link": "https://github.com/RexYing/diffpool"
         },
         {
-            "section": "back",
+            "section": "target",
             "link": "https://github.com/snap-stanford/GraphRNN"
         },
         {
-            "section": "back",
+            "section": "target",
             "link": "https://github.com/nicola-decao/MolGAN"
         },
         {
-            "section": "back",
+            "section": "target",
             "link": "https://github.com/danielzuegner/netgan"
         },
         {
-            "section": "back",
+            "section": "target",
             "link": "https://github.com/liyaguang/DCRNN"
         },
         {
-            "section": "back",
+            "section": "target",
             "link": "https://github.com/yysijie/st-gcn"
         },
         {
-            "section": "back",
+            "section": "target",
             "link": "https://github.com/tkipf/relational-gcn"
         },
         {
-            "section": "back",
+            "section": "target",
             "link": "https://github.com/huangwb/AS-GCN"
         },
         {
-            "section": "back",
+            "section": "target",
             "link": "https://github.com/ZhuangCY/DGCN"
         },
         {
-            "section": "back",
+            "section": "target",
             "link": "https://github.com/jennyzhang0215/GaAN"
         },
         {
-            "section": "back",
+            "section": "target",
             "link": "https://github.com/PetarV-/DGI"
         },
         {
-            "section": "back",
+            "section": "target",
             "link": "https://github.com/nnzhan/Graph-WaveNet"
         },
         {
-            "section": "back",
+            "section": "target",
             "link": "https://github.com/Jhy1993/HAN"
         },
         {
-            "section": "back",
+            "section": "target",
             "link": "https://github.com/thunlp/gnnpapers"
         },
         {
+            "section": "target",
+            "link": "https://doi.org/10.24963/ijcai.2017/250"
+        },
+        {
+            "section": "target",
+            "link": "http://socialcomputing.asu.edu"
+        },
+        {
             "section": "doi",
-            "link": "https://doi.org/10.1016/j.aiopen.2021.01.001"
+            "link": "10.1016/j.aiopen.2021.01.001"
+        },
+        {
+            "section": "doi",
+            "link": "10.24963/ijcai.2017/250"
         },
         {
             "section": "note",
@@ -434,32 +626,48 @@
         },
         {
             "section": "note",
-            "link": "https://WWW.ACM"
+            "link": "WWW.ACM"
         },
         {
             "section": "back",
-            "link": "https://github.com/divelab/lgcn/FastGCN"
+            "link": "https://github.com/thunlp/"
+        },
+        {
+            "section": "raw_tei",
+            "link": "http://www.tei-c.org/ns/1.0"
+        },
+        {
+            "section": "raw_tei",
+            "link": "http://www.w3.org/2001/XMLSchema-instance"
+        },
+        {
+            "section": "raw_tei",
+            "link": "https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+        },
+        {
+            "section": "raw_tei",
+            "link": "http://www.w3.org/1999/xlink"
         }
     ],
     "1907.07374v5.pdf": [
         {
-            "section": "reference",
+            "section": "target",
             "link": "http://www.heatmapping.org/slides/2018WCCI.pdf"
         },
         {
-            "section": "reference",
+            "section": "target",
             "link": "http://iphome.hhi.de/samek/pdf/MonICML16.pdf"
         },
         {
-            "section": "reference",
+            "section": "target",
             "link": "https://pair-code.github.io/saliency/"
         },
         {
-            "section": "reference",
+            "section": "target",
             "link": "https://cs.stanford.edu/people/karpathy/cnnembed"
         },
         {
-            "section": "reference",
+            "section": "target",
             "link": "https://distill.pub/2019/activation-atlas"
         },
         {
@@ -468,63 +676,103 @@
         },
         {
             "section": "note",
-            "link": "https://www.heatmapping.org/slides/2018"
+            "link": "http://www.heatmapping.org/slides/2018"
+        },
+        {
+            "section": "note",
+            "link": "http://iphome"
+        },
+        {
+            "section": "note",
+            "link": "https://cs.stanford"
+        },
+        {
+            "section": "raw_tei",
+            "link": "http://www.tei-c.org/ns/1.0"
+        },
+        {
+            "section": "raw_tei",
+            "link": "http://www.w3.org/2001/XMLSchema-instance"
+        },
+        {
+            "section": "raw_tei",
+            "link": "https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+        },
+        {
+            "section": "raw_tei",
+            "link": "http://www.w3.org/1999/xlink"
         }
     ],
     "1908.04515v1.pdf": [
         {
             "section": "doi",
-            "link": "https://doi.org/10.1364/optica.XX.XXXXXX"
+            "link": "10.1364/optica.XX.XXXXXX"
+        },
+        {
+            "section": "raw_tei",
+            "link": "http://www.tei-c.org/ns/1.0"
+        },
+        {
+            "section": "raw_tei",
+            "link": "http://www.w3.org/2001/XMLSchema-instance"
+        },
+        {
+            "section": "raw_tei",
+            "link": "https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+        },
+        {
+            "section": "raw_tei",
+            "link": "http://www.w3.org/1999/xlink"
         }
     ],
     "2101.00027v1.pdf": [
         {
-            "section": "body",
+            "section": "target",
             "link": "https://pile.eleuther.ai/"
         },
         {
-            "section": "body",
+            "section": "target",
             "link": "https://archiveofourown.org/"
         },
         {
-            "section": "body",
+            "section": "target",
             "link": "https://github.com/SpamScope/mail-parser"
         },
         {
-            "section": "body",
+            "section": "target",
             "link": "https://www.google.com/recaptcha/api.js?render="
         },
         {
-            "section": "reference",
+            "section": "target",
             "link": "http://Skylion007.github.io/OpenWebTextCorpus"
         },
         {
-            "section": "reference",
+            "section": "target",
             "link": "https://github.com/BIGBALLON/cifar-10-cnn"
         },
         {
-            "section": "reference",
+            "section": "target",
             "link": "http://arXiv.org/abs/cs/0205028"
         },
         {
-            "section": "reference",
+            "section": "target",
             "link": "https://twitter.com/theshawwn/status/1320282149329784833"
         },
         {
             "section": "doi",
-            "link": "https://doi.org/10.5281/zenodo.2591652"
+            "link": "10.5281/zenodo.2591652"
         },
         {
             "section": "body",
-            "link": "https://pile.eleuther.ai/versity"
+            "link": "www.fanfiction.net"
         },
         {
             "section": "body",
-            "link": "https://www.fanfiction.net"
+            "link": "www.https://archiveofourown"
         },
         {
             "section": "body",
-            "link": "https://www"
+            "link": "https://github.com/SpamScope/"
         },
         {
             "section": "body",
@@ -532,7 +780,7 @@
         },
         {
             "section": "body",
-            "link": "https://arxiv.org/help/stats/2019_by_area/"
+            "link": "https://arxiv.org/help/"
         },
         {
             "section": "body",
@@ -540,7 +788,7 @@
         },
         {
             "section": "body",
-            "link": "https://github.com/EleutherAI/the-pile"
+            "link": "https://github.com/EleutherAI/"
         },
         {
             "section": "body",
@@ -548,7 +796,7 @@
         },
         {
             "section": "body",
-            "link": "https://archive.org/details/stackexchange"
+            "link": "https://archive.org/details/"
         },
         {
             "section": "body",
@@ -572,11 +820,11 @@
         },
         {
             "section": "body",
-            "link": "http://data.statmt.org/cc-100/"
+            "link": "http://data.statmt"
         },
         {
             "section": "body",
-            "link": "https://www.tensorflow.org/datasets/catalog/c4"
+            "link": "https://www.tensorflow.org/datasets/"
         },
         {
             "section": "body",
@@ -584,23 +832,19 @@
         },
         {
             "section": "body",
-            "link": "https://www.courtlistener.com/api/bulk-info/"
+            "link": "https://www.courtlistener.com/api/"
         },
         {
             "section": "body",
-            "link": "https://www.tensorflow.org/datasets/catalog/wikipedia#wikipedia20200301enC.15"
+            "link": "http://www.statmt.org/europarl/"
         },
         {
             "section": "body",
-            "link": "https://www.statmt.org/europarl/"
+            "link": "https://github.com/jdepoix/"
         },
         {
             "section": "body",
-            "link": "https://github.com/jdepoix/youtube-transcript-api"
-        },
-        {
-            "section": "body",
-            "link": "https://github.com/vphill/pyoaiharvester/"
+            "link": "https://github.com/vphill/"
         },
         {
             "section": "body",
@@ -612,129 +856,153 @@
         },
         {
             "section": "note",
-            "link": "http://Skylion007.github.io/OpenWebTextCorpus.Authors"
+            "link": "http://Skylion007.github.io/"
         },
         {
-            "section": "reference",
-            "link": "https://github.com/BIGBALLON/cifar-10-cnn.Europarl"
+            "section": "note",
+            "link": "https://github.com/BIGBALLON/"
         },
         {
-            "section": "reference",
-            "link": "http://arXiv.org/abs/cs/0205028.Pandoc"
+            "section": "note",
+            "link": "http://arXiv"
+        },
+        {
+            "section": "raw_tei",
+            "link": "http://www.tei-c.org/ns/1.0"
+        },
+        {
+            "section": "raw_tei",
+            "link": "http://www.w3.org/2001/XMLSchema-instance"
+        },
+        {
+            "section": "raw_tei",
+            "link": "https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+        },
+        {
+            "section": "raw_tei",
+            "link": "http://www.w3.org/1999/xlink"
+        },
+        {
+            "section": "raw_tei",
+            "link": "https://archiveofourown"
+        },
+        {
+            "section": "raw_tei",
+            "link": "https://launchpad.net/bugs/1627643&gt"
         }
     ],
     "2105.03011v1.pdf": [
         {
             "section": "doi",
-            "link": "https://doi.org/10.18653/v1/2020.findings-emnlp.66"
+            "link": "10.18653/v1/2020.findings-emnlp.66"
         },
         {
             "section": "doi",
-            "link": "https://doi.org/10.18653/v1/D18-1241"
+            "link": "10.18653/v1/D18-1241"
         },
         {
             "section": "doi",
-            "link": "https://doi.org/10.1162/tacl_a_00317"
+            "link": "10.1162/tacl_a_00317"
         },
         {
             "section": "doi",
-            "link": "https://doi.org/10.18653/v1/D19-1606"
+            "link": "10.18653/v1/D19-1606"
         },
         {
             "section": "doi",
-            "link": "https://doi.org/10.18653/v1/N19-1423"
+            "link": "10.18653/v1/N19-1423"
         },
         {
             "section": "doi",
-            "link": "https://doi.org/10.18653/v1/N19-1246"
+            "link": "10.18653/v1/N19-1246"
         },
         {
             "section": "doi",
-            "link": "https://doi.org/10.18653/v1/2020.emnlp-main.86"
+            "link": "10.18653/v1/2020.emnlp-main.86"
         },
         {
             "section": "doi",
-            "link": "https://doi.org/10.18653/v1/P18-1031"
+            "link": "10.18653/v1/P18-1031"
         },
         {
             "section": "doi",
-            "link": "https://doi.org/10.18653/v1/D19-1259"
+            "link": "10.18653/v1/D19-1259"
         },
         {
             "section": "doi",
-            "link": "https://doi.org/10.18653/v1/P17-1147"
+            "link": "10.18653/v1/P17-1147"
         },
         {
             "section": "doi",
-            "link": "https://doi.org/10.18653/v1/2020.findings-emnlp.171"
+            "link": "10.18653/v1/2020.findings-emnlp.171"
         },
         {
             "section": "doi",
-            "link": "https://doi.org/10.1162/tacl_a_00023"
+            "link": "10.1162/tacl_a_00023"
         },
         {
             "section": "doi",
-            "link": "https://doi.org/10.1162/tacl_a_00276"
+            "link": "10.1162/tacl_a_00276"
         },
         {
             "section": "doi",
-            "link": "https://doi.org/10.18653/v1/2020.acl-main.703"
+            "link": "10.18653/v1/2020.acl-main.703"
         },
         {
             "section": "doi",
-            "link": "https://doi.org/10.18653/v1/2020.acl-main.604"
+            "link": "10.18653/v1/2020.acl-main.604"
         },
         {
             "section": "doi",
-            "link": "https://doi.org/10.18653/v1/2020.acl-main.447"
+            "link": "10.18653/v1/2020.acl-main.447"
         },
         {
             "section": "doi",
-            "link": "https://doi.org/10.18653/v1/W18-5301"
+            "link": "10.18653/v1/W18-5301"
         },
         {
             "section": "doi",
-            "link": "https://doi.org/10.18653/v1/2020.emnlp-demos.17"
+            "link": "10.18653/v1/2020.emnlp-demos.17"
         },
         {
             "section": "doi",
-            "link": "https://doi.org/10.18653/v1/D18-1258"
+            "link": "10.18653/v1/D18-1258"
         },
         {
             "section": "doi",
-            "link": "https://doi.org/10.18653/v1/2020.bionlp-1.15"
+            "link": "10.18653/v1/2020.bionlp-1.15"
         },
         {
             "section": "doi",
-            "link": "https://doi.org/10.18653/v1/D16-1264"
+            "link": "10.18653/v1/D16-1264"
         },
         {
             "section": "doi",
-            "link": "https://doi.org/10.18653/v1/D19-1500"
+            "link": "10.18653/v1/D19-1500"
         },
         {
             "section": "doi",
-            "link": "https://doi.org/10.1162/tacl_a_00266"
+            "link": "10.1162/tacl_a_00266"
         },
         {
             "section": "doi",
-            "link": "https://doi.org/10.18653/v1/W17-2623"
+            "link": "10.18653/v1/W17-2623"
         },
         {
             "section": "doi",
-            "link": "https://doi.org/10.1162/tacl_a_00021"
+            "link": "10.1162/tacl_a_00021"
         },
         {
             "section": "doi",
-            "link": "https://doi.org/10.18653/v1/D15-1237"
+            "link": "10.18653/v1/D15-1237"
         },
         {
             "section": "doi",
-            "link": "https://doi.org/10.18653/v1/D18-1259"
+            "link": "10.18653/v1/D18-1259"
         },
         {
             "section": "body",
-            "link": "https://allenai.org/project/qasper.We"
+            "link": "https://allenai.org/project/qasper"
         },
         {
             "section": "body",
@@ -742,25 +1010,33 @@
         },
         {
             "section": "body",
-            "link": "https://www.upwork.com/Two"
+            "link": "https://www.upwork.com/"
         },
         {
             "section": "body",
-            "link": "https://paperswithcode.com/task/question-answering"
+            "link": "https://paperswithcode.com/task/"
         },
         {
-            "section": "note",
-            "link": "https://allenai.org/project/qasper"
+            "section": "raw_tei",
+            "link": "http://www.tei-c.org/ns/1.0"
         },
         {
-            "section": "note",
-            "link": "https://www.upwork.com/"
+            "section": "raw_tei",
+            "link": "http://www.w3.org/2001/XMLSchema-instance"
+        },
+        {
+            "section": "raw_tei",
+            "link": "https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+        },
+        {
+            "section": "raw_tei",
+            "link": "http://www.w3.org/1999/xlink"
         }
     ],
     "2111.02114v1.pdf": [
         {
             "section": "body",
-            "link": "https://laion.ai/laion-400-open-dataset/Preprint.Under"
+            "link": "https://laion.ai/laion-400-open-dataset/"
         },
         {
             "section": "body",
@@ -769,29 +1045,61 @@
         {
             "section": "body",
             "link": "https://github.com/rom1504/img2dataset"
+        },
+        {
+            "section": "raw_tei",
+            "link": "http://www.tei-c.org/ns/1.0"
+        },
+        {
+            "section": "raw_tei",
+            "link": "http://www.w3.org/2001/XMLSchema-instance"
+        },
+        {
+            "section": "raw_tei",
+            "link": "https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+        },
+        {
+            "section": "raw_tei",
+            "link": "http://www.w3.org/1999/xlink"
         }
     ],
     "4449.pdf": [
         {
-            "section": "reference",
+            "section": "target",
             "link": "http://research.microsoft.com/barc/SortBenchmark/"
         },
         {
-            "section": "reference",
+            "section": "target",
             "link": "http://alme1.almaden.ibm.com/cs/spsort.pdf"
+        },
+        {
+            "section": "raw_tei",
+            "link": "http://www.tei-c.org/ns/1.0"
+        },
+        {
+            "section": "raw_tei",
+            "link": "http://www.w3.org/2001/XMLSchema-instance"
+        },
+        {
+            "section": "raw_tei",
+            "link": "https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+        },
+        {
+            "section": "raw_tei",
+            "link": "http://www.w3.org/1999/xlink"
         }
     ],
     "NIPS-2012-imagenet-classification-with-deep-convolutional-neural-networks-Paper.pdf": [
         {
-            "section": "reference",
-            "link": "https://www.image-net.org/challenges"
+            "section": "target",
+            "link": "www.image-net.org/challenges"
         },
         {
-            "section": "reference",
+            "section": "target",
             "link": "http://www.image-net.org/challenges/LSVRC/2012/"
         },
         {
-            "section": "reference",
+            "section": "target",
             "link": "http://authors.library.caltech.edu/7694"
         },
         {
@@ -800,101 +1108,185 @@
         },
         {
             "section": "note",
-            "link": "https://www.imagenet.org/challenges.2010"
+            "link": "www.image-"
         },
         {
-            "section": "note",
-            "link": "https://www.image-net.org/challenges/LSVRC/2012/"
+            "section": "raw_tei",
+            "link": "http://www.tei-c.org/ns/1.0"
         },
         {
-            "section": "reference",
-            "link": "http://authors.library.caltech.edu/7694.GEHinton"
+            "section": "raw_tei",
+            "link": "http://www.w3.org/2001/XMLSchema-instance"
+        },
+        {
+            "section": "raw_tei",
+            "link": "https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+        },
+        {
+            "section": "raw_tei",
+            "link": "http://www.w3.org/1999/xlink"
         }
     ],
     "TSP_IASC_36323.pdf": [
         {
-            "section": "reference",
+            "section": "target",
             "link": "https://doi.org/10.1016/j.media.2021.102188"
         },
         {
-            "section": "reference",
+            "section": "target",
             "link": "https://doi.org/10.1142/9789811239014_0005"
         },
         {
-            "section": "reference",
+            "section": "target",
             "link": "https://doi.org/10.1016/j.inffus.2020.04.002"
         },
         {
-            "section": "reference",
+            "section": "target",
             "link": "https://doi.org/10.1016/j.patcog.2021.108146"
         },
         {
-            "section": "reference",
+            "section": "target",
             "link": "https://doi.org/10.1088/1755-1315/428/1/012097"
         },
         {
-            "section": "reference",
+            "section": "target",
             "link": "https://doi.org/10.1016/j.neucom.2022.03.062"
         },
         {
-            "section": "reference",
+            "section": "target",
             "link": "https://doi.org/10.1016/j.neunet.2018.03.019"
         },
         {
-            "section": "reference",
+            "section": "target",
             "link": "https://doi.org/10.1145/3357254.3357276"
         },
         {
-            "section": "reference",
+            "section": "target",
             "link": "https://doi.org/10.1016/j.patcog.2020.107420"
         },
         {
-            "section": "reference",
+            "section": "target",
             "link": "https://doi.org/10.1016/j.neucom.2021.03.108"
         },
         {
-            "section": "reference",
+            "section": "target",
             "link": "https://doi.org/10.1016/j.patcog.2018.04.012"
         },
         {
-            "section": "reference",
+            "section": "target",
             "link": "https://doi.org/10.1109/SPIN.2019.8711703"
         },
         {
-            "section": "reference",
+            "section": "target",
             "link": "https://doi.org/10.1016/j.procs.2020.04.206"
         },
         {
-            "section": "reference",
+            "section": "target",
             "link": "https://doi.org/10.1016/j.inffus.2020.10.0082021"
         },
         {
-            "section": "reference",
+            "section": "target",
             "link": "https://arxiv.org/abs/1409.4842v1"
         },
         {
-            "section": "reference",
+            "section": "target",
             "link": "https://arxiv.org/abs/1512.00567v3"
         },
         {
-            "section": "reference",
+            "section": "target",
             "link": "https://arxiv.org/abs/1610.02357"
         },
         {
-            "section": "reference",
+            "section": "target",
             "link": "https://arxiv.org/abs/1409.1556"
         },
         {
             "section": "doi",
-            "link": "https://doi.org/10.32604/iasc.2023.036323"
+            "link": "10.32604/iasc.2023.036323"
         },
         {
-            "section": "reference",
-            "link": "https://arxiv.org/abs/1512.00567v3.FChollet"
+            "section": "doi",
+            "link": "10.1016/j.media.2021.102188"
         },
         {
-            "section": "reference",
-            "link": "https://arxiv.org/abs/1610.02357.KSimonyan"
+            "section": "doi",
+            "link": "10.1142/9789811239014_0005"
+        },
+        {
+            "section": "doi",
+            "link": "10.1016/j.inffus.2020.04.002"
+        },
+        {
+            "section": "doi",
+            "link": "10.1016/j.patcog.2021.108146"
+        },
+        {
+            "section": "doi",
+            "link": "10.1088/1755-1315/428/1/012097"
+        },
+        {
+            "section": "doi",
+            "link": "10.1016/j.neucom.2022.03.062"
+        },
+        {
+            "section": "doi",
+            "link": "10.1016/j.neunet.2018.03.019"
+        },
+        {
+            "section": "doi",
+            "link": "10.1145/3357254.3357276"
+        },
+        {
+            "section": "doi",
+            "link": "10.1016/j.patcog.2020.107420"
+        },
+        {
+            "section": "doi",
+            "link": "10.1016/j.neucom.2021.03.108"
+        },
+        {
+            "section": "doi",
+            "link": "10.1016/j.patcog.2018.04.012"
+        },
+        {
+            "section": "doi",
+            "link": "10.1109/SPIN.2019.8711703"
+        },
+        {
+            "section": "doi",
+            "link": "10.1016/j.procs.2020.04.206"
+        },
+        {
+            "section": "doi",
+            "link": "10.1016/j.inffus.2020.10.0082021"
+        },
+        {
+            "section": "note",
+            "link": "https://doi.org/10"
+        },
+        {
+            "section": "note",
+            "link": "https://doi.org/10.1016/j"
+        },
+        {
+            "section": "note",
+            "link": "10.1016/j"
+        },
+        {
+            "section": "raw_tei",
+            "link": "http://www.tei-c.org/ns/1.0"
+        },
+        {
+            "section": "raw_tei",
+            "link": "http://www.w3.org/2001/XMLSchema-instance"
+        },
+        {
+            "section": "raw_tei",
+            "link": "https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+        },
+        {
+            "section": "raw_tei",
+            "link": "http://www.w3.org/1999/xlink"
         }
     ]
 }
