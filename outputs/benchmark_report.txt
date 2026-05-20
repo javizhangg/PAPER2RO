@@ -1,0 +1,91 @@
+================================================================================
+RESULTADOS PARA: heuristica_1_extension_url_o_archivo
+================================================================================
+Accuracy : 0.9588
+Precision: 0.5000
+Recall   : 0.3750
+F1-score : 0.4286
+
+Matriz de confusión [labels 0, 1]:
+[[183   3]
+ [  5   3]]
+
+Classification report:
+              precision    recall  f1-score   support
+
+           0       0.97      0.98      0.98       186
+           1       0.50      0.38      0.43         8
+
+    accuracy                           0.96       194
+   macro avg       0.74      0.68      0.70       194
+weighted avg       0.95      0.96      0.96       194
+
+
+================================================================================
+RESULTADOS PARA: heuristica_2_http_metadata
+================================================================================
+Accuracy : 0.9433
+Precision: 0.2857
+Recall   : 0.2500
+F1-score : 0.2667
+
+Matriz de confusión [labels 0, 1]:
+[[181   5]
+ [  6   2]]
+
+Classification report:
+              precision    recall  f1-score   support
+
+           0       0.97      0.97      0.97       186
+           1       0.29      0.25      0.27         8
+
+    accuracy                           0.94       194
+   macro avg       0.63      0.61      0.62       194
+weighted avg       0.94      0.94      0.94       194
+
+
+================================================================================
+RESULTADOS PARA: heuristica_3_gap_kge
+================================================================================
+Accuracy : 0.9485
+Precision: 0.4286
+Recall   : 0.7500
+F1-score : 0.5455
+
+Matriz de confusión [labels 0, 1]:
+[[178   8]
+ [  2   6]]
+
+Classification report:
+              precision    recall  f1-score   support
+
+           0       0.99      0.96      0.97       186
+           1       0.43      0.75      0.55         8
+
+    accuracy                           0.95       194
+   macro avg       0.71      0.85      0.76       194
+weighted avg       0.97      0.95      0.96       194
+
+
+================================================================================
+RESULTADOS PARA: prediccion_final_label
+================================================================================
+Accuracy : 0.9381
+Precision: 0.3750
+Recall   : 0.7500
+F1-score : 0.5000
+
+Matriz de confusión [labels 0, 1]:
+[[176  10]
+ [  2   6]]
+
+Classification report:
+              precision    recall  f1-score   support
+
+           0       0.99      0.95      0.97       186
+           1       0.38      0.75      0.50         8
+
+    accuracy                           0.94       194
+   macro avg       0.68      0.85      0.73       194
+weighted avg       0.96      0.94      0.95       194
+

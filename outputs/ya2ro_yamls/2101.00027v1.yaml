@@ -1,0 +1,14 @@
+type: paper
+title: 2101.00027v1
+summary: Research Object generated automatically from URLs extracted from a scientific
+  paper and classified as datasets by the heuristic system.
+datasets:
+- doi: 10.5281/zenodo.2591652
+- link: https://archive.org/details
+- link: http://data.statmt
+- link: https://tensorflow.org/datasets
+- link: https://arxiv.org/help/bulk_data_s3
+software:
+- link: https://github.com/ekzhu/datasketch
+bibliography: []
+authors: []

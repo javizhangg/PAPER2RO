@@ -1,0 +1,10 @@
+type: paper
+title: NIPS-2012-imagenet-classification-with-deep-convolutional-neural-networks-Paper
+summary: Research Object generated automatically from URLs extracted from a scientific
+  paper and classified as datasets by the heuristic system.
+datasets:
+- link: https://image-net.org/challenges
+- link: http://image-net.org/challenges/LSVRC/2012
+software: []
+bibliography: []
+authors: []

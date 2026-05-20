@@ -1,0 +1,9 @@
+type: paper
+title: 2111.02114v1
+summary: Research Object generated automatically from URLs extracted from a scientific
+  paper and classified as datasets by the heuristic system.
+datasets:
+- link: https://laion.ai/laion-400-open-dataset
+software: []
+bibliography: []
+authors: []

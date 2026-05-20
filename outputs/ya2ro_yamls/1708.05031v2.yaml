@@ -1,0 +1,9 @@
+type: paper
+title: 1708.05031v2
+summary: Research Object generated automatically from URLs extracted from a scientific
+  paper and classified as datasets by the heuristic system.
+datasets:
+- link: http://grouplens.org/datasets/movielens/1m
+software: []
+bibliography: []
+authors: []

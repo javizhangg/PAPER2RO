@@ -8,7 +8,7 @@
 # H6 -> inspección temporal del contenido descargado
 # H1, H4 Y H6 son los de la heuristica 1 que se basa en ver si la extension de la url o del archivo descargado es un .csv, .json, .xml, etc.
 # H2 es la heuristica 2 que se basa en hacer una petición HTTP HEAD o GET para obtener el content type, content disposition, etc. y ver si indican que es un archivo de datos.
-# H3 Y H5 es la heuristica 3 que se basadas en GAP-KGE
+# H3 es la heuristica 3 basada en GAP-KGE. H5 se ignora para el benchmark.
 
 import csv
 import json
@@ -1108,42 +1108,159 @@ def apply_heuristics(
     use_http: bool = False,
     use_download_inspection: bool = False
 ) -> dict:
-    results = {
-        "url": url,
-        "paper": paper,
-        "heuristics": []
-    }
+    """
+    Aplica las señales internas, pero las agrupa en SOLO 3 heurísticas reales:
 
-    h1 = heuristic_extension(url)
-    h3 = heuristic_gap_kge_style(url)
-    h4 = heuristic_url_pattern(url)
-    h5 = heuristic_gap_kge_json(url, paper)
+    - Heurística 1: extensión de la URL o del archivo descargado.
+      Incluye internamente H1 + H4 + H6.
 
-    results["heuristics"].extend([h1, h3, h4, h5])
+    - Heurística 2: metadatos HTTP.
+      Incluye internamente H2.
 
-    if use_http:
-        h2 = heuristic_http_metadata(url)
-        results["heuristics"].append(h2)
+    - Heurística 3: GAP-KGE.
+      Solo usa internamente H3: gap_kge_style_matched y gap_kge_style_score.
+      H5 / gap_kge_json se ignora para el benchmark.
 
-    # H6 solo si se activa manualmente.
-    # Recomendado para casos dudosos o experimentos.
+    IMPORTANTE:
+    Si la heurística 3 detecta dataset, se acepta directamente como dataset.
+    """
+
+    # =========================
+    # Señales internas
+    # =========================
+    h1_extension = heuristic_extension(url)
+    h4_url_pattern = heuristic_url_pattern(url)
+
+    h6_download = None
     if use_download_inspection:
-        h6 = heuristic_download_inspection(url)
-        results["heuristics"].append(h6)
+        h6_download = heuristic_download_inspection(url)
 
-    total_score = sum(h["score"] for h in results["heuristics"])
-    results["total_score"] = total_score
+    h2_http = None
+    if use_http:
+        h2_http = heuristic_http_metadata(url)
 
-    if total_score >= 6:
+    h3_gap_style = heuristic_gap_kge_style(url)
+
+    # IMPORTANTE:
+    # Antes aquí también se calculaba H5 con heuristic_gap_kge_json(url, paper).
+    # Ahora la heurística GAP-KGE debe centrarse SOLO en estas dos variables:
+    # - gap_kge_style_matched
+    # - gap_kge_style_score
+    # Por eso H5 se ignora completamente para la decisión y para el score.
+    h5_gap_json = None
+
+    # =========================
+    # HEURÍSTICA 1
+    # Extensión de URL o archivo descargado
+    # H1 + H4 + H6
+    # =========================
+    heuristica_1_matched = (
+        h1_extension["matched"]
+        or h4_url_pattern["matched"]
+        or (h6_download["matched"] if h6_download else False)
+    )
+
+    heuristica_1_score = (
+        h1_extension["score"]
+        + h4_url_pattern["score"]
+        + (h6_download["score"] if h6_download else 0)
+    )
+
+    heuristica_1_signals = []
+    if h1_extension["matched"]:
+        heuristica_1_signals.append("extension_data_file")
+    if h4_url_pattern["matched"]:
+        heuristica_1_signals.append("url_pattern_data_file")
+    if h6_download and h6_download["matched"]:
+        heuristica_1_signals.append("downloaded_file_looks_like_data")
+
+    # =========================
+    # HEURÍSTICA 2
+    # Metadatos HTTP
+    # H2
+    # =========================
+    heuristica_2_matched = h2_http["matched"] if h2_http else False
+    heuristica_2_score = h2_http["score"] if h2_http else 0
+
+    heuristica_2_signals = []
+    if h2_http and h2_http["matched"]:
+        http_value = h2_http.get("value", {})
+        heuristica_2_signals = http_value.get("signals", [])
+
+    # =========================
+    # HEURÍSTICA 3
+    # GAP-KGE
+    # SOLO H3: gap_kge_style_matched + gap_kge_style_score
+    # H5 / gap_kge_json queda ignorado.
+    # =========================
+    heuristica_3_matched = h3_gap_style["matched"]
+    heuristica_3_score = h3_gap_style["score"]
+
+    heuristica_3_signals = []
+    if h3_gap_style["matched"]:
+        heuristica_3_signals.append("gap_kge_style_signal")
+
+    # =========================
+    # Decisión final
+    # =========================
+    # Prioridad absoluta: GAP-KGE.
+    # Si GAP-KGE dice que es dataset, ya no necesitamos más señales.
+    if heuristica_3_matched:
         label = "dataset"
-    elif total_score >= 3:
-        label = "maybe_dataset"
+        decision_reason = "gap_kge_detected_dataset"
+    elif heuristica_1_matched:
+        label = "dataset"
+        decision_reason = "extension_or_downloaded_file_detected_dataset"
+    elif heuristica_2_matched:
+        label = "dataset"
+        decision_reason = "http_metadata_detected_dataset"
     else:
         label = "not_dataset"
+        decision_reason = "no_heuristic_matched"
 
-    results["label"] = label
-    return results
+    total_score = heuristica_1_score + heuristica_2_score + heuristica_3_score
 
+    return {
+        "url": url,
+        "paper": paper,
+
+        # Resultado final por heurísticas reales
+        "heuristica_1": {
+            "name": "extension_url_o_archivo",
+            "matched": heuristica_1_matched,
+            "score": heuristica_1_score,
+            "signals": heuristica_1_signals,
+            "internal_results": {
+                "h1_extension": h1_extension,
+                "h4_url_pattern": h4_url_pattern,
+                "h6_download_inspection": h6_download
+            }
+        },
+
+        "heuristica_2": {
+            "name": "http_metadata",
+            "matched": heuristica_2_matched,
+            "score": heuristica_2_score,
+            "signals": heuristica_2_signals,
+            "internal_results": {
+                "h2_http_metadata": h2_http
+            }
+        },
+
+        "heuristica_3": {
+            "name": "gap_kge",
+            "matched": heuristica_3_matched,
+            "score": heuristica_3_score,
+            "signals": heuristica_3_signals,
+            "internal_results": {
+                "h3_gap_kge_style": h3_gap_style
+            }
+        },
+
+        "total_score": total_score,
+        "label": label,
+        "decision_reason": decision_reason
+    }
 
 # ==================================
 # Lectura CSV normalizado
@@ -1171,6 +1288,13 @@ def load_normalized_csv(path):
 # Procesar filas
 # ==================================
 def process_rows(rows, use_http=False, use_download_inspection=False):
+    """
+    Procesa las URLs y guarda SOLO 3 heurísticas principales en el CSV final.
+
+    Las señales internas siguen guardándose en el JSON para trazabilidad,
+    pero el CSV queda preparado para que el benchmark no evalúe H1, H4, H6,
+    H3 y H5 como heurísticas separadas.
+    """
     results_csv = []
     results_json = []
 
@@ -1184,7 +1308,27 @@ def process_rows(rows, use_http=False, use_download_inspection=False):
             use_download_inspection=use_download_inspection
         )
 
-        heuristic_map = {h["heuristic"]: h for h in result["heuristics"]}
+        h1 = result["heuristica_1"]
+        h2 = result["heuristica_2"]
+        h3 = result["heuristica_3"]
+
+        h1_internal = h1.get("internal_results", {})
+        h2_internal = h2.get("internal_results", {})
+        h3_internal = h3.get("internal_results", {})
+
+        h1_extension = h1_internal.get("h1_extension") or {}
+        h4_url_pattern = h1_internal.get("h4_url_pattern") or {}
+        h6_download = h1_internal.get("h6_download_inspection") or {}
+
+        h2_http = h2_internal.get("h2_http_metadata") or {}
+
+        h3_gap_style = h3_internal.get("h3_gap_kge_style") or {}
+        # H5 / gap_kge_json ya no se usa en la heurística GAP-KGE.
+        # La heurística 3 se limita a gap_kge_style_matched y gap_kge_style_score.
+        h5_gap_json = {}
+        gap_json_value = {}
+        http_value = h2_http.get("value", {}) if h2_http else {}
+        download_value = h6_download.get("value", {}) if h6_download else {}
 
         row_result = {
             "paper": row["paper"],
@@ -1194,85 +1338,56 @@ def process_rows(rows, use_http=False, use_download_inspection=False):
             "domain": row["domain"],
             "extension": row["extension"],
 
-            "extension_matched": heuristic_map["extension"]["matched"],
-            "extension_score": heuristic_map["extension"]["score"],
+            # =====================================================
+            # SOLO 3 HEURÍSTICAS REALES PARA EL BENCHMARK
+            # =====================================================
+            "heuristica_1_extension_url_o_archivo_matched": h1["matched"],
+            "heuristica_1_extension_url_o_archivo_score": h1["score"],
+            "heuristica_1_extension_url_o_archivo_signals": "|".join(h1.get("signals", [])),
 
-            "gap_kge_style_matched": heuristic_map["gap_kge_style"]["matched"],
-            "gap_kge_style_score": heuristic_map["gap_kge_style"]["score"],
+            "heuristica_2_http_metadata_matched": h2["matched"],
+            "heuristica_2_http_metadata_score": h2["score"],
+            "heuristica_2_http_metadata_signals": "|".join(h2.get("signals", [])),
 
-            "url_pattern_matched": heuristic_map["url_pattern"]["matched"],
-            "url_pattern_score": heuristic_map["url_pattern"]["score"],
-
-            "gap_kge_json_matched": heuristic_map["gap_kge_json"]["matched"],
-            "gap_kge_json_score": heuristic_map["gap_kge_json"]["score"],
+            "heuristica_3_gap_kge_matched": h3["matched"],
+            "heuristica_3_gap_kge_score": h3["score"],
+            "heuristica_3_gap_kge_signals": "|".join(h3.get("signals", [])),
 
             "total_score": result["total_score"],
-            "label": result["label"]
+            "label": result["label"],
+            "decision_reason": result["decision_reason"],
+
+            # =====================================================
+            # Columnas auxiliares: sirven para depurar, NO para benchmark
+            # =====================================================
+            "debug_h1_extension_matched": h1_extension.get("matched", ""),
+            "debug_h1_extension_score": h1_extension.get("score", ""),
+            "debug_h1_extension_reason": h1_extension.get("reason", ""),
+            "debug_h1_extension_value": h1_extension.get("value", ""),
+
+            "debug_h4_url_pattern_matched": h4_url_pattern.get("matched", ""),
+            "debug_h4_url_pattern_score": h4_url_pattern.get("score", ""),
+            "debug_h4_url_pattern_reason": h4_url_pattern.get("reason", ""),
+
+            "debug_h6_download_matched": h6_download.get("matched", ""),
+            "debug_h6_download_score": h6_download.get("score", ""),
+            "debug_h6_download_detected_kind": download_value.get("detected_kind", ""),
+            "debug_h6_download_signals": "|".join(download_value.get("signals", [])) if download_value else "",
+
+            "debug_h2_http_status_code": http_value.get("status_code", ""),
+            "debug_h2_http_content_type": http_value.get("content_type", ""),
+            "debug_h2_http_content_disposition": http_value.get("content_disposition", ""),
+            "debug_h2_http_final_url": http_value.get("final_url", ""),
+            "debug_h2_http_final_extension": http_value.get("final_extension", ""),
+
+            "gap_kge_style_matched": h3_gap_style.get("matched", ""),
+            "gap_kge_style_score": h3_gap_style.get("score", "")
         }
-
-        gap_json_value = heuristic_map["gap_kge_json"]["value"]
-        row_result["gap_kge_json_path"] = gap_json_value.get("json_path", "")
-        row_result["gap_kge_json_exact_url"] = gap_json_value.get("matched_exact_url", "")
-        row_result["gap_kge_json_same_domain"] = gap_json_value.get("matched_same_domain", "")
-        row_result["gap_kge_json_url_count"] = gap_json_value.get("json_url_count", "")
-        row_result["gap_kge_json_mention_count"] = gap_json_value.get("json_mention_count", "")
-        row_result["gap_kge_json_max_score"] = gap_json_value.get("max_json_score", "")
-        row_result["gap_kge_json_signals"] = "|".join(gap_json_value.get("signals", []))
-
-        if use_http and "http_metadata" in heuristic_map:
-            http_value = heuristic_map["http_metadata"]["value"]
-            row_result["http_matched"] = heuristic_map["http_metadata"]["matched"]
-            row_result["http_score"] = heuristic_map["http_metadata"]["score"]
-            row_result["http_status_code"] = http_value.get("status_code", "")
-            row_result["http_content_type"] = http_value.get("content_type", "")
-            row_result["http_content_length"] = http_value.get("content_length", "")
-            row_result["http_content_disposition"] = http_value.get("content_disposition", "")
-            row_result["http_final_url"] = http_value.get("final_url", "")
-            row_result["http_final_domain"] = http_value.get("final_domain", "")
-            row_result["http_final_extension"] = http_value.get("final_extension", "")
-            row_result["http_matched_domain"] = http_value.get("matched_domain", "")
-            row_result["http_is_doi_input"] = http_value.get("is_doi_input", "")
-            row_result["http_signals"] = "|".join(http_value.get("signals", []))
-        else:
-            row_result["http_matched"] = ""
-            row_result["http_score"] = ""
-            row_result["http_status_code"] = ""
-            row_result["http_content_type"] = ""
-            row_result["http_content_length"] = ""
-            row_result["http_content_disposition"] = ""
-            row_result["http_final_url"] = ""
-            row_result["http_final_domain"] = ""
-            row_result["http_final_extension"] = ""
-            row_result["http_matched_domain"] = ""
-            row_result["http_is_doi_input"] = ""
-            row_result["http_signals"] = ""
-
-        if use_download_inspection and "download_inspection" in heuristic_map:
-            dl_value = heuristic_map["download_inspection"]["value"]
-            row_result["download_matched"] = heuristic_map["download_inspection"]["matched"]
-            row_result["download_score"] = heuristic_map["download_inspection"]["score"]
-            row_result["download_status_code"] = dl_value.get("status_code", "")
-            row_result["download_content_type"] = dl_value.get("content_type", "")
-            row_result["download_content_length"] = dl_value.get("content_length", "")
-            row_result["download_final_url"] = dl_value.get("final_url", "")
-            row_result["download_final_extension"] = dl_value.get("final_extension", "")
-            row_result["download_bytes"] = dl_value.get("bytes_downloaded", 0)
-            row_result["download_detected_kind"] = dl_value.get("detected_kind", "")
-            row_result["download_signals"] = "|".join(dl_value.get("signals", []))
-        else:
-            row_result["download_matched"] = ""
-            row_result["download_score"] = ""
-            row_result["download_status_code"] = ""
-            row_result["download_content_type"] = ""
-            row_result["download_content_length"] = ""
-            row_result["download_final_url"] = ""
-            row_result["download_final_extension"] = ""
-            row_result["download_bytes"] = ""
-            row_result["download_detected_kind"] = ""
-            row_result["download_signals"] = ""
 
         results_csv.append(row_result)
 
+        # En JSON se conserva todo el detalle interno para poder justificar
+        # de dónde sale cada decisión.
         results_json.append({
             "paper": row["paper"],
             "section": row["section"],
@@ -1315,7 +1430,7 @@ def main():
     print(f"URLs normalizadas leídas: {len(rows)}")
 
     # Activa estas opciones según quieras experimentar
-    USE_HTTP = False
+    USE_HTTP = True
     USE_DOWNLOAD_INSPECTION = True
 
     results_csv, results_json = process_rows(

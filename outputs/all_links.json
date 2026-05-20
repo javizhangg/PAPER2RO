@@ -19,22 +19,6 @@
         {
             "section": "note",
             "link": "http://brainiac2.mit.edu/"
-        },
-        {
-            "section": "raw_tei",
-            "link": "http://www.tei-c.org/ns/1.0"
-        },
-        {
-            "section": "raw_tei",
-            "link": "http://www.w3.org/2001/XMLSchema-instance"
-        },
-        {
-            "section": "raw_tei",
-            "link": "https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
-        },
-        {
-            "section": "raw_tei",
-            "link": "http://www.w3.org/1999/xlink"
         }
     ],
     "1506.02640v5.pdf": [
@@ -61,22 +45,6 @@
         {
             "section": "note",
             "link": "http://pjreddie.com/darknet/"
-        },
-        {
-            "section": "raw_tei",
-            "link": "http://www.tei-c.org/ns/1.0"
-        },
-        {
-            "section": "raw_tei",
-            "link": "http://www.w3.org/2001/XMLSchema-instance"
-        },
-        {
-            "section": "raw_tei",
-            "link": "https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
-        },
-        {
-            "section": "raw_tei",
-            "link": "http://www.w3.org/1999/xlink"
         }
     ],
     "1512.02595v1.pdf": [
@@ -143,42 +111,9 @@
         {
             "section": "body",
             "link": "http://commoncrawl.org"
-        },
-        {
-            "section": "raw_tei",
-            "link": "http://www.tei-c.org/ns/1.0"
-        },
-        {
-            "section": "raw_tei",
-            "link": "http://www.w3.org/2001/XMLSchema-instance"
-        },
-        {
-            "section": "raw_tei",
-            "link": "https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
-        },
-        {
-            "section": "raw_tei",
-            "link": "http://www.w3.org/1999/xlink"
         }
     ],
-    "1604.01685v2.pdf": [
-        {
-            "section": "raw_tei",
-            "link": "http://www.tei-c.org/ns/1.0"
-        },
-        {
-            "section": "raw_tei",
-            "link": "http://www.w3.org/2001/XMLSchema-instance"
-        },
-        {
-            "section": "raw_tei",
-            "link": "https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
-        },
-        {
-            "section": "raw_tei",
-            "link": "http://www.w3.org/1999/xlink"
-        }
-    ],
+    "1604.01685v2.pdf": [],
     "1606.05250v3.pdf": [
         {
             "section": "target",
@@ -191,22 +126,6 @@
         {
             "section": "body",
             "link": "https://worksheets.codalab.org/worksheets/"
-        },
-        {
-            "section": "raw_tei",
-            "link": "http://www.tei-c.org/ns/1.0"
-        },
-        {
-            "section": "raw_tei",
-            "link": "http://www.w3.org/2001/XMLSchema-instance"
-        },
-        {
-            "section": "raw_tei",
-            "link": "https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
-        },
-        {
-            "section": "raw_tei",
-            "link": "http://www.w3.org/1999/xlink"
         }
     ],
     "1702.05373v2.pdf": [
@@ -229,22 +148,6 @@
         {
             "section": "note",
             "link": "http://www.nist.gov/"
-        },
-        {
-            "section": "raw_tei",
-            "link": "http://www.tei-c.org/ns/1.0"
-        },
-        {
-            "section": "raw_tei",
-            "link": "http://www.w3.org/2001/XMLSchema-instance"
-        },
-        {
-            "section": "raw_tei",
-            "link": "https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
-        },
-        {
-            "section": "raw_tei",
-            "link": "http://www.w3.org/1999/xlink"
         }
     ],
     "1702.05747v2.pdf": [
@@ -267,22 +170,6 @@
         {
             "section": "body",
             "link": "www.grand-challenge.org"
-        },
-        {
-            "section": "raw_tei",
-            "link": "http://www.tei-c.org/ns/1.0"
-        },
-        {
-            "section": "raw_tei",
-            "link": "http://www.w3.org/2001/XMLSchema-instance"
-        },
-        {
-            "section": "raw_tei",
-            "link": "https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
-        },
-        {
-            "section": "raw_tei",
-            "link": "http://www.w3.org/1999/xlink"
         }
     ],
     "1706.03762v7.pdf": [
@@ -293,22 +180,6 @@
         {
             "section": "body",
             "link": "https://github.com/"
-        },
-        {
-            "section": "raw_tei",
-            "link": "http://www.tei-c.org/ns/1.0"
-        },
-        {
-            "section": "raw_tei",
-            "link": "http://www.w3.org/2001/XMLSchema-instance"
-        },
-        {
-            "section": "raw_tei",
-            "link": "https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
-        },
-        {
-            "section": "raw_tei",
-            "link": "http://www.w3.org/1999/xlink"
         }
     ],
     "1707.02919v2.pdf": [
@@ -371,22 +242,6 @@
         {
             "section": "note",
             "link": "https://www.emc.com/collateral/analyst-reports/"
-        },
-        {
-            "section": "raw_tei",
-            "link": "http://www.tei-c.org/ns/1.0"
-        },
-        {
-            "section": "raw_tei",
-            "link": "http://www.w3.org/2001/XMLSchema-instance"
-        },
-        {
-            "section": "raw_tei",
-            "link": "https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
-        },
-        {
-            "section": "raw_tei",
-            "link": "http://www.w3.org/1999/xlink"
         }
     ],
     "1708.05031v2.pdf": [
@@ -409,22 +264,6 @@
         {
             "section": "body",
             "link": "https://github.com/hexiangnan/neural_"
-        },
-        {
-            "section": "raw_tei",
-            "link": "http://www.tei-c.org/ns/1.0"
-        },
-        {
-            "section": "raw_tei",
-            "link": "http://www.w3.org/2001/XMLSchema-instance"
-        },
-        {
-            "section": "raw_tei",
-            "link": "https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
-        },
-        {
-            "section": "raw_tei",
-            "link": "http://www.w3.org/1999/xlink"
         }
     ],
     "1710.10903v3.pdf": [
@@ -463,22 +302,6 @@
         {
             "section": "note",
             "link": "http://papers.nips.cc/paper/"
-        },
-        {
-            "section": "raw_tei",
-            "link": "http://www.tei-c.org/ns/1.0"
-        },
-        {
-            "section": "raw_tei",
-            "link": "http://www.w3.org/2001/XMLSchema-instance"
-        },
-        {
-            "section": "raw_tei",
-            "link": "https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
-        },
-        {
-            "section": "raw_tei",
-            "link": "http://www.w3.org/1999/xlink"
         }
     ],
     "1810.04805v2.pdf": [
@@ -513,22 +336,6 @@
         {
             "section": "body",
             "link": "https://gluebenchmark.com/faq"
-        },
-        {
-            "section": "raw_tei",
-            "link": "http://www.tei-c.org/ns/1.0"
-        },
-        {
-            "section": "raw_tei",
-            "link": "http://www.w3.org/2001/XMLSchema-instance"
-        },
-        {
-            "section": "raw_tei",
-            "link": "https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
-        },
-        {
-            "section": "raw_tei",
-            "link": "http://www.w3.org/1999/xlink"
         }
     ],
     "1812.08434v6.pdf": [
@@ -631,22 +438,6 @@
         {
             "section": "back",
             "link": "https://github.com/thunlp/"
-        },
-        {
-            "section": "raw_tei",
-            "link": "http://www.tei-c.org/ns/1.0"
-        },
-        {
-            "section": "raw_tei",
-            "link": "http://www.w3.org/2001/XMLSchema-instance"
-        },
-        {
-            "section": "raw_tei",
-            "link": "https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
-        },
-        {
-            "section": "raw_tei",
-            "link": "http://www.w3.org/1999/xlink"
         }
     ],
     "1907.07374v5.pdf": [
@@ -685,44 +476,12 @@
         {
             "section": "note",
             "link": "https://cs.stanford"
-        },
-        {
-            "section": "raw_tei",
-            "link": "http://www.tei-c.org/ns/1.0"
-        },
-        {
-            "section": "raw_tei",
-            "link": "http://www.w3.org/2001/XMLSchema-instance"
-        },
-        {
-            "section": "raw_tei",
-            "link": "https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
-        },
-        {
-            "section": "raw_tei",
-            "link": "http://www.w3.org/1999/xlink"
         }
     ],
     "1908.04515v1.pdf": [
         {
             "section": "doi",
             "link": "10.1364/optica.XX.XXXXXX"
-        },
-        {
-            "section": "raw_tei",
-            "link": "http://www.tei-c.org/ns/1.0"
-        },
-        {
-            "section": "raw_tei",
-            "link": "http://www.w3.org/2001/XMLSchema-instance"
-        },
-        {
-            "section": "raw_tei",
-            "link": "https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
-        },
-        {
-            "section": "raw_tei",
-            "link": "http://www.w3.org/1999/xlink"
         }
     ],
     "2101.00027v1.pdf": [
@@ -865,30 +624,6 @@
         {
             "section": "note",
             "link": "http://arXiv"
-        },
-        {
-            "section": "raw_tei",
-            "link": "http://www.tei-c.org/ns/1.0"
-        },
-        {
-            "section": "raw_tei",
-            "link": "http://www.w3.org/2001/XMLSchema-instance"
-        },
-        {
-            "section": "raw_tei",
-            "link": "https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
-        },
-        {
-            "section": "raw_tei",
-            "link": "http://www.w3.org/1999/xlink"
-        },
-        {
-            "section": "raw_tei",
-            "link": "https://archiveofourown"
-        },
-        {
-            "section": "raw_tei",
-            "link": "https://launchpad.net/bugs/1627643&gt"
         }
     ],
     "2105.03011v1.pdf": [
@@ -1015,22 +750,6 @@
         {
             "section": "body",
             "link": "https://paperswithcode.com/task/"
-        },
-        {
-            "section": "raw_tei",
-            "link": "http://www.tei-c.org/ns/1.0"
-        },
-        {
-            "section": "raw_tei",
-            "link": "http://www.w3.org/2001/XMLSchema-instance"
-        },
-        {
-            "section": "raw_tei",
-            "link": "https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
-        },
-        {
-            "section": "raw_tei",
-            "link": "http://www.w3.org/1999/xlink"
         }
     ],
     "2111.02114v1.pdf": [
@@ -1045,22 +764,6 @@
         {
             "section": "body",
             "link": "https://github.com/rom1504/img2dataset"
-        },
-        {
-            "section": "raw_tei",
-            "link": "http://www.tei-c.org/ns/1.0"
-        },
-        {
-            "section": "raw_tei",
-            "link": "http://www.w3.org/2001/XMLSchema-instance"
-        },
-        {
-            "section": "raw_tei",
-            "link": "https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
-        },
-        {
-            "section": "raw_tei",
-            "link": "http://www.w3.org/1999/xlink"
         }
     ],
     "4449.pdf": [
@@ -1071,22 +774,6 @@
         {
             "section": "target",
             "link": "http://alme1.almaden.ibm.com/cs/spsort.pdf"
-        },
-        {
-            "section": "raw_tei",
-            "link": "http://www.tei-c.org/ns/1.0"
-        },
-        {
-            "section": "raw_tei",
-            "link": "http://www.w3.org/2001/XMLSchema-instance"
-        },
-        {
-            "section": "raw_tei",
-            "link": "https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
-        },
-        {
-            "section": "raw_tei",
-            "link": "http://www.w3.org/1999/xlink"
         }
     ],
     "NIPS-2012-imagenet-classification-with-deep-convolutional-neural-networks-Paper.pdf": [
@@ -1109,22 +796,6 @@
         {
             "section": "note",
             "link": "www.image-"
-        },
-        {
-            "section": "raw_tei",
-            "link": "http://www.tei-c.org/ns/1.0"
-        },
-        {
-            "section": "raw_tei",
-            "link": "http://www.w3.org/2001/XMLSchema-instance"
-        },
-        {
-            "section": "raw_tei",
-            "link": "https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
-        },
-        {
-            "section": "raw_tei",
-            "link": "http://www.w3.org/1999/xlink"
         }
     ],
     "TSP_IASC_36323.pdf": [
@@ -1271,22 +942,6 @@
         {
             "section": "note",
             "link": "10.1016/j"
-        },
-        {
-            "section": "raw_tei",
-            "link": "http://www.tei-c.org/ns/1.0"
-        },
-        {
-            "section": "raw_tei",
-            "link": "http://www.w3.org/2001/XMLSchema-instance"
-        },
-        {
-            "section": "raw_tei",
-            "link": "https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
-        },
-        {
-            "section": "raw_tei",
-            "link": "http://www.w3.org/1999/xlink"
         }
     ]
 }

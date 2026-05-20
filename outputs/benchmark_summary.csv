@@ -1,0 +1,5 @@
+heuristic,total_urls,urls_found_in_manual_roughly,urls_not_found_in_manual_roughly,accuracy,precision,recall,f1_score,true_positive,true_negative,false_positive,false_negative
+heuristica_1_extension_url_o_archivo,194,190,4,0.9587628865979382,0.5,0.375,0.42857142857142855,3,183,3,5
+heuristica_2_http_metadata,194,190,4,0.9432989690721649,0.2857142857142857,0.25,0.26666666666666666,2,181,5,6
+heuristica_3_gap_kge,194,190,4,0.9484536082474226,0.42857142857142855,0.75,0.5454545454545454,6,178,8,2
+prediccion_final_label,194,190,4,0.9381443298969072,0.375,0.75,0.5,6,176,10,2

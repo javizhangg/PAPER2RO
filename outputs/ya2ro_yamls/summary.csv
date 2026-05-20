@@ -1,0 +1,9 @@
+paper,yaml_file,dataset_count,software_count,dataset_urls,software_urls
+1505.04597v1.pdf,outputs\ya2ro_yamls\1505.04597v1.yaml,2,0,http://codesolorzano.com/celltrackingchallenge/Cell_Tracking_Challenge/Welcome.html | http://brainiac2.mit.edu/isbi_challenge,
+1512.02595v1.pdf,outputs\ya2ro_yamls\1512.02595v1.yaml,2,0,http://voxforge.org | http://commoncrawl.org,
+1702.05747v2.pdf,outputs\ya2ro_yamls\1702.05747v2.yaml,1,0,https://grand-challenge.org,
+1708.05031v2.pdf,outputs\ya2ro_yamls\1708.05031v2.yaml,1,0,http://grouplens.org/datasets/movielens/1m,
+1810.04805v2.pdf,outputs\ya2ro_yamls\1810.04805v2.yaml,1,0,https://gluebenchmark.com/leaderboard,
+2101.00027v1.pdf,outputs\ya2ro_yamls\2101.00027v1.yaml,5,1,https://doi.org/10.5281/zenodo.2591652 | https://archive.org/details | http://data.statmt | https://tensorflow.org/datasets | https://arxiv.org/help/bulk_data_s3,https://github.com/ekzhu/datasketch
+2111.02114v1.pdf,outputs\ya2ro_yamls\2111.02114v1.yaml,1,0,https://laion.ai/laion-400-open-dataset,
+NIPS-2012-imagenet-classification-with-deep-convolutional-neural-networks-Paper.pdf,outputs\ya2ro_yamls\NIPS-2012-imagenet-classification-with-deep-convolutional-neural-networks-Paper.yaml,2,0,https://image-net.org/challenges | http://image-net.org/challenges/LSVRC/2012,

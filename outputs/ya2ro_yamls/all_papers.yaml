@@ -1,0 +1,24 @@
+type: paper
+title: Research Object generated from detected dataset URLs
+summary: Global Research Object generated automatically from all URLs classified as
+  datasets by the heuristic system.
+datasets:
+- link: http://codesolorzano.com/celltrackingchallenge/Cell_Tracking_Challenge/Welcome.html
+- link: http://brainiac2.mit.edu/isbi_challenge
+- link: http://voxforge.org
+- link: http://commoncrawl.org
+- link: https://grand-challenge.org
+- link: http://grouplens.org/datasets/movielens/1m
+- link: https://gluebenchmark.com/leaderboard
+- doi: 10.5281/zenodo.2591652
+- link: https://archive.org/details
+- link: http://data.statmt
+- link: https://tensorflow.org/datasets
+- link: https://arxiv.org/help/bulk_data_s3
+- link: https://laion.ai/laion-400-open-dataset
+- link: https://image-net.org/challenges
+- link: http://image-net.org/challenges/LSVRC/2012
+software:
+- link: https://github.com/ekzhu/datasketch
+bibliography: []
+authors: []

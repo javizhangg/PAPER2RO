@@ -1,0 +1,94 @@
+{
+    "@context": "https://w3id.org/ro/crate/1.1/context",
+    "@graph": [
+        {
+            "@id": "ro-crate-metadata.json",
+            "@type": "CreativeWork",
+            "about": {
+                "@id": "./"
+            },
+            "conformsTo": {
+                "@id": "https://w3id.org/ro/crate/1.1"
+            },
+            "description": "RO-Crate Metadata File Descriptor (this file)"
+        },
+        {
+            "@id": "./",
+            "@type": "Dataset",
+            "DataType": "Paper",
+            "author": [],
+            "description": "Research Object generated automatically from URLs extracted from a scientific paper and classified as datasets by the heuristic system.",
+            "hasPart": [
+                {
+                    "@id": "#https://github.com/ekzhu/datasketch"
+                },
+                {
+                    "@id": "#ftfy"
+                },
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "ro-crate-preview.html"
+                }
+            ],
+            "name": "2101.00027v1"
+        },
+        {
+            "@id": "#https://github.com/ekzhu/datasketch",
+            "@type": "SoftwareApplication",
+            "installUrl": "https://github.com/ekzhu/datasketch"
+        },
+        {
+            "@id": "#ftfy",
+            "@type": "Dataset",
+            "description": "See CHANGELOG.md for release notes.",
+            "distribution": {
+                "@id": "10.5281/zenodo.2591652"
+            },
+            "name": "ftfy"
+        },
+        {
+            "@id": "#none",
+            "@type": "Dataset",
+            "distribution": {
+                "@id": "https://archive.org/details"
+            }
+        },
+        {
+            "@id": "#none",
+            "@type": "Dataset",
+            "distribution": {
+                "@id": "http://data.statmt"
+            }
+        },
+        {
+            "@id": "#none",
+            "@type": "Dataset",
+            "distribution": {
+                "@id": "https://tensorflow.org/datasets"
+            }
+        },
+        {
+            "@id": "#none",
+            "@type": "Dataset",
+            "distribution": {
+                "@id": "https://arxiv.org/help/bulk_data_s3"
+            }
+        },
+        {
+            "@id": "ro-crate-preview.html",
+            "@type": "WebPage",
+            "name": "HTML representation of this data."
+        }
+    ]
+}

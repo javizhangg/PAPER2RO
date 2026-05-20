@@ -1,0 +1,10 @@
+type: paper
+title: 1505.04597v1
+summary: Research Object generated automatically from URLs extracted from a scientific
+  paper and classified as datasets by the heuristic system.
+datasets:
+- link: http://codesolorzano.com/celltrackingchallenge/Cell_Tracking_Challenge/Welcome.html
+- link: http://brainiac2.mit.edu/isbi_challenge
+software: []
+bibliography: []
+authors: []

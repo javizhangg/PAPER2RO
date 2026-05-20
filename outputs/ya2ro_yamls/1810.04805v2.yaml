@@ -1,0 +1,9 @@
+type: paper
+title: 1810.04805v2
+summary: Research Object generated automatically from URLs extracted from a scientific
+  paper and classified as datasets by the heuristic system.
+datasets:
+- link: https://gluebenchmark.com/leaderboard
+software: []
+bibliography: []
+authors: []
