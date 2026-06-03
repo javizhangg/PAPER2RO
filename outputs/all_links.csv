@@ -1,227 +1,392 @@
-paper,section,link
-1505.04597v1.pdf,target,http://www.codesolorzano.com/celltrackingchallenge/Cell_Tracking_Challenge/Welcome.html
-1505.04597v1.pdf,target,http://brainiac2.mit.edu/isbi_challenge/
-1505.04597v1.pdf,body,http://lmb.informatik.uni-freiburg.de/people/ronneber/u-net
-1505.04597v1.pdf,note,http://www.codesolorzano.com/
-1505.04597v1.pdf,note,http://brainiac2.mit.edu/
-1506.02640v5.pdf,target,http://pjreddie.com/yolo/
-1506.02640v5.pdf,target,https://github.com/BVLC/caffe/wiki/Models-accuracy-on-ImageNet-2012-val.Ac-cessed:2015-10-2
-1506.02640v5.pdf,target,"http://pjreddie.com/darknet/,2013-2016"
-1506.02640v5.pdf,body,http://pjreddie.com/yolo/.Second
-1506.02640v5.pdf,note,https://github.com/BVLC/caffe/wiki/
-1506.02640v5.pdf,note,http://pjreddie.com/darknet/
-1512.02595v1.pdf,target,http://www.voxforge.org
-1512.02595v1.pdf,target,http://arxiv.org/abs/1508.04395
-1512.02595v1.pdf,target,https://nvlabs.github.io/moderngpu/
-1512.02595v1.pdf,target,http://arxiv.org/abs/1508.01211
-1512.02595v1.pdf,target,http://arxiv.org/abs/1412.1602
-1512.02595v1.pdf,target,http://svail.github.io/rnn_perf
-1512.02595v1.pdf,target,http://arxiv.org/abs/1412.5567
-1512.02595v1.pdf,target,http://arxiv.org/abs/1408.2873
-1512.02595v1.pdf,target,http://arxiv.org/abs/1510.01378
-1512.02595v1.pdf,target,https://github.com/NervanaSystems/nervanagpu
-1512.02595v1.pdf,target,http://arxiv.org/abs/1211.5063
-1512.02595v1.pdf,target,http://arxiv.org/abs/1507.06947
-1512.02595v1.pdf,target,http://arxiv.org/abs/1409.3215
-1512.02595v1.pdf,target,http://arxiv.org/abs/1502.03167
-1512.02595v1.pdf,target,http://arxiv.org/abs/1410.4615
-1512.02595v1.pdf,body,http://commoncrawl.org
-1606.05250v3.pdf,target,https://stanford-qa.com
-1606.05250v3.pdf,target,https://worksheets.codalab.org/worksheets/0xd53d03a48ef64b329c16b9baf0f99b0c/
-1606.05250v3.pdf,body,https://worksheets.codalab.org/worksheets/
-1702.05373v2.pdf,target,https://www.westernsydney.edu.au/bens/home/reproducibleresearch/emnist
-1702.05373v2.pdf,target,http://www.nist.gov/srd/upload/nistsd19.pdf
-1702.05373v2.pdf,target,http://portal.acm.org/citation.cfm?doid=1141277.1141468
-1702.05373v2.pdf,body,https://www.westernsydney.edu.au/bens/home/
-1702.05373v2.pdf,note,http://www.nist.gov/
-1702.05747v2.pdf,target,https://github.com/Lasagne/Lasagne
-1702.05747v2.pdf,target,https://keras.io/
-1702.05747v2.pdf,target,http://dx.doi.org/10.1109/TMI.2015.2476509
-1702.05747v2.pdf,doi,10.1109/TMI.2015.2476509
-1702.05747v2.pdf,body,www.grand-challenge.org
-1706.03762v7.pdf,target,https://github.com/tensorflow/tensor2tensor
-1706.03762v7.pdf,body,https://github.com/
-1707.02919v2.pdf,target,http://www.lemurproject.org/
-1707.02919v2.pdf,target,https://doi.org/10.3115/1119176.1119199
-1707.02919v2.pdf,target,https://www.emc.com/collateral/analyst-reports/idc-the-digital-universe-in-2020.pdf
-1707.02919v2.pdf,doi,10.3115/1119176.1119199
-1707.02919v2.pdf,body,http://www.crisp-dm.org/
-1707.02919v2.pdf,body,http://en.wikipedia.org/wiki/Statistics
-1707.02919v2.pdf,body,http://www.cs.waikato.ac.nz/ml/weka/
-1707.02919v2.pdf,body,http://www.w3.org/TR/webont-req/
-1707.02919v2.pdf,body,http://www.obofoundry.org/
-1707.02919v2.pdf,body,http://www.bioontology.org/
-1707.02919v2.pdf,body,http://bioportal.bioontology.org/
-1707.02919v2.pdf,body,https://uts.nlm.nih.gov/home.html
-1707.02919v2.pdf,body,http://www.pharmgkb.org/
-1707.02919v2.pdf,note,https://doi.org/10
-1707.02919v2.pdf,note,https://www.emc.com/collateral/analyst-reports/
-1708.05031v2.pdf,doi,10.1145/3038912.3052569
-1708.05031v2.pdf,body,http://alex.smola.org/teaching/berkeley2012/slides/8_
-1708.05031v2.pdf,body,http://grouplens.org/datasets/movielens/1m/
-1708.05031v2.pdf,body,https://sites.google.com/site/xueatalphabeta/
-1708.05031v2.pdf,body,https://github.com/hexiangnan/neural_
-1710.10903v3.pdf,target,https://www.tensorflow.org/.Softwareavail-ablefromtensorflow.org
-1710.10903v3.pdf,target,http://arxiv.org/abs/1611.02344
-1710.10903v3.pdf,target,http://papers.nips.cc/paper/6863-vain-attentional-multi-agent-predictive-modeling.pdf
-1710.10903v3.pdf,target,http://arxiv.org/abs/1410.3916
-1710.10903v3.pdf,doi,10.1109/72.572108
-1710.10903v3.pdf,body,https://github.com/PetarV-/GAT
-1710.10903v3.pdf,note,https://www.tensorflow.org/
-1710.10903v3.pdf,note,http://arxiv
-1710.10903v3.pdf,note,http://papers.nips.cc/paper/
-1810.04805v2.pdf,target,https://github.com/google-research/bert
-1810.04805v2.pdf,target,https://gluebenchmark.com/leaderboard
-1810.04805v2.pdf,doi,10.18653/v1/S17-2001
-1810.04805v2.pdf,body,https://github.com/
-1810.04805v2.pdf,body,https://cloudplatform.googleblog.com/2018/06/Cloud-TPU-now-offers-preemptible-pricing-and-globalavailability.html•
-1810.04805v2.pdf,body,https://github.com/tensorflow/tensor2tensor
-1810.04805v2.pdf,body,http://nlp.seas.harvard.edu/2018/04/03/attention.html
-1810.04805v2.pdf,body,https://gluebenchmark.com/faq
-1812.08434v6.pdf,target,https://github.com/ShinKyuY/Representation_Learning_on_Graphs_with_Jumping_Knowledge_Networks
-1812.08434v6.pdf,target,https://github.com/Hanjun-Dai/steady_state_embedding
-1812.08434v6.pdf,target,https://github.com/divelab/lgcn/
-1812.08434v6.pdf,target,https://github.com/matenure/FastGCN
-1812.08434v6.pdf,target,https://github.com/RexYing/diffpool
-1812.08434v6.pdf,target,https://github.com/snap-stanford/GraphRNN
-1812.08434v6.pdf,target,https://github.com/nicola-decao/MolGAN
-1812.08434v6.pdf,target,https://github.com/danielzuegner/netgan
-1812.08434v6.pdf,target,https://github.com/liyaguang/DCRNN
-1812.08434v6.pdf,target,https://github.com/yysijie/st-gcn
-1812.08434v6.pdf,target,https://github.com/tkipf/relational-gcn
-1812.08434v6.pdf,target,https://github.com/huangwb/AS-GCN
-1812.08434v6.pdf,target,https://github.com/ZhuangCY/DGCN
-1812.08434v6.pdf,target,https://github.com/jennyzhang0215/GaAN
-1812.08434v6.pdf,target,https://github.com/PetarV-/DGI
-1812.08434v6.pdf,target,https://github.com/nnzhan/Graph-WaveNet
-1812.08434v6.pdf,target,https://github.com/Jhy1993/HAN
-1812.08434v6.pdf,target,https://github.com/thunlp/gnnpapers
-1812.08434v6.pdf,target,https://doi.org/10.24963/ijcai.2017/250
-1812.08434v6.pdf,target,http://socialcomputing.asu.edu
-1812.08434v6.pdf,doi,10.1016/j.aiopen.2021.01.001
-1812.08434v6.pdf,doi,10.24963/ijcai.2017/250
-1812.08434v6.pdf,note,http://soci
-1812.08434v6.pdf,note,WWW.ACM
-1812.08434v6.pdf,back,https://github.com/thunlp/
-1907.07374v5.pdf,target,http://www.heatmapping.org/slides/2018WCCI.pdf
-1907.07374v5.pdf,target,http://iphome.hhi.de/samek/pdf/MonICML16.pdf
-1907.07374v5.pdf,target,https://pair-code.github.io/saliency/
-1907.07374v5.pdf,target,https://cs.stanford.edu/people/karpathy/cnnembed
-1907.07374v5.pdf,target,https://distill.pub/2019/activation-atlas
-1907.07374v5.pdf,body,https://distill.pub/2018/building-blocks/
-1907.07374v5.pdf,note,http://www.heatmapping.org/slides/2018
-1907.07374v5.pdf,note,http://iphome
-1907.07374v5.pdf,note,https://cs.stanford
-1908.04515v1.pdf,doi,10.1364/optica.XX.XXXXXX
-2101.00027v1.pdf,target,https://pile.eleuther.ai/
-2101.00027v1.pdf,target,https://archiveofourown.org/
-2101.00027v1.pdf,target,https://github.com/SpamScope/mail-parser
-2101.00027v1.pdf,target,https://www.google.com/recaptcha/api.js?render=
-2101.00027v1.pdf,target,http://Skylion007.github.io/OpenWebTextCorpus
-2101.00027v1.pdf,target,https://github.com/BIGBALLON/cifar-10-cnn
-2101.00027v1.pdf,target,http://arXiv.org/abs/cs/0205028
-2101.00027v1.pdf,target,https://twitter.com/theshawwn/status/1320282149329784833
-2101.00027v1.pdf,doi,10.5281/zenodo.2591652
-2101.00027v1.pdf,body,www.fanfiction.net
-2101.00027v1.pdf,body,www.https://archiveofourown
-2101.00027v1.pdf,body,https://github.com/SpamScope/
-2101.00027v1.pdf,body,https://www.google.com/recaptcha/api.js?render=*site
-2101.00027v1.pdf,body,https://arxiv.org/help/
-2101.00027v1.pdf,body,https://launchpad.net/bugs/1627643
-2101.00027v1.pdf,body,https://github.com/EleutherAI/
-2101.00027v1.pdf,body,https://www.courtlistener.com/
-2101.00027v1.pdf,body,https://archive.org/details/
-2101.00027v1.pdf,body,https://bulkdata.uspto.gov/
-2101.00027v1.pdf,body,https://irclogs.ubuntu.com/
-2101.00027v1.pdf,body,https://philpapers.org/
-2101.00027v1.pdf,body,https://exporter.nih.gov/
-2101.00027v1.pdf,body,https://news.ycombinator.com
-2101.00027v1.pdf,body,http://data.statmt
-2101.00027v1.pdf,body,https://www.tensorflow.org/datasets/
-2101.00027v1.pdf,body,https://arxiv.org/help/bulk_data_s3
-2101.00027v1.pdf,body,https://www.courtlistener.com/api/
-2101.00027v1.pdf,body,http://www.statmt.org/europarl/
-2101.00027v1.pdf,body,https://github.com/jdepoix/
-2101.00027v1.pdf,body,https://github.com/vphill/
-2101.00027v1.pdf,body,https://github.com/sdtblck/PDFextract
-2101.00027v1.pdf,body,https://github.com/ekzhu/datasketch
-2101.00027v1.pdf,note,http://Skylion007.github.io/
-2101.00027v1.pdf,note,https://github.com/BIGBALLON/
-2101.00027v1.pdf,note,http://arXiv
-2105.03011v1.pdf,doi,10.18653/v1/2020.findings-emnlp.66
-2105.03011v1.pdf,doi,10.18653/v1/D18-1241
-2105.03011v1.pdf,doi,10.1162/tacl_a_00317
-2105.03011v1.pdf,doi,10.18653/v1/D19-1606
-2105.03011v1.pdf,doi,10.18653/v1/N19-1423
-2105.03011v1.pdf,doi,10.18653/v1/N19-1246
-2105.03011v1.pdf,doi,10.18653/v1/2020.emnlp-main.86
-2105.03011v1.pdf,doi,10.18653/v1/P18-1031
-2105.03011v1.pdf,doi,10.18653/v1/D19-1259
-2105.03011v1.pdf,doi,10.18653/v1/P17-1147
-2105.03011v1.pdf,doi,10.18653/v1/2020.findings-emnlp.171
-2105.03011v1.pdf,doi,10.1162/tacl_a_00023
-2105.03011v1.pdf,doi,10.1162/tacl_a_00276
-2105.03011v1.pdf,doi,10.18653/v1/2020.acl-main.703
-2105.03011v1.pdf,doi,10.18653/v1/2020.acl-main.604
-2105.03011v1.pdf,doi,10.18653/v1/2020.acl-main.447
-2105.03011v1.pdf,doi,10.18653/v1/W18-5301
-2105.03011v1.pdf,doi,10.18653/v1/2020.emnlp-demos.17
-2105.03011v1.pdf,doi,10.18653/v1/D18-1258
-2105.03011v1.pdf,doi,10.18653/v1/2020.bionlp-1.15
-2105.03011v1.pdf,doi,10.18653/v1/D16-1264
-2105.03011v1.pdf,doi,10.18653/v1/D19-1500
-2105.03011v1.pdf,doi,10.1162/tacl_a_00266
-2105.03011v1.pdf,doi,10.18653/v1/W17-2623
-2105.03011v1.pdf,doi,10.1162/tacl_a_00021
-2105.03011v1.pdf,doi,10.18653/v1/D15-1237
-2105.03011v1.pdf,doi,10.18653/v1/D18-1259
-2105.03011v1.pdf,body,https://allenai.org/project/qasper
-2105.03011v1.pdf,body,http://semanticscholar.org
-2105.03011v1.pdf,body,https://www.upwork.com/
-2105.03011v1.pdf,body,https://paperswithcode.com/task/
-2111.02114v1.pdf,body,https://laion.ai/laion-400-open-dataset/
-2111.02114v1.pdf,body,https://rom1504.github.io/clip-retrieval/
-2111.02114v1.pdf,body,https://github.com/rom1504/img2dataset
-4449.pdf,target,http://research.microsoft.com/barc/SortBenchmark/
-4449.pdf,target,http://alme1.almaden.ibm.com/cs/spsort.pdf
-NIPS-2012-imagenet-classification-with-deep-convolutional-neural-networks-Paper.pdf,target,www.image-net.org/challenges
-NIPS-2012-imagenet-classification-with-deep-convolutional-neural-networks-Paper.pdf,target,http://www.image-net.org/challenges/LSVRC/2012/
-NIPS-2012-imagenet-classification-with-deep-convolutional-neural-networks-Paper.pdf,target,http://authors.library.caltech.edu/7694
-NIPS-2012-imagenet-classification-with-deep-convolutional-neural-networks-Paper.pdf,body,http://code.google.com/p/cuda-convnet/
-NIPS-2012-imagenet-classification-with-deep-convolutional-neural-networks-Paper.pdf,note,www.image-
-TSP_IASC_36323.pdf,target,https://doi.org/10.1016/j.media.2021.102188
-TSP_IASC_36323.pdf,target,https://doi.org/10.1142/9789811239014_0005
-TSP_IASC_36323.pdf,target,https://doi.org/10.1016/j.inffus.2020.04.002
-TSP_IASC_36323.pdf,target,https://doi.org/10.1016/j.patcog.2021.108146
-TSP_IASC_36323.pdf,target,https://doi.org/10.1088/1755-1315/428/1/012097
-TSP_IASC_36323.pdf,target,https://doi.org/10.1016/j.neucom.2022.03.062
-TSP_IASC_36323.pdf,target,https://doi.org/10.1016/j.neunet.2018.03.019
-TSP_IASC_36323.pdf,target,https://doi.org/10.1145/3357254.3357276
-TSP_IASC_36323.pdf,target,https://doi.org/10.1016/j.patcog.2020.107420
-TSP_IASC_36323.pdf,target,https://doi.org/10.1016/j.neucom.2021.03.108
-TSP_IASC_36323.pdf,target,https://doi.org/10.1016/j.patcog.2018.04.012
-TSP_IASC_36323.pdf,target,https://doi.org/10.1109/SPIN.2019.8711703
-TSP_IASC_36323.pdf,target,https://doi.org/10.1016/j.procs.2020.04.206
-TSP_IASC_36323.pdf,target,https://doi.org/10.1016/j.inffus.2020.10.0082021
-TSP_IASC_36323.pdf,target,https://arxiv.org/abs/1409.4842v1
-TSP_IASC_36323.pdf,target,https://arxiv.org/abs/1512.00567v3
-TSP_IASC_36323.pdf,target,https://arxiv.org/abs/1610.02357
-TSP_IASC_36323.pdf,target,https://arxiv.org/abs/1409.1556
-TSP_IASC_36323.pdf,doi,10.32604/iasc.2023.036323
-TSP_IASC_36323.pdf,doi,10.1016/j.media.2021.102188
-TSP_IASC_36323.pdf,doi,10.1142/9789811239014_0005
-TSP_IASC_36323.pdf,doi,10.1016/j.inffus.2020.04.002
-TSP_IASC_36323.pdf,doi,10.1016/j.patcog.2021.108146
-TSP_IASC_36323.pdf,doi,10.1088/1755-1315/428/1/012097
-TSP_IASC_36323.pdf,doi,10.1016/j.neucom.2022.03.062
-TSP_IASC_36323.pdf,doi,10.1016/j.neunet.2018.03.019
-TSP_IASC_36323.pdf,doi,10.1145/3357254.3357276
-TSP_IASC_36323.pdf,doi,10.1016/j.patcog.2020.107420
-TSP_IASC_36323.pdf,doi,10.1016/j.neucom.2021.03.108
-TSP_IASC_36323.pdf,doi,10.1016/j.patcog.2018.04.012
-TSP_IASC_36323.pdf,doi,10.1109/SPIN.2019.8711703
-TSP_IASC_36323.pdf,doi,10.1016/j.procs.2020.04.206
-TSP_IASC_36323.pdf,doi,10.1016/j.inffus.2020.10.0082021
-TSP_IASC_36323.pdf,note,https://doi.org/10
-TSP_IASC_36323.pdf,note,https://doi.org/10.1016/j
-TSP_IASC_36323.pdf,note,10.1016/j
+paper,section,kind,link,context
+1505.04597v1.pdf,target,url,http://www.codesolorzano.com/celltrackingchallenge/Cell_Tracking_Challenge/Welcome.html,
+1505.04597v1.pdf,target,url,http://brainiac2.mit.edu/isbi_challenge/,
+1505.04597v1.pdf,abstract,url,http://lmb.informatik.uni-freiburg.de/people/ronneber/u-net,512x512 image takes less than a second on a recent GPU. The full implementation (based on Caffe) and the trained networks are available at http://lmb.informatik.uni-freiburg.de/people/ronneber/u-net.
+1506.02640v5.pdf,target,url,https://github.com/BVLC/caffe/wiki/Models-accuracy-on-ImageNet-2012-val.Ac-cessed,
+1506.02640v5.pdf,target,url,"http://pjreddie.com/darknet/,2013-2016.3",
+1506.02640v5.pdf,body,url,http://pjreddie.com/yolo/.Second,"ean average precision of other real-time systems. For a demo of our system running in real-time on a webcam please see our project webpage: http://pjreddie.com/yolo/.Second, YOLO reasons globally about the image when making predictions. Unlike sliding window and region proposal-based techniques, YOLO sees the en"
+1506.02640v5.pdf,body,url,http://pjreddie.com/yolo/.ConclusionWe,"tecting objects as they move around and change in appearance. A demo of the system and the source code can be found on our project website: http://pjreddie.com/yolo/.ConclusionWe introduce YOLO, a unified model for object detection. Our model is simple to construct and can be trained directly on full images. Unlike c"
+1506.02640v5.pdf,note,url,http://pjreddie.com/darknet/,"J. Redmon. Darknet: Open source neural networks in c. http://pjreddie.com/darknet/, 2013-2016. 3"
+1512.02595v1.pdf,target,url,http://arxiv.org/abs/1508.04395,
+1512.02595v1.pdf,target,url,https://nvlabs.github.io/moderngpu/,
+1512.02595v1.pdf,target,url,http://arxiv.org/abs/1508.01211,
+1512.02595v1.pdf,target,url,http://arxiv.org/abs/1412.1602,
+1512.02595v1.pdf,target,url,http://svail.github.io/rnn_perf,
+1512.02595v1.pdf,target,url,http://arxiv.org/abs/1412.5567,
+1512.02595v1.pdf,target,url,http://arxiv.org/abs/1408.2873,
+1512.02595v1.pdf,target,url,http://arxiv.org/abs/1510.01378,
+1512.02595v1.pdf,target,url,http://arxiv.org/abs/1211.5063,
+1512.02595v1.pdf,target,url,http://arxiv.org/abs/1507.06947,
+1512.02595v1.pdf,target,url,http://arxiv.org/abs/1409.3215,
+1512.02595v1.pdf,target,url,http://arxiv.org/abs/1502.03167,
+1512.02595v1.pdf,target,url,http://arxiv.org/abs/1410.4615,
+1512.02595v1.pdf,body,url,http://www.voxforge.org,"use only one of the six channels to test each utterance. Accented SpeechOur source for accented speech is the publicly available VoxForge (http://www.voxforge.org) dataset, which has clean speech read from speakers with many different accents. We group these accents into four categories. The American-C"
+1512.02595v1.pdf,body,url,http://commoncrawl.org,"entropy density, ∼41 bits/s compared to ∼58 bits/s, and can thus more easily be temporally compressed without losing character information. http://commoncrawl.org"
+1512.02595v1.pdf,note,url,http://svail.github.io/rnn_perf.Accessed,E. Elsen. Optimizing RNN performance. http://svail.github.io/rnn_perf.Accessed: 2015-11-24.
+1512.02595v1.pdf,reference,url,http://arxiv.org/abs/1508.04395.The,", J. Chorowski, D. Serdyuk, P. Brakel, and Y. Bengio. End-to-end attention-based large vocabulary speech recognition. abs/1508.04395, 2015. http://arxiv.org/abs/1508.04395.The third 'CHiME' speech separation and recognition challenge: Dataset, task and baselines JBarker EMarxer RicardVincent SWatanabe Submitted to"
+1512.02595v1.pdf,reference,url,https://nvlabs.github.io/moderngpu/.Curriculum,"nes. 2015. Submitted to IEEE 2015 Automatic Speech Recognition and Understanding Workshop (ASRU). SBaxter Modern GPU S. Baxter. Modern GPU. https://nvlabs.github.io/moderngpu/.Curriculum learning YBengio JLouradour RCollobert JWeston International Conference on Machine Learning 2009 Y. Bengio, J. Louradour, R. Collobert, and"
+1512.02595v1.pdf,reference,url,http://arxiv.org/abs/1508.01211.SChetlur,"QLe OVinyals Listen spell. abs/1508.01211 2015 W. Chan, N. Jaitly, Q. Le, and O. Vinyals. Listen, attend, and spell. abs/1508.01211, 2015. http://arxiv.org/abs/1508.01211.SChetlur CWoolley PVandermersch JCohen JTran BCatanzaro EShelhamer Efficient primitives for deep learning S. Chetlur, C. Woolley, P. Vandermersch, J"
+1512.02595v1.pdf,reference,url,http://arxiv.org/abs/1412.1602.The,"au, K. Cho, and Y. Bengio. End-to-end continuous speech recognition using attention-based recurrent nn: First results. abs/1412.1602, 2015. http://arxiv.org/abs/1412.1602.The Fisher corpus: a resource for the next generations of speech-totext CCieri DMiller KWalker LREC 2004 4 C. Cieri, D. Miller, and K. Walker."
+1512.02595v1.pdf,reference,url,http://arxiv.org/abs/1412.5567.First-pass,"sen, R. Prenger, S. Satheesh, S. Sengupta, A. Coates, and A. Y. Ng. Deep speech: Scaling up end-to-end speech recognition. 1412.5567, 2014. http://arxiv.org/abs/1412.5567.First-pass large vocabulary continuous speech recognition using bi-directional recurrent DNNs AYHannun ALMaas DJurafsky AYNg abs/1408.2873 2014 A. Y."
+1512.02595v1.pdf,reference,url,http://arxiv.org/abs/1408.2873.Scalable,"Jurafsky, and A. Y. Ng. First-pass large vocabulary continuous speech recognition using bi-directional recurrent DNNs. abs/1408.2873, 2014. http://arxiv.org/abs/1408.2873.Scalable modified Kneser-Ney language model estimation KHeafield IPouzyrevsky JHClark PKoehn Proceedings of the 51st Annual Meeting of the Associati"
+1512.02595v1.pdf,reference,url,http://arxiv.org/abs/1510.01378.Building,"10.01378 2015 C. Laurent, G. Pereyra, P. Brakel, Y. Zhang, and Y. Bengio. Batch normalized recurrent neural networks. abs/1510.01378, 2015. http://arxiv.org/abs/1510.01378.Building high-level features using large scale unsupervised learning QLe MRanzato RMonga MDevin KChen GCorrado JDean ANg International Conference on"
+1512.02595v1.pdf,reference,url,http://arxiv.org/abs/1211.5063.Bandwidth,"gio abs/1211.5063 2012 R. Pascanu, T. Mikolov, and Y. Bengio. On the difficulty of training recurrent neural networks. abs/1211.5063, 2012. http://arxiv.org/abs/1211.5063.Bandwidth optimal all-reduce algorithms for clusters of workstations PPatarasuk XYuan J. Parallel Distrib. Comput 69 2 Feb. 2009 P. Patarasuk and X."
+1512.02595v1.pdf,reference,url,http://arxiv.org/abs/1507.06947.Sequence,". Senior, K. Rao, and F. Beaufays. Fast and accurate recurrent neural network acoustic models for speech recognition. abs/1507.06947, 2015. http://arxiv.org/abs/1507.06947.Sequence discriminative distributed training of long shortterm memory recurrent neural networks HSak OVinyals GHeigold ASenior EMcdermott RMonga MMa"
+1512.02595v1.pdf,reference,url,http://arxiv.org/abs/1409.3215.Batch,"al networks ISutskever OVinyals QVLe 2014 I. Sutskever, O. Vinyals, and Q. V. Le. Sequence to sequence learning with neural networks. 2014. http://arxiv.org/abs/1409.3215.Batch normalization: Accelerating deep network training by reducing internal covariate CSzegedy SIoffe shift. abs/1502.03167 2015 C. Szegedy and"
+1512.02595v1.pdf,reference,url,http://arxiv.org/abs/1502.03167.CSzegedy,". Szegedy and S. Ioffe. Batch normalization: Accelerating deep network training by reducing internal covariate shift. abs/1502.03167, 2015. http://arxiv.org/abs/1502.03167.CSzegedy WLiu YJia PSermanet SReed DAnguelov DErhan VVanhoucke ARabinovich 2014 Going deeper with convolutions C. Szegedy, W. Liu, Y. Jia, P. Serman"
+1606.05250v3.pdf,abstract,url,https://stanford-qa.com,"6.8%) is much higher, indicating that the dataset presents a good challenge problem for future research. The dataset is freely available at https://stanford-qa.com."
+1606.05250v3.pdf,body,url,https://worksheets.codalab.org/worksheets/0xd53d03a48ef64b329c16b9baf0f99b0c/.Figure,"cant advances in reading comprehension. ReproducibilityAll code, data, and experiments for this paper are available on the CodaLab platform:https://worksheets.codalab.org/worksheets/0xd53d03a48ef64b329c16b9baf0f99b0c/.Figure 1 :1Figure 1: Question-answer pairs for a sample passage in the SQuAD dataset. Each of the answers is a segment of text from the passage. F"
+1702.05373v2.pdf,target,url,http://www.nist.gov/srd/upload/nistsd19.pdf,
+1702.05373v2.pdf,target,url,http://portal.acm.org/citation.cfm?doid=1141277.1141468,
+1702.05373v2.pdf,body,url,https://www.westernsydney.edu.au/bens/home/reproducible,taset. These results are then used to further characterize and validate the datasets.The EMNIST dataset can be accessed and downloaded from https://www.westernsydney.edu.au/bens/home/reproducible research/emnist. A. The MNIST and NIST DatasetThe NIST Special Database 19 [11] contains handwritten digits and characters collected from o
+1702.05747v2.pdf,target,url,http://dx.doi.org/10.1109/TMI.2015.2476509,
+1702.05747v2.pdf,idno_doi,doi,10.1109/TMI.2015.2476509,10.1109/TMI.2015.2476509
+1702.05747v2.pdf,body,url,https://github.com/Lasagne/Lasagne,"d by, among others, Facebook AI research.There are third-party packages written on top of one or more of these frameworks, such as Lasagne (https://github.com/Lasagne/Lasagne) or Keras (https: //keras.io/). It goes beyond the scope of this paper to discuss all these packages in detail. Deep Learning Uses in Medica"
+1702.05747v2.pdf,body,url,www.grand-challenge.org.BrainDNNs,ibutions and discuss performance of systems on large data sets and on public challenge data sets. All these challenges are listed on http:\\www.grand-challenge.org.BrainDNNs have been extensively used for brain image analysis in several different application domains (Table 1). A large number of studies address c
+1706.03762v7.pdf,body,url,https://github.com/tensorflow/tensor2tensor.Input-Input,ideo. Making generation less sequential is another research goals of ours.The code we used to train and evaluate our models is available at https://github.com/tensorflow/tensor2tensor.Input-Input Layer5The Full attentions for head 5. Bottom: Isolated attentions from just the word 'its' for attention heads 5 and 6. Note that the atten
+1706.08612v2.pdf,target,url,http://databases.forensic-voice-comparison.net,
+1706.08612v2.pdf,body,url,http://www.robots.ox.ac.uk/,"ether there is a match between a given utterance and a target model. We provide baselines for both tasks.The dataset can be downloaded from http://www.robots.ox.ac.uk/ ˜vgg/data/voxceleb. Related WorksFor a long time, speaker identification was the domain of Gaussian Mixture Models (GMMs) trained on low di"
+1707.02919v2.pdf,target,url,https://doi.org/10.3115/1119176.1119199,
+1707.02919v2.pdf,target,url,https://www.emc.com/collateral/analyst-reports/idc-the-digital-universe-in-2020.pdf,
+1707.02919v2.pdf,idno_doi,doi,10.3115/1119176.1119199,10.3115/1119176.1119199
+1707.02919v2.pdf,body,url,http://www.lemurproject.org/The,"one another in terms of the number of words they contain, normalizing document representations during the clustering process is important.5 http://www.lemurproject.org/The aforementioned text characteristics necessitates the design of specialized algorithms for representing text and broadly investigated in IR"
+1707.02919v2.pdf,body,url,http://www.crisp-dm.org/http://en.wikipedia.org/wiki/Statistics,"or large vocabulary sizes, and almost always performs better than Bernoulli if the size of the vocabulary chosen optimally for both models. http://www.crisp-dm.org/http://en.wikipedia.org/wiki/Statistics http://www.cs.waikato.ac.nz/ml/weka/http://www.w3.org/TR/webont-req/http://www.obofoundry.org/http://www.bioontology.org/http://bioportal.b"
+1707.02919v2.pdf,body,url,http://www.cs.waikato.ac.nz/ml/weka/http://www.w3.org/TR/webont-req/http://www.obofoundry.org/http://www.bioontology.org/http://bioportal.bioontology.org/https://uts.nlm.nih.gov/home.html,n Bernoulli if the size of the vocabulary chosen optimally for both models. http://www.crisp-dm.org/http://en.wikipedia.org/wiki/Statistics http://www.cs.waikato.ac.nz/ml/weka/http://www.w3.org/TR/webont-req/http://www.obofoundry.org/http://www.bioontology.org/http://bioportal.bioontology.org/https://uts.nlm.nih.gov/home.html http://www.pharmgkb.org/
+1707.02919v2.pdf,body,url,http://www.pharmgkb.org/,3.org/TR/webont-req/http://www.obofoundry.org/http://www.bioontology.org/http://bioportal.bioontology.org/https://uts.nlm.nih.gov/home.html http://www.pharmgkb.org/
+1707.02919v2.pdf,note,url,http://www.crisp-dm.org/,http://www.crisp-dm.org/
+1707.02919v2.pdf,note,url,http://en.wikipedia.org/wiki/Statistics,http://en.wikipedia.org/wiki/Statistics
+1707.02919v2.pdf,note,url,http://www.cs.waikato.ac.nz/ml/weka/,http://www.cs.waikato.ac.nz/ml/weka/
+1707.02919v2.pdf,note,url,http://www.w3.org/TR/webont-req/,http://www.w3.org/TR/webont-req/
+1707.02919v2.pdf,note,url,http://www.obofoundry.org/,http://www.obofoundry.org/
+1707.02919v2.pdf,note,url,http://www.bioontology.org/,http://www.bioontology.org/
+1707.02919v2.pdf,note,url,http://bioportal.bioontology.org/,http://bioportal.bioontology.org/
+1707.02919v2.pdf,note,url,https://uts.nlm.nih.gov/home.html,https://uts.nlm.nih.gov/home.html
+1707.02919v2.pdf,reference,url,https://www.emc.com/collateral/analyst-reports/idc-the-digital-universe-in-2020.pdf.Introducing,", and Biggest Grow th in the Far East. Tech- nical Report 1. IDC, 5 Speen Street, Framingham, MA 01701 USA. Ac- cessed online on May, 2017. https://www.emc.com/collateral/analyst-reports/idc-the-digital-universe-in-2020.pdf.Introducing markov chain monte carlo. In Markov chain Monte Carlo in practice SylviaWalter R Gilks DavidJRichardson Spiegelhalter 1996 Springer Walter"
+1708.05031v2.pdf,idno_doi,doi,10.1145/3038912.3052569,10.1145/3038912.3052569
+1708.05031v2.pdf,body,url,http://alex.smola.org/teaching/berkeley2012/slides/8_Recommender.pdf,"2510.4090.4170.4260.432Pinterest80.1410.5260.5340.5360.539160.1410.5320.5360.5380.544320.1420.5370.5380.5420.546640.1410.5380.5420.5450.550 http://alex.smola.org/teaching/berkeley2012/slides/8_Recommender.pdf Assuming latent vectors are of a unit length. Let Ru be the set of items that user u has interacted with, then the Jaccard similarity of us"
+1708.05031v2.pdf,body,url,http://grouplens.org/datasets/movielens/1m/https://sites.google.com/site/xueatalphabeta/academic-projects,"set of items that user u has interacted with, then the Jaccard similarity of users i and j is defined as sij =|R i |∩|R j | |R i |∪|R j | . http://grouplens.org/datasets/movielens/1m/https://sites.google.com/site/xueatalphabeta/academic-projects https://github.com/hexiangnan/neural_collaborative_filtering"
+1708.05031v2.pdf,body,url,https://github.com/hexiangnan/neural_collaborative_filtering,ij =|R i |∩|R j | |R i |∪|R j | . http://grouplens.org/datasets/movielens/1m/https://sites.google.com/site/xueatalphabeta/academic-projects https://github.com/hexiangnan/neural_collaborative_filtering
+1708.05031v2.pdf,note,url,http://grouplens.org/datasets/movielens/1m/,http://grouplens.org/datasets/movielens/1m/
+1708.05031v2.pdf,note,url,https://sites.google.com/site/xueatalphabeta/academic-projects,https://sites.google.com/site/xueatalphabeta/academic-projects
+1710.10903v3.pdf,target,url,https://www.tensorflow.org/.Softwareavail-ablefromtensorflow.org,
+1710.10903v3.pdf,target,url,http://arxiv.org/abs/1611.02344,
+1710.10903v3.pdf,target,url,http://papers.nips.cc/paper/6863-vain-attentional-multi-agent-predictive-modeling.pdf,
+1710.10903v3.pdf,target,url,http://arxiv.org/abs/1410.3916,
+1710.10903v3.pdf,idno_doi,doi,10.1109/72.572108,10.1109/72.572108
+1710.10903v3.pdf,body,url,https://github.com/PetarV-/GAT,"ol (Hamilton et al., 2017)0.600GraphSAGE *0.768Const-GAT (ours)0.934 ± 0.006GAT (ours) Our implementation of the GAT layer may be found at: https://github.com/PetarV-/GAT."
+1710.10903v3.pdf,note,url,https://www.tensorflow.org/.Software,"rtin Watten- berg, Martin Wicke, Yuan Yu, and Xiaoqiang Zheng. TensorFlow: Large-scale machine learning on heterogeneous systems, 2015. URL https://www.tensorflow.org/.Software avail- able from tensorflow.org."
+1710.10903v3.pdf,reference,url,http://arxiv.org/abs/1611.02344.Understanding,"el Auli, David Grangier, and Yann N. Dauphin. A convolutional encoder model for neural machine translation. CoRR, abs/1611.02344, 2016. URL http://arxiv.org/abs/1611.02344.Understanding the difficulty of training deep feedforward neural networks XavierGlorot YoshuaBengio Proceedings of the Thirteenth International Conferenc"
+1710.10903v3.pdf,reference,url,http://papers.nips.cc/paper/6863-vain-attentional-multi-agent-predictive-modeling.pdf.The,"wanathan, and R. Gar- nett (eds.), Advances in Neural Information Processing Systems 30, pp. 2698- 2708. Curran Associates, Inc., 2017. URL http://papers.nips.cc/paper/6863-vain-attentional-multi-agent-predictive-modeling.pdf.The one hundred layers tiramisu: Fully convolutional densenets for semantic segmentation SimonJégou MichalDrozdzal DavidVázquez AdrianaRomero Y"
+1710.10903v3.pdf,reference,url,http://arxiv.org/abs/1410.3916.Revisiting,"opra AntoineBordes CoRR, abs/1410.3916 2014 Jason Weston, Sumit Chopra, and Antoine Bordes. Memory networks. CoRR, abs/1410.3916, 2014. URL http://arxiv.org/abs/1410.3916.Revisiting semi-supervised learning with graph embeddings ZhilinYang WilliamCohen RuslanSalakhudinov International Conference on Machine Learning 2016"
+1810.04805v2.pdf,idno_doi,doi,10.18653/v1/S17-2001,10.18653/v1/S17-2001
+1810.04805v2.pdf,body,url,https://github.com/google-research/bert.Related,"any task-specific architectures.• BERT advances the state of the art for eleven NLP tasks. The code and pre-trained models are available at https://github.com/google-research/bert.Related WorkThere is a long history of pre-training general language representations, and we briefly review the most widely-used approaches in this"
+1810.04805v2.pdf,body,url,https://gluebenchmark.com/leaderboardWikipedia,"ibution does not include the Test labels, and we only made a single GLUE evaluation server submission for each of BERTBASE and BERTLARGE.10 https://gluebenchmark.com/leaderboardWikipedia containing the answer, the task is to predict the answer text span in the passage.As shown in Figure 1, in the question answering task, we"
+1810.04805v2.pdf,body,url,https://cloudplatform.googleblog.com/2018/06/Cloud-TPU-now-offers-preemptible-pricing-and-globalavailability.html,"rs. In addition to the architecture differences, BERT and OpenAI GPT are fine-tuning approaches, while ELMo is a feature-based approach. 13 https://cloudplatform.googleblog.com/2018/06/Cloud-TPU-now-offers-preemptible-pricing-and-globalavailability.html• Learning rate (Adam): 5e-5, 3e-5, 2e-5 • Number of epochs: 2, 3, 4 Figure 4 :4Figure 4: Illustrations of Fine-tuning BERT on Different Task"
+1810.04805v2.pdf,body,url,https://gluebenchmark.com/leaderboard).The,"ameters that have been pre-trained for k steps. The x-axis is the value of k. Table 1 :1GLUE Test results, scored by the evaluation server (https://gluebenchmark.com/leaderboard).The number below each task denotes the number of training examples. The ""Average"" column is slightly different than the official GLUE score, si"
+1810.04805v2.pdf,body,url,https://github.com/tensorflow/tensor2tensor,"ature-based80% 10% 10%84.295.494.9100%0%0%84.394.994.080%0% 20%84.195.294.680% 20%0%84.495.294.70% 20% 80%83.794.894.60%0% 100%83.694.994.6 https://github.com/tensorflow/tensor2tensor http://nlp.seas.harvard.edu/2018/04/03/attention.html In all cases we set the feed-forward/filter size to be 4H, i.e., 3072 for the H = 768"
+1810.04805v2.pdf,body,url,http://nlp.seas.harvard.edu/2018/04/03/attention.html,".394.994.080%0% 20%84.195.294.680% 20%0%84.495.294.70% 20% 80%83.794.894.60%0% 100%83.694.994.6 https://github.com/tensorflow/tensor2tensor http://nlp.seas.harvard.edu/2018/04/03/attention.html In all cases we set the feed-forward/filter size to be 4H, i.e., 3072 for the H = 768 and 4096 for the H = 1024. The final model achieves 9"
+1810.04805v2.pdf,body,url,https://gluebenchmark.com/faq.QANet,"For example, the BERT SQuAD model can be trained in around 30 minutes on a single Cloud TPU to achieve a Dev F1 score of 91.0%. See (10) in https://gluebenchmark.com/faq.QANet is described in Yu et al. (2018), but the system has improved substantially after publication. Note that we only report single-task fine-tu"
+1810.04805v2.pdf,body,url,https://gluebenchmark.com/faq,"tially push the performance even further. For example, we did observe substantial improvements on RTE from multitask training with MNLI. 15 https://gluebenchmark.com/faq"
+1812.08434v6.pdf,target,url,https://doi.org/10.24963/ijcai.2017/250,
+1812.08434v6.pdf,target,url,http://socialcomputing.asu.edu,
+1812.08434v6.pdf,idno_doi,doi,10.1016/j.aiopen.2021.01.001,10.1016/j.aiopen.2021.01.001
+1812.08434v6.pdf,idno_doi,doi,10.24963/ijcai.2017/250,10.24963/ijcai.2017/250
+1812.08434v6.pdf,note,url,http://soci,"Zafarani, R., Liu, H., 2009. Social Computing Data Repository at ASU. http://soci alcomputing.asu.edu."
+1812.08434v6.pdf,note,url,WWW.ACM,"Zhu, Z., Xu, S., Qu, M., Tang, J., 2019b. Graphvite: a high-performance cpu-gpu hybrid system for node embedding. In: Proceddings of WWW.ACM, pp. 2494-2504."
+1812.08434v6.pdf,reference,url,https://doi.org/10.24963/ijcai.2017/250.Inductive,"., 2017. Knowledge transfer for out- of-knowledge-base entities : a graph neural network approach. In: Proceedings of IJCAI, pp. 1802-1808. https://doi.org/10.24963/ijcai.2017/250.Inductive representation learning on large graphs WLHamilton ZYing JLeskovec Proceedings of NIPS NIPS 2017 Hamilton, W.L., Ying, Z., Leskovec, J., 20"
+1812.08434v6.pdf,back,url,https://github.com/ShinKyuY/Representation_Learning_on_Graphs_with_Jumping_Knowledge_Networks,ion Rhino-Bird Focused Research Program 2018YFB1004503 NSFC No.61772302 Beijing Academy of Artificial Intelligence (BAAI Link JK-Net (2018) https://github.com/ShinKyuY/Representation_Learning_on_Graphs_with_Jumping_Knowledge_Networks SSE (2018) https://github.com/Hanjun-Dai/steady_state_embedding LGCN (2018) https://github.com/divelab/lgcn/FastGCN (2018) https://github.c
+1812.08434v6.pdf,back,url,https://github.com/Hanjun-Dai/steady_state_embedding,elligence (BAAI Link JK-Net (2018) https://github.com/ShinKyuY/Representation_Learning_on_Graphs_with_Jumping_Knowledge_Networks SSE (2018) https://github.com/Hanjun-Dai/steady_state_embedding LGCN (2018) https://github.com/divelab/lgcn/FastGCN (2018) https://github.com/matenure/FastGCN DiffPool (2018) https://github.com/RexYing/d
+1812.08434v6.pdf,back,url,https://github.com/divelab/lgcn/FastGCN,presentation_Learning_on_Graphs_with_Jumping_Knowledge_Networks SSE (2018) https://github.com/Hanjun-Dai/steady_state_embedding LGCN (2018) https://github.com/divelab/lgcn/FastGCN (2018) https://github.com/matenure/FastGCN DiffPool (2018) https://github.com/RexYing/diffpool GraphRNN (2018) https://github.com/snap-stan
+1812.08434v6.pdf,back,url,https://github.com/matenure/FastGCN,owledge_Networks SSE (2018) https://github.com/Hanjun-Dai/steady_state_embedding LGCN (2018) https://github.com/divelab/lgcn/FastGCN (2018) https://github.com/matenure/FastGCN DiffPool (2018) https://github.com/RexYing/diffpool GraphRNN (2018) https://github.com/snap-stanford/GraphRNN MolGAN (2018) https://github.
+1812.08434v6.pdf,back,url,https://github.com/RexYing/diffpool,n-Dai/steady_state_embedding LGCN (2018) https://github.com/divelab/lgcn/FastGCN (2018) https://github.com/matenure/FastGCN DiffPool (2018) https://github.com/RexYing/diffpool GraphRNN (2018) https://github.com/snap-stanford/GraphRNN MolGAN (2018) https://github.com/nicola-decao/MolGAN NetGAN (2018) https://github
+1812.08434v6.pdf,back,url,https://github.com/snap-stanford/GraphRNN,hub.com/divelab/lgcn/FastGCN (2018) https://github.com/matenure/FastGCN DiffPool (2018) https://github.com/RexYing/diffpool GraphRNN (2018) https://github.com/snap-stanford/GraphRNN MolGAN (2018) https://github.com/nicola-decao/MolGAN NetGAN (2018) https://github.com/danielzuegner/netgan DCRNN (2018) https://github.com/
+1812.08434v6.pdf,back,url,https://github.com/nicola-decao/MolGAN,atenure/FastGCN DiffPool (2018) https://github.com/RexYing/diffpool GraphRNN (2018) https://github.com/snap-stanford/GraphRNN MolGAN (2018) https://github.com/nicola-decao/MolGAN NetGAN (2018) https://github.com/danielzuegner/netgan DCRNN (2018) https://github.com/liyaguang/DCRNN ST-GCN (2018) https://github.com/yysi
+1812.08434v6.pdf,back,url,https://github.com/danielzuegner/netgan,xYing/diffpool GraphRNN (2018) https://github.com/snap-stanford/GraphRNN MolGAN (2018) https://github.com/nicola-decao/MolGAN NetGAN (2018) https://github.com/danielzuegner/netgan DCRNN (2018) https://github.com/liyaguang/DCRNN ST-GCN (2018) https://github.com/yysijie/st-gcn RGCN (2018) https://github.com/tkipf/relati
+1812.08434v6.pdf,back,url,https://github.com/liyaguang/DCRNN,p-stanford/GraphRNN MolGAN (2018) https://github.com/nicola-decao/MolGAN NetGAN (2018) https://github.com/danielzuegner/netgan DCRNN (2018) https://github.com/liyaguang/DCRNN ST-GCN (2018) https://github.com/yysijie/st-gcn RGCN (2018) https://github.com/tkipf/relational-gcn AS-GCN (2018) https://github.com/huangw
+1812.08434v6.pdf,back,url,https://github.com/yysijie/st-gcn,com/nicola-decao/MolGAN NetGAN (2018) https://github.com/danielzuegner/netgan DCRNN (2018) https://github.com/liyaguang/DCRNN ST-GCN (2018) https://github.com/yysijie/st-gcn RGCN (2018) https://github.com/tkipf/relational-gcn AS-GCN (2018) https://github.com/huangwb/AS-GCN DGCN (2018) https://github.com/ZhuangCY
+1812.08434v6.pdf,back,url,https://github.com/tkipf/relational-gcn,github.com/danielzuegner/netgan DCRNN (2018) https://github.com/liyaguang/DCRNN ST-GCN (2018) https://github.com/yysijie/st-gcn RGCN (2018) https://github.com/tkipf/relational-gcn AS-GCN (2018) https://github.com/huangwb/AS-GCN DGCN (2018) https://github.com/ZhuangCY/DGCN GaAN (2018) https://github.com/jennyzhang0215/
+1812.08434v6.pdf,back,url,https://github.com/huangwb/AS-GCN,ithub.com/liyaguang/DCRNN ST-GCN (2018) https://github.com/yysijie/st-gcn RGCN (2018) https://github.com/tkipf/relational-gcn AS-GCN (2018) https://github.com/huangwb/AS-GCN DGCN (2018) https://github.com/ZhuangCY/DGCN GaAN (2018) https://github.com/jennyzhang0215/GaAN DGI (2019) https://github.com/PetarV-/DGI G
+1812.08434v6.pdf,back,url,https://github.com/ZhuangCY/DGCN,//github.com/yysijie/st-gcn RGCN (2018) https://github.com/tkipf/relational-gcn AS-GCN (2018) https://github.com/huangwb/AS-GCN DGCN (2018) https://github.com/ZhuangCY/DGCN GaAN (2018) https://github.com/jennyzhang0215/GaAN DGI (2019) https://github.com/PetarV-/DGI GraphWaveNet (2019) https://github.com/nnzhan/
+1812.08434v6.pdf,back,url,https://github.com/jennyzhang0215/GaAN,://github.com/tkipf/relational-gcn AS-GCN (2018) https://github.com/huangwb/AS-GCN DGCN (2018) https://github.com/ZhuangCY/DGCN GaAN (2018) https://github.com/jennyzhang0215/GaAN DGI (2019) https://github.com/PetarV-/DGI GraphWaveNet (2019) https://github.com/nnzhan/Graph-WaveNet HAN (2019) https://github.com/Jhy1993
+1812.08434v6.pdf,back,url,https://github.com/PetarV-/DGI,"ttps://github.com/huangwb/AS-GCN DGCN (2018) https://github.com/ZhuangCY/DGCN GaAN (2018) https://github.com/jennyzhang0215/GaAN DGI (2019) https://github.com/PetarV-/DGI GraphWaveNet (2019) https://github.com/nnzhan/Graph-WaveNet HAN (2019) https://github.com/Jhy1993/HAN As the research filed grows rapidly,"
+1812.08434v6.pdf,back,url,https://github.com/nnzhan/Graph-WaveNet,"//github.com/ZhuangCY/DGCN GaAN (2018) https://github.com/jennyzhang0215/GaAN DGI (2019) https://github.com/PetarV-/DGI GraphWaveNet (2019) https://github.com/nnzhan/Graph-WaveNet HAN (2019) https://github.com/Jhy1993/HAN As the research filed grows rapidly, we recommend our readers the paper list published by our tea"
+1812.08434v6.pdf,back,url,https://github.com/Jhy1993/HAN,"ub.com/jennyzhang0215/GaAN DGI (2019) https://github.com/PetarV-/DGI GraphWaveNet (2019) https://github.com/nnzhan/Graph-WaveNet HAN (2019) https://github.com/Jhy1993/HAN As the research filed grows rapidly, we recommend our readers the paper list published by our team, GNNPapers (https://github.com/thunlp/gn"
+1812.08434v6.pdf,back,url,https://github.com/thunlp/gnnpapers,"tps://github.com/Jhy1993/HAN As the research filed grows rapidly, we recommend our readers the paper list published by our team, GNNPapers (https://github.com/thunlp/gnnpapers), for recent papers. Declaration of competing interestThe authors declare that they have no known competing financial interests or personal r"
+1907.07374v5.pdf,target,url,http://www.heatmapping.org/slides/2018WCCI.pdf,
+1907.07374v5.pdf,target,url,http://iphome.hhi.de/samek/pdf/MonICML16.pdf,
+1907.07374v5.pdf,target,url,https://pair-code.github.io/saliency/,
+1907.07374v5.pdf,target,url,https://cs.stanford.edu/people/karpathy/cnnembed,
+1907.07374v5.pdf,target,url,https://distill.pub/2019/activation-atlas,
+1907.07374v5.pdf,body,url,https://distill.pub/2018/building-blocks/with,"patterns activate neurons strongly while in deeper layer, more complex features such as dog faces and ears do. Figure (B) is obtained from https://distill.pub/2018/building-blocks/with permission from Chris Olah. Fig. 3 .3Fig. 3. Overview on perceptive interpretability methods. (A) Saliency method with decomposition mechan"
+1907.07374v5.pdf,note,url,http://www.heatmapping.org/slides/2018,"Machine learning and ai for the sciences -towards interpretability, 2018. http://www.heatmapping.org/slides/2018 WCCI.pdf."
+1907.07374v5.pdf,reference,url,http://iphome.hhi.de/samek/pdf/MonICML16.pdf.Towards,"heatmapping.org/slides/2018 WCCI.pdf. Deep taylor decomposition of neural networks 2016 Deep taylor decomposition of neural networks, 2016. http://iphome.hhi.de/samek/pdf/MonICML16.pdf.Towards automatic concept-based explanations AmirataGhorbani JamesWexler JamesYZou BeenKim Advances in Neural Information Processing Systems HWalla"
+1907.07374v5.pdf,reference,url,https://cs.stanford.edu/people/karpathy/cnnembed.Exploring,"ve models. CoRR, abs/1901.01499, 2019. t-sne visualization of cnn codes AKarpathy 2014 A. Karpathy. t-sne visualization of cnn codes, 2014. https://cs.stanford.edu/people/karpathy/cnnembed.Exploring neural networks with activation atlases ShanCarter ZanArmstrong LudwigSchubert IanJohnson ChrisOlah 2019 Shan Carter, Zan Armstrong, Ludwig"
+1907.07374v5.pdf,reference,url,https://distill.pub/2019/activation-atlas.Probabilistic,"lah 2019 Shan Carter, Zan Armstrong, Ludwig Schubert, Ian Johnson, and Chris Olah. Exploring neural networks with activation atlases, 2019. https://distill.pub/2019/activation-atlas.Probabilistic representation and inverse design of metamaterials based on a deep generative model with semi-supervised learning strategy WeiMa FengCheng"
+1908.04515v1.pdf,idno_doi,doi,10.1364/optica.XX.XXXXXX,10.1364/optica.XX.XXXXXX
+2004.03597v2.pdf,abstract,url,http://www.crowd-counting.com.Furthermore,"s at both image-level and head-level. Several recent methods are evaluated and compared on this dataset. The dataset can be downloaded from http://www.crowd-counting.com.Furthermore, we propose a novel crowd counting network that progressively generates crowd density maps via residual error estimation. The proposed metho"
+2101.00027v1.pdf,target,url,http://Skylion007.github.io/OpenWebTextCorpus,
+2101.00027v1.pdf,target,url,https://github.com/BIGBALLON/cifar-10-cnn,
+2101.00027v1.pdf,target,url,http://arXiv.org/abs/cs/0205028,
+2101.00027v1.pdf,target,url,https://twitter.com/theshawwn/status/1320282149329784833,
+2101.00027v1.pdf,idno_doi,doi,10.5281/zenodo.2591652,10.5281/zenodo.2591652
+2101.00027v1.pdf,body,url,https://pile.eleuther.ai/versity,"ta (Brown et al., 2020;Raffel et al., 2019). While training on the Common Crawl has been effective, recent work has shown that dataset di-1 https://pile.eleuther.ai/versity leads to better downstream generalization capability (Rosset, 2019). Additionally, large-scale language models have been shown to effective"
+2101.00027v1.pdf,body,url,www.fanfiction.net,"r general-purpose language modeling.2. Fanfiction. Hundreds of GiB of fanfiction has been written and put online, primarily on the websites www.fanfiction.net and www.https://archiveofourown.org/.This represents a significant untapped resource for language modeling as it is almost exclusively shor"
+2101.00027v1.pdf,body,url,www.https://archiveofourown.org/.This,"age modeling.2. Fanfiction. Hundreds of GiB of fanfiction has been written and put online, primarily on the websites www.fanfiction.net and www.https://archiveofourown.org/.This represents a significant untapped resource for language modeling as it is almost exclusively short-form fiction, a writing style that is no"
+2101.00027v1.pdf,body,url,https://github.com/SpamScope/mail-parser,"which 2GiB are used to create the validation and test splits, and the remainder is held in reserve. From the training set, we remove any 25 https://github.com/SpamScope/mail-parser elements that are also present verbatim in any of the held out data, to prevent leakage. D.1 WeightsSimilar to Brown et al. (2020), we incr"
+2101.00027v1.pdf,body,url,https://www.google.com/recaptcha/api.js?render=*site,"rifying user response"" part of the guide. I'm not an expert in coding. Basically I've added this code to the theme.liquid file <script src=""https://www.google.com/recaptcha/api.js?render=*site key provided by google*""></script> And then I've added th F.9 Wikipedia (en) and the third son of John Bland and Elizabeth née Birch, daugh"
+2101.00027v1.pdf,body,url,https://arxiv.org/help/stats/2019_by_area/Figure,number of new submissions/year to arXiv grouped by domain over time.Right: fractional submission rates for each of the domains. Figure from https://arxiv.org/help/stats/2019_by_area/Figure 10: Left: number of new submissions/year to arXiv grouped by domain over time.Right: fractional submission rates for each of the domains. F
+2101.00027v1.pdf,body,url,https://launchpad.net/bugs/1627643,"goče osvetliti politično voljo držav članic, da F.20 PhilPapersemingly wlan related) <Snappy:New> <linux-raspi2 (Ubuntu):New for p-pisati> <https://launchpad.net/bugs/1627643><ppisati> ogra_: or we punch a hole in the dev image so we can login viathe serial console and check what's really going on<ppisati> ogra_:"
+2101.00027v1.pdf,body,url,https://github.com/EleutherAI/the-pile,skenronfridaysubjectpmpmsubjectdiskspacepowersentcchouknowccenronaliassubjectoctobernasubjectccgassaide Table 17 :17Topic Terms (continued) https://github.com/EleutherAI/the-pile https://www.courtlistener.com/https://archive.org/details/stackexchange https://bulkdata.uspto.gov/https://irclogs.ubuntu.com/https://philp
+2101.00027v1.pdf,body,url,https://www.courtlistener.com/https://archive.org/details/stackexchange,epowersentcchouknowccenronaliassubjectoctobernasubjectccgassaide Table 17 :17Topic Terms (continued) https://github.com/EleutherAI/the-pile https://www.courtlistener.com/https://archive.org/details/stackexchange https://bulkdata.uspto.gov/https://irclogs.ubuntu.com/https://philpapers.org/https://exporter.nih.gov/https://news.ycombinator.com While th
+2101.00027v1.pdf,body,url,https://bulkdata.uspto.gov/https://irclogs.ubuntu.com/https://philpapers.org/https://exporter.nih.gov/https://news.ycombinator.com,"7 :17Topic Terms (continued) https://github.com/EleutherAI/the-pile https://www.courtlistener.com/https://archive.org/details/stackexchange https://bulkdata.uspto.gov/https://irclogs.ubuntu.com/https://philpapers.org/https://exporter.nih.gov/https://news.ycombinator.com While the sizes of GPT-3 models on the OpenAI API have not been publicized, we assume here that ada, babbage, curie and davinci models corr"
+2101.00027v1.pdf,body,url,http://data.statmt.org/cc-100/.cantly,"hat ada, babbage, curie and davinci models correspond to 2.7B, 6.7B, 13B and 175B parameter models respectively. The data was obtained from http://data.statmt.org/cc-100/.cantly on programming-related datasets like Github and StackExchange, on EuroParl, due to the lack of multilingual text in either other dataset, a"
+2101.00027v1.pdf,body,url,https://www.tensorflow.org/datasets/catalog/c4,"is applicable or appropriate to a particular situation. If in doubt, it is always advisable to speak to an intellectual property attorney. https://www.tensorflow.org/datasets/catalog/c4 https://arxiv.org/help/bulk_data_s3 https://www.courtlistener.com/api/bulk-info/https://www.tensorflow.org/datasets/catalog/wikipedia#wikip"
+2101.00027v1.pdf,body,url,https://arxiv.org/help/bulk_data_s3,"ituation. If in doubt, it is always advisable to speak to an intellectual property attorney. https://www.tensorflow.org/datasets/catalog/c4 https://arxiv.org/help/bulk_data_s3 https://www.courtlistener.com/api/bulk-info/https://www.tensorflow.org/datasets/catalog/wikipedia#wikipedia20200301enC.15 Ubuntu IRCWe proc"
+2101.00027v1.pdf,body,url,https://www.courtlistener.com/api/bulk-info/https://www.tensorflow.org/datasets/catalog/wikipedia#wikipedia20200301enC.15,"advisable to speak to an intellectual property attorney. https://www.tensorflow.org/datasets/catalog/c4 https://arxiv.org/help/bulk_data_s3 https://www.courtlistener.com/api/bulk-info/https://www.tensorflow.org/datasets/catalog/wikipedia#wikipedia20200301enC.15 Ubuntu IRCWe processed all logs from July 5, 2004 through September 1, 2020. http://www.statmt.org/europarl/https://github.com/jdepoix/yout"
+2101.00027v1.pdf,body,url,http://www.statmt.org/europarl/https://github.com/jdepoix/youtube-transcript-api,"sorflow.org/datasets/catalog/wikipedia#wikipedia20200301enC.15 Ubuntu IRCWe processed all logs from July 5, 2004 through September 1, 2020. http://www.statmt.org/europarl/https://github.com/jdepoix/youtube-transcript-api https://github.com/vphill/pyoaiharvester/https://github.com/sdtblck/PDFextract https://github.com/ekzhu/datasketch"
+2101.00027v1.pdf,body,url,https://github.com/vphill/pyoaiharvester/https://github.com/sdtblck/PDFextract,"ssed all logs from July 5, 2004 through September 1, 2020. http://www.statmt.org/europarl/https://github.com/jdepoix/youtube-transcript-api https://github.com/vphill/pyoaiharvester/https://github.com/sdtblck/PDFextract https://github.com/ekzhu/datasketch"
+2101.00027v1.pdf,body,url,https://github.com/ekzhu/datasketch,g/europarl/https://github.com/jdepoix/youtube-transcript-api https://github.com/vphill/pyoaiharvester/https://github.com/sdtblck/PDFextract https://github.com/ekzhu/datasketch
+2101.00027v1.pdf,note,url,https://www.courtlistener.com/,https://www.courtlistener.com/
+2101.00027v1.pdf,note,url,https://archive.org/details/stackexchange,https://archive.org/details/stackexchange
+2101.00027v1.pdf,note,url,https://bulkdata.uspto.gov/,https://bulkdata.uspto.gov/
+2101.00027v1.pdf,note,url,https://irclogs.ubuntu.com/,https://irclogs.ubuntu.com/
+2101.00027v1.pdf,note,url,https://philpapers.org/,https://philpapers.org/
+2101.00027v1.pdf,note,url,https://exporter.nih.gov/,https://exporter.nih.gov/
+2101.00027v1.pdf,note,url,https://news.ycombinator.com,https://news.ycombinator.com
+2101.00027v1.pdf,note,url,https://www.courtlistener.com/api/bulk-info/,https://www.courtlistener.com/api/bulk-info/
+2101.00027v1.pdf,note,url,https://www.tensorflow.org/datasets/catalog/wikipedia#wikipedia20200301enC.15,"https://www.tensorflow.org/datasets/catalog/wikipedia#wikipedia20200301enC.15 Ubuntu IRCWe processed all logs from July 5, 2004 through September 1, 2020."
+2101.00027v1.pdf,note,url,http://www.statmt.org/europarl/,http://www.statmt.org/europarl/
+2101.00027v1.pdf,note,url,https://github.com/jdepoix/youtube-transcript-api,https://github.com/jdepoix/youtube-transcript-api
+2101.00027v1.pdf,note,url,https://github.com/vphill/pyoaiharvester/,https://github.com/vphill/pyoaiharvester/
+2101.00027v1.pdf,note,url,https://github.com/sdtblck/PDFextract,https://github.com/sdtblck/PDFextract
+2101.00027v1.pdf,reference,url,http://Skylion007.github.io/OpenWebTextCorpus.Authors,"Kate Crawford. 2018. Datasheets for datasets. arXiv preprint arXiv:1803.09010. Aaron Gokaslan and Vanya Cohen. 2019. Openweb- text corpus. http://Skylion007.github.io/OpenWebTextCorpus.Authors Guild v. Google 804 202 2015 Docket No. 13-4829cv Authors Guild v. Google. 2015. . Docket No. 13-4829- cv, 804:202. When will AI exceed hum"
+2101.00027v1.pdf,reference,url,https://github.com/BIGBALLON/cifar-10-cnn.Europarl,"lassification research. In European Conference on Machine Learning, pages 217-226. Springer. Sosuke Kobayashi. 2018. Homemade bookcor- pus. https://github.com/BIGBALLON/cifar-10-cnn.Europarl: A parallel corpus for statistical machine translation PhilippKoehn MT summit Citeseer 2005 5 Philipp Koehn. 2005. Europarl: A parallel corp"
+2101.00027v1.pdf,reference,url,http://arXiv.org/abs/cs/0205028.JohnMacfarlane,"aching Natural Language Processing and Computa- tional Linguistics, pages 62-69. Somerset, NJ: Associa- tion for Computational Linguistics. http://arXiv.org/abs/cs/0205028.JohnMacfarlane 2006-2020 Pandoc: a universal document converter John MacFarlane. 2006-2020. Pandoc: a universal document converter. Distributed representa"
+2101.00027v1.pdf,figure,url,https://arxiv.org/help/stats/2019_by_area/,number of new submissions/year to arXiv grouped by domain over time.Right: fractional submission rates for each of the domains. Figure from https://arxiv.org/help/stats/2019_by_area/
+2105.03011v1.pdf,idno_doi,doi,10.18653/v1/2020.findings-emnlp.66,10.18653/v1/2020.findings-emnlp.66
+2105.03011v1.pdf,idno_doi,doi,10.18653/v1/D18-1241,10.18653/v1/D18-1241
+2105.03011v1.pdf,idno_doi,doi,10.1162/tacl_a_00317,10.1162/tacl_a_00317
+2105.03011v1.pdf,idno_doi,doi,10.18653/v1/D19-1606,10.18653/v1/D19-1606
+2105.03011v1.pdf,idno_doi,doi,10.18653/v1/N19-1423,10.18653/v1/N19-1423
+2105.03011v1.pdf,idno_doi,doi,10.18653/v1/N19-1246,10.18653/v1/N19-1246
+2105.03011v1.pdf,idno_doi,doi,10.18653/v1/2020.emnlp-main.86,10.18653/v1/2020.emnlp-main.86
+2105.03011v1.pdf,idno_doi,doi,10.18653/v1/P18-1031,10.18653/v1/P18-1031
+2105.03011v1.pdf,idno_doi,doi,10.18653/v1/D19-1259,10.18653/v1/D19-1259
+2105.03011v1.pdf,idno_doi,doi,10.18653/v1/P17-1147,10.18653/v1/P17-1147
+2105.03011v1.pdf,idno_doi,doi,10.18653/v1/2020.findings-emnlp.171,10.18653/v1/2020.findings-emnlp.171
+2105.03011v1.pdf,idno_doi,doi,10.1162/tacl_a_00023,10.1162/tacl_a_00023
+2105.03011v1.pdf,idno_doi,doi,10.1162/tacl_a_00276,10.1162/tacl_a_00276
+2105.03011v1.pdf,idno_doi,doi,10.18653/v1/2020.acl-main.703,10.18653/v1/2020.acl-main.703
+2105.03011v1.pdf,idno_doi,doi,10.18653/v1/2020.acl-main.604,10.18653/v1/2020.acl-main.604
+2105.03011v1.pdf,idno_doi,doi,10.18653/v1/2020.acl-main.447,10.18653/v1/2020.acl-main.447
+2105.03011v1.pdf,idno_doi,doi,10.18653/v1/W18-5301,10.18653/v1/W18-5301
+2105.03011v1.pdf,idno_doi,doi,10.18653/v1/2020.emnlp-demos.17,10.18653/v1/2020.emnlp-demos.17
+2105.03011v1.pdf,idno_doi,doi,10.18653/v1/D18-1258,10.18653/v1/D18-1258
+2105.03011v1.pdf,idno_doi,doi,10.18653/v1/2020.bionlp-1.15,10.18653/v1/2020.bionlp-1.15
+2105.03011v1.pdf,idno_doi,doi,10.18653/v1/D16-1264,10.18653/v1/D16-1264
+2105.03011v1.pdf,idno_doi,doi,10.18653/v1/D19-1500,10.18653/v1/D19-1500
+2105.03011v1.pdf,idno_doi,doi,10.1162/tacl_a_00266,10.1162/tacl_a_00266
+2105.03011v1.pdf,idno_doi,doi,10.18653/v1/W17-2623,10.18653/v1/W17-2623
+2105.03011v1.pdf,idno_doi,doi,10.1162/tacl_a_00021,10.1162/tacl_a_00021
+2105.03011v1.pdf,idno_doi,doi,10.18653/v1/D15-1237,10.18653/v1/D15-1237
+2105.03011v1.pdf,idno_doi,doi,10.18653/v1/D18-1259,10.18653/v1/D18-1259
+2105.03011v1.pdf,body,url,https://allenai.org/project/qasper.We,"rom Question Answering over Scientific Research Papers. The dataset, baseline code, and other information about the project can be found at https://allenai.org/project/qasper.We accessed both release versions 20190928 and 20200705v1. LaTeX allows us to avoid quality issues with PDF parsing. We chose those either tag"
+2105.03011v1.pdf,body,url,http://semanticscholar.org,"uality issues with PDF parsing. We chose those either tagged with the cs.CL arXiv category or published with an ACL Anthology identifier. 5 http://semanticscholar.org 6 https://www.upwork.com/Two domain-experts independently judged these, and achieved a Cohen's κ of 0.94. S2ORC provides section hierarchy"
+2105.03011v1.pdf,body,url,https://www.upwork.com/Two,"g. We chose those either tagged with the cs.CL arXiv category or published with an ACL Anthology identifier. 5 http://semanticscholar.org 6 https://www.upwork.com/Two domain-experts independently judged these, and achieved a Cohen's κ of 0.94. S2ORC provides section hierarchy derived from LaTeX source htt"
+2105.03011v1.pdf,body,url,https://paperswithcode.com/task/question-answering,"Two domain-experts independently judged these, and achieved a Cohen's κ of 0.94. S2ORC provides section hierarchy derived from LaTeX source https://paperswithcode.com/task/question-answering We tried a model that predicts answer type, then based on the type uses a different head to predict the corresponding answer. This model pe"
+2105.03011v1.pdf,note,url,https://allenai.org/project/qasper,"rom Question Answering over Scientific Research Papers. The dataset, baseline code, and other information about the project can be found at https://allenai.org/project/qasper."
+2105.03011v1.pdf,note,url,http://semanticscholar,5 http://semanticscholar.
+2105.03011v1.pdf,note,url,https://www.upwork.com/,org 6 https://www.upwork.com/
+2106.04463v3.pdf,target,url,https://doi.org/10.7303/syn26376615,
+2106.04463v3.pdf,target,url,http://www.pascal-network.org/challenges/VOC/voc2012/workshop/index.html,
+2106.04463v3.pdf,idno_doi,doi,10.7303/syn26376615,10.7303/syn26376615
+2106.04463v3.pdf,idno_doi,doi,10.1016/S0140-6736(13)61649-9,10.1016/S0140-6736(13)61649-9
+2106.04463v3.pdf,idno_doi,doi,10.1053/j.gastro.2019.01.260,10.1053/j.gastro.2019.01.260
+2106.04463v3.pdf,idno_doi,doi,10.1001/archsurg.1988.01400320112031,10.1001/archsurg.1988.01400320112031
+2106.04463v3.pdf,idno_doi,doi,10.1016/j.media.2021.102002,10.1016/j.media.2021.102002
+2106.04463v3.pdf,idno_doi,doi,10.2196/26151,10.2196/26151
+2106.04463v3.pdf,idno_doi,doi,10.1038/s41598-020-59413-5,10.1038/s41598-020-59413-5
+2106.04463v3.pdf,body,url,https://labelbox.com,"↑ MASD ↓JI: Jaccard index DSC: Dice coefficient F2: Fbeta-measure, with β = 2 PPV: positive predictive value Acc.: overall accuracy d 6/20 https://labelbox.com 20/20"
+2106.04463v3.pdf,note,doi,10.1001/archsurg.1988,"Stiegmann, G. V. Atlas of Gastrointestinal Endoscopy. Arch. Surg. 123, 1026-1026, 10.1001/archsurg.1988. 01400320112031 (1988)."
+2106.04463v3.pdf,reference,url,http://www.pascal-network.org/challenges/VOC/voc2012/workshop/index.html.Fully,"eringham, M., Van Gool, L., Williams, C. K. I., Winn, J. & Zisserman, A. The PASCAL Visual Object Classes Challenge 2012 (VOC2012) Results. http://www.pascal-network.org/challenges/VOC/voc2012/workshop/index.html.Fully convolutional networks for semantic segmentation JLong EShelhamer TDarrell Proceedings of the IEEE conference on computer vision and patter"
+2106.04463v3.pdf,back,url,https://github.com/sharibox/PolypGen-Benchmark.git.All,s. Benchmark codes of the polypGen dataset with provided training and validation split in this paper for segmentation is also available at: https://github.com/sharibox/PolypGen-Benchmark.git.All the method codes are also available at different GitHub repositories provided in the Table 1. (27.10 vs 28.19) data compared to the DeepLab
+2111.02114v1.pdf,body,url,https://laion.ai/laion-400-open-dataset/Preprint.Under,dth ≥ 51267MNumber with height or width ≥ 512112MNumber with height and width ≥ 256 211MNumber with height or width ≥ 256268M Project page: https://laion.ai/laion-400-open-dataset/Preprint.Under review. https://rom1504.github.io/clip-retrieval/https://github.com/rom1504/img2dataset
+2111.02114v1.pdf,body,url,https://rom1504.github.io/clip-retrieval/https://github.com/rom1504/img2dataset,ight and width ≥ 256 211MNumber with height or width ≥ 256268M Project page: https://laion.ai/laion-400-open-dataset/Preprint.Under review. https://rom1504.github.io/clip-retrieval/https://github.com/rom1504/img2dataset
+2111.02114v1.pdf,note,url,https://rom1504.github.io/clip-retrieval/,https://rom1504.github.io/clip-retrieval/
+2111.02114v1.pdf,note,url,https://github.com/rom1504/img2dataset,https://github.com/rom1504/img2dataset
+2311.02709v1.pdf,target,url,https://github.com/facebookresearch/detectron2,
+2311.02709v1.pdf,abstract,url,www.sama.com/sama-coco-dataset/,re important and that annotation pipelines should closely consider the task of interest. The dataset is made publicly available at https: //www.sama.com/sama-coco-dataset/.
+2405.03991v2.pdf,target,url,http://doi.acm.org/10.1145/2666652.2666663.SeriesTitle:AISec'14,
+2405.03991v2.pdf,target,url,https://doi.org/10.1145/3564625.3567975,
+2405.03991v2.pdf,target,url,https://www.usenix.org/conference/usenixsecurity16/technical-sessions/presentation/andriesse,
+2405.03991v2.pdf,target,url,https://www.usenix.org/conference/usenixsecurity14/technical-sessions/presentation/bao,
+2405.03991v2.pdf,target,url,https://doi.org/10.1145/3379597.3387481,
+2405.03991v2.pdf,target,url,https://www.usenix.org/conference/usenixsecurity22/presentation/chen-qibin,
+2405.03991v2.pdf,target,url,http://arxiv.org/abs/2205.11794,
+2405.03991v2.pdf,target,url,https://doi.org/10.1145/3428293,
+2405.03991v2.pdf,target,url,https://api.semanticscholar.org/CorpusID,
+2405.03991v2.pdf,target,url,http://arxiv.org/abs/1806.04773,
+2405.03991v2.pdf,target,url,https://www.sciencedirect.com/science/article/pii/S0167739X21002090,
+2405.03991v2.pdf,target,url,https://doi.org/10.1145/3545948.3545956,
+2405.03991v2.pdf,target,url,https://doi.org/10.48550/arXiv.2405.03478,
+2405.03991v2.pdf,target,url,https://doi.org/10.1145/3548606.3560612,
+2405.03991v2.pdf,target,url,https://github.com/boozallen/MOTIF,
+2405.03991v2.pdf,target,url,https://doi.org/10.1145/3605764.3623907,
+2405.03991v2.pdf,target,url,http://dx.doi.org/10.1109/TSE.2022.3187689,
+2405.03991v2.pdf,target,url,https://github.com/huzecong/ghcc,
+2405.03991v2.pdf,target,url,https://www.sciencedirect.com/science/article/pii/S0167404821001954,
+2405.03991v2.pdf,target,url,https://api.semanticscholar.org/CorpusID:232134887,
+2405.03991v2.pdf,target,url,https://proceedings.mlr.press/v97/li19d.html,
+2405.03991v2.pdf,target,url,https://www.mdpi.com/2079-9292/12/7/1722,
+2405.03991v2.pdf,target,url,https://www.usenix.org/conference/usenixsecurity22/presentation/marcelli,
+2405.03991v2.pdf,target,url,https://vcpkg.io/en/,
+2405.03991v2.pdf,target,url,https://ceur-ws.org/Vol-3652/paper12.pdf,
+2405.03991v2.pdf,target,url,https://doi.org/10.1145/3427228.3427265,
+2405.03991v2.pdf,target,url,http://arxiv.org/abs/1909.06674,
+2405.03991v2.pdf,target,url,http://arxiv.org/abs/2012.09932,
+2405.03991v2.pdf,target,url,http://arxiv.org/abs/2006.09271,
+2405.03991v2.pdf,target,url,http://arxiv.org/abs/2009.03779,
+2405.03991v2.pdf,target,url,https://virusshare.com/,
+2405.03991v2.pdf,target,url,https://www.usenix.org/conference/raid2020/presentation/omar,
+2405.03991v2.pdf,target,url,https://doi.org/10.1145/3465361,
+2405.03991v2.pdf,target,url,http://dx.doi.org/10.1145/3366423.3380145,
+2405.03991v2.pdf,target,url,https://api.semanticscholar.org/CorpusID:33377904,
+2405.03991v2.pdf,target,url,https://gs.statcounter.com/os-market-share/desktop/worldwide/,
+2405.03991v2.pdf,target,url,https://api.semanticscholar.org/CorpusID:249674500,
+2405.03991v2.pdf,target,url,https://doi.org/10.1007/978-3-031-43412-9_16,
+2405.03991v2.pdf,target,url,https://www.usenix.org/conference/usenixsecurity22/presentation/yu-sheng,
+2405.03991v2.pdf,target,url,https://www.usenix.org/conference/usenixsecurity20/presentation/zhu,
+2405.03991v2.pdf,target,url,https://doi.org/10.1145/3372297.3420013,
+2405.03991v2.pdf,idno_doi,doi,10.1145/2666652.2666663,10.1145/2666652.2666663
+2405.03991v2.pdf,idno_doi,doi,10.1145/3564625.3567975,10.1145/3564625.3567975
+2405.03991v2.pdf,idno_doi,doi,10.1145/3379597.3387481,10.1145/3379597.3387481
+2405.03991v2.pdf,idno_doi,doi,10.1109/CGO51591.2021.9370322,10.1109/CGO51591.2021.9370322
+2405.03991v2.pdf,idno_doi,doi,10.1145/3428293,10.1145/3428293
+2405.03991v2.pdf,idno_doi,doi,10.1109/MALWARE.2018.8659360,10.1109/MALWARE.2018.8659360
+2405.03991v2.pdf,idno_doi,doi,10.1109/MSR.2013.6624034,10.1109/MSR.2013.6624034
+2405.03991v2.pdf,idno_doi,doi,10.1016/j.future.2021.06.014,10.1016/j.future.2021.06.014
+2405.03991v2.pdf,idno_doi,doi,10.1109/TrustCom53373.2021.00130,10.1109/TrustCom53373.2021.00130
+2405.03991v2.pdf,idno_doi,doi,10.1145/3545948.3545956,10.1145/3545948.3545956
+2405.03991v2.pdf,idno_doi,doi,10.48550/arXiv.2405.03478,10.48550/arXiv.2405.03478
+2405.03991v2.pdf,idno_doi,doi,10.1145/3548606.3560612,10.1145/3548606.3560612
+2405.03991v2.pdf,idno_doi,doi,10.1145/3474369.3486867,10.1145/3474369.3486867
+2405.03991v2.pdf,idno_doi,doi,10.48550/arXiv.2111.15031,10.48550/arXiv.2111.15031
+2405.03991v2.pdf,idno_doi,doi,10.1145/3605764.3623907,10.1145/3605764.3623907
+2405.03991v2.pdf,idno_doi,doi,10.1109/TSE.2022.3187689,10.1109/TSE.2022.3187689
+2405.03991v2.pdf,idno_doi,doi,10.1016/j.cose.2021.102371,10.1016/j.cose.2021.102371
+2405.03991v2.pdf,idno_doi,doi,10.3390/electronics12071722,10.3390/electronics12071722
+2405.03991v2.pdf,idno_doi,doi,10.1109/ICCD.2008.4751891,10.1109/ICCD.2008.4751891
+2405.03991v2.pdf,idno_doi,doi,10.1145/3427228.3427265,10.1145/3427228.3427265
+2405.03991v2.pdf,idno_doi,doi,10.1145/3411508.3421372,10.1145/3411508.3421372
+2405.03991v2.pdf,idno_doi,doi,10.1145/3465361,10.1145/3465361
+2405.03991v2.pdf,idno_doi,doi,10.1145/3366423.3380145,10.1145/3366423.3380145
+2405.03991v2.pdf,idno_doi,doi,10.1109/SP.2016.17,10.1109/SP.2016.17
+2405.03991v2.pdf,idno_doi,doi,10.1007/978-3-031-43412-9_16,10.1007/978-3-031-43412-9_16
+2405.03991v2.pdf,idno_doi,doi,10.1109/TrustCom53373.2021.00084,10.1109/TrustCom53373.2021.00084
+2405.03991v2.pdf,idno_doi,doi,10.1109/ISCC53001.2021.9631481,10.1109/ISCC53001.2021.9631481
+2405.03991v2.pdf,idno_doi,doi,10.1145/3372297.3420013,10.1145/3372297.3420013
+2405.03991v2.pdf,abstract,url,https://assemblage-dataset.net/.*,"aining modern learning-based binary analyses. ASSEMBLAGE code is open sourced under the MIT license, and the dataset can be downloaded from https://assemblage-dataset.net/.* Equal contributions 38th Conference on Neural Information Processing Systems (NeurIPS 2024) Track on Datasets and Benchmarks."
+2405.03991v2.pdf,body,url,https://github.com/Cisco-Talos/binary_function_similarity/.Linux,"iles whose types could not be parsed. Files in the unknown category include data files, some scripts, ASC files, and source code. Code from https://github.com/Cisco-Talos/binary_function_similarity/.Linux functions are generally far better behaved in their identifiability[53]."
+2405.03991v2.pdf,note,url,https://github.com/Cisco-Talos/binary_function_similarity/,Code from https://github.com/Cisco-Talos/binary_function_similarity/.
+2405.03991v2.pdf,note,url,http://doi.acm.org/10.1145/2666652.2666663.Series,"ial Intelligent and Security Workshop, pages 37-45, New York, NY, USA, 2014. ACM. ISBN 978-1-4503-3153-1. doi: 10.1145/2666652.2666663. URL http://doi.acm.org/10.1145/2666652.2666663.Series Title: AISec '14."
+2405.03991v2.pdf,note,doi,10.1145/3379597,"e on Mining Software Repositories, MSR '20, page 374-384, New York, NY, USA, 2020. Association for Computing Machinery. ISBN 9781450375177. doi: 10.1145/3379597. 3387481. URL https://doi.org/10.1145/3379597.3387481."
+2405.03991v2.pdf,note,url,http://arxiv.org/abs/2205.11794.arXiv:2205.11794,"Z. Chen and Y. Sun. Accelerating Frank-Wolfe via Averaging Step Directions, May 2022. URL http://arxiv.org/abs/2205.11794.arXiv:2205.11794 [cs, math]."
+2405.03991v2.pdf,note,url,http://arxiv.org/abs/1806.04773.arXiv,"IEEE, Oct. 2018. ISBN 978-1-72810-155-2. doi: 10.1109/MALWARE.2018.8659360. URL http://arxiv.org/abs/1806.04773.arXiv: 1806.04773."
+2405.03991v2.pdf,note,url,https://github.com/boozallen/MOTIF.arXiv,"ruth Family Labels. In The AAAI-22 Workshop on Artificial Intelligence for Cyber Security (AICS), 2022. doi: 10.48550/arXiv.2111.15031. URL https://github.com/boozallen/MOTIF.arXiv: 2111.15031v1."
+2405.03991v2.pdf,note,url,https://github.com/huzecong/ghcc.(Accessed,"J. Lacomis and Z. Hu. Github cloner & compiler, 2020. URL https://github.com/huzecong/ghcc.(Accessed Aug 15, 2023)."
+2405.03991v2.pdf,note,url,https://api.semanticscholar.org/CorpusID:257532815,"OpenAI. Gpt-4 technical report. ArXiv, abs/2303.08774, 2023. URL https://api.semanticscholar.org/CorpusID:257532815."
+2405.03991v2.pdf,note,url,http://arxiv.org/abs/1909.06674.arXiv,"E. Raff. A Step Toward Quantifying Independently Reproducible Machine Learning Research. In NeurIPS, 2019. URL http://arxiv.org/abs/1909.06674.arXiv: 1909.06674."
+2405.03991v2.pdf,note,url,http://arxiv.org/abs/2012.09932.arXiv,"E. Raff. Research Reproducibility as a Survival Analysis. In The Thirty-Fifth AAAI Confer- ence on Artificial Intelligence, 2021. URL http://arxiv.org/abs/2012.09932.arXiv: 2012.09932."
+2405.03991v2.pdf,note,url,http://arxiv.org/abs/2006.09271.arXiv,"nd Challenges for Windows Malware Classification. In NeurIPS 2020 Workshop: ML Retrospectives, Surveys & Meta- Analyses (ML-RSA), 2020. URL http://arxiv.org/abs/2006.09271.arXiv: 2006.09271."
+2405.03991v2.pdf,note,url,https://gs.statcounter.com/os-market-share/desktop/worldwide/.Accessed,"tatcounter. Desktop operating system market share worldwide. https://gs.statcounter.com/os-market-share/desktop/worldwide/, Sept. 2023. URL https://gs.statcounter.com/os-market-share/desktop/worldwide/.Accessed: 2023-10-09."
+2405.03991v2.pdf,note,url,https://api.semanticscholar.org/CorpusID:249062999,"r binary code similarity detection. Proceedings of the 31st ACM SIGSOFT International Symposium on Software Testing and Analysis, 2022. URL https://api.semanticscholar.org/CorpusID:249062999."
+2405.03991v2.pdf,reference,url,https://doi.org/10.1145/3564625.3567975.Extending,"CSAC '22, page 361-374, New York, NY, USA, 2022. Association for Computing Machinery. ISBN 9781450397599. doi: 10.1145/3564625.3567975. URL https://doi.org/10.1145/3564625.3567975.Extending source code pre-trained language models to summarise decompiled binarie AAl-Kaswan TAhmed MIzadi AASawant PDevanbu AVan Deursen 2023 IEEE I"
+2405.03991v2.pdf,reference,url,https://www.usenix.org/conference/usenixsecurity16/technical-sessions/presentation/andriesse.FArtuso,"25th USENIX Security Symposium (USENIX Security 16), pages 583-600, Austin, TX, Aug. 2016. USENIX Association. ISBN 978-1-931971-32-4. URL https://www.usenix.org/conference/usenixsecurity16/technical-sessions/presentation/andriesse.FArtuso GA DLuna LMassarelli LQuerzoni nomine function: Naming functions in stripped binaries with neural networks 2021 F. Artuso, G. A. D. Luna, L"
+2405.03991v2.pdf,reference,url,https://www.usenix.org/conference/usenixsecurity14/technical-sessions/presentation/bao.Polyglot,"In 23rd USENIX Security Symposium (USENIX Security 14), pages 845-860, San Diego, CA, 2014. USENIX Association. ISBN 978-1-931971-15-7. URL https://www.usenix.org/conference/usenixsecurity14/technical-sessions/presentation/bao.Polyglot and distributed software repository mining with crossflow KBarmpis PNeubauer JCo DKolovos NMatragkas RFPaige 10.1145/3379597.3387481 Procee"
+2405.03991v2.pdf,reference,url,https://doi.org/10.1145/3379597.3387481.Evading,"MSR '20, page 374-384, New York, NY, USA, 2020. Association for Computing Machinery. ISBN 9781450375177. doi: 10.1145/3379597. 3387481. URL https://doi.org/10.1145/3379597.3387481.Evading malware classifiers via monte carlo mutant feature discovery JBoutsikas MEEren CVarga ERaff CMatuszek CNicholas 2021 J. Boutsikas, M. E. Er"
+2405.03991v2.pdf,reference,url,https://www.usenix.org/conference/usenixsecurity22/presentation/chen-qibin.Augmenting,"1st USENIX Security Symposium (USENIX Security 22), pages 4327-4343, Boston, MA, Aug. 2022. USENIX Association. ISBN 978-1-939133-31-1. URL https://www.usenix.org/conference/usenixsecurity22/presentation/chen-qibin.Augmenting decompiler output with learned variable names and types QChen JLacomis EJSchwartz CLe Goues GNeubig BVasilescu 31st USENIX Security Symposi"
+2405.03991v2.pdf,reference,url,https://www.usenix.org/conference/usenixsecurity22/presentation/chen-qibin.Accelerating,"escu. Aug- menting decompiler output with learned variable names and types. In 31st USENIX Secu- rity Symposium, Boston, MA, Aug. 2022. URL https://www.usenix.org/conference/usenixsecurity22/presentation/chen-qibin.Accelerating Frank-Wolfe via Averaging Step Directions ZChen YSun arXiv:2205.11794 May 2022 cs, math Z. Chen and Y. Sun. Accelerating Frank-Wolfe via Av"
+2405.03991v2.pdf,reference,url,https://doi.org/10.1145/3428293.Bert,"ineering of stripped binaries using augmented control flow graphs. Proc. ACM Program. Lang., 4(OOPSLA), nov 2020. doi: 10.1145/3428293. URL https://doi.org/10.1145/3428293.Bert: Pre-training of deep bidirectional transformers for language understanding JDevlin M.-WChang KLee KToutanova North American Chapter the Ass"
+2405.03991v2.pdf,reference,url,https://www.sciencedirect.com/science/article/pii/S0167739X21002090.Bertdeep-ware,"f-the-box reproducibility? Future Generation Computer Systems, 126:34-47, Jan. 2022. ISSN 0167-739X. doi: 10.1016/j.future.2021.06.014. URL https://www.sciencedirect.com/science/article/pii/S0167739X21002090.Bertdeep-ware: A cross-architecture malware detection solution for iot systems SAHamad DHTran QZSheng WEZhang 10.1109/TrustCom53373.2021.00130 2021 IEEE 2"
+2405.03991v2.pdf,reference,url,https://doi.org/10.1145/3545948.3545956.Synthetic,"RAID '22, page 350-363, New York, NY, USA, 2022. Association for Computing Machinery. ISBN 9781450397049. doi: 10.1145/3545948.3545956. URL https://doi.org/10.1145/3545948.3545956.Synthetic datasets for program similarity research AInterrante-Grant MWang LBaer RWhelan TLeek 10.48550/arXiv.2405.03478 2024 A. Interrante-Grant, M."
+2405.03991v2.pdf,reference,url,https://doi.org/10.48550/arXiv.2405.03478.Symlm,"R. Whelan, and T. Leek. Synthetic datasets for program similarity research. CoRR, abs/2405.03478, 2024. doi: 10.48550/ARXIV.2405.03478. URL https://doi.org/10.48550/arXiv.2405.03478.Symlm: Predicting function names in stripped binaries via context-sensitive execution-aware code embeddings XJin KPei JYWon ZLin 10.1145/3548606.3"
+2405.03991v2.pdf,reference,url,https://doi.org/10.1145/3548606.3560612.Rank-1,"ications Security, CCS '22, page 1631-1645, New York, NY, USA, 2022. Association for Computing Machinery. doi: 10.1145/3548606.3560612. URL https://doi.org/10.1145/3548606.3560612.Rank-1 Similarity Matrix Decomposition For Modeling Changes in Antivirus Consensus Through Time RJJoyce ERaff CNicholas arXiv:2201.00757v1 Proceed"
+2405.03991v2.pdf,reference,url,https://doi.org/10.1145/3605764.3623907.Revisiting,"ISec '23, page 185-196, New York, NY, USA, 2023. Association for Computing Machinery. ISBN 9798400702600. doi: 10.1145/3605764.3623907. URL https://doi.org/10.1145/3605764.3623907.Revisiting binary code similarity analysis using interpretable feature engineering and lessons learned DKim EKim SKCha SSon YKim 10.1109/TSE.2022.3187"
+2405.03991v2.pdf,reference,url,http://dx.doi.org/10.1109/TSE.2022.3187689.HKoo,"lessons learned. IEEE Transactions on Software Engineering, 49(4):1661-1682, Apr. 2023. ISSN 2326-3881. doi: 10.1109/tse.2022.3187689. URL http://dx.doi.org/10.1109/TSE.2022.3187689.HKoo SPark DChoi TKim Semantic-aware binary code representation with bert 2021 H. Koo, S. Park, D. Choi, and T. Kim. Semantic-aware binary code"
+2405.03991v2.pdf,reference,url,https://www.sciencedirect.com/science/article/pii/S0167404821001954.Palmtree,"tor using galaxy transformer. Computers & Security, 108:102371, 2021. ISSN 0167-4048. doi: https: //doi.org/10.1016/j.cose.2021.102371. URL https://www.sciencedirect.com/science/article/pii/S0167404821001954.Palmtree: Learning an assembly language model for instruction embedding XLi QYu HYin Proceedings of the 2021 ACM SIGSAC Conference on Computer and Co"
+2405.03991v2.pdf,reference,url,https://api.semanticscholar.org/CorpusID:232134887.Graph,"anguage model for instruction em- bedding. Proceedings of the 2021 ACM SIGSAC Conference on Computer and Communications Security, 2021. URL https://api.semanticscholar.org/CorpusID:232134887.Graph matching networks for learning the similarity of graph structured objects YLi CGu TDullien OVinyals PKohli PMLR Proceedings of the 36th Int"
+2405.03991v2.pdf,reference,url,https://proceedings.mlr.press/v97/li19d.html.Mining,"ational Conference on Machine Learning, volume 97 of Pro- ceedings of Machine Learning Research, pages 3835-3845. PMLR, 09-15 Jun 2019. URL https://proceedings.mlr.press/v97/li19d.html.Mining Internet-Scale Software Repositories ELinstead PRigor SBajracharya CLopes PBaldi Advances in Neural Information Processing Systems JPlatt D"
+2405.03991v2.pdf,reference,url,https://www.mdpi.com/2079-9292/12/7/1722.Automated,"ted transformer model for binary code similarity detection. Electronics, 12(7), 2023. ISSN 2079-9292. doi: 10.3390/electronics12071722. URL https://www.mdpi.com/2079-9292/12/7/1722.Automated binary analysis: A survey ZLiu CChen AEjaz DLiu JZhang Algorithms and Architectures for Parallel Processing WMeng RLu GMin JVaidya Cham Spr"
+2405.03991v2.pdf,reference,url,https://www.usenix.org/conference/usenixsecurity22/presentation/marcelli.How,"t USENIX Secu- rity Symposium (USENIX Security 22), pages 2099-2116, Boston, MA, Aug. 2022. USENIX Association. ISBN 978-1-939133-31-1. URL https://www.usenix.org/conference/usenixsecurity22/presentation/marcelli.How machine learning is solving the binary function similarity problem AMarcelli MGraziano XUgarte-Pedrero YFratantonio MMansouri DBalzarotti 3"
+2405.03991v2.pdf,reference,url,https://vcpkg.io/en/.Simulation,"116, 2022. vcpkg c/c++ dependency manager from microsoft 2022 Microsoft Microsoft. vcpkg c/c++ dependency manager from microsoft, 2022. URL https://vcpkg.io/en/.Simulation points for spec cpu 2006 AANair LKJohn 10.1109/ICCD.2008.4751891 2008 IEEE International Conference on Computer Design 2008 A. A. Nair and"
+2405.03991v2.pdf,reference,url,https://api.semanticscholar.org/CorpusID:257532815.Small,"751891. Gpt-4 technical report ArXiv, abs/2303.08774 2023 257532815 OpenAI OpenAI. Gpt-4 technical report. ArXiv, abs/2303.08774, 2023. URL https://api.semanticscholar.org/CorpusID:257532815.Small effect sizes in malware detection? make harder train/test splits! TPatel FLu ERaff CNicholas CMatuszek JHolt Conference on Applied Machine"
+2405.03991v2.pdf,reference,url,https://ceur-ws.org/Vol-3652/paper12.pdf.Probabilistic,"ion? make harder train/test splits! In Conference on Applied Machine Learning for Infor- mation Security (CAMLIS), pages 181-192, 2023. URL https://ceur-ws.org/Vol-3652/paper12.pdf.Probabilistic naming of functions in stripped binaries JPatrick-Evans LCavallaro JKinder 10.1145/3427228.3427265 Proceedings of the 36th Annual Computer"
+2405.03991v2.pdf,reference,url,https://doi.org/10.1145/3427228.3427265.Xda,"CSAC '20, page 373-385, New York, NY, USA, 2020. Association for Computing Machinery. ISBN 9781450388580. doi: 10.1145/3427228.3427265. URL https://doi.org/10.1145/3427228.3427265.Xda: Accurate, robust disassembly with transfer learning KPei JGuan DWKing JYang SJana Proceedings of the 2021 Network and Distributed System Se"
+2405.03991v2.pdf,reference,url,https://virusshare.com/.SourceFinder,"411508.3421372. URL http: //arxiv.org/abs/2009.03779. arXiv: 2009.03779. J.-MRoberts Virus Share 2011 J.-M. Roberts. Virus Share, 2011. URL https://virusshare.com/.SourceFinder: Finding Malware Source-Code from Publicly Available Repositories in GitHub MO FRokon RIslam ADarki EEPapalexakis MFaloutsos 23rd Internatio"
+2405.03991v2.pdf,reference,url,https://www.usenix.org/conference/raid2020/presentation/omar.Maat,"h in Attacks, Intrusions and Defenses (RAID 2020), pages 149-163, San Sebastian, Oct. 2020. USENIX Association. ISBN 978-1-939133-18-2. URL https://www.usenix.org/conference/raid2020/presentation/omar.Maat: Automatically analyzing virustotal for accurate labeling and effective malware detection ASalem SBanescu APretschner 10.1145/3465361 ACM Tr"
+2405.03991v2.pdf,reference,url,https://doi.org/10.1145/3465361.Abdelzaher.paper2repo,"for accurate labeling and effective malware detection. ACM Trans. Priv. Secur., 24(4), jul 2021. ISSN 2471-2566. doi: 10.1145/3465361. URL https://doi.org/10.1145/3465361.Abdelzaher.paper2repo: Github repository recommendation for academic papers HShao DSun JWu ZZhang AZhang SYao SLiu TWang CZhang T 10.1145/3366423.3380145 Proceedi"
+2405.03991v2.pdf,reference,url,http://dx.doi.org/10.1145/3366423.3380145.Ubuntu,"y recommendation for academic papers. In Proceedings of The Web Conference 2020, WWW '20. ACM, Apr. 2020. doi: 10.1145/3366423.3380145. URL http://dx.doi.org/10.1145/3366423.3380145.Ubuntu one investigation: Detecting evidences on client machines MBShariati ADehghantanha BMartini K.-KRChoo The Cloud Security Ecosystem 2015 M."
+2405.03991v2.pdf,reference,url,https://api.semanticscholar.org/CorpusID:33377904.Sok,"B. Martini, and K.-K. R. Choo. Ubuntu one investigation: Detecting evidences on client machines. In The Cloud Security Ecosystem, 2015. URL https://api.semanticscholar.org/CorpusID:33377904.Sok: (state of) the art of war: Offensive techniques in binary analysis YShoshitaishvili RWang CSalls NStephens MPolino ADutcher JGrosen SFeng C"
+2405.03991v2.pdf,reference,url,https://api.semanticscholar.org/CorpusID:249062999.Emergent,"r binary code similarity detection. Proceedings of the 31st ACM SIGSOFT International Symposium on Software Testing and Analysis, 2022. URL https://api.semanticscholar.org/CorpusID:249062999.Emergent abilities of large language models JWei YTay RBommasani CRaffel BZoph SBorgeaud DYogatama MBosma DZhou DMetzler EHChi THashimoto OVinyals P"
+2405.03991v2.pdf,reference,url,https://api.semanticscholar.org/CorpusID:249674500.Programmatic,"himoto, O. Vinyals, P. Liang, J. Dean, and W. Fedus. Emergent abilities of large language models. Trans. Mach. Learn. Res., 2022, 2022. URL https://api.semanticscholar.org/CorpusID:249674500.Programmatic data augmentation for deep malware detection MWong ERaff JHolt RNetravali Marvolo 10.1007/978-3-031-43412-9_16 Machine Learning and Knowled"
+2405.03991v2.pdf,reference,url,https://doi.org/10.1007/978-3-031-43412-9_16.Malware,"oceedings, Part I, page 270-285, Berlin, Heidelberg, 2023. Springer-Verlag. ISBN 978- 3-031-43411-2. doi: 10.1007/978-3-031-43412-9_16. URL https://doi.org/10.1007/978-3-031-43412-9_16.Malware classification by learning semantic and structural features of control flow graphs BWu YXu FZou 10.1109/TrustCom53373.2021.00084 2021 IEEE"
+2405.03991v2.pdf,reference,url,https://www.usenix.org/conference/usenixsecurity22/presentation/yu-sheng.firm,"1st USENIX Security Symposium (USENIX Security 22), pages 2709-2725, Boston, MA, Aug. 2022. USENIX Association. ISBN 978-1-939133-31-1. URL https://www.usenix.org/conference/usenixsecurity22/presentation/yu-sheng.firm vulseeker: Bert and siamese based vulnerability for embedded device firmware images YYu SGan XQin 10.1109/ISCC53001.2021.9631481 2021 IEEE"
+2405.03991v2.pdf,reference,url,https://www.usenix.org/conference/usenixsecurity20/presentation/zhu.Benchmarking,"cs of Online Anti-Malware Engines. In 29th USENIX Security Symposium (USENIX Security 20), Boston, MA, Aug. 2020. {USENIX} Association. URL https://www.usenix.org/conference/usenixsecurity20/presentation/zhu.Benchmarking label dynamics of virustotal engines SZhu ZZhang LYang LSong GWang 10.1145/3372297.3420013 Proceedings of the 2020 ACM SIGSAC Conference on"
+2405.03991v2.pdf,reference,url,https://doi.org/10.1145/3372297.3420013.WZhu,"CS '20, page 2081-2083, New York, NY, USA, 2020. Association for Computing Machinery. ISBN 9781450370899. doi: 10.1145/3372297.3420013. URL https://doi.org/10.1145/3372297.3420013.WZhu HWang YZhou JWang ZSha ZGao CZhang ktrans: Knowledge-aware transformer for binary code embedding 2023 W. Zhu, H. Wang, Y. Zhou, J. Wang, Z."
+2405.03991v2.pdf,back,url,https://assemblage-dataset.net/,"structure (GPUs and servers) was provided by Syracuse University. A Technical documentation and dataset accessThe homepage of ASSEMBLAGE is https://assemblage-dataset.net/, documentation for ASSEMBLAGE can be accessed at the link https://assemblagedocs.readthedocs.io, and the binary dataset built from repositor"
+2405.03991v2.pdf,back,url,https://assemblagedocs.readthedocs.io,"n and dataset accessThe homepage of ASSEMBLAGE is https://assemblage-dataset.net/, documentation for ASSEMBLAGE can be accessed at the link https://assemblagedocs.readthedocs.io, and the binary dataset built from repository with license is hosted on Hugging Face and accessible by everyone, all the links are listed in"
+2405.03991v2.pdf,back,url,https://github.com/Assemblage-Dataset/Assemblage.Anyone,"ssible by everyone, all the links are listed in the documentation.We also release the codes we used to build the dataset on GitHub, link at https://github.com/Assemblage-Dataset/Assemblage.Anyone can obtain the copy of our source code and replicate our dataset with our recipes. We also provide specific instructions on deployment. B N"
+2501.11091v1.pdf,target,url,https://bitcoin.org/bitcoin.pdf,
+2501.11091v1.pdf,target,url,https://bitcoin.org/en/alert/2013-03-11-chain-fork,
+2501.11091v1.pdf,target,url,https://learnmeabitcoin.com/technical/blockchain/chain-reorganization/,
+2501.11091v1.pdf,reference,url,https://bitcoin.org/en/alert/2013-03-11-chain-fork.Chain,"nia, USA, August 16-20, 1992. Proceedings. Vol. 740. 1993. Chain Fork Bitcoin Org March 11. 2013 Bitcoin.org. ""Chain Fork."" March 11, 2013. https://bitcoin.org/en/alert/2013-03-11-chain-fork.Chain Reorganization GregWalker Dec 8, 2024 Greg Walker. ""Chain Reorganization."" Dec 8, 2024. https://learnmeabitcoin.com/technical/blockchain/ch"
+4449.pdf,target,url,http://research.microsoft.com/barc/SortBenchmark/,
+4449.pdf,target,url,http://alme1.almaden.ibm.com/cs/spsort.pdf,
+4449.pdf,reference,url,http://research.microsoft.com/barc/SortBenchmark/.Using,"Notes in Computer Science 1124, pages 401-408. Springer-Verlag, 1996. Sort benchmark home page JimGray Jim Gray. Sort benchmark home page. http://research.microsoft.com/barc/SortBenchmark/.Using MPI: Portable Parallel Programming with the Message-Passing Interface WilliamGropp EwingLusk AnthonySkjellum 1999 MIT Press Cambridge, MA W"
+NIPS-2012-imagenet-classification-with-deep-convolutional-neural-networks-Paper.pdf,target,url,http://www.image-net.org/challenges/LSVRC/2012/,
+NIPS-2012-imagenet-classification-with-deep-convolutional-neural-networks-Paper.pdf,target,url,http://authors.library.caltech.edu/7694,
+NIPS-2012-imagenet-classification-with-deep-convolutional-neural-networks-Paper.pdf,body,url,http://code.google.com/p/cuda-convnet/The,"usedby previous authors, but this doesnot affect the results appreciably.Our top-1 and top-5 error rateson this dataset are 67.4% and40.9%, http://code.google.com/p/cuda-convnet/The one-GPU net actually has the same number of kernels as the two-GPU net in the final convolutional layer. This is because most of the net's"
+NIPS-2012-imagenet-classification-with-deep-convolutional-neural-networks-Paper.pdf,body,url,http://code.google.com/p/cuda-convnet/.This,"nnot describe this network in detail due to space constraints, but it is specified precisely by the code and parameter files provided here: http://code.google.com/p/cuda-convnet/.This is the reason why the input images in Figure2are 224 × 224 × 3-dimensional. The error rates without averaging predictions over ten patches"
+NIPS-2012-imagenet-classification-with-deep-convolutional-neural-networks-Paper.pdf,note,url,http://code.google.com/p/cuda-convnet/,http://code.google.com/p/cuda-convnet/
+NIPS-2012-imagenet-classification-with-deep-convolutional-neural-networks-Paper.pdf,note,url,www.image-net.org/challenges.2010,"A. Berg, J. Deng, and L. Fei-Fei. Large scale visual recognition challenge 2010. www.image-net.org/challenges.2010."
+NIPS-2012-imagenet-classification-with-deep-convolutional-neural-networks-Paper.pdf,reference,url,www.imagenet.org/challenges,"sons from the netflix prize challenge. ACM SIGKDD Explorations Newsletter, 9(2):75-79, 2007. Large scale visual recognition challenge 2010. www.imagenet.org/challenges ABerg JDeng LFei-Fei 2010 A. Berg, J. Deng, and L. Fei-Fei. Large scale visual recognition challenge 2010. www.image-net.org/challenges.201"
+NIPS-2012-imagenet-classification-with-deep-convolutional-neural-networks-Paper.pdf,reference,url,www.image-net.org/challenges.2010.Random,"010. www.imagenet.org/challenges ABerg JDeng LFei-Fei 2010 A. Berg, J. Deng, and L. Fei-Fei. Large scale visual recognition challenge 2010. www.image-net.org/challenges.2010.Random forests LBreiman Machine learning 45 1 2001 L. Breiman. Random forests. Machine learning, 45(1):5-32, 2001. Multi-column deep neural networ"
+NIPS-2012-imagenet-classification-with-deep-convolutional-neural-networks-Paper.pdf,reference,url,http://www.image-net.org/challenges/LSVRC/2012/.Learning,"erg SSatheesh HSu AKhosla LFei-Fei ILSVRC-2012 2012 J. Deng, A. Berg, S. Satheesh, H. Su, A. Khosla, and L. Fei-Fei. ILSVRC-2012, 2012. URL http://www.image-net.org/challenges/LSVRC/2012/.Learning generative visual models from few training examples: An incremental bayesian approach tested on 101 object categories LFei-Fei RFergus PPer"
+NIPS-2012-imagenet-classification-with-deep-convolutional-neural-networks-Paper.pdf,reference,url,http://authors.library.caltech.edu/7694.Improving,"iffin, A. Holub, and P. Perona. Caltech-256 object category dataset. Technical Report 7694, Cali- fornia Institute of Technology, 2007. URL http://authors.library.caltech.edu/7694.Improving neural networks by preventing co-adaptation of feature detectors GEHinton NSrivastava AKrizhevsky ISutskever RRSalakhutdinov arXiv:1207.058"
+TSP_IASC_36323.pdf,target,url,https://doi.org/10.1016/j.media.2021.102188,
+TSP_IASC_36323.pdf,target,url,https://doi.org/10.1142/9789811239014_0005,
+TSP_IASC_36323.pdf,target,url,https://doi.org/10.1016/j.inffus.2020.04.002,
+TSP_IASC_36323.pdf,target,url,https://doi.org/10.1016/j.patcog.2021.108146,
+TSP_IASC_36323.pdf,target,url,https://doi.org/10.1088/1755-1315/428/1/012097,
+TSP_IASC_36323.pdf,target,url,https://doi.org/10.1016/j.neucom.2022.03.062,
+TSP_IASC_36323.pdf,target,url,https://doi.org/10.1016/j.neunet.2018.03,
+TSP_IASC_36323.pdf,target,url,https://doi.org/10.1145/3357254.3357276,
+TSP_IASC_36323.pdf,target,url,https://doi.org/10.1016/j.patcog.2020.107420,
+TSP_IASC_36323.pdf,target,url,https://doi.org/10.1016/j.neucom.2021.03.108,
+TSP_IASC_36323.pdf,target,url,https://doi.org/10.1016/j.patcog.2018.04.012,
+TSP_IASC_36323.pdf,target,url,https://doi.org/10.1109/SPIN.2019.8711703,
+TSP_IASC_36323.pdf,target,url,https://doi.org/10.1016/j.procs.2020.04.206,
+TSP_IASC_36323.pdf,target,url,https://doi.org/10.1016/j.inffus.2020.10.0082021,
+TSP_IASC_36323.pdf,target,url,https://arxiv.org/abs/1409.4842v1,
+TSP_IASC_36323.pdf,target,url,https://arxiv.org/abs/1512.00567v3,
+TSP_IASC_36323.pdf,target,url,https://arxiv.org/abs/1610.02357,
+TSP_IASC_36323.pdf,target,url,https://arxiv.org/abs/1409.1556,
+TSP_IASC_36323.pdf,idno_doi,doi,10.32604/iasc.2023.036323,10.32604/iasc.2023.036323
+TSP_IASC_36323.pdf,idno_doi,doi,10.1016/j.media.2021.102188,10.1016/j.media.2021.102188
+TSP_IASC_36323.pdf,idno_doi,doi,10.1142/9789811239014_0005,10.1142/9789811239014_0005
+TSP_IASC_36323.pdf,idno_doi,doi,10.1016/j.inffus.2020.04.002,10.1016/j.inffus.2020.04.002
+TSP_IASC_36323.pdf,idno_doi,doi,10.1016/j.patcog.2021.108146,10.1016/j.patcog.2021.108146
+TSP_IASC_36323.pdf,idno_doi,doi,10.1088/1755-1315/428/1/012097,10.1088/1755-1315/428/1/012097
+TSP_IASC_36323.pdf,idno_doi,doi,10.1016/j.neucom.2022.03.062,10.1016/j.neucom.2022.03.062
+TSP_IASC_36323.pdf,idno_doi,doi,10.1016/j.neunet.2018.03.019,10.1016/j.neunet.2018.03.019
+TSP_IASC_36323.pdf,idno_doi,doi,10.1145/3357254.3357276,10.1145/3357254.3357276
+TSP_IASC_36323.pdf,idno_doi,doi,10.1016/j.patcog.2020.107420,10.1016/j.patcog.2020.107420
+TSP_IASC_36323.pdf,idno_doi,doi,10.1016/j.neucom.2021.03.108,10.1016/j.neucom.2021.03.108
+TSP_IASC_36323.pdf,idno_doi,doi,10.1016/j.patcog.2018.04.012,10.1016/j.patcog.2018.04.012
+TSP_IASC_36323.pdf,idno_doi,doi,10.1109/SPIN.2019.8711703,10.1109/SPIN.2019.8711703
+TSP_IASC_36323.pdf,idno_doi,doi,10.1016/j.procs.2020.04.206,10.1016/j.procs.2020.04.206
+TSP_IASC_36323.pdf,idno_doi,doi,10.1016/j.inffus.2020.10.0082021,10.1016/j.inffus.2020.10.0082021
+TSP_IASC_36323.pdf,note,url,https://doi.org/10.1016/j.neunet.2018.03.019,"ral networks for handwritten digit recognition-Supervised learning and network optimization,"" Neural Networks, vol. 103, pp. 118-127, 2018. https://doi.org/10.1016/j.neunet.2018.03.019"
+TSP_IASC_36323.pdf,reference,url,https://arxiv.org/abs/1409.4842v1.Rethinking,". Jia, P. Sermanet, S. Reed et al., ""Going Deeper with Convolutions,"" Ithaca. NY, USA: Cornell University Press, 2014. [Online]. Available: https://arxiv.org/abs/1409.4842v1.Rethinking the Inception Architecture for Computer Vision CSzegedy VVanhoucke SIoffe JShlens ZWojna 2015 Cornell University Press Ithaca. NY, USA C. S"
+TSP_IASC_36323.pdf,reference,url,https://arxiv.org/abs/1512.00567v3.Xception,". Wojna, ""Rethinking the Inception Architecture for Computer Vision,"" Ithaca. NY, USA: Cornell University Press, 2015. [Online]. Available: https://arxiv.org/abs/1512.00567v3.Xception, Deep Learning with Depthwise Separable Convolutions FChollet 2017 Cornell University Press Ithaca. NY, USA F. Chollet, ""Xception, Deep Lear"
+TSP_IASC_36323.pdf,reference,url,https://arxiv.org/abs/1610.02357.Very,"let, ""Xception, Deep Learning with Depthwise Separable Convolutions,"" Ithaca. NY, USA: Cornell University Press, 2017. [Online]. Available: https://arxiv.org/abs/1610.02357.Very Deep Convolutional Networks for Large-Scale Image Recognition KSimonyan AZisserman 2014 Cornell University Press Ithaca. NY, USA K. Simonya"

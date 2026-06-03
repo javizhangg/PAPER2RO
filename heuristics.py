@@ -1,127 +1,236 @@
-# heuristics.py
-# Procesos para identificar URLs candidatas a dataset
-# H1 -> extensiones de datos
-# H2 -> metadatos HTTP / content negotiation
-# H3 -> señales reutilizables tipo GAP-KGE
-# H4 -> señales basadas en la propia URL
-# H5 -> señales extraídas automáticamente de los .dataset.json generados por GAP-KGE / DataStet
-# H6 -> inspección temporal del contenido descargado
-# H1, H4 Y H6 son los de la heuristica 1 que se basa en ver si la extension de la url o del archivo descargado es un .csv, .json, .xml, etc.
-# H2 es la heuristica 2 que se basa en hacer una petición HTTP HEAD o GET para obtener el content type, content disposition, etc. y ver si indican que es un archivo de datos.
-# H3 es la heuristica 3 basada en GAP-KGE. H5 se ignora para el benchmark.
+# heuristics_precision_v6_chatgpt.py
+# Identifica URLs candidatas a dataset con 3 heurísticas:
+# H1 -> extensión directa de la URL o búsqueda de archivos descargables dentro de la página/JSON.
+# H2 -> metadatos HTTP: Content-Type, Content-Disposition y extensión final.
+# H3 -> lectura de .dataset.json para comprobar si aparece la URL o alguna URL de dataset.
 
 import csv
 import json
+import os
 import re
-import io
-import zipfile
-import tempfile
 from pathlib import Path
-from urllib.parse import urlparse
+from urllib.parse import urlparse, urljoin
 from functools import lru_cache
+from datetime import datetime
+
 import requests
-import xml.etree.ElementTree as ET
+
+
+# ==============================
+# RUTAS
+# ==============================
 
 INPUT_CSV = "outputs/all_links_normalized.csv"
 OUTPUT_CSV = "outputs/heuristics_results.csv"
 OUTPUT_JSON = "outputs/heuristics_results.json"
 
-# Carpeta donde están los PDFs y los .dataset.json
+# Carpeta donde están los PDF y los .dataset.json
 GAP_KGE_JSON_DIR = "pdfs"
 
-# Carpeta temporal donde se descargan ficheros para inspección
-TEMP_DOWNLOAD_DIR = "temp_downloads"
 
-# ==================================
-# H1: extensiones de ficheros de datos
-# ==================================
+# ==============================
+# CONFIGURACIÓN
+# ==============================
+
+REQUEST_TIMEOUT = 10
+MAX_PAGE_BYTES = 1_000_000  # máximo 1 MB para inspeccionar HTML/JSON
+
+# Archivos de datos directos que SÍ aceptamos como dataset.
+# IMPORTANTE: no incluimos .zip, .gz, .tar, .tgz, .7z, etc.
 DATA_EXTENSIONS = {
     ".csv", ".tsv", ".json", ".xml", ".rdf",
-    ".xlsx", ".xls", ".parquet", ".h5", ".hdf5"
+    ".xlsx", ".xls", ".parquet", ".h5", ".hdf5",
+    ".pkl", ".pickle", ".npy", ".npz",
+    ".db", ".sqlite", ".sqlite3",
+    ".dat", ".data", ".arff", ".mat"
 }
 
-# Por ahora descartamos ZIP como extensión directa,
-# pero H6 sí puede abrir ZIP temporalmente e inspeccionarlo.
-EXCLUDED_EXTENSIONS = {
-    ".zip"
+# Archivos comprimidos que NO queremos marcar como dataset.
+COMPRESSED_EXTENSIONS = {
+    ".zip", ".gz", ".tar", ".tgz", ".7z", ".rar", ".bz2", ".xz"
 }
 
-# ==================================
-# H3: señales tipo GAP-KGE
-# ==================================
-KNOWN_DATASET_DOMAINS = {
-    "zenodo.org",
-    "figshare.com",
-    "datadryad.org",
-    "dryad.org",
-    "dataverse.org",
-    "kaggle.com",
-    "data.gov",
-    "archive.ics.uci.edu",
-    "openml.org",
-    "physionet.org",
-    "commoncrawl.org",
-    "imagenet.org",
-    "image-net.org",
-    "grouplens.org",
-    "registry.opendata.aws",
-    "grand-challenge.org",
-    "voxforge.org",
-    "movielens.org"
-}
-
-URL_DATASET_KEYWORDS = {
-    "dataset", "datasets", "data", "corpus", "benchmark",
-    "benchmarks", "download", "downloads", "challenge",
-    "repository", "archive", "collection", "eval", "evaluation",
-    "leaderboard", "train", "test", "dev", "split"
-}
-
-URL_NEGATIVE_KEYWORDS = {
-    "github", "code", "software", "repo", "implementation",
-    "paper", "pdf", "docs", "documentation", "wiki", "blog",
-    "slides", "tutorial", "readme"
-}
-
-# ==================================
-# H2: metadatos HTTP / content negotiation
-# ==================================
 DATA_CONTENT_TYPES = {
     "text/csv",
     "application/csv",
+    "text/tab-separated-values",
     "application/json",
+    "application/ld+json",
     "application/xml",
     "text/xml",
     "application/rdf+xml",
     "application/vnd.ms-excel",
     "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-    "application/octet-stream",
-    "text/tab-separated-values"
+    "application/parquet",
+    "application/x-parquet",
+    "application/x-hdf5",
+    "application/x-sqlite3",
+    "application/octet-stream"
 }
 
-# ==================================
-# H6: configuración de descarga temporal
-# ==================================
-DOWNLOAD_SAMPLE_BYTES = 65536   # 64 KB
-DOWNLOAD_MAX_BYTES = 262144     # 256 KB máximo a descargar para inspección
-DOWNLOAD_TIMEOUT = 10
-
-ZIP_DATA_EXTENSIONS = {
-    ".csv", ".tsv", ".json", ".xml", ".rdf",
-    ".xlsx", ".xls", ".parquet", ".h5", ".hdf5"
+COMPRESSED_CONTENT_TYPES = {
+    "application/zip",
+    "application/x-zip-compressed",
+    "application/gzip",
+    "application/x-gzip",
+    "application/x-tar",
+    "application/x-7z-compressed",
+    "application/x-rar-compressed",
+    "application/x-bzip2",
+    "application/x-xz"
 }
 
-# Tokens sospechosos de páginas de validación, anti-bot o challenge
-SUSPICIOUS_HTML_TOKENS = {
-    "validate", "captcha", "challenge", "bot", "verify",
-    "perfdrive", "radware", "cloudflare", "akamai"
+DATASET_LINK_KEYWORDS = {
+    "dataset", "datasets", "data", "download", "downloads",
+    "train", "training", "test", "dev", "validation", "valid",
+    "benchmark", "benchmarks", "corpus", "database", "annotations",
+    "annotation", "labels", "features", "samples", "records",
+    "instances", "metadata", "table", "tables", "export"
 }
 
-# ==================================
-# Utilidades generales
-# ==================================
+# Palabras suficientemente fuertes para aceptar extensiones ambiguas como .json/.xml/.pkl/.mat.
+# No meto "file/files/resource" porque aparecen en casi todas las webs y dan falsos positivos.
+STRONG_DATASET_CONTEXT_KEYWORDS = {
+    "dataset", "datasets", "data", "train", "training", "test", "dev",
+    "validation", "valid", "benchmark", "corpus", "database",
+    "annotations", "annotation", "labels", "features", "samples",
+    "records", "instances", "metadata"
+}
 
-## Funciones para extraer el dominio de una URL. Ejemplo: "https://example.com/path" -> "example.com"
+NEGATIVE_LINK_KEYWORDS = {
+    "paper", "article", "citation", "bibtex", "reference",
+    "documentation", "docs", "wiki", "blog", "login", "signin",
+    "contact", "about", "license", "terms", "privacy",
+    "manifest", "opensearch", "sitemap", "rss", "feed", "robots",
+    "favicon", "static", "assets", "bundle", "webpack", "serviceworker"
+}
+
+# Extensiones de datos fuertes: normalmente son ficheros de datos reales.
+STRONG_DATA_EXTENSIONS = {
+    ".csv", ".tsv", ".xlsx", ".xls", ".parquet",
+    ".h5", ".hdf5", ".npy", ".npz", ".arff", ".mat",
+    ".db", ".sqlite", ".sqlite3", ".dat", ".data"
+}
+
+# Extensiones débiles: pueden ser dataset, pero también metadatos técnicos de una web.
+# Para estas exigimos keywords de dataset/data/train/test/etc.
+WEAK_DATA_EXTENSIONS = {".json", ".xml", ".rdf", ".pkl", ".pickle"}
+
+# Ficheros técnicos muy comunes que NO son datasets aunque acaben en .json/.xml.
+TECHNICAL_FILENAMES = {
+    "manifest.json", "site.webmanifest", "asset-manifest.json",
+    "opensearch.xml", "sitemap.xml", "sitemap_index.xml",
+    "feed.xml", "rss.xml", "atom.xml", "robots.txt",
+    "browserconfig.xml", "crossdomain.xml", "clientaccesspolicy.xml",
+    "tdmrep-policy.json", "security.txt", "package.json",
+    "package-lock.json", "yarn.lock", "composer.json", "composer.lock",
+    "package-lock.json", "pnpm-lock.yaml", "requirements.txt",
+    "environment.yml", "metadata.json", "info.json", "config.json",
+    "database-config-example.json", ".markdownlint.json", "osdd.xml",
+    "wlwmanifest.xml", "os-grok.xml", "os-x.xml"
+}
+
+# Dominios donde el mismo dominio no basta para confirmar datasets desde .dataset.json.
+# Ejemplo: si el JSON tiene un GitHub con un CSV, no queremos marcar cualquier github.com/... del paper.
+GENERIC_HOSTING_DOMAINS = {
+    "github.com", "raw.githubusercontent.com", "gitlab.com", "bitbucket.org",
+    "doi.org", "dx.doi.org", "arxiv.org", "semanticscholar.org",
+    "api.semanticscholar.org", "acm.org", "doi.acm.org", "usenix.org",
+    "ieee.org", "ieeexplore.ieee.org", "springer.com", "link.springer.com"
+}
+
+# Dominios/repo conocidos donde una URL sin extensión puede seguir siendo dataset.
+TRUSTED_DATASET_REPOSITORY_DOMAINS = {
+    "zenodo.org", "figshare.com", "datadryad.org", "dryad.org",
+    "dataverse.harvard.edu", "kaggle.com", "archive.ics.uci.edu",
+    "openml.org", "physionet.org", "huggingface.co", "tensorflow.org",
+    "paperswithcode.com", "registry.opendata.aws", "data.gov",
+    "data.europa.eu", "data.world", "osf.io", "mendeley.com"
+}
+
+# Nombres demasiado genéricos/plataformas que NO deben confirmar una URL por nombre.
+GENERIC_DATASET_NAMES = {
+    "github", "gitlab", "bitbucket", "arxiv", "semantic scholar", "semanticscholar",
+    "acl anthology", "acm", "ieee", "springer", "usenix", "doi", "zenodo",
+    "figshare", "kaggle", "tensorflow", "tensorflow datasets", "qa", "dataset", "data",
+    "annotations", "frames", "masks", "samples", "resnet", "github repository"
+}
+
+# Para máxima precisión: una página solo se marca por H1 si el archivo encontrado
+# pertenece al mismo sitio/repo. Los enlaces externos se guardan como evidencia,
+# pero no validan la URL actual.
+ALLOW_EXTERNAL_DOWNLOAD_LINKS_IN_H1 = False
+
+# H1 más estricta: para una página normal no basta encontrar un .csv/.json.
+# La página/JSON también debe tener contexto textual o estructural de dataset.
+REQUIRE_PAGE_DATASET_CONTEXT_IN_H1 = True
+
+# Clasificador IA opcional. Por defecto está apagado para que el script funcione sin
+# descargar modelos ni usar APIs. Si quieres usar Hugging Face local, ponlo a True
+# e instala transformers + torch + un modelo local/cacheado.
+USE_HF_ZERO_SHOT_FOR_H1 = False
+HF_ZERO_SHOT_MODEL = "facebook/bart-large-mnli"
+
+# ==============================
+# H4: ChatGPT / OpenAI opcional
+# ==============================
+# Por defecto está apagado para que el script funcione sin API key.
+# Para activarlo en Windows PowerShell:
+#   $env:OPENAI_API_KEY="tu_api_key"
+#   $env:USE_OPENAI_LLM_HEURISTIC="true"
+#   python heuristics_precision_v6_chatgpt.py
+#
+# Recomendación: úsalo como verificador de positivos dudosos, no para todas las URLs.
+USE_OPENAI_LLM_HEURISTIC = os.getenv("USE_OPENAI_LLM_HEURISTIC", "false").lower() == "true"
+OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
+OPENAI_REVIEW_ALL_URLS = os.getenv("OPENAI_REVIEW_ALL_URLS", "false").lower() == "true"
+OPENAI_REVIEW_RULE_POSITIVES = os.getenv("OPENAI_REVIEW_RULE_POSITIVES", "true").lower() == "true"
+OPENAI_ALLOW_POSITIVE_OVERRIDE = os.getenv("OPENAI_ALLOW_POSITIVE_OVERRIDE", "false").lower() == "true"
+OPENAI_REJECTION_CONFIDENCE = float(os.getenv("OPENAI_REJECTION_CONFIDENCE", "0.65"))
+OPENAI_POSITIVE_CONFIDENCE = float(os.getenv("OPENAI_POSITIVE_CONFIDENCE", "0.85"))
+OPENAI_PAGE_TEXT_CHARS = int(os.getenv("OPENAI_PAGE_TEXT_CHARS", "3500"))
+
+PAGE_DATASET_TERMS = {
+    "dataset", "datasets", "data set", "data sets", "corpus", "benchmark",
+    "database", "annotations", "annotation", "labels", "features",
+    "samples", "records", "instances", "training data", "test data",
+    "validation data", "evaluation data"
+}
+
+PAGE_DOWNLOAD_TERMS = {
+    "download", "downloads", "downloadable", "available", "access",
+    "get the data", "data available", "available at", "download the data",
+    "download dataset", "download data"
+}
+
+JSON_DATASET_SCHEMA_KEYS = {
+    "@type", "type", "dataset", "datasets", "name", "title", "description",
+    "distribution", "downloadurl", "download_url", "contenturl", "content_url",
+    "encoding", "associatedmedia", "variablemeasured", "includedindatacatalog"
+}
+
+JSON_DOWNLOAD_KEYS = {
+    "download", "downloads", "downloadurl", "download_url", "contenturl",
+    "content_url", "url", "href", "file", "files", "data", "dataset",
+    "distribution", "resources", "resource"
+}
+
+DATASET_NAME_STOPWORDS = {
+    "the", "a", "an", "and", "or", "of", "for", "to", "in", "on", "with",
+    "dataset", "datasets", "data", "corpus", "benchmark", "database",
+    "repository", "collection", "challenge", "paper", "available", "at",
+    "http", "https", "www", "com", "org", "net", "edu", "gov"
+}
+
+URL_REGEX = re.compile(r'https?://[^\s"\'<>\)\]]+', re.IGNORECASE)
+HREF_REGEX = re.compile(r'href=["\']([^"\']+)["\']', re.IGNORECASE)
+SRC_REGEX = re.compile(r'src=["\']([^"\']+)["\']', re.IGNORECASE)
+
+
+# ==============================
+# UTILIDADES GENERALES
+# ==============================
+
 def get_domain(url: str) -> str:
     try:
         return urlparse(url).netloc.lower()
@@ -129,7 +238,6 @@ def get_domain(url: str) -> str:
         return ""
 
 
-## Funciones que saca la ruta de una URL. Ejemplo: "https://example.com/path/to/file.csv?query=1" -> "/path/to/file.csv"
 def get_path(url: str) -> str:
     try:
         return urlparse(url).path.lower()
@@ -137,65 +245,968 @@ def get_path(url: str) -> str:
         return ""
 
 
-## Funciones para extraer la extensión de una URL. Ejemplo: "https://example.com/path/to/file.csv?query=1" -> ".csv"
 def get_extension(url: str) -> str:
     try:
         path = get_path(url)
         match = re.search(r"(\.[a-z0-9]+)$", path)
-        if match:
-            return match.group(1)
+        return match.group(1).lower() if match else ""
+    except Exception:
+        return ""
+
+
+def normalize_loose(url: str) -> str:
+    if not url:
+        return ""
+    url = str(url).strip().lower()
+    url = re.sub(r"#.*$", "", url)
+    url = url.rstrip("/.,;:!?)]}>'\"")
+    return url
+
+
+def tokenize_url(url: str) -> set:
+    try:
+        parsed = urlparse(url)
+        raw = f"{parsed.netloc}{parsed.path}{parsed.query}".lower()
+        return {t for t in re.split(r"[/\\\-_.?=&:#]+", raw) if t}
+    except Exception:
+        return set()
+
+
+def is_data_file_url(url: str) -> bool:
+    return get_extension(url) in DATA_EXTENSIONS
+
+
+def safe_json_dumps(value) -> str:
+    try:
+        return json.dumps(value, ensure_ascii=False)
+    except Exception:
+        return str(value)
+
+
+def get_filename_from_url(url: str) -> str:
+    try:
+        path = urlparse(url).path
+        return Path(path).name.lower()
+    except Exception:
+        return ""
+
+
+def is_technical_link(url: str) -> bool:
+    """Ignora JSON/XML típicos de la infraestructura de una web."""
+    filename = get_filename_from_url(url)
+    path = get_path(url)
+
+    if filename in TECHNICAL_FILENAMES:
+        return True
+
+    technical_path_tokens = (
+        "/static/", "/assets/", "/_next/", "/webpack/",
+        "/favicon", "/icons/", "/apple-touch-icon"
+    )
+    if any(tok in path for tok in technical_path_tokens):
+        return True
+
+    if filename.endswith((".js", ".css", ".png", ".jpg", ".jpeg", ".gif", ".svg", ".ico", ".woff", ".woff2")):
+        return True
+
+    return False
+
+
+def has_dataset_context(url: str) -> bool:
+    """Comprueba si la URL contiene palabras que sugieren dataset real."""
+    tokens = tokenize_url(url)
+    return bool(tokens.intersection(DATASET_LINK_KEYWORDS))
+
+
+def has_strong_dataset_context(url: str) -> bool:
+    """Contexto fuerte de dataset en dominio/path/query."""
+    tokens = tokenize_url(url)
+    return bool(tokens.intersection(STRONG_DATASET_CONTEXT_KEYWORDS))
+
+
+def data_file_match_level(url: str) -> str:
+    """
+    Devuelve el tipo de coincidencia de archivo de datos.
+    - strong: extensión tabular/datos muy fiable.
+    - ambiguous_with_context: extensión ambigua con contexto fuerte de dataset.
+    - weak_with_context: JSON/XML/RDF con contexto fuerte de dataset.
+    - compressed/technical/none: no se acepta.
+    """
+    ext = get_extension(url)
+
+    if ext in COMPRESSED_EXTENSIONS:
+        return "compressed"
+
+    if is_technical_link(url):
+        return "technical"
+
+    # Extensiones muy fiables para enlaces directos de datos.
+    reliable_exts = {".csv", ".tsv", ".xlsx", ".xls", ".parquet", ".h5", ".hdf5", ".arff", ".db", ".sqlite", ".sqlite3"}
+    if ext in reliable_exts:
+        return "strong"
+
+    # Extensiones ambiguas: pueden ser dataset, pero también modelos, código o configuración.
+    ambiguous_exts = {".json", ".xml", ".rdf", ".pkl", ".pickle", ".npy", ".npz", ".mat", ".dat", ".data"}
+    if ext in ambiguous_exts and has_strong_dataset_context(url):
+        if ext in {".json", ".xml", ".rdf"}:
+            return "weak_with_context"
+        return "ambiguous_with_context"
+
+    return "none"
+
+def root_domain(domain: str) -> str:
+    """Aproximación simple para comparar dominios sin depender de librerías externas."""
+    domain = (domain or "").lower().strip()
+    if domain.startswith("www."):
+        domain = domain[4:]
+    parts = [p for p in domain.split(".") if p]
+    if len(parts) <= 2:
+        return domain
+    return ".".join(parts[-2:])
+
+
+def is_trusted_dataset_repository_domain(domain: str) -> bool:
+    domain = (domain or "").lower().strip()
+    rd = root_domain(domain)
+    return domain in TRUSTED_DATASET_REPOSITORY_DOMAINS or rd in TRUSTED_DATASET_REPOSITORY_DOMAINS
+
+
+def github_owner_repo(url: str) -> str:
+    """Devuelve owner/repo para URLs de GitHub, si existe."""
+    try:
+        parsed = urlparse(url)
+        domain = parsed.netloc.lower()
+        if domain not in {"github.com", "www.github.com"}:
+            return ""
+        parts = [p for p in parsed.path.strip("/").split("/") if p]
+        if len(parts) >= 2:
+            return f"{parts[0].lower()}/{parts[1].lower()}"
     except Exception:
         pass
     return ""
 
 
-## Funciones que divide la URL en tokens útiles para buscar señales léxicas. Ejemplo: "https://example.com/dataset/123?version=1" -> {"example", "com", "dataset", "123", "version", "1"}
-def tokenize_url(url: str) -> set:
+def is_candidate_link_relevant_to_input(input_url: str, candidate_link: str) -> bool:
     """
-    Divide la URL en tokens útiles para buscar señales léxicas.
+    Evita que una página sea dataset solo porque enlaza a un dataset externo.
+    - mismo root domain => aceptable;
+    - GitHub => exige mismo owner/repo;
+    - si ALLOW_EXTERNAL_DOWNLOAD_LINKS_IN_H1=True, permite externos.
     """
-    tokens = set()
+    if ALLOW_EXTERNAL_DOWNLOAD_LINKS_IN_H1:
+        return True
+
+    input_domain = get_domain(input_url)
+    candidate_domain = get_domain(candidate_link)
+    if not input_domain or not candidate_domain:
+        return False
+
+    input_gh = github_owner_repo(input_url)
+    cand_gh = github_owner_repo(candidate_link)
+    if input_gh or cand_gh:
+        return bool(input_gh and cand_gh and input_gh == cand_gh)
+
+    return root_domain(input_domain) == root_domain(candidate_domain)
+
+
+def clean_dataset_name_text(name: str) -> str:
+    name = (name or "").strip()
+    name = re.sub(r"\s+", " ", name)
+    name = name.strip(" -–—:;,.()[]{}\"'")
+    return name
+
+
+def is_good_dataset_name(name: str) -> bool:
+    """
+    Filtra nombres extraídos del .dataset.json que son demasiado genéricos
+    o claramente no son nombres de dataset.
+    """
+    clean = clean_dataset_name_text(name)
+    low = clean.lower()
+
+    if not clean or len(clean) < 4 or len(clean) > 120:
+        return False
+    if low in GENERIC_DATASET_NAMES:
+        return False
+    if low.startswith(("http://", "https://", "www.")):
+        return False
+    if re.search(r"\bet\s+al\.?\b", low):
+        return False
+    if re.search(r"\(.*\d{4}.*\)", low) or re.search(r",\s*\d{4}", low):
+        return False
+
+    tokens = normalize_name_tokens(clean)
+    distinctive = {t for t in tokens if len(t) >= 5 and t not in DATASET_NAME_STOPWORDS}
+
+    if not distinctive:
+        return False
+
+    # Si solo tiene un token distintivo, que no sea una plataforma/genérico.
+    if len(distinctive) == 1:
+        tok = next(iter(distinctive))
+        if tok in GENERIC_DATASET_NAMES or len(tok) < 6:
+            return False
+
+    return True
+
+
+def normalize_name_tokens(text: str) -> set:
+    text = (text or "").lower()
+    tokens = re.split(r"[^a-z0-9]+", text)
+    return {t for t in tokens if len(t) >= 3 and t not in DATASET_NAME_STOPWORDS}
+
+
+def url_text_for_name_matching(url: str) -> str:
+    parsed = urlparse(url)
+    return f"{parsed.netloc} {parsed.path}".lower()
+
+
+def url_matches_dataset_name(url: str, dataset_names: list) -> tuple[bool, str]:
+    """
+    Marca True si el nombre del dataset mencionado en el .dataset.json
+    aparece de forma distintiva en el dominio o path de la URL actual.
+
+    Más estricto que antes:
+    - evita que una palabra genérica como 'data' o 'dataset' valide la URL;
+    - exige 2 tokens distintivos, o 1 token largo/compacto muy claro.
+    """
+    target_text = url_text_for_name_matching(url)
+    target_tokens = tokenize_url(url)
+    compact_target = re.sub(r"[^a-z0-9]", "", target_text)
+
+    for name in dataset_names:
+        if not is_good_dataset_name(name):
+            continue
+        name_tokens = normalize_name_tokens(name)
+        # Tokens realmente distintivos. Evitamos tokens cortos/genéricos.
+        distinctive = {t for t in name_tokens if len(t) >= 4 and t not in DATASET_NAME_STOPWORDS}
+        if not distinctive:
+            continue
+
+        overlap = distinctive.intersection(target_tokens)
+
+        # Caso sólido: dos o más tokens del nombre aparecen en la URL.
+        if len(overlap) >= 2:
+            return True, name
+
+        # Caso de dataset de nombre corto pero distintivo: cifar, mnist, wikiart, imagenet...
+        if len(overlap) == 1:
+            tok = next(iter(overlap))
+            if len(tok) >= 6:
+                return True, name
+
+        # Nombre compacto, pero solo si es suficientemente largo.
+        # Ej: 'assemblage dataset' -> assemblage; 'wikiart dataset' -> wikiart.
+        compact_name = "".join(sorted(distinctive))
+        if len(compact_name) >= 8 and compact_name in compact_target:
+            return True, name
+
+        # También probamos cada token distintivo largo dentro del texto compacto.
+        for tok in distinctive:
+            if len(tok) >= 8 and tok in compact_target:
+                return True, name
+
+    return False, ""
+
+
+
+# ==============================
+# H1: contexto de página / JSON
+# ==============================
+
+def safe_parse_json_text(text: str):
+    """Intenta parsear una respuesta como JSON. Si no se puede, devuelve None."""
+    if not text:
+        return None
+    stripped = text.strip()
+    if not stripped or stripped[0] not in "[{":
+        return None
     try:
-        parsed = urlparse(url)
-        raw = f"{parsed.netloc}{parsed.path}{parsed.query}".lower()
-        split_tokens = re.split(r"[/\\\-_.?=&:#]+", raw)
-        tokens = {t for t in split_tokens if t}
+        return json.loads(stripped)
     except Exception:
-        pass
-    return tokens
+        return None
 
 
-## Función para detectar si la URL es un DOI. Ejemplo: "https://doi.org/10.1234/abcd" -> True
-def is_doi_url(url: str) -> bool:
-    return get_domain(url) == "doi.org"
+def iter_json_key_values(obj, parent_key: str = ""):
+    """Recorre un JSON y devuelve pares clave/valor de forma recursiva."""
+    if isinstance(obj, dict):
+        for k, v in obj.items():
+            key = str(k).strip().lower().replace("-", "_")
+            compact = key.replace("_", "")
+            yield compact, v
+            yield from iter_json_key_values(v, compact)
+    elif isinstance(obj, list):
+        for item in obj:
+            yield from iter_json_key_values(item, parent_key)
 
 
-# ==================================
-# Utilidades GAP-KGE / DataStet JSON
-# ==================================
+def json_has_dataset_structure(obj) -> dict:
+    """
+    Detecta si el JSON tiene estructura típica de dataset:
+    schema.org Dataset, distribution/downloadURL/contentURL, recursos, etc.
+    """
+    if obj is None:
+        return {"matched": False, "score": 0, "signals": []}
 
-## Expresión regular para extraer URLs de un texto, usada en la extracción de URLs desde los .dataset.json.
-URL_REGEX = re.compile(r'https?://[^\s"\'<>]+', re.IGNORECASE)
+    score = 0
+    signals = []
 
-## Conjunto de nombres de claves que podrían contener.
-TEXT_KEYS_HINT = {
-    "rawform", "raw_form", "mention", "text", "name", "dataset",
-    "dataset_name", "normalizedform", "normalized_form"
-}
+    for key, value in iter_json_key_values(obj):
+        if key in {"@type", "type"}:
+            value_txt = str(value).lower()
+            if "dataset" in value_txt or "datacatalog" in value_txt:
+                score += 4
+                signals.append("json_schema_type_dataset")
 
-SCORE_KEYS_HINT = {
-    "score", "confidence", "prob", "probability", "conf"
-}
+        if key in {"downloadurl", "download_url", "contenturl", "content_url"}:
+            score += 3
+            signals.append(f"json_download_key:{key}")
+
+        if key in {"distribution", "resources", "resource", "files", "file"}:
+            score += 1
+            signals.append(f"json_resource_key:{key}")
+
+        if isinstance(value, str):
+            low = value.lower()
+            if any(term in low for term in PAGE_DATASET_TERMS):
+                score += 1
+                signals.append(f"json_text_dataset_context:{key}")
+
+    # Evitar sumar infinito si hay muchas claves repetidas.
+    score = min(score, 8)
+    return {"matched": score >= 3, "score": score, "signals": sorted(set(signals))[:20]}
 
 
-def normalize_url_loose(url: str) -> str:
-    if not url:
-        return ""
-    u = url.strip()
-    u = re.sub(r"#.*$", "", u)
-    u = u.rstrip("/")
-    return u.lower()
+def extract_candidate_links_from_json_obj(obj, base_url: str = "") -> list:
+    """
+    Extrae enlaces de un JSON, priorizando campos que suelen contener descargas.
+    También usa urljoin para enlaces relativos.
+    """
+    found = set()
+    if obj is None:
+        return []
 
+    for key, value in iter_json_key_values(obj):
+        if isinstance(value, str):
+            values = [value]
+        elif isinstance(value, list):
+            values = [x for x in value if isinstance(x, str)]
+        else:
+            values = []
+
+        if key in JSON_DOWNLOAD_KEYS or values:
+            for txt in values:
+                for match in URL_REGEX.findall(txt):
+                    found.add(match.rstrip(".,;:!?)]}>'\""))
+                # enlace relativo que parece archivo de datos
+                if re.search(r"\.(csv|tsv|json|xml|rdf|xlsx|xls|parquet|h5|hdf5|npy|npz|arff|mat|db|sqlite|dat|data)(?:$|[?#])", txt, re.I):
+                    found.add(urljoin(base_url, txt.strip()))
+
+    return sorted(found)
+
+
+def normalize_page_text(text: str) -> str:
+    text = re.sub(r"<script[\s\S]*?</script>", " ", text, flags=re.I)
+    text = re.sub(r"<style[\s\S]*?</style>", " ", text, flags=re.I)
+    text = re.sub(r"<[^>]+>", " ", text)
+    text = re.sub(r"\s+", " ", text)
+    return text.lower().strip()
+
+
+def candidate_link_context_windows(text: str, candidate_links: list, window: int = 350) -> list:
+    """
+    Saca trozos de texto alrededor de URLs/nombres de archivo encontrados.
+    Sirve para comprobar que cerca del link pone dataset/download/data.
+    """
+    if not text or not candidate_links:
+        return []
+
+    windows = []
+    lower = text.lower()
+
+    for item in candidate_links[:20]:
+        link = item.get("link", item) if isinstance(item, dict) else item
+        candidates = [link.lower(), get_filename_from_url(link).lower()]
+        for needle in candidates:
+            if not needle:
+                continue
+            idx = lower.find(needle)
+            if idx == -1:
+                continue
+            start = max(0, idx - window)
+            end = min(len(text), idx + len(needle) + window)
+            snippet = normalize_page_text(text[start:end])
+            if snippet:
+                windows.append(snippet)
+            break
+
+    return windows[:20]
+
+
+def text_has_dataset_download_context(text: str, candidate_links: list | None = None) -> dict:
+    """
+    Exige contexto de dataset en la página.
+    No basta con encontrar un archivo: debe aparecer texto tipo dataset/data/download/train/test/etc.
+    """
+    clean = normalize_page_text(text or "")
+    if not clean:
+        return {"matched": False, "score": 0, "signals": [], "matched_terms": []}
+
+    score = 0
+    signals = []
+    matched_terms = []
+
+    dataset_terms = sorted([t for t in PAGE_DATASET_TERMS if t in clean])
+    download_terms = sorted([t for t in PAGE_DOWNLOAD_TERMS if t in clean])
+
+    if dataset_terms:
+        score += min(3, len(dataset_terms))
+        signals.append("page_has_dataset_terms")
+        matched_terms.extend(dataset_terms[:10])
+
+    if download_terms:
+        score += min(2, len(download_terms))
+        signals.append("page_has_download_terms")
+        matched_terms.extend(download_terms[:10])
+
+    # Contexto cerca del enlace descargable: más fuerte que contexto global.
+    windows = candidate_link_context_windows(text, candidate_links or [])
+    local_hits = []
+    for snippet in windows:
+        has_data = any(t in snippet for t in PAGE_DATASET_TERMS)
+        has_download = any(t in snippet for t in PAGE_DOWNLOAD_TERMS)
+        if has_data and has_download:
+            local_hits.append(snippet[:300])
+
+    if local_hits:
+        score += 4
+        signals.append("dataset_download_context_near_candidate_link")
+
+    # Para que sea True debe haber evidencia de dataset y de descarga/acceso,
+    # o contexto local fuerte cerca del enlace.
+    matched = bool(local_hits) or (bool(dataset_terms) and bool(download_terms) and score >= 4)
+
+    return {
+        "matched": matched,
+        "score": score,
+        "signals": sorted(set(signals)),
+        "matched_terms": sorted(set(matched_terms))[:20],
+        "local_context_samples": local_hits[:3]
+    }
+
+
+def optional_hf_dataset_classifier(text: str) -> dict:
+    """
+    Clasificador IA opcional con Hugging Face local.
+    Está apagado por defecto. No es necesario para que funcione el script.
+    Úsalo solo como señal adicional, no como verdad absoluta.
+    """
+    if not USE_HF_ZERO_SHOT_FOR_H1:
+        return {"used": False, "matched": False, "label": "", "score": 0.0, "reason": "disabled"}
+
+    try:
+        from transformers import pipeline
+        classifier = pipeline("zero-shot-classification", model=HF_ZERO_SHOT_MODEL)
+        sample = normalize_page_text(text or "")[:2500]
+        labels = [
+            "dataset download page",
+            "software or code repository",
+            "scientific paper or citation page",
+            "general web page"
+        ]
+        out = classifier(sample, candidate_labels=labels)
+        best_label = out["labels"][0]
+        best_score = float(out["scores"][0])
+        return {
+            "used": True,
+            "matched": best_label == "dataset download page" and best_score >= 0.70,
+            "label": best_label,
+            "score": best_score,
+            "reason": "hf_zero_shot"
+        }
+    except Exception as e:
+        return {"used": True, "matched": False, "label": "", "score": 0.0, "reason": f"hf_error:{e}"}
+
+# ==============================
+# H1: EXTENSIÓN O INSPECCIÓN DE PÁGINA/JSON
+# ==============================
+
+def fetch_page_text(url: str, timeout: int = REQUEST_TIMEOUT, max_bytes: int = MAX_PAGE_BYTES) -> dict:
+    """
+    Descarga una página o JSON como texto, sin guardar archivo.
+    Sirve para buscar dentro enlaces a .csv, .xlsx, .zip, etc.
+    """
+    headers = {
+        "User-Agent": "Mozilla/5.0 dataset-url-detector/1.0",
+        "Accept": "text/html,application/json,application/ld+json,text/plain,*/*;q=0.8"
+    }
+
+    try:
+        with requests.get(url, headers=headers, allow_redirects=True, timeout=timeout, stream=True) as response:
+            content_type = response.headers.get("Content-Type", "").split(";")[0].strip().lower()
+            final_url = response.url
+
+            chunks = []
+            total = 0
+            for chunk in response.iter_content(chunk_size=8192):
+                if not chunk:
+                    continue
+                chunks.append(chunk)
+                total += len(chunk)
+                if total >= max_bytes:
+                    break
+
+            raw = b"".join(chunks)
+
+            text = ""
+            for enc in ("utf-8", "utf-8-sig", "latin-1"):
+                try:
+                    text = raw.decode(enc, errors="replace")
+                    break
+                except Exception:
+                    pass
+
+            return {
+                "ok": True,
+                "status_code": response.status_code,
+                "content_type": content_type,
+                "final_url": final_url,
+                "bytes_read": len(raw),
+                "text": text
+            }
+
+    except Exception as e:
+        return {
+            "ok": False,
+            "error": str(e),
+            "text": ""
+        }
+
+
+def extract_candidate_links_from_text(text: str, base_url: str = "") -> list:
+    """
+    Extrae URLs absolutas desde HTML, JSON o texto plano.
+    También convierte enlaces relativos usando urljoin.
+    """
+    found = set()
+
+    if not text:
+        return []
+
+    # URLs completas en cualquier texto/JSON
+    for match in URL_REGEX.findall(text):
+        found.add(match.rstrip(".,;:!?)]}>'\""))
+
+    # href="..."
+    for match in HREF_REGEX.findall(text):
+        href = match.strip()
+        if href and not href.startswith(("mailto:", "javascript:", "#")):
+            found.add(urljoin(base_url, href))
+
+    # src="..."
+    for match in SRC_REGEX.findall(text):
+        src = match.strip()
+        if src and not src.startswith(("mailto:", "javascript:", "#")):
+            found.add(urljoin(base_url, src))
+
+    return sorted(found)
+
+
+def score_candidate_download_link(link: str) -> dict:
+    """
+    Decide si un enlace encontrado dentro de una página parece archivo de dataset.
+
+    Versión más estricta:
+    - ignora comprimidos (.zip, .gz, .tar, etc.)
+    - ignora ficheros técnicos (manifest.json, opensearch.xml, feed.xml, etc.)
+    - acepta .csv/.tsv/.xlsx/.parquet/etc. directamente
+    - acepta .json/.xml solo si el enlace tiene contexto de dataset/data/train/test/etc.
+    """
+    ext = get_extension(link)
+    tokens = tokenize_url(link)
+    positive_tokens = sorted(tokens.intersection(DATASET_LINK_KEYWORDS))
+    negative_tokens = sorted(tokens.intersection(NEGATIVE_LINK_KEYWORDS))
+
+    match_level = data_file_match_level(link)
+    score = 0
+    signals = []
+
+    if match_level == "compressed":
+        return {
+            "link": link,
+            "extension": ext,
+            "score": 0,
+            "signals": [f"compressed_file_ignored:{ext}"],
+            "matched": False
+        }
+
+    if match_level == "technical":
+        return {
+            "link": link,
+            "extension": ext,
+            "score": 0,
+            "signals": ["technical_web_file_ignored"],
+            "matched": False
+        }
+
+    if match_level == "strong":
+        score += 5
+        signals.append(f"strong_data_extension:{ext}")
+
+    elif match_level == "ambiguous_with_context":
+        score += 5
+        signals.append(f"ambiguous_data_extension_with_dataset_context:{ext}")
+
+    elif match_level == "weak_with_context":
+        score += 4
+        signals.append(f"weak_data_extension_with_dataset_context:{ext}")
+
+    if positive_tokens:
+        score += min(2, len(positive_tokens))
+        signals.append("dataset_keywords:" + "|".join(positive_tokens[:5]))
+
+    if negative_tokens:
+        score -= min(3, len(negative_tokens))
+        signals.append("negative_keywords:" + "|".join(negative_tokens[:5]))
+
+    return {
+        "link": link,
+        "extension": ext,
+        "score": max(score, 0),
+        "signals": signals,
+        "matched": score >= 5
+    }
+
+def heuristic_1_database_by_extension_or_page(url: str) -> dict:
+    """
+    H1, versión confirmatoria:
+
+    - Si la URL es un archivo de datos directo fuerte (.csv, .tsv, .xlsx, etc.), True.
+    - Si la URL es una página/API/JSON, NO basta con encontrar un archivo.
+      Tiene que cumplir dos condiciones a la vez:
+        1) existe un descargable de datos directo y no comprimido;
+        2) la página/JSON contiene contexto claro de dataset o descarga de datos.
+    - Si no se cumplen ambas, es negativo.
+    """
+    direct_ext = get_extension(url)
+    direct_match_level = data_file_match_level(url)
+
+    # Caso directo: la URL actual ya es un archivo de datos real.
+    if direct_match_level == "strong":
+        return {
+            "heuristic": "h1_confirmed_dataset_download_in_page",
+            "matched": True,
+            "score": 7,
+            "reason": "url_is_direct_strong_data_file",
+            "value": {
+                "direct_extension": direct_ext,
+                "direct_match_level": direct_match_level,
+                "page_downloaded": False,
+                "page_dataset_context": {},
+                "candidate_dataset_links": [],
+                "external_candidate_dataset_links_not_used": [],
+                "signals": [f"direct_strong_data_file:{direct_ext}"]
+            }
+        }
+
+    # JSON/XML directos solo se aceptan si la propia URL tiene contexto fuerte.
+    if direct_match_level in {"ambiguous_with_context", "weak_with_context"}:
+        return {
+            "heuristic": "h1_confirmed_dataset_download_in_page",
+            "matched": True,
+            "score": 6,
+            "reason": "url_is_direct_ambiguous_data_file_with_dataset_context",
+            "value": {
+                "direct_extension": direct_ext,
+                "direct_match_level": direct_match_level,
+                "page_downloaded": False,
+                "page_dataset_context": {},
+                "candidate_dataset_links": [],
+                "external_candidate_dataset_links_not_used": [],
+                "signals": [f"direct_{direct_match_level}:{direct_ext}"]
+            }
+        }
+
+    if direct_match_level in {"compressed", "technical"}:
+        return {
+            "heuristic": "h1_confirmed_dataset_download_in_page",
+            "matched": False,
+            "score": 0,
+            "reason": f"direct_{direct_match_level}_file_ignored",
+            "value": {
+                "direct_extension": direct_ext,
+                "direct_match_level": direct_match_level,
+                "page_downloaded": False,
+                "page_dataset_context": {},
+                "candidate_dataset_links": [],
+                "external_candidate_dataset_links_not_used": [],
+                "signals": [f"direct_{direct_match_level}_file_ignored:{direct_ext}"]
+            }
+        }
+
+    # Caso página/API: descargamos texto/JSON y buscamos evidencia doble.
+    page = fetch_page_text(url)
+
+    if not page["ok"]:
+        return {
+            "heuristic": "h1_confirmed_dataset_download_in_page",
+            "matched": False,
+            "score": 0,
+            "reason": "page_download_error",
+            "value": {
+                "direct_extension": direct_ext,
+                "error": page.get("error", ""),
+                "page_dataset_context": {},
+                "candidate_dataset_links": [],
+                "external_candidate_dataset_links_not_used": [],
+                "signals": []
+            }
+        }
+
+    text = page.get("text", "")
+    final_url = page.get("final_url", url)
+    content_type = page.get("content_type", "")
+
+    parsed_json = safe_parse_json_text(text)
+
+    # 1) Extraer descargables desde texto/HTML y, si es JSON, desde estructura JSON.
+    candidate_links = set(extract_candidate_links_from_text(text, base_url=final_url))
+    if parsed_json is not None:
+        candidate_links.update(extract_candidate_links_from_json_obj(parsed_json, base_url=final_url))
+
+    scored_links = []
+    for link in sorted(candidate_links):
+        scored = score_candidate_download_link(link)
+        if scored["score"] > 0:
+            scored_links.append(scored)
+
+    scored_links.sort(key=lambda x: x["score"], reverse=True)
+
+    # 2) Quedarnos solo con descargables que pertenecen a la misma página/sitio/repo.
+    matched_links = []
+    external_matched_links = []
+    for x in scored_links:
+        if not x["matched"]:
+            continue
+        if is_candidate_link_relevant_to_input(url, x["link"]):
+            matched_links.append(x)
+        else:
+            x = dict(x)
+            x["signals"] = list(x.get("signals", [])) + ["external_download_link_not_used_for_label"]
+            external_matched_links.append(x)
+
+    # 3) Comprobar que la página/JSON realmente habla de dataset/datos descargables.
+    text_context = text_has_dataset_download_context(text, matched_links)
+    json_context = json_has_dataset_structure(parsed_json)
+    ai_context = optional_hf_dataset_classifier(text)
+
+    page_context_score = text_context.get("score", 0) + json_context.get("score", 0)
+    page_context_matched = (
+        text_context.get("matched", False)
+        or json_context.get("matched", False)
+        or ai_context.get("matched", False)
+    )
+
+    # Regla principal: para páginas/APIs debe haber descargable + contexto.
+    has_confirmed_download = len(matched_links) > 0
+    matched = has_confirmed_download and page_context_matched
+    score = 0
+    if matched:
+        score = min(10, matched_links[0]["score"] + page_context_score)
+
+    if matched:
+        reason = "dataset_download_link_found_and_page_has_dataset_context"
+    elif not has_confirmed_download:
+        reason = "no_relevant_dataset_download_link_found_in_page"
+    else:
+        reason = "download_link_found_but_page_has_no_dataset_context"
+
+    signals = []
+    if has_confirmed_download:
+        signals.append("relevant_dataset_download_link_found")
+    if page_context_matched:
+        signals.append("page_or_json_has_dataset_context")
+
+    return {
+        "heuristic": "h1_confirmed_dataset_download_in_page",
+        "matched": matched,
+        "score": score,
+        "reason": reason,
+        "value": {
+            "direct_extension": direct_ext,
+            "direct_match_level": direct_match_level,
+            "page_downloaded": True,
+            "status_code": page.get("status_code", ""),
+            "content_type": content_type,
+            "final_url": final_url,
+            "bytes_read": page.get("bytes_read", 0),
+            "is_json_response": parsed_json is not None,
+            "candidate_dataset_links": matched_links[:20],
+            "external_candidate_dataset_links_not_used": external_matched_links[:20],
+            "all_scored_candidate_links_sample": scored_links[:20],
+            "page_dataset_context": {
+                "matched": page_context_matched,
+                "score": page_context_score,
+                "text_context": text_context,
+                "json_context": json_context,
+                "ai_context": ai_context
+            },
+            "signals": signals
+        }
+    }
+
+
+# ==============================
+# H2: HTTP CONTENT-TYPE / CONTENT-DISPOSITION
+# ==============================
+
+def heuristic_2_http_metadata(url: str, timeout: int = REQUEST_TIMEOUT) -> dict:
+    """
+    Segunda heurística:
+    Hace HEAD y si no sirve hace GET stream.
+    Mira Content-Type, Content-Disposition y extensión de la URL final.
+    """
+    headers = {
+        "User-Agent": "Mozilla/5.0 dataset-url-detector/1.0",
+        "Accept": "*/*"
+    }
+
+    response = None
+
+    try:
+        try:
+            response = requests.head(url, headers=headers, allow_redirects=True, timeout=timeout)
+        except Exception:
+            response = None
+
+        if response is None or response.status_code >= 400 or not response.headers.get("Content-Type"):
+            response = requests.get(url, headers=headers, allow_redirects=True, timeout=timeout, stream=True)
+
+        content_type = response.headers.get("Content-Type", "").split(";")[0].strip().lower()
+        content_length = response.headers.get("Content-Length", "")
+        content_disposition = response.headers.get("Content-Disposition", "").lower()
+        final_url = response.url
+        final_ext = get_extension(final_url)
+
+        if final_ext in COMPRESSED_EXTENSIONS or content_type in COMPRESSED_CONTENT_TYPES:
+            return {
+                "heuristic": "h2_http_metadata",
+                "matched": False,
+                "score": 0,
+                "reason": "compressed_file_ignored",
+                "value": {
+                    "status_code": response.status_code,
+                    "content_type": content_type,
+                    "content_length": content_length,
+                    "content_disposition": content_disposition,
+                    "filename_from_content_disposition": "",
+                    "filename_extension": final_ext,
+                    "final_url": final_url,
+                    "final_extension": final_ext,
+                    "signals": [f"compressed_file_ignored:{final_ext or content_type}"]
+                }
+            }
+
+        signals = []
+        score = 0
+
+        final_match_level = data_file_match_level(final_url)
+
+        # Content-Type por sí solo solo vale para formatos muy específicos.
+        # application/octet-stream/json/xml no bastan si no hay extensión/nombre de dataset.
+        strong_content_types = {
+            "text/csv", "application/csv", "text/tab-separated-values",
+            "application/vnd.ms-excel",
+            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            "application/parquet", "application/x-parquet", "application/x-hdf5",
+            "application/x-sqlite3"
+        }
+
+        if content_type in strong_content_types:
+            score += 4
+            signals.append(f"strong_data_content_type:{content_type}")
+
+        if final_match_level in {"strong", "ambiguous_with_context", "weak_with_context"}:
+            score += 3
+            signals.append(f"final_data_file_match:{final_match_level}:{final_ext}")
+
+        if "attachment" in content_disposition:
+            score += 2
+            signals.append("content_disposition_attachment")
+
+        filename_match = re.search(r'filename\*?=(?:UTF-8\'\')?["\']?([^"\';]+)', content_disposition)
+        filename = filename_match.group(1) if filename_match else ""
+        filename_ext = get_extension("https://example.com/" + filename) if filename else ""
+
+        if filename_ext in COMPRESSED_EXTENSIONS:
+            return {
+                "heuristic": "h2_http_metadata",
+                "matched": False,
+                "score": 0,
+                "reason": "compressed_file_ignored",
+                "value": {
+                    "status_code": response.status_code,
+                    "content_type": content_type,
+                    "content_length": content_length,
+                    "content_disposition": content_disposition,
+                    "filename_from_content_disposition": filename,
+                    "filename_extension": filename_ext,
+                    "final_url": final_url,
+                    "final_extension": final_ext,
+                    "signals": [f"compressed_file_ignored:{filename_ext}"]
+                }
+            }
+
+        filename_match_level = data_file_match_level("https://example.com/" + filename) if filename else "none"
+        if filename_match_level in {"strong", "ambiguous_with_context", "weak_with_context"}:
+            score += 3
+            signals.append(f"content_disposition_filename_data_file:{filename_match_level}:{filename_ext}")
+
+        if content_length:
+            signals.append("has_content_length")
+
+        matched = score > 0
+
+        return {
+            "heuristic": "h2_http_metadata",
+            "matched": matched,
+            "score": score,
+            "reason": "http_metadata_dataset_signal" if matched else "no_http_metadata_dataset_signal",
+            "value": {
+                "status_code": response.status_code,
+                "content_type": content_type,
+                "content_length": content_length,
+                "content_disposition": content_disposition,
+                "filename_from_content_disposition": filename,
+                "filename_extension": filename_ext,
+                "final_url": final_url,
+                "final_extension": final_ext,
+                "signals": signals
+            }
+        }
+
+    except Exception as e:
+        return {
+            "heuristic": "h2_http_metadata",
+            "matched": False,
+            "score": 0,
+            "reason": "http_error",
+            "value": {
+                "error": str(e),
+                "signals": []
+            }
+        }
+    finally:
+        try:
+            if response is not None:
+                response.close()
+        except Exception:
+            pass
+
+
+# ==============================
+# H3: .dataset.json
+# ==============================
 
 def safe_read_json(path: str):
     try:
@@ -208,97 +1219,79 @@ def safe_read_json(path: str):
 def iter_json_nodes(obj):
     yield obj
     if isinstance(obj, dict):
-        for v in obj.values():
-            yield from iter_json_nodes(v)
+        for value in obj.values():
+            yield from iter_json_nodes(value)
     elif isinstance(obj, list):
         for item in obj:
             yield from iter_json_nodes(item)
 
 
-def extract_urls_from_json(obj) -> list:
+def extract_urls_from_json_obj(obj) -> list:
     found = set()
-
     for node in iter_json_nodes(obj):
         if isinstance(node, str):
             for match in URL_REGEX.findall(node):
-                found.add(normalize_url_loose(match))
-
+                found.add(normalize_loose(match))
     return sorted(found)
 
 
-def extract_text_mentions_from_json(obj) -> list:
-    mentions = set()
+def extract_dataset_like_urls_from_json_obj(obj) -> list:
+    """
+    Extrae solo URLs del .dataset.json que parecen datasets de forma razonable.
+    No acepta comprimidos y no acepta JSON/XML técnicos.
+    """
+    urls = extract_urls_from_json_obj(obj)
+    dataset_like = []
 
-    for node in iter_json_nodes(obj):
-        if isinstance(node, dict):
-            for k, v in node.items():
-                if not isinstance(k, str):
-                    continue
+    for u in urls:
+        level = data_file_match_level(u)
+        tokens = tokenize_url(u)
+        has_dataset_keyword = bool(tokens.intersection(DATASET_LINK_KEYWORDS))
 
-                key_norm = k.strip().lower().replace("-", "_")
-                key_norm_compact = key_norm.replace("_", "")
+        if level in {"strong", "weak_with_context", "ambiguous_with_context"}:
+            dataset_like.append(u)
+        elif has_dataset_keyword and level not in {"compressed", "technical"}:
+            # URL sin extensión, pero con contexto claro de dataset.
+            # Para dominios genéricos exigimos un repositorio/plataforma conocida de datasets.
+            domain = get_domain(u)
+            if is_trusted_dataset_repository_domain(domain) or "dataset" in tokens or "datasets" in tokens:
+                dataset_like.append(u)
 
-                if key_norm_compact in TEXT_KEYS_HINT and isinstance(v, str):
-                    txt = v.strip()
-                    if txt and len(txt) <= 300:
-                        mentions.add(txt)
-
-    return sorted(mentions)
-
-
-def extract_scores_from_json(obj) -> list:
-    scores = []
-
-    for node in iter_json_nodes(obj):
-        if isinstance(node, dict):
-            for k, v in node.items():
-                if not isinstance(k, str):
-                    continue
-
-                key_norm = k.strip().lower().replace("-", "_")
-                key_norm_compact = key_norm.replace("_", "")
-
-                if key_norm_compact in SCORE_KEYS_HINT:
-                    try:
-                        scores.append(float(v))
-                    except Exception:
-                        pass
-
-    return scores
+    return sorted(set(dataset_like))
 
 
-@lru_cache(maxsize=2048)
-def summarize_gap_kge_json(json_path: str) -> dict:
-    data = safe_read_json(json_path)
-
-    if data is None:
-        return {
-            "exists": False,
-            "error": "json_not_readable",
-            "urls": [],
-            "mentions": [],
-            "scores": []
-        }
-
-    urls = extract_urls_from_json(data)
-    mentions = extract_text_mentions_from_json(data)
-    scores = extract_scores_from_json(data)
-    positive_scores = [s for s in scores if s > 0]
-
-    return {
-        "exists": True,
-        "error": "",
-        "urls": urls,
-        "mentions": mentions,
-        "scores": scores,
-        "max_score": max(scores) if scores else None,
-        "positive_score_count": len(positive_scores),
-        "url_count": len(urls),
-        "mention_count": len(mentions)
+def extract_dataset_names_from_json_obj(obj) -> list:
+    """
+    Extrae posibles nombres de dataset del .dataset.json.
+    Sirve para validar casos donde el JSON dice que el dataset se llama X
+    y la URL actual es x.com o dominio.com/x.
+    """
+    name_keys = {
+        "rawform", "raw_form", "normalizedform", "normalized_form",
+        "mention", "name", "dataset", "dataset_name",
+        "title", "label"
     }
+    names = set()
 
+    for node in iter_json_nodes(obj):
+        if isinstance(node, dict):
+            for k, v in node.items():
+                if not isinstance(k, str) or not isinstance(v, str):
+                    continue
+                key = k.strip().lower().replace("-", "_")
+                key_compact = key.replace("_", "")
+                if key in name_keys or key_compact in name_keys:
+                    value = clean_dataset_name_text(v)
+                    # Evitamos meter párrafos enormes, citas, plataformas genéricas o URLs puras como nombre.
+                    if is_good_dataset_name(value):
+                        names.add(value)
 
-def get_gap_kge_json_path(paper_name: str, base_dir: str = GAP_KGE_JSON_DIR) -> str:
+        # No usamos cualquier string suelto como nombre: en los JSON hay mucho texto contextual
+        # que provoca coincidencias falsas. Preferimos claves explícitas como rawForm/name/title.
+
+    return sorted(names)
+
+def get_dataset_json_path(paper_name: str, base_dir: str = GAP_KGE_JSON_DIR) -> str:
     paper_name = (paper_name or "").strip()
     if not paper_name:
         return ""
@@ -311,961 +1304,512 @@ def get_gap_kge_json_path(paper_name: str, base_dir: str = GAP_KGE_JSON_DIR) -> 
     return str(Path(base_dir) / f"{stem}.dataset.json")
 
 
-# ==================================
-# Utilidades H6: inspección de contenido
-# ==================================
-def looks_like_text(data: bytes) -> bool:
-    if not data:
-        return False
-    try:
-        data.decode("utf-8")
-        return True
-    except UnicodeDecodeError:
-        try:
-            data.decode("latin-1")
-            return True
-        except Exception:
-            return False
+@lru_cache(maxsize=2048)
+def summarize_dataset_json(json_path: str) -> dict:
+    data = safe_read_json(json_path)
 
-
-def decode_sample(data: bytes) -> str:
-    for enc in ("utf-8", "utf-8-sig", "latin-1"):
-        try:
-            return data.decode(enc)
-        except Exception:
-            pass
-    return ""
-
-
-def detect_delimited_table(text: str) -> dict:
-    """
-    Intenta detectar si el texto parece una tabla CSV o TSV.
-    """
-    lines = [line for line in text.splitlines() if line.strip()]
-    lines = lines[:10]
-
-    if len(lines) < 2:
-        return {"matched": False, "kind": "", "columns": 0, "reason": "not_enough_lines"}
-
-    for delimiter, kind in [(",", "csv"), ("\t", "tsv"), (";", "csv_semicolon")]:
-        counts = []
-        for line in lines[:5]:
-            count = line.count(delimiter)
-            counts.append(count)
-
-        # necesitamos al menos 2 líneas con separadores
-        positive_counts = [c for c in counts if c > 0]
-        if len(positive_counts) < 2:
-            continue
-
-        # comprobamos consistencia aproximada
-        if max(positive_counts) - min(positive_counts) <= 2:
-            avg_cols = int(sum(c + 1 for c in positive_counts) / len(positive_counts))
-            if avg_cols >= 2:
-                return {
-                    "matched": True,
-                    "kind": kind,
-                    "columns": avg_cols,
-                    "reason": "consistent_delimited_rows"
-                }
-
-    return {"matched": False, "kind": "", "columns": 0, "reason": "no_consistent_delimited_pattern"}
-
-
-def detect_json_content(data: bytes) -> dict:
-    try:
-        obj = json.loads(decode_sample(data))
-        if isinstance(obj, list):
-            return {"matched": True, "kind": "json_array", "reason": "valid_json_array"}
-        if isinstance(obj, dict):
-            return {"matched": True, "kind": "json_object", "reason": "valid_json_object"}
-        return {"matched": True, "kind": "json_scalar", "reason": "valid_json_scalar"}
-    except Exception:
-        return {"matched": False, "kind": "", "reason": "invalid_json"}
-
-
-def detect_xml_content(data: bytes) -> dict:
-    try:
-        text = decode_sample(data).lstrip()
-        if not text.startswith("<"):
-            return {"matched": False, "kind": "", "reason": "not_xml_like"}
-        ET.fromstring(text[:DOWNLOAD_SAMPLE_BYTES])
-        return {"matched": True, "kind": "xml", "reason": "valid_xml_prefix"}
-    except Exception:
-        return {"matched": False, "kind": "", "reason": "invalid_xml"}
-
-
-def detect_excel_signature(data: bytes) -> dict:
-    # XLSX / ZIP based
-    if data.startswith(b"PK"):
-        return {"matched": True, "kind": "zip_or_xlsx", "reason": "pk_signature"}
-    # XLS antiguo (OLE)
-    if data.startswith(b"\xD0\xCF\x11\xE0\xA1\xB1\x1A\xE1"):
-        return {"matched": True, "kind": "xls_ole", "reason": "ole_signature"}
-    return {"matched": False, "kind": "", "reason": "no_excel_signature"}
-
-
-def inspect_zip_bytes(data: bytes) -> dict:
-    try:
-        with zipfile.ZipFile(io.BytesIO(data)) as zf:
-            names = zf.namelist()
-            lower_names = [n.lower() for n in names]
-
-            data_files = []
-            for name in lower_names:
-                ext = Path(name).suffix.lower()
-                if ext in ZIP_DATA_EXTENSIONS:
-                    data_files.append(name)
-
-            return {
-                "matched": len(data_files) > 0,
-                "reason": "zip_contains_data_files" if data_files else "zip_without_data_files",
-                "file_count": len(names),
-                "data_files": data_files[:20],
-                "sample_names": lower_names[:20]
-            }
-    except Exception as e:
+    if data is None:
         return {
-            "matched": False,
-            "reason": "zip_not_readable",
-            "file_count": 0,
-            "data_files": [],
-            "sample_names": [],
-            "error": str(e)
+            "exists": False,
+            "error": "json_not_readable",
+            "urls": [],
+            "dataset_like_urls": [],
+            "dataset_names": []
         }
 
-
-## Función para crear la carpeta temporal si no existe
-def ensure_temp_dir(path: str = TEMP_DOWNLOAD_DIR):
-    Path(path).mkdir(parents=True, exist_ok=True)
-
-
-## Función para eliminar un archivo temporal
-def cleanup_file(path: str):
-    try:
-        if path and Path(path).exists():
-            Path(path).unlink()
-    except Exception:
-        pass
-
-
-## Función para eliminar la carpeta temporal si se queda vacía
-def cleanup_dir_if_empty(path: str):
-    try:
-        p = Path(path)
-        if p.exists() and p.is_dir() and not any(p.iterdir()):
-            p.rmdir()
-    except Exception:
-        pass
-
-
-## Función para detectar si el texto descargado parece HTML
-def looks_like_html(text: str) -> bool:
-    if not text:
-        return False
-
-    text_low = text.lower()
-    html_markers = [
-        "<html", "<!doctype html", "<head", "<body", "<script",
-        "<meta", "<title", "</html>"
-    ]
-    return any(marker in text_low for marker in html_markers)
-
-
-## Función para detectar si la URL final parece una redirección de validación o anti-bot
-def suspicious_redirect_or_validation(final_url: str) -> bool:
-    if not final_url:
-        return False
-
-    final_low = final_url.lower()
-    return any(token in final_low for token in SUSPICIOUS_HTML_TOKENS)
-
-
-## Función para descargar el recurso a un fichero temporal real
-def save_download_to_temp_file(
-    url: str,
-    timeout: int = DOWNLOAD_TIMEOUT,
-    max_bytes: int = DOWNLOAD_MAX_BYTES,
-    temp_dir: str = TEMP_DOWNLOAD_DIR
-) -> dict:
-    """
-    Descarga el recurso a un fichero temporal real y devuelve metadatos.
-    """
-    ensure_temp_dir(temp_dir)
-
-    tmp_path = ""
-    try:
-        with requests.get(url, allow_redirects=True, timeout=timeout, stream=True) as response:
-            response.raise_for_status()
-
-            content_type = response.headers.get("Content-Type", "").split(";")[0].strip().lower()
-            content_length = response.headers.get("Content-Length", "")
-            final_url = response.url
-
-            # Intentamos sacar extensión de la URL final
-            final_ext = get_extension(final_url)
-
-            with tempfile.NamedTemporaryFile(delete=False, dir=temp_dir, suffix=final_ext or ".tmp") as tmp:
-                tmp_path = tmp.name
-                total = 0
-
-                for chunk in response.iter_content(chunk_size=8192):
-                    if not chunk:
-                        continue
-                    tmp.write(chunk)
-                    total += len(chunk)
-                    if total >= max_bytes:
-                        break
-
-            return {
-                "ok": True,
-                "status_code": response.status_code,
-                "content_type": content_type,
-                "content_length": content_length,
-                "final_url": final_url,
-                "final_extension": final_ext,
-                "bytes_downloaded": total,
-                "temp_path": tmp_path
-            }
-
-    except Exception as e:
-        cleanup_file(tmp_path)
-        return {
-            "ok": False,
-            "error": str(e),
-            "temp_path": ""
-        }
-
-
-## Función para leer solo el prefijo del fichero descargado
-def read_file_prefix(path: str, max_bytes: int = DOWNLOAD_SAMPLE_BYTES) -> bytes:
-    try:
-        with open(path, "rb") as f:
-            return f.read(max_bytes)
-    except Exception:
-        return b""
-
-
-## Función para inspeccionar un ZIP real guardado en disco
-def inspect_zip_file(path: str) -> dict:
-    try:
-        with zipfile.ZipFile(path, "r") as zf:
-            names = zf.namelist()
-            lower_names = [n.lower() for n in names]
-
-            data_files = []
-            for name in lower_names:
-                ext = Path(name).suffix.lower()
-                if ext in ZIP_DATA_EXTENSIONS:
-                    data_files.append(name)
-
-            # Detectar XLSX real: ZIP con estructura Office
-            office_markers = {"[content_types].xml", "xl/workbook.xml"}
-            lower_set = set(lower_names)
-            is_xlsx = all(marker in lower_set for marker in office_markers)
-
-            return {
-                "matched": len(data_files) > 0 or is_xlsx,
-                "reason": (
-                    "xlsx_office_structure" if is_xlsx
-                    else "zip_contains_data_files" if data_files
-                    else "zip_without_data_files"
-                ),
-                "file_count": len(names),
-                "data_files": data_files[:20],
-                "sample_names": lower_names[:20],
-                "is_xlsx": is_xlsx
-            }
-    except Exception as e:
-        return {
-            "matched": False,
-            "reason": "zip_not_readable",
-            "file_count": 0,
-            "data_files": [],
-            "sample_names": [],
-            "is_xlsx": False,
-            "error": str(e)
-        }
-
-
-## Función para inspeccionar el fichero descargado ya guardado en disco
-def inspect_saved_file(temp_path: str, content_type: str = "", final_url: str = "", final_ext: str = "") -> dict:
-    """
-    Inspecciona el archivo descargado ya guardado en disco.
-    """
-    prefix = read_file_prefix(temp_path, DOWNLOAD_SAMPLE_BYTES)
-
-    if not prefix:
-        return {
-            "matched": False,
-            "score": 0,
-            "detected_kind": "",
-            "signals": ["empty_or_unreadable_file"]
-        }
-
-    score = 0
-    signals = []
-    detected_kind = ""
-
-    text_prefix = decode_sample(prefix) if looks_like_text(prefix) else ""
-    is_html = (
-        content_type == "text/html"
-        or looks_like_html(text_prefix)
-        or suspicious_redirect_or_validation(final_url)
-    )
-
-    if is_html:
-        signals.append("html_response_or_validation_page")
-        if suspicious_redirect_or_validation(final_url):
-            signals.append("suspicious_validation_redirect")
-
-    # 1. JSON válido
-    if not is_html:
-        json_check = detect_json_content(prefix)
-        if json_check["matched"]:
-            detected_kind = json_check["kind"]
-            score += 3
-            signals.append(json_check["reason"])
-
-    # 2. XML válido
-    if not detected_kind and not is_html:
-        xml_check = detect_xml_content(prefix)
-        if xml_check["matched"]:
-            detected_kind = xml_check["kind"]
-            score += 2
-            signals.append(xml_check["reason"])
-
-    # 3. CSV / TSV si NO es HTML
-    if not detected_kind and not is_html and text_prefix:
-        table_check = detect_delimited_table(text_prefix)
-        if table_check["matched"]:
-            detected_kind = table_check["kind"]
-            score += 3
-            signals.append(table_check["reason"])
-            signals.append(f"columns:{table_check['columns']}")
-
-    # 4. Firmas Excel / ZIP
-    excel_check = detect_excel_signature(prefix)
-    if excel_check["matched"]:
-        if excel_check["kind"] == "xls_ole":
-            detected_kind = "xls"
-            score += 3
-            signals.append(excel_check["reason"])
-
-        elif excel_check["kind"] == "zip_or_xlsx":
-            zip_check = inspect_zip_file(temp_path)
-            if zip_check["matched"]:
-                if zip_check.get("is_xlsx"):
-                    detected_kind = "xlsx"
-                    score += 3
-                    signals.append("xlsx_office_structure")
-                else:
-                    detected_kind = "zip_with_data_files"
-                    score += 3
-                    signals.append(zip_check["reason"])
-                    if zip_check["data_files"]:
-                        signals.append(f"zip_data_files:{len(zip_check['data_files'])}")
-            else:
-                if final_ext == ".zip":
-                    detected_kind = "zip"
-                    score += 1
-                    signals.append("zip_signature_without_clear_data_files")
-
-    # 5. Refuerzo por content type solo si no es HTML sospechoso
-    if not is_html and content_type in DATA_CONTENT_TYPES:
-        score += 1
-        signals.append("content_type_supports_data")
+    urls = extract_urls_from_json_obj(data)
+    dataset_like_urls = extract_dataset_like_urls_from_json_obj(data)
+    dataset_names = extract_dataset_names_from_json_obj(data)
 
     return {
-        "matched": score > 0,
-        "score": score,
-        "detected_kind": detected_kind,
-        "signals": signals
+        "exists": True,
+        "error": "",
+        "urls": urls,
+        "dataset_like_urls": dataset_like_urls,
+        "dataset_names": dataset_names,
+        "url_count": len(urls),
+        "dataset_like_url_count": len(dataset_like_urls),
+        "dataset_name_count": len(dataset_names)
     }
 
 
-def download_sample(url: str, timeout: int = DOWNLOAD_TIMEOUT, max_bytes: int = DOWNLOAD_MAX_BYTES) -> dict:
+def heuristic_3_dataset_json(url: str, paper: str, base_dir: str = GAP_KGE_JSON_DIR) -> dict:
     """
-    Descarga solo una muestra del recurso para inspección.
+    Tercera heurística, versión estricta:
+
+    Usa el .dataset.json como evidencia para confirmar la URL actual.
+    NO marca True solo porque el paper tenga algún dataset.
+
+    Da True si:
+    1) la URL actual aparece exactamente en el .dataset.json;
+    2) la URL actual comparte dominio con una URL dataset-like del JSON y además
+       la URL actual tiene pinta de dataset;
+    3) el JSON menciona un nombre de dataset X y la URL actual contiene ese nombre
+       en el dominio/path, por ejemplo X.com o dominio.com/X.
     """
-    try:
-        with requests.get(url, allow_redirects=True, timeout=timeout, stream=True) as response:
-            response.raise_for_status()
+    json_path = get_dataset_json_path(paper, base_dir=base_dir)
 
-            content_type = response.headers.get("Content-Type", "").split(";")[0].strip().lower()
-            content_length = response.headers.get("Content-Length", "")
-            final_url = response.url
-
-            chunks = []
-            total = 0
-
-            for chunk in response.iter_content(chunk_size=8192):
-                if not chunk:
-                    continue
-                chunks.append(chunk)
-                total += len(chunk)
-                if total >= max_bytes:
-                    break
-
-            data = b"".join(chunks)
-
-            return {
-                "ok": True,
-                "status_code": response.status_code,
-                "content_type": content_type,
-                "content_length": content_length,
-                "final_url": final_url,
-                "bytes_downloaded": len(data),
-                "data": data
-            }
-
-    except Exception as e:
-        return {
-            "ok": False,
-            "error": str(e),
-            "data": b""
-        }
-
-
-# ==================================
-# H1: extensión de fichero
-# ==================================
-def heuristic_extension(url: str) -> dict:
-    ext = get_extension(url)
-
-    if ext in EXCLUDED_EXTENSIONS:
-        return {
-            "heuristic": "extension",
-            "matched": False,
-            "value": ext,
-            "reason": "excluded_extension",
-            "score": 0
-        }
-
-    matched = ext in DATA_EXTENSIONS
-
-    return {
-        "heuristic": "extension",
-        "matched": matched,
-        "value": ext,
-        "reason": "data_extension" if matched else "no_data_extension",
-        "score": 3 if matched else 0
+    empty_value = {
+        "json_path": json_path,
+        "matched_exact_url": False,
+        "matched_same_domain_dataset_url": False,
+        "matched_dataset_name_in_url": False,
+        "matched_dataset_name": "",
+        "input_domain": get_domain(url),
+        "json_url_count": 0,
+        "dataset_like_url_count": 0,
+        "dataset_name_count": 0,
+        "sample_urls": [],
+        "sample_dataset_like_urls": [],
+        "sample_dataset_names": [],
+        "signals": []
     }
-
-
-# ==================================
-# H2: metadatos HTTP de la URL
-# ==================================
-def heuristic_http_metadata(url: str, timeout: int = 8) -> dict:
-    try:
-        response = requests.head(
-            url,
-            allow_redirects=True,
-            timeout=timeout
-        )
-
-        content_type = response.headers.get("Content-Type", "").split(";")[0].strip().lower()
-        content_length = response.headers.get("Content-Length", "")
-        disposition = response.headers.get("Content-Disposition", "").lower()
-
-        if response.status_code >= 400 or not content_type:
-            response = requests.get(
-                url,
-                allow_redirects=True,
-                timeout=timeout,
-                stream=True
-            )
-
-            content_type = response.headers.get("Content-Type", "").split(";")[0].strip().lower()
-            content_length = response.headers.get("Content-Length", "")
-            disposition = response.headers.get("Content-Disposition", "").lower()
-
-        final_url = response.url
-        final_domain = get_domain(final_url)
-        final_ext = get_extension(final_url)
-
-        signals = []
-        score = 0
-
-        if content_type in DATA_CONTENT_TYPES:
-            signals.append("data_content_type")
-            score += 3
-
-        if final_ext in DATA_EXTENSIONS:
-            signals.append("final_data_extension")
-            score += 2
-
-        if "attachment" in disposition:
-            signals.append("attachment_download")
-            score += 1
-
-        matched_domain = ""
-        for known in KNOWN_DATASET_DOMAINS:
-            if final_domain == known or final_domain.endswith("." + known):
-                matched_domain = known
-                signals.append("known_dataset_domain")
-                score += 1
-                break
-
-        if content_length:
-            signals.append("has_content_length")
-
-        matched = score > 0
-
-        return {
-            "heuristic": "http_metadata",
-            "matched": matched,
-            "score": score,
-            "reason": "metadata_signals_found" if matched else "no_metadata_signal",
-            "value": {
-                "status_code": response.status_code,
-                "content_type": content_type,
-                "content_length": content_length,
-                "content_disposition": disposition,
-                "final_url": final_url,
-                "final_domain": final_domain,
-                "final_extension": final_ext,
-                "matched_domain": matched_domain,
-                "is_doi_input": is_doi_url(url),
-                "signals": signals
-            }
-        }
-
-    except Exception as e:
-        return {
-            "heuristic": "http_metadata",
-            "matched": False,
-            "score": 0,
-            "reason": "http_error",
-            "value": {
-                "error": str(e),
-                "is_doi_input": is_doi_url(url)
-            }
-        }
-
-
-# ==================================
-# H3: reutilización estilo GAP-KGE
-# ==================================
-def heuristic_gap_kge_style(url: str) -> dict:
-    domain = get_domain(url)
-    tokens = tokenize_url(url)
-
-    matched_domain = ""
-    for known in KNOWN_DATASET_DOMAINS:
-        if domain == known or domain.endswith("." + known):
-            matched_domain = known
-            break
-
-    positive_tokens = sorted(tokens.intersection(URL_DATASET_KEYWORDS))
-    negative_tokens = sorted(tokens.intersection(URL_NEGATIVE_KEYWORDS))
-
-    score = 0
-    if matched_domain:
-        score += 2
-    if positive_tokens:
-        score += min(2, len(positive_tokens))
-    if negative_tokens:
-        score -= min(2, len(negative_tokens))
-
-    matched = score > 0
-
-    return {
-        "heuristic": "gap_kge_style",
-        "matched": matched,
-        "value": {
-            "domain": domain,
-            "matched_domain": matched_domain,
-            "positive_tokens": positive_tokens,
-            "negative_tokens": negative_tokens
-        },
-        "reason": "gap_like_url_signals" if matched else "no_gap_like_signal",
-        "score": max(score, 0)
-    }
-
-
-# ==================================
-# H4: basada en patrones de URL
-# ==================================
-def heuristic_url_pattern(url: str) -> dict:
-    path = get_path(url)
-    tokens = tokenize_url(url)
-
-    positive_patterns = [
-        "/dataset",
-        "/datasets",
-        "/data",
-        "/download",
-        "/downloads",
-        "/challenge",
-        "/corpus",
-        "/benchmark"
-    ]
-
-    negative_patterns = [
-        "/paper",
-        ".pdf",
-        "/wiki",
-        "/docs",
-        "/blog",
-        "/slides",
-        "/software",
-        "/github"
-    ]
-
-    found_positive = [p for p in positive_patterns if p in path]
-    found_negative = [p for p in negative_patterns if p in path]
-
-    if "dataset" in tokens or "datasets" in tokens:
-        found_positive.append("token:dataset")
-    if "paper" in tokens or "pdf" in tokens:
-        found_negative.append("token:paper/pdf")
-
-    score = 0
-    if found_positive:
-        score += min(2, len(found_positive))
-    if found_negative:
-        score -= min(2, len(found_negative))
-
-    matched = score > 0
-
-    return {
-        "heuristic": "url_pattern",
-        "matched": matched,
-        "value": {
-            "positive_patterns": found_positive,
-            "negative_patterns": found_negative
-        },
-        "reason": "url_pattern_signal" if matched else "no_url_pattern_signal",
-        "score": max(score, 0)
-    }
-
-
-# ==================================
-# H5: señales desde JSON de GAP-KGE / DataStet
-# ==================================
-def heuristic_gap_kge_json(url: str, paper: str, base_dir: str = GAP_KGE_JSON_DIR) -> dict:
-    json_path = get_gap_kge_json_path(paper, base_dir=base_dir)
 
     if not json_path or not Path(json_path).exists():
         return {
-            "heuristic": "gap_kge_json",
+            "heuristic": "h3_dataset_json",
             "matched": False,
             "score": 0,
-            "reason": "json_not_found",
-            "value": {
-                "json_path": json_path,
-                "matched_exact_url": False,
-                "matched_same_domain": False,
-                "json_url_count": 0,
-                "json_mention_count": 0,
-                "max_json_score": None,
-                "sample_mentions": [],
-                "sample_urls": [],
-                "signals": []
-            }
+            "reason": "dataset_json_not_found",
+            "value": empty_value
         }
 
-    summary = summarize_gap_kge_json(json_path)
+    summary = summarize_dataset_json(json_path)
 
     if not summary["exists"]:
         return {
-            "heuristic": "gap_kge_json",
+            "heuristic": "h3_dataset_json",
             "matched": False,
             "score": 0,
-            "reason": summary.get("error", "json_unreadable"),
-            "value": {
-                "json_path": json_path,
-                "matched_exact_url": False,
-                "matched_same_domain": False,
-                "json_url_count": 0,
-                "json_mention_count": 0,
-                "max_json_score": None,
-                "sample_mentions": [],
-                "sample_urls": [],
-                "signals": []
-            }
+            "reason": summary.get("error", "dataset_json_unreadable"),
+            "value": empty_value
         }
 
-    input_url_norm = normalize_url_loose(url)
+    input_norm = normalize_loose(url)
     input_domain = get_domain(url)
+    input_root_domain = root_domain(input_domain)
+    input_tokens = tokenize_url(url)
 
     json_urls = summary["urls"]
-    json_domains = {get_domain(u) for u in json_urls if u}
+    dataset_like_urls = summary["dataset_like_urls"]
+    dataset_names = summary.get("dataset_names", [])
 
-    matched_exact_url = input_url_norm in json_urls
-    matched_same_domain = input_domain in json_domains if input_domain else False
+    dataset_like_domains = {get_domain(u) for u in dataset_like_urls if u}
+    dataset_like_root_domains = {root_domain(d) for d in dataset_like_domains if d}
+
+    # Coincidencia exacta: ahora solo se acepta directamente si la URL exacta
+    # está dentro de las URLs dataset-like. Si solo aparece en json_urls pero no
+    # parece dataset, no valida por sí sola.
+    matched_exact_url = input_norm in dataset_like_urls
+
+    matched_exact_raw_url_with_dataset_signal = (
+        input_norm in json_urls
+        and (data_file_match_level(url) in {"strong", "weak_with_context", "ambiguous_with_context"}
+             or has_strong_dataset_context(url)
+             or is_trusted_dataset_repository_domain(input_domain))
+    )
+
+    # Misma web que una URL dataset-like del JSON, pero solo vale si la URL actual
+    # también parece relacionada con dataset. Así evitamos marcar todos los DOIs o todas
+    # las páginas del paper.
+    input_match_level = data_file_match_level(url)
+    input_has_dataset_signal = (
+        input_match_level in {"strong", "ambiguous_with_context", "weak_with_context"}
+        or has_strong_dataset_context(url)
+    )
+
+    # Para dominios genéricos tipo github.com, arxiv.org, doi.org, etc.,
+    # no basta compartir dominio: son demasiado amplios.
+    is_generic_domain = input_root_domain in GENERIC_HOSTING_DOMAINS or input_domain in GENERIC_HOSTING_DOMAINS
+
+    matched_same_domain_dataset_url = (
+        input_root_domain in dataset_like_root_domains
+        and input_has_dataset_signal
+        and not is_generic_domain
+    ) if input_root_domain else False
+
+    matched_dataset_name_in_url, matched_dataset_name = url_matches_dataset_name(url, dataset_names)
 
     score = 0
     signals = []
 
     if matched_exact_url:
+        score += 6
+        signals.append("exact_dataset_like_url_appears_in_dataset_json")
+
+    if matched_exact_raw_url_with_dataset_signal:
         score += 4
-        signals.append("exact_url_in_gap_kge_json")
-    elif matched_same_domain:
-        score += 2
-        signals.append("same_domain_in_gap_kge_json")
+        signals.append("exact_raw_url_appears_in_dataset_json_and_input_has_dataset_signal")
 
-    if summary["mention_count"] > 0:
-        score += 1
-        signals.append("dataset_mentions_in_json")
+    if matched_same_domain_dataset_url:
+        score += 4
+        signals.append("same_domain_as_dataset_like_url_and_input_has_dataset_signal")
 
-    max_json_score = summary.get("max_score")
-    if max_json_score is not None and max_json_score > 0:
-        score += 1
-        signals.append("positive_confidence_score")
+    if matched_dataset_name_in_url:
+        score += 4
+        signals.append("dataset_name_from_json_appears_in_input_url")
 
     matched = score > 0
 
     return {
-        "heuristic": "gap_kge_json",
+        "heuristic": "h3_dataset_json",
         "matched": matched,
         "score": score,
-        "reason": "gap_kge_json_signal" if matched else "no_gap_kge_json_signal",
+        "reason": "dataset_json_confirms_current_url" if matched else "dataset_json_does_not_confirm_current_url",
         "value": {
             "json_path": json_path,
             "matched_exact_url": matched_exact_url,
-            "matched_same_domain": matched_same_domain,
+            "matched_exact_raw_url_with_dataset_signal": matched_exact_raw_url_with_dataset_signal,
+            "matched_same_domain_dataset_url": matched_same_domain_dataset_url,
+            "matched_dataset_name_in_url": matched_dataset_name_in_url,
+            "matched_dataset_name": matched_dataset_name,
+            "input_domain": input_domain,
+            "input_root_domain": input_root_domain,
+            "input_match_level": input_match_level,
+            "is_generic_domain": is_generic_domain,
             "json_url_count": summary["url_count"],
-            "json_mention_count": summary["mention_count"],
-            "max_json_score": max_json_score,
-            "sample_mentions": summary["mentions"][:10],
-            "sample_urls": summary["urls"][:10],
+            "dataset_like_url_count": summary["dataset_like_url_count"],
+            "dataset_name_count": summary.get("dataset_name_count", 0),
+            "sample_urls": json_urls[:20],
+            "sample_dataset_like_urls": dataset_like_urls[:20],
+            "sample_dataset_names": dataset_names[:20],
             "signals": signals
         }
     }
 
 
-# ==================================
-# H6: inspección temporal del contenido descargado
-# ==================================
-def heuristic_download_inspection(url: str, timeout: int = DOWNLOAD_TIMEOUT) -> dict:
-    """
-    Descarga una muestra del contenido a un fichero temporal real,
-    comprueba si realmente parece un archivo de datos, aunque la URL
-    no lo indique claramente, y después elimina ese fichero temporal.
-    """
-    download_info = save_download_to_temp_file(
-        url,
-        timeout=timeout,
-        max_bytes=DOWNLOAD_MAX_BYTES,
-        temp_dir=TEMP_DOWNLOAD_DIR
-    )
+# ==============================
+# H4: ChatGPT / OpenAI semantic verifier
+# ==============================
 
-    if not download_info["ok"]:
+def extract_html_title(text: str) -> str:
+    if not text:
+        return ""
+    m = re.search(r"<title[^>]*>(.*?)</title>", text, flags=re.I | re.S)
+    if not m:
+        return ""
+    title = re.sub(r"\s+", " ", m.group(1)).strip()
+    return title[:300]
+
+
+def compact_for_llm(value, max_chars: int = 1200) -> str:
+    try:
+        txt = json.dumps(value, ensure_ascii=False)
+    except Exception:
+        txt = str(value)
+    txt = re.sub(r"\s+", " ", txt).strip()
+    if len(txt) > max_chars:
+        return txt[:max_chars] + "..."
+    return txt
+
+
+def build_openai_page_context(url: str) -> dict:
+    """Descarga una muestra textual para que ChatGPT pueda razonar con contexto."""
+    page = fetch_page_text(url, max_bytes=min(MAX_PAGE_BYTES, 500_000))
+    if not page.get("ok"):
         return {
-            "heuristic": "download_inspection",
-            "matched": False,
-            "score": 0,
-            "reason": "download_error",
-            "value": {
-                "error": download_info.get("error", ""),
-                "temp_path": "",
-                "detected_kind": "",
-                "signals": []
-            }
+            "ok": False,
+            "error": page.get("error", ""),
+            "title": "",
+            "content_type": "",
+            "final_url": "",
+            "text_excerpt": ""
         }
 
-    temp_path = download_info.get("temp_path", "")
+    raw_text = page.get("text", "") or ""
+    clean_text = normalize_page_text(raw_text)
+    return {
+        "ok": True,
+        "title": extract_html_title(raw_text),
+        "content_type": page.get("content_type", ""),
+        "final_url": page.get("final_url", url),
+        "text_excerpt": clean_text[:OPENAI_PAGE_TEXT_CHARS]
+    }
+
+
+def should_run_openai_h4(url: str, h1: dict, h2: dict, h3: dict) -> bool:
+    if not USE_OPENAI_LLM_HEURISTIC:
+        return False
+
+    if OPENAI_REVIEW_ALL_URLS:
+        return True
+
+    # Modo recomendado: revisar solo positivos de reglas, porque el objetivo principal
+    # es reducir falsos positivos.
+    if OPENAI_REVIEW_RULE_POSITIVES and (h1.get("matched") or h2.get("matched") or h3.get("matched")):
+        return True
+
+    return False
+
+
+def openai_dataset_url_classifier(url: str, paper: str, h1: dict, h2: dict, h3: dict) -> dict:
+    """
+    H4: usa ChatGPT/OpenAI como verificador semántico.
+
+    Devuelve una decisión estructurada. No sustituye a H1/H2/H3 por defecto: se usa
+    sobre todo para rechazar positivos dudosos.
+    """
+    if not should_run_openai_h4(url, h1, h2, h3):
+        return {
+            "heuristic": "h4_openai_chatgpt",
+            "used": False,
+            "matched": False,
+            "confidence": 0.0,
+            "category": "not_used",
+            "reason": "disabled_or_not_needed",
+            "value": {"signals": []}
+        }
+
+    if not os.getenv("OPENAI_API_KEY"):
+        return {
+            "heuristic": "h4_openai_chatgpt",
+            "used": False,
+            "matched": False,
+            "confidence": 0.0,
+            "category": "not_used",
+            "reason": "missing_openai_api_key",
+            "value": {"signals": ["OPENAI_API_KEY_not_set"]}
+        }
+
+    page_context = build_openai_page_context(url)
+
+    h1_value = h1.get("value", {})
+    h2_value = h2.get("value", {})
+    h3_value = h3.get("value", {})
+
+    evidence = {
+        "url": url,
+        "paper": paper,
+        "page": page_context,
+        "h1": {
+            "matched": h1.get("matched"),
+            "score": h1.get("score"),
+            "reason": h1.get("reason"),
+            "candidate_dataset_links": h1_value.get("candidate_dataset_links", [])[:5],
+            "external_candidate_dataset_links_not_used": h1_value.get("external_candidate_dataset_links_not_used", [])[:5],
+            "page_dataset_context": h1_value.get("page_dataset_context", {})
+        },
+        "h2": {
+            "matched": h2.get("matched"),
+            "score": h2.get("score"),
+            "reason": h2.get("reason"),
+            "content_type": h2_value.get("content_type", ""),
+            "content_disposition": h2_value.get("content_disposition", ""),
+            "final_url": h2_value.get("final_url", ""),
+            "final_extension": h2_value.get("final_extension", ""),
+            "signals": h2_value.get("signals", [])
+        },
+        "h3": {
+            "matched": h3.get("matched"),
+            "score": h3.get("score"),
+            "reason": h3.get("reason"),
+            "signals": h3_value.get("signals", []),
+            "matched_dataset_name": h3_value.get("matched_dataset_name", ""),
+            "sample_dataset_like_urls": h3_value.get("sample_dataset_like_urls", [])[:10],
+            "sample_dataset_names": h3_value.get("sample_dataset_names", [])[:10]
+        }
+    }
+
+    system_prompt = (
+        "You are a strict dataset URL classifier. Classify whether the URL itself is "
+        "a dataset, a direct non-compressed data file, or a dataset landing/catalog page. "
+        "Be conservative: if the URL is mainly a code repository, paper page, citation, "
+        "blog, documentation, general website, login page, or merely mentions/links an "
+        "external dataset, classify it as not_dataset. Do not count compressed files such "
+        "as zip/tar/gz/7z as datasets. Technical files like manifest.json, opensearch.xml, "
+        "sitemap.xml, package.json are not datasets. Return only valid JSON."
+    )
+
+    user_prompt = (
+        "Classify this URL using the evidence below.\n\n"
+        "Positive examples: direct CSV/TSV/XLSX/Parquet/HDF5/SQLite/ARFF file; "
+        "a dataset landing page whose main purpose is to provide dataset access; "
+        "a data repository record/catalog page for a concrete dataset.\n"
+        "Negative examples: GitHub software/code repo unless the repo itself is clearly a dataset repository; "
+        "scientific paper page; DOI/arXiv/citation; documentation; general website; "
+        "page that only links to an external dataset.\n\n"
+        f"Evidence JSON:\n{compact_for_llm(evidence, 9000)}"
+    )
+
+    schema = {
+        "type": "object",
+        "additionalProperties": False,
+        "properties": {
+            "is_dataset": {"type": "boolean"},
+            "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+            "category": {
+                "type": "string",
+                "enum": [
+                    "direct_data_file",
+                    "dataset_landing_page",
+                    "data_repository_record",
+                    "software_or_code_repository",
+                    "paper_or_citation_page",
+                    "documentation_or_general_page",
+                    "technical_web_file",
+                    "external_dataset_mentioned_only",
+                    "uncertain"
+                ]
+            },
+            "reason": {"type": "string"},
+            "evidence": {"type": "array", "items": {"type": "string"}},
+            "risk_of_false_positive": {"type": "string", "enum": ["low", "medium", "high"]}
+        },
+        "required": ["is_dataset", "confidence", "category", "reason", "evidence", "risk_of_false_positive"]
+    }
 
     try:
-        inspection = inspect_saved_file(
-            temp_path=temp_path,
-            content_type=download_info.get("content_type", ""),
-            final_url=download_info.get("final_url", ""),
-            final_ext=download_info.get("final_extension", "")
+        from openai import OpenAI
+        client = OpenAI()
+
+        # Chat Completions con Structured Outputs. Si tu versión de la librería no lo soporta,
+        # actualiza con: pip install --upgrade openai
+        response = client.chat.completions.create(
+            model=OPENAI_MODEL,
+            messages=[
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": user_prompt}
+            ],
+            temperature=0,
+            response_format={
+                "type": "json_schema",
+                "json_schema": {
+                    "name": "dataset_url_classification",
+                    "strict": True,
+                    "schema": schema
+                }
+            }
         )
 
+        content = response.choices[0].message.content
+        parsed = json.loads(content)
+
         return {
-            "heuristic": "download_inspection",
-            "matched": inspection["matched"],
-            "score": inspection["score"],
-            "reason": "download_content_signal" if inspection["matched"] else "no_download_content_signal",
+            "heuristic": "h4_openai_chatgpt",
+            "used": True,
+            "matched": bool(parsed.get("is_dataset")),
+            "confidence": float(parsed.get("confidence", 0.0)),
+            "category": parsed.get("category", "uncertain"),
+            "reason": parsed.get("reason", ""),
             "value": {
-                "status_code": download_info.get("status_code", ""),
-                "content_type": download_info.get("content_type", ""),
-                "content_length": download_info.get("content_length", ""),
-                "final_url": download_info.get("final_url", ""),
-                "final_extension": download_info.get("final_extension", ""),
-                "bytes_downloaded": download_info.get("bytes_downloaded", 0),
-                "temp_path": temp_path,
-                "detected_kind": inspection.get("detected_kind", ""),
-                "signals": inspection.get("signals", [])
+                "model": OPENAI_MODEL,
+                "evidence": parsed.get("evidence", []),
+                "risk_of_false_positive": parsed.get("risk_of_false_positive", "medium"),
+                "signals": ["openai_structured_verdict"]
             }
         }
 
-    finally:
-        cleanup_file(temp_path)
-        cleanup_dir_if_empty(TEMP_DOWNLOAD_DIR)
+    except Exception as e:
+        return {
+            "heuristic": "h4_openai_chatgpt",
+            "used": True,
+            "matched": False,
+            "confidence": 0.0,
+            "category": "error",
+            "reason": "openai_error",
+            "value": {"error": str(e), "signals": ["openai_error"]}
+        }
 
 
-# ==================================
-# Aplicación global
-# ==================================
-def apply_heuristics(
-    url: str,
-    paper: str = "",
-    use_http: bool = False,
-    use_download_inspection: bool = False
-) -> dict:
-    """
-    Aplica las señales internas, pero las agrupa en SOLO 3 heurísticas reales:
+def combine_rule_and_openai_decision(h1: dict, h2: dict, h3: dict, h4: dict) -> tuple[str, str]:
+    rule_positive = h1.get("matched") or h2.get("matched") or h3.get("matched")
 
-    - Heurística 1: extensión de la URL o del archivo descargado.
-      Incluye internamente H1 + H4 + H6.
+    matched_heuristics = []
+    if h1.get("matched"):
+        matched_heuristics.append("heuristica_1")
+    if h2.get("matched"):
+        matched_heuristics.append("heuristica_2")
+    if h3.get("matched"):
+        matched_heuristics.append("heuristica_3")
 
-    - Heurística 2: metadatos HTTP.
-      Incluye internamente H2.
+    # Sin OpenAI usado: comportamiento clásico.
+    if not h4.get("used"):
+        if rule_positive:
+            return "dataset", "|".join(matched_heuristics)
+        return "not_dataset", "no_heuristic_matched"
 
-    - Heurística 3: GAP-KGE.
-      Solo usa internamente H3: gap_kge_style_matched y gap_kge_style_score.
-      H5 / gap_kge_json se ignora para el benchmark.
+    h4_positive = h4.get("matched") and h4.get("confidence", 0.0) >= OPENAI_POSITIVE_CONFIDENCE
+    h4_negative_confident = (not h4.get("matched")) and h4.get("confidence", 0.0) >= OPENAI_REJECTION_CONFIDENCE
 
-    IMPORTANTE:
-    Si la heurística 3 detecta dataset, se acepta directamente como dataset.
-    """
+    # Uso principal recomendado: si las reglas dicen dataset pero ChatGPT lo rechaza
+    # con confianza suficiente, bajamos a not_dataset.
+    if rule_positive and h4_negative_confident:
+        return "not_dataset", "chatgpt_rejected_rule_positive:" + "|".join(matched_heuristics)
 
-    # =========================
-    # Señales internas
-    # =========================
-    h1_extension = heuristic_extension(url)
-    h4_url_pattern = heuristic_url_pattern(url)
+    # Si las reglas dicen dataset y ChatGPT también lo confirma, se queda dataset.
+    if rule_positive and h4.get("matched"):
+        return "dataset", "|".join(matched_heuristics + ["heuristica_4_chatgpt"])
 
-    h6_download = None
-    if use_download_inspection:
-        h6_download = heuristic_download_inspection(url)
+    # Si las reglas dicen dataset pero ChatGPT está incierto, conservamos la decisión de reglas
+    # para no perder recall. Puedes cambiarlo si quieres máxima precisión.
+    if rule_positive:
+        return "dataset", "|".join(matched_heuristics + ["chatgpt_uncertain_or_low_confidence"])
 
-    h2_http = None
-    if use_http:
-        h2_http = heuristic_http_metadata(url)
+    # Opcional: permitir que ChatGPT rescate falsos negativos. Apagado por defecto.
+    if (not rule_positive) and OPENAI_ALLOW_POSITIVE_OVERRIDE and h4_positive:
+        return "dataset", "heuristica_4_chatgpt_positive_override"
 
-    h3_gap_style = heuristic_gap_kge_style(url)
+    return "not_dataset", "no_heuristic_matched"
 
-    # IMPORTANTE:
-    # Antes aquí también se calculaba H5 con heuristic_gap_kge_json(url, paper).
-    # Ahora la heurística GAP-KGE debe centrarse SOLO en estas dos variables:
-    # - gap_kge_style_matched
-    # - gap_kge_style_score
-    # Por eso H5 se ignora completamente para la decisión y para el score.
-    h5_gap_json = None
 
-    # =========================
-    # HEURÍSTICA 1
-    # Extensión de URL o archivo descargado
-    # H1 + H4 + H6
-    # =========================
-    heuristica_1_matched = (
-        h1_extension["matched"]
-        or h4_url_pattern["matched"]
-        or (h6_download["matched"] if h6_download else False)
-    )
+# ==============================
+# APLICACIÓN GLOBAL
+# ==============================
 
-    heuristica_1_score = (
-        h1_extension["score"]
-        + h4_url_pattern["score"]
-        + (h6_download["score"] if h6_download else 0)
-    )
+def apply_heuristics(url: str, paper: str = "") -> dict:
+    h1 = heuristic_1_database_by_extension_or_page(url)
+    h2 = heuristic_2_http_metadata(url)
+    h3 = heuristic_3_dataset_json(url, paper)
+    h4 = openai_dataset_url_classifier(url, paper, h1, h2, h3)
 
-    heuristica_1_signals = []
-    if h1_extension["matched"]:
-        heuristica_1_signals.append("extension_data_file")
-    if h4_url_pattern["matched"]:
-        heuristica_1_signals.append("url_pattern_data_file")
-    if h6_download and h6_download["matched"]:
-        heuristica_1_signals.append("downloaded_file_looks_like_data")
+    total_score = h1["score"] + h2["score"] + h3["score"] + (1 if h4.get("matched") else 0)
 
-    # =========================
-    # HEURÍSTICA 2
-    # Metadatos HTTP
-    # H2
-    # =========================
-    heuristica_2_matched = h2_http["matched"] if h2_http else False
-    heuristica_2_score = h2_http["score"] if h2_http else 0
-
-    heuristica_2_signals = []
-    if h2_http and h2_http["matched"]:
-        http_value = h2_http.get("value", {})
-        heuristica_2_signals = http_value.get("signals", [])
-
-    # =========================
-    # HEURÍSTICA 3
-    # GAP-KGE
-    # SOLO H3: gap_kge_style_matched + gap_kge_style_score
-    # H5 / gap_kge_json queda ignorado.
-    # =========================
-    heuristica_3_matched = h3_gap_style["matched"]
-    heuristica_3_score = h3_gap_style["score"]
-
-    heuristica_3_signals = []
-    if h3_gap_style["matched"]:
-        heuristica_3_signals.append("gap_kge_style_signal")
-
-    # =========================
-    # Decisión final
-    # =========================
-    # Prioridad absoluta: GAP-KGE.
-    # Si GAP-KGE dice que es dataset, ya no necesitamos más señales.
-    if heuristica_3_matched:
-        label = "dataset"
-        decision_reason = "gap_kge_detected_dataset"
-    elif heuristica_1_matched:
-        label = "dataset"
-        decision_reason = "extension_or_downloaded_file_detected_dataset"
-    elif heuristica_2_matched:
-        label = "dataset"
-        decision_reason = "http_metadata_detected_dataset"
-    else:
-        label = "not_dataset"
-        decision_reason = "no_heuristic_matched"
-
-    total_score = heuristica_1_score + heuristica_2_score + heuristica_3_score
+    label, decision_reason = combine_rule_and_openai_decision(h1, h2, h3, h4)
 
     return {
         "url": url,
         "paper": paper,
-
-        # Resultado final por heurísticas reales
         "heuristica_1": {
-            "name": "extension_url_o_archivo",
-            "matched": heuristica_1_matched,
-            "score": heuristica_1_score,
-            "signals": heuristica_1_signals,
-            "internal_results": {
-                "h1_extension": h1_extension,
-                "h4_url_pattern": h4_url_pattern,
-                "h6_download_inspection": h6_download
-            }
+            "name": "extension_o_links_dataset_en_pagina",
+            "matched": h1["matched"],
+            "score": h1["score"],
+            "reason": h1["reason"],
+            "value": h1["value"]
         },
-
         "heuristica_2": {
-            "name": "http_metadata",
-            "matched": heuristica_2_matched,
-            "score": heuristica_2_score,
-            "signals": heuristica_2_signals,
-            "internal_results": {
-                "h2_http_metadata": h2_http
-            }
+            "name": "http_content_type_content_disposition",
+            "matched": h2["matched"],
+            "score": h2["score"],
+            "reason": h2["reason"],
+            "value": h2["value"]
         },
-
         "heuristica_3": {
-            "name": "gap_kge",
-            "matched": heuristica_3_matched,
-            "score": heuristica_3_score,
-            "signals": heuristica_3_signals,
-            "internal_results": {
-                "h3_gap_kge_style": h3_gap_style
-            }
+            "name": "dataset_json_urls",
+            "matched": h3["matched"],
+            "score": h3["score"],
+            "reason": h3["reason"],
+            "value": h3["value"]
         },
-
+        "heuristica_4": {
+            "name": "chatgpt_semantic_verifier",
+            "used": h4.get("used", False),
+            "matched": h4.get("matched", False),
+            "confidence": h4.get("confidence", 0.0),
+            "category": h4.get("category", ""),
+            "reason": h4.get("reason", ""),
+            "value": h4.get("value", {})
+        },
         "total_score": total_score,
         "label": label,
         "decision_reason": decision_reason
     }
 
-# ==================================
-# Lectura CSV normalizado
-# ==================================
-def load_normalized_csv(path):
+
+# ==============================
+# LECTURA / GUARDADO
+# ==============================
+
+def load_normalized_csv(path: str) -> list:
     rows = []
 
     with open(path, "r", encoding="utf-8") as f:
@@ -1275,152 +1819,165 @@ def load_normalized_csv(path):
                 "paper": row.get("paper", "").strip(),
                 "section": row.get("section", "").strip(),
                 "original_url": row.get("original_url", "").strip(),
-                "normalized_url": row.get("normalized_url", "").strip(),
+                "normalized_url": row.get("normalized_url", "").strip() or row.get("url", "").strip(),
                 "domain": row.get("domain", "").strip(),
-                "extension": row.get("extension", "").strip(),
-                "is_data_extension": row.get("is_data_extension", "").strip()
+                "extension": row.get("extension", "").strip()
             })
 
     return rows
 
 
-# ==================================
-# Procesar filas
-# ==================================
-def process_rows(rows, use_http=False, use_download_inspection=False):
-    """
-    Procesa las URLs y guarda SOLO 3 heurísticas principales en el CSV final.
-
-    Las señales internas siguen guardándose en el JSON para trazabilidad,
-    pero el CSV queda preparado para que el benchmark no evalúe H1, H4, H6,
-    H3 y H5 como heurísticas separadas.
-    """
+def process_rows(rows: list) -> tuple[list, list]:
     results_csv = []
     results_json = []
 
     for row in rows:
         url = row["normalized_url"]
 
-        result = apply_heuristics(
-            url,
-            paper=row["paper"],
-            use_http=use_http,
-            use_download_inspection=use_download_inspection
-        )
+        if not url:
+            continue
+
+        result = apply_heuristics(url, paper=row.get("paper", ""))
 
         h1 = result["heuristica_1"]
         h2 = result["heuristica_2"]
         h3 = result["heuristica_3"]
+        h4 = result.get("heuristica_4", {})
 
-        h1_internal = h1.get("internal_results", {})
-        h2_internal = h2.get("internal_results", {})
-        h3_internal = h3.get("internal_results", {})
+        h1_value = h1.get("value", {})
+        h2_value = h2.get("value", {})
+        h3_value = h3.get("value", {})
+        h4_value = h4.get("value", {})
 
-        h1_extension = h1_internal.get("h1_extension") or {}
-        h4_url_pattern = h1_internal.get("h4_url_pattern") or {}
-        h6_download = h1_internal.get("h6_download_inspection") or {}
+        results_csv.append({
+            "paper": row.get("paper", ""),
+            "section": row.get("section", ""),
+            "original_url": row.get("original_url", ""),
+            "normalized_url": url,
+            "domain": row.get("domain", "") or get_domain(url),
+            "extension": row.get("extension", "") or get_extension(url),
 
-        h2_http = h2_internal.get("h2_http_metadata") or {}
+            "heuristica_1_matched": h1["matched"],
+            "heuristica_1_score": h1["score"],
+            "heuristica_1_reason": h1["reason"],
+            "heuristica_1_direct_extension": h1_value.get("direct_extension", ""),
+            "heuristica_1_candidate_dataset_links": safe_json_dumps(h1_value.get("candidate_dataset_links", [])),
+            "heuristica_1_external_candidate_links_not_used": safe_json_dumps(h1_value.get("external_candidate_dataset_links_not_used", [])),
+            "heuristica_1_page_context": safe_json_dumps(h1_value.get("page_dataset_context", {})),
+            "heuristica_1_is_json_response": h1_value.get("is_json_response", ""),
 
-        h3_gap_style = h3_internal.get("h3_gap_kge_style") or {}
-        # H5 / gap_kge_json ya no se usa en la heurística GAP-KGE.
-        # La heurística 3 se limita a gap_kge_style_matched y gap_kge_style_score.
-        h5_gap_json = {}
-        gap_json_value = {}
-        http_value = h2_http.get("value", {}) if h2_http else {}
-        download_value = h6_download.get("value", {}) if h6_download else {}
+            "heuristica_2_matched": h2["matched"],
+            "heuristica_2_score": h2["score"],
+            "heuristica_2_reason": h2["reason"],
+            "heuristica_2_content_type": h2_value.get("content_type", ""),
+            "heuristica_2_content_disposition": h2_value.get("content_disposition", ""),
+            "heuristica_2_final_url": h2_value.get("final_url", ""),
+            "heuristica_2_final_extension": h2_value.get("final_extension", ""),
+            "heuristica_2_signals": "|".join(h2_value.get("signals", [])),
 
-        row_result = {
-            "paper": row["paper"],
-            "section": row["section"],
-            "original_url": row["original_url"],
-            "normalized_url": row["normalized_url"],
-            "domain": row["domain"],
-            "extension": row["extension"],
+            "heuristica_3_matched": h3["matched"],
+            "heuristica_3_score": h3["score"],
+            "heuristica_3_reason": h3["reason"],
+            "heuristica_3_json_path": h3_value.get("json_path", ""),
+            "heuristica_3_dataset_like_url_count": h3_value.get("dataset_like_url_count", 0),
+            "heuristica_3_sample_dataset_like_urls": safe_json_dumps(h3_value.get("sample_dataset_like_urls", [])),
+            "heuristica_3_dataset_name_count": h3_value.get("dataset_name_count", 0),
+            "heuristica_3_matched_dataset_name": h3_value.get("matched_dataset_name", ""),
+            "heuristica_3_sample_dataset_names": safe_json_dumps(h3_value.get("sample_dataset_names", [])),
+            "heuristica_3_signals": "|".join(h3_value.get("signals", [])),
 
-            # =====================================================
-            # SOLO 3 HEURÍSTICAS REALES PARA EL BENCHMARK
-            # =====================================================
-            "heuristica_1_extension_url_o_archivo_matched": h1["matched"],
-            "heuristica_1_extension_url_o_archivo_score": h1["score"],
-            "heuristica_1_extension_url_o_archivo_signals": "|".join(h1.get("signals", [])),
-
-            "heuristica_2_http_metadata_matched": h2["matched"],
-            "heuristica_2_http_metadata_score": h2["score"],
-            "heuristica_2_http_metadata_signals": "|".join(h2.get("signals", [])),
-
-            "heuristica_3_gap_kge_matched": h3["matched"],
-            "heuristica_3_gap_kge_score": h3["score"],
-            "heuristica_3_gap_kge_signals": "|".join(h3.get("signals", [])),
+            "heuristica_4_used": h4.get("used", False),
+            "heuristica_4_matched": h4.get("matched", False),
+            "heuristica_4_confidence": h4.get("confidence", 0.0),
+            "heuristica_4_category": h4.get("category", ""),
+            "heuristica_4_reason": h4.get("reason", ""),
+            "heuristica_4_evidence": safe_json_dumps(h4_value.get("evidence", [])),
+            "heuristica_4_risk_of_false_positive": h4_value.get("risk_of_false_positive", ""),
+            "heuristica_4_signals": "|".join(h4_value.get("signals", [])),
 
             "total_score": result["total_score"],
             "label": result["label"],
-            "decision_reason": result["decision_reason"],
+            "decision_reason": result["decision_reason"]
+        })
 
-            # =====================================================
-            # Columnas auxiliares: sirven para depurar, NO para benchmark
-            # =====================================================
-            "debug_h1_extension_matched": h1_extension.get("matched", ""),
-            "debug_h1_extension_score": h1_extension.get("score", ""),
-            "debug_h1_extension_reason": h1_extension.get("reason", ""),
-            "debug_h1_extension_value": h1_extension.get("value", ""),
-
-            "debug_h4_url_pattern_matched": h4_url_pattern.get("matched", ""),
-            "debug_h4_url_pattern_score": h4_url_pattern.get("score", ""),
-            "debug_h4_url_pattern_reason": h4_url_pattern.get("reason", ""),
-
-            "debug_h6_download_matched": h6_download.get("matched", ""),
-            "debug_h6_download_score": h6_download.get("score", ""),
-            "debug_h6_download_detected_kind": download_value.get("detected_kind", ""),
-            "debug_h6_download_signals": "|".join(download_value.get("signals", [])) if download_value else "",
-
-            "debug_h2_http_status_code": http_value.get("status_code", ""),
-            "debug_h2_http_content_type": http_value.get("content_type", ""),
-            "debug_h2_http_content_disposition": http_value.get("content_disposition", ""),
-            "debug_h2_http_final_url": http_value.get("final_url", ""),
-            "debug_h2_http_final_extension": http_value.get("final_extension", ""),
-
-            "gap_kge_style_matched": h3_gap_style.get("matched", ""),
-            "gap_kge_style_score": h3_gap_style.get("score", "")
-        }
-
-        results_csv.append(row_result)
-
-        # En JSON se conserva todo el detalle interno para poder justificar
-        # de dónde sale cada decisión.
         results_json.append({
-            "paper": row["paper"],
-            "section": row["section"],
-            "original_url": row["original_url"],
-            "normalized_url": row["normalized_url"],
+            "paper": row.get("paper", ""),
+            "section": row.get("section", ""),
+            "original_url": row.get("original_url", ""),
+            "normalized_url": url,
             "result": result
         })
 
     return results_csv, results_json
 
 
-# ==================================
-# Guardado
-# ==================================
-def save_csv(rows, path):
+def make_unlocked_output_path(path: str) -> str:
+    """
+    Devuelve una ruta alternativa con timestamp.
+    Se usa cuando Windows/Excel/OneDrive bloquea el CSV o JSON original.
+    """
+    p = Path(path)
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    return str(p.with_name(f"{p.stem}_{timestamp}{p.suffix}"))
+
+
+def save_csv(rows: list, path: str) -> str:
+    Path(path).parent.mkdir(parents=True, exist_ok=True)
+
     if not rows:
-        return
+        fields = []
+    else:
+        fields = list(rows[0].keys())
 
-    fields = rows[0].keys()
-    with open(path, "w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=fields)
-        writer.writeheader()
-        writer.writerows(rows)
+    try:
+        with open(path, "w", newline="", encoding="utf-8-sig") as f:
+            if not rows:
+                f.write("")
+            else:
+                writer = csv.DictWriter(f, fieldnames=fields, extrasaction="ignore")
+                writer.writeheader()
+                writer.writerows(rows)
+        return path
+
+    except PermissionError:
+        alt_path = make_unlocked_output_path(path)
+        print(f"\nNo se pudo escribir en: {path}")
+        print("Probablemente el archivo está abierto en Excel, bloqueado por OneDrive o sin permisos.")
+        print(f"Voy a guardar una copia alternativa en: {alt_path}")
+
+        with open(alt_path, "w", newline="", encoding="utf-8-sig") as f:
+            if not rows:
+                f.write("")
+            else:
+                writer = csv.DictWriter(f, fieldnames=fields, extrasaction="ignore")
+                writer.writeheader()
+                writer.writerows(rows)
+        return alt_path
 
 
-def save_json(rows, path):
-    with open(path, "w", encoding="utf-8") as f:
-        json.dump(rows, f, indent=2, ensure_ascii=False)
+def save_json(rows: list, path: str) -> str:
+    Path(path).parent.mkdir(parents=True, exist_ok=True)
+
+    try:
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump(rows, f, indent=2, ensure_ascii=False)
+        return path
+
+    except PermissionError:
+        alt_path = make_unlocked_output_path(path)
+        print(f"\nNo se pudo escribir en: {path}")
+        print("Probablemente el archivo está abierto en otro programa o bloqueado por OneDrive.")
+        print(f"Voy a guardar una copia alternativa en: {alt_path}")
+
+        with open(alt_path, "w", encoding="utf-8") as f:
+            json.dump(rows, f, indent=2, ensure_ascii=False)
+        return alt_path
 
 
-# ==================================
+# ==============================
 # MAIN
-# ==================================
+# ==============================
+
 def main():
     if not Path(INPUT_CSV).exists():
         print(f"No existe {INPUT_CSV}")
@@ -1429,31 +1986,21 @@ def main():
     rows = load_normalized_csv(INPUT_CSV)
     print(f"URLs normalizadas leídas: {len(rows)}")
 
-    # Activa estas opciones según quieras experimentar
-    USE_HTTP = True
-    USE_DOWNLOAD_INSPECTION = True
+    results_csv, results_json = process_rows(rows)
 
-    results_csv, results_json = process_rows(
-        rows,
-        use_http=USE_HTTP,
-        use_download_inspection=USE_DOWNLOAD_INSPECTION
-    )
-
-    save_csv(results_csv, OUTPUT_CSV)
-    save_json(results_json, OUTPUT_JSON)
-
-    print("Resultados guardados en:")
-    print(f"- {OUTPUT_CSV}")
-    print(f"- {OUTPUT_JSON}")
+    saved_csv = save_csv(results_csv, OUTPUT_CSV)
+    saved_json = save_json(results_json, OUTPUT_JSON)
 
     dataset_count = sum(1 for r in results_csv if r["label"] == "dataset")
-    maybe_count = sum(1 for r in results_csv if r["label"] == "maybe_dataset")
-    not_count = sum(1 for r in results_csv if r["label"] == "not_dataset")
+    not_dataset_count = sum(1 for r in results_csv if r["label"] == "not_dataset")
+
+    print("\nResultados guardados en:")
+    print(f"- {saved_csv}")
+    print(f"- {saved_json}")
 
     print("\nResumen:")
     print(f"- dataset: {dataset_count}")
-    print(f"- maybe_dataset: {maybe_count}")
-    print(f"- not_dataset: {not_count}")
+    print(f"- not_dataset: {not_dataset_count}")
 
 
 if __name__ == "__main__":

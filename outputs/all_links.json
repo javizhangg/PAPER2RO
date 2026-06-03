@@ -1,947 +1,2400 @@
 {
-    "1505.04597v1.pdf": [
-        {
-            "section": "target",
-            "link": "http://www.codesolorzano.com/celltrackingchallenge/Cell_Tracking_Challenge/Welcome.html"
-        },
-        {
-            "section": "target",
-            "link": "http://brainiac2.mit.edu/isbi_challenge/"
-        },
-        {
-            "section": "body",
-            "link": "http://lmb.informatik.uni-freiburg.de/people/ronneber/u-net"
-        },
-        {
-            "section": "note",
-            "link": "http://www.codesolorzano.com/"
-        },
-        {
-            "section": "note",
-            "link": "http://brainiac2.mit.edu/"
-        }
-    ],
-    "1506.02640v5.pdf": [
-        {
-            "section": "target",
-            "link": "http://pjreddie.com/yolo/"
-        },
-        {
-            "section": "target",
-            "link": "https://github.com/BVLC/caffe/wiki/Models-accuracy-on-ImageNet-2012-val.Ac-cessed:2015-10-2"
-        },
-        {
-            "section": "target",
-            "link": "http://pjreddie.com/darknet/,2013-2016"
-        },
-        {
-            "section": "body",
-            "link": "http://pjreddie.com/yolo/.Second"
-        },
-        {
-            "section": "note",
-            "link": "https://github.com/BVLC/caffe/wiki/"
-        },
-        {
-            "section": "note",
-            "link": "http://pjreddie.com/darknet/"
-        }
-    ],
-    "1512.02595v1.pdf": [
-        {
-            "section": "target",
-            "link": "http://www.voxforge.org"
-        },
-        {
-            "section": "target",
-            "link": "http://arxiv.org/abs/1508.04395"
-        },
-        {
-            "section": "target",
-            "link": "https://nvlabs.github.io/moderngpu/"
-        },
-        {
-            "section": "target",
-            "link": "http://arxiv.org/abs/1508.01211"
-        },
-        {
-            "section": "target",
-            "link": "http://arxiv.org/abs/1412.1602"
-        },
-        {
-            "section": "target",
-            "link": "http://svail.github.io/rnn_perf"
-        },
-        {
-            "section": "target",
-            "link": "http://arxiv.org/abs/1412.5567"
-        },
-        {
-            "section": "target",
-            "link": "http://arxiv.org/abs/1408.2873"
-        },
-        {
-            "section": "target",
-            "link": "http://arxiv.org/abs/1510.01378"
-        },
-        {
-            "section": "target",
-            "link": "https://github.com/NervanaSystems/nervanagpu"
-        },
-        {
-            "section": "target",
-            "link": "http://arxiv.org/abs/1211.5063"
-        },
-        {
-            "section": "target",
-            "link": "http://arxiv.org/abs/1507.06947"
-        },
-        {
-            "section": "target",
-            "link": "http://arxiv.org/abs/1409.3215"
-        },
-        {
-            "section": "target",
-            "link": "http://arxiv.org/abs/1502.03167"
-        },
-        {
-            "section": "target",
-            "link": "http://arxiv.org/abs/1410.4615"
-        },
-        {
-            "section": "body",
-            "link": "http://commoncrawl.org"
-        }
-    ],
-    "1604.01685v2.pdf": [],
-    "1606.05250v3.pdf": [
-        {
-            "section": "target",
-            "link": "https://stanford-qa.com"
-        },
-        {
-            "section": "target",
-            "link": "https://worksheets.codalab.org/worksheets/0xd53d03a48ef64b329c16b9baf0f99b0c/"
-        },
-        {
-            "section": "body",
-            "link": "https://worksheets.codalab.org/worksheets/"
-        }
-    ],
-    "1702.05373v2.pdf": [
-        {
-            "section": "target",
-            "link": "https://www.westernsydney.edu.au/bens/home/reproducibleresearch/emnist"
-        },
-        {
-            "section": "target",
-            "link": "http://www.nist.gov/srd/upload/nistsd19.pdf"
-        },
-        {
-            "section": "target",
-            "link": "http://portal.acm.org/citation.cfm?doid=1141277.1141468"
-        },
-        {
-            "section": "body",
-            "link": "https://www.westernsydney.edu.au/bens/home/"
-        },
-        {
-            "section": "note",
-            "link": "http://www.nist.gov/"
-        }
-    ],
-    "1702.05747v2.pdf": [
-        {
-            "section": "target",
-            "link": "https://github.com/Lasagne/Lasagne"
-        },
-        {
-            "section": "target",
-            "link": "https://keras.io/"
-        },
-        {
-            "section": "target",
-            "link": "http://dx.doi.org/10.1109/TMI.2015.2476509"
-        },
-        {
-            "section": "doi",
-            "link": "10.1109/TMI.2015.2476509"
-        },
-        {
-            "section": "body",
-            "link": "www.grand-challenge.org"
-        }
-    ],
-    "1706.03762v7.pdf": [
-        {
-            "section": "target",
-            "link": "https://github.com/tensorflow/tensor2tensor"
-        },
-        {
-            "section": "body",
-            "link": "https://github.com/"
-        }
-    ],
-    "1707.02919v2.pdf": [
-        {
-            "section": "target",
-            "link": "http://www.lemurproject.org/"
-        },
-        {
-            "section": "target",
-            "link": "https://doi.org/10.3115/1119176.1119199"
-        },
-        {
-            "section": "target",
-            "link": "https://www.emc.com/collateral/analyst-reports/idc-the-digital-universe-in-2020.pdf"
-        },
-        {
-            "section": "doi",
-            "link": "10.3115/1119176.1119199"
-        },
-        {
-            "section": "body",
-            "link": "http://www.crisp-dm.org/"
-        },
-        {
-            "section": "body",
-            "link": "http://en.wikipedia.org/wiki/Statistics"
-        },
-        {
-            "section": "body",
-            "link": "http://www.cs.waikato.ac.nz/ml/weka/"
-        },
-        {
-            "section": "body",
-            "link": "http://www.w3.org/TR/webont-req/"
-        },
-        {
-            "section": "body",
-            "link": "http://www.obofoundry.org/"
-        },
-        {
-            "section": "body",
-            "link": "http://www.bioontology.org/"
-        },
-        {
-            "section": "body",
-            "link": "http://bioportal.bioontology.org/"
-        },
-        {
-            "section": "body",
-            "link": "https://uts.nlm.nih.gov/home.html"
-        },
-        {
-            "section": "body",
-            "link": "http://www.pharmgkb.org/"
-        },
-        {
-            "section": "note",
-            "link": "https://doi.org/10"
-        },
-        {
-            "section": "note",
-            "link": "https://www.emc.com/collateral/analyst-reports/"
-        }
-    ],
-    "1708.05031v2.pdf": [
-        {
-            "section": "doi",
-            "link": "10.1145/3038912.3052569"
-        },
-        {
-            "section": "body",
-            "link": "http://alex.smola.org/teaching/berkeley2012/slides/8_"
-        },
-        {
-            "section": "body",
-            "link": "http://grouplens.org/datasets/movielens/1m/"
-        },
-        {
-            "section": "body",
-            "link": "https://sites.google.com/site/xueatalphabeta/"
-        },
-        {
-            "section": "body",
-            "link": "https://github.com/hexiangnan/neural_"
-        }
-    ],
-    "1710.10903v3.pdf": [
-        {
-            "section": "target",
-            "link": "https://www.tensorflow.org/.Softwareavail-ablefromtensorflow.org"
-        },
-        {
-            "section": "target",
-            "link": "http://arxiv.org/abs/1611.02344"
-        },
-        {
-            "section": "target",
-            "link": "http://papers.nips.cc/paper/6863-vain-attentional-multi-agent-predictive-modeling.pdf"
-        },
-        {
-            "section": "target",
-            "link": "http://arxiv.org/abs/1410.3916"
-        },
-        {
-            "section": "doi",
-            "link": "10.1109/72.572108"
-        },
-        {
-            "section": "body",
-            "link": "https://github.com/PetarV-/GAT"
-        },
-        {
-            "section": "note",
-            "link": "https://www.tensorflow.org/"
-        },
-        {
-            "section": "note",
-            "link": "http://arxiv"
-        },
-        {
-            "section": "note",
-            "link": "http://papers.nips.cc/paper/"
-        }
-    ],
-    "1810.04805v2.pdf": [
-        {
-            "section": "target",
-            "link": "https://github.com/google-research/bert"
-        },
-        {
-            "section": "target",
-            "link": "https://gluebenchmark.com/leaderboard"
-        },
-        {
-            "section": "doi",
-            "link": "10.18653/v1/S17-2001"
-        },
-        {
-            "section": "body",
-            "link": "https://github.com/"
-        },
-        {
-            "section": "body",
-            "link": "https://cloudplatform.googleblog.com/2018/06/Cloud-TPU-now-offers-preemptible-pricing-and-globalavailability.html•"
-        },
-        {
-            "section": "body",
-            "link": "https://github.com/tensorflow/tensor2tensor"
-        },
-        {
-            "section": "body",
-            "link": "http://nlp.seas.harvard.edu/2018/04/03/attention.html"
-        },
-        {
-            "section": "body",
-            "link": "https://gluebenchmark.com/faq"
-        }
-    ],
-    "1812.08434v6.pdf": [
-        {
-            "section": "target",
-            "link": "https://github.com/ShinKyuY/Representation_Learning_on_Graphs_with_Jumping_Knowledge_Networks"
-        },
-        {
-            "section": "target",
-            "link": "https://github.com/Hanjun-Dai/steady_state_embedding"
-        },
-        {
-            "section": "target",
-            "link": "https://github.com/divelab/lgcn/"
-        },
-        {
-            "section": "target",
-            "link": "https://github.com/matenure/FastGCN"
-        },
-        {
-            "section": "target",
-            "link": "https://github.com/RexYing/diffpool"
-        },
-        {
-            "section": "target",
-            "link": "https://github.com/snap-stanford/GraphRNN"
-        },
-        {
-            "section": "target",
-            "link": "https://github.com/nicola-decao/MolGAN"
-        },
-        {
-            "section": "target",
-            "link": "https://github.com/danielzuegner/netgan"
-        },
-        {
-            "section": "target",
-            "link": "https://github.com/liyaguang/DCRNN"
-        },
-        {
-            "section": "target",
-            "link": "https://github.com/yysijie/st-gcn"
-        },
-        {
-            "section": "target",
-            "link": "https://github.com/tkipf/relational-gcn"
-        },
-        {
-            "section": "target",
-            "link": "https://github.com/huangwb/AS-GCN"
-        },
-        {
-            "section": "target",
-            "link": "https://github.com/ZhuangCY/DGCN"
-        },
-        {
-            "section": "target",
-            "link": "https://github.com/jennyzhang0215/GaAN"
-        },
-        {
-            "section": "target",
-            "link": "https://github.com/PetarV-/DGI"
-        },
-        {
-            "section": "target",
-            "link": "https://github.com/nnzhan/Graph-WaveNet"
-        },
-        {
-            "section": "target",
-            "link": "https://github.com/Jhy1993/HAN"
-        },
-        {
-            "section": "target",
-            "link": "https://github.com/thunlp/gnnpapers"
-        },
-        {
-            "section": "target",
-            "link": "https://doi.org/10.24963/ijcai.2017/250"
-        },
-        {
-            "section": "target",
-            "link": "http://socialcomputing.asu.edu"
-        },
-        {
-            "section": "doi",
-            "link": "10.1016/j.aiopen.2021.01.001"
-        },
-        {
-            "section": "doi",
-            "link": "10.24963/ijcai.2017/250"
-        },
-        {
-            "section": "note",
-            "link": "http://soci"
-        },
-        {
-            "section": "note",
-            "link": "WWW.ACM"
-        },
-        {
-            "section": "back",
-            "link": "https://github.com/thunlp/"
-        }
-    ],
-    "1907.07374v5.pdf": [
-        {
-            "section": "target",
-            "link": "http://www.heatmapping.org/slides/2018WCCI.pdf"
-        },
-        {
-            "section": "target",
-            "link": "http://iphome.hhi.de/samek/pdf/MonICML16.pdf"
-        },
-        {
-            "section": "target",
-            "link": "https://pair-code.github.io/saliency/"
-        },
-        {
-            "section": "target",
-            "link": "https://cs.stanford.edu/people/karpathy/cnnembed"
-        },
-        {
-            "section": "target",
-            "link": "https://distill.pub/2019/activation-atlas"
-        },
-        {
-            "section": "body",
-            "link": "https://distill.pub/2018/building-blocks/"
-        },
-        {
-            "section": "note",
-            "link": "http://www.heatmapping.org/slides/2018"
-        },
-        {
-            "section": "note",
-            "link": "http://iphome"
-        },
-        {
-            "section": "note",
-            "link": "https://cs.stanford"
-        }
-    ],
-    "1908.04515v1.pdf": [
-        {
-            "section": "doi",
-            "link": "10.1364/optica.XX.XXXXXX"
-        }
-    ],
-    "2101.00027v1.pdf": [
-        {
-            "section": "target",
-            "link": "https://pile.eleuther.ai/"
-        },
-        {
-            "section": "target",
-            "link": "https://archiveofourown.org/"
-        },
-        {
-            "section": "target",
-            "link": "https://github.com/SpamScope/mail-parser"
-        },
-        {
-            "section": "target",
-            "link": "https://www.google.com/recaptcha/api.js?render="
-        },
-        {
-            "section": "target",
-            "link": "http://Skylion007.github.io/OpenWebTextCorpus"
-        },
-        {
-            "section": "target",
-            "link": "https://github.com/BIGBALLON/cifar-10-cnn"
-        },
-        {
-            "section": "target",
-            "link": "http://arXiv.org/abs/cs/0205028"
-        },
-        {
-            "section": "target",
-            "link": "https://twitter.com/theshawwn/status/1320282149329784833"
-        },
-        {
-            "section": "doi",
-            "link": "10.5281/zenodo.2591652"
-        },
-        {
-            "section": "body",
-            "link": "www.fanfiction.net"
-        },
-        {
-            "section": "body",
-            "link": "www.https://archiveofourown"
-        },
-        {
-            "section": "body",
-            "link": "https://github.com/SpamScope/"
-        },
-        {
-            "section": "body",
-            "link": "https://www.google.com/recaptcha/api.js?render=*site"
-        },
-        {
-            "section": "body",
-            "link": "https://arxiv.org/help/"
-        },
-        {
-            "section": "body",
-            "link": "https://launchpad.net/bugs/1627643"
-        },
-        {
-            "section": "body",
-            "link": "https://github.com/EleutherAI/"
-        },
-        {
-            "section": "body",
-            "link": "https://www.courtlistener.com/"
-        },
-        {
-            "section": "body",
-            "link": "https://archive.org/details/"
-        },
-        {
-            "section": "body",
-            "link": "https://bulkdata.uspto.gov/"
-        },
-        {
-            "section": "body",
-            "link": "https://irclogs.ubuntu.com/"
-        },
-        {
-            "section": "body",
-            "link": "https://philpapers.org/"
-        },
-        {
-            "section": "body",
-            "link": "https://exporter.nih.gov/"
-        },
-        {
-            "section": "body",
-            "link": "https://news.ycombinator.com"
-        },
-        {
-            "section": "body",
-            "link": "http://data.statmt"
-        },
-        {
-            "section": "body",
-            "link": "https://www.tensorflow.org/datasets/"
-        },
-        {
-            "section": "body",
-            "link": "https://arxiv.org/help/bulk_data_s3"
-        },
-        {
-            "section": "body",
-            "link": "https://www.courtlistener.com/api/"
-        },
-        {
-            "section": "body",
-            "link": "http://www.statmt.org/europarl/"
-        },
-        {
-            "section": "body",
-            "link": "https://github.com/jdepoix/"
-        },
-        {
-            "section": "body",
-            "link": "https://github.com/vphill/"
-        },
-        {
-            "section": "body",
-            "link": "https://github.com/sdtblck/PDFextract"
-        },
-        {
-            "section": "body",
-            "link": "https://github.com/ekzhu/datasketch"
-        },
-        {
-            "section": "note",
-            "link": "http://Skylion007.github.io/"
-        },
-        {
-            "section": "note",
-            "link": "https://github.com/BIGBALLON/"
-        },
-        {
-            "section": "note",
-            "link": "http://arXiv"
-        }
-    ],
-    "2105.03011v1.pdf": [
-        {
-            "section": "doi",
-            "link": "10.18653/v1/2020.findings-emnlp.66"
-        },
-        {
-            "section": "doi",
-            "link": "10.18653/v1/D18-1241"
-        },
-        {
-            "section": "doi",
-            "link": "10.1162/tacl_a_00317"
-        },
-        {
-            "section": "doi",
-            "link": "10.18653/v1/D19-1606"
-        },
-        {
-            "section": "doi",
-            "link": "10.18653/v1/N19-1423"
-        },
-        {
-            "section": "doi",
-            "link": "10.18653/v1/N19-1246"
-        },
-        {
-            "section": "doi",
-            "link": "10.18653/v1/2020.emnlp-main.86"
-        },
-        {
-            "section": "doi",
-            "link": "10.18653/v1/P18-1031"
-        },
-        {
-            "section": "doi",
-            "link": "10.18653/v1/D19-1259"
-        },
-        {
-            "section": "doi",
-            "link": "10.18653/v1/P17-1147"
-        },
-        {
-            "section": "doi",
-            "link": "10.18653/v1/2020.findings-emnlp.171"
-        },
-        {
-            "section": "doi",
-            "link": "10.1162/tacl_a_00023"
-        },
-        {
-            "section": "doi",
-            "link": "10.1162/tacl_a_00276"
-        },
-        {
-            "section": "doi",
-            "link": "10.18653/v1/2020.acl-main.703"
-        },
-        {
-            "section": "doi",
-            "link": "10.18653/v1/2020.acl-main.604"
-        },
-        {
-            "section": "doi",
-            "link": "10.18653/v1/2020.acl-main.447"
-        },
-        {
-            "section": "doi",
-            "link": "10.18653/v1/W18-5301"
-        },
-        {
-            "section": "doi",
-            "link": "10.18653/v1/2020.emnlp-demos.17"
-        },
-        {
-            "section": "doi",
-            "link": "10.18653/v1/D18-1258"
-        },
-        {
-            "section": "doi",
-            "link": "10.18653/v1/2020.bionlp-1.15"
-        },
-        {
-            "section": "doi",
-            "link": "10.18653/v1/D16-1264"
-        },
-        {
-            "section": "doi",
-            "link": "10.18653/v1/D19-1500"
-        },
-        {
-            "section": "doi",
-            "link": "10.1162/tacl_a_00266"
-        },
-        {
-            "section": "doi",
-            "link": "10.18653/v1/W17-2623"
-        },
-        {
-            "section": "doi",
-            "link": "10.1162/tacl_a_00021"
-        },
-        {
-            "section": "doi",
-            "link": "10.18653/v1/D15-1237"
-        },
-        {
-            "section": "doi",
-            "link": "10.18653/v1/D18-1259"
-        },
-        {
-            "section": "body",
-            "link": "https://allenai.org/project/qasper"
-        },
-        {
-            "section": "body",
-            "link": "http://semanticscholar.org"
-        },
-        {
-            "section": "body",
-            "link": "https://www.upwork.com/"
-        },
-        {
-            "section": "body",
-            "link": "https://paperswithcode.com/task/"
-        }
-    ],
-    "2111.02114v1.pdf": [
-        {
-            "section": "body",
-            "link": "https://laion.ai/laion-400-open-dataset/"
-        },
-        {
-            "section": "body",
-            "link": "https://rom1504.github.io/clip-retrieval/"
-        },
-        {
-            "section": "body",
-            "link": "https://github.com/rom1504/img2dataset"
-        }
-    ],
-    "4449.pdf": [
-        {
-            "section": "target",
-            "link": "http://research.microsoft.com/barc/SortBenchmark/"
-        },
-        {
-            "section": "target",
-            "link": "http://alme1.almaden.ibm.com/cs/spsort.pdf"
-        }
-    ],
-    "NIPS-2012-imagenet-classification-with-deep-convolutional-neural-networks-Paper.pdf": [
-        {
-            "section": "target",
-            "link": "www.image-net.org/challenges"
-        },
-        {
-            "section": "target",
-            "link": "http://www.image-net.org/challenges/LSVRC/2012/"
-        },
-        {
-            "section": "target",
-            "link": "http://authors.library.caltech.edu/7694"
-        },
-        {
-            "section": "body",
-            "link": "http://code.google.com/p/cuda-convnet/"
-        },
-        {
-            "section": "note",
-            "link": "www.image-"
-        }
-    ],
-    "TSP_IASC_36323.pdf": [
-        {
-            "section": "target",
-            "link": "https://doi.org/10.1016/j.media.2021.102188"
-        },
-        {
-            "section": "target",
-            "link": "https://doi.org/10.1142/9789811239014_0005"
-        },
-        {
-            "section": "target",
-            "link": "https://doi.org/10.1016/j.inffus.2020.04.002"
-        },
-        {
-            "section": "target",
-            "link": "https://doi.org/10.1016/j.patcog.2021.108146"
-        },
-        {
-            "section": "target",
-            "link": "https://doi.org/10.1088/1755-1315/428/1/012097"
-        },
-        {
-            "section": "target",
-            "link": "https://doi.org/10.1016/j.neucom.2022.03.062"
-        },
-        {
-            "section": "target",
-            "link": "https://doi.org/10.1016/j.neunet.2018.03.019"
-        },
-        {
-            "section": "target",
-            "link": "https://doi.org/10.1145/3357254.3357276"
-        },
-        {
-            "section": "target",
-            "link": "https://doi.org/10.1016/j.patcog.2020.107420"
-        },
-        {
-            "section": "target",
-            "link": "https://doi.org/10.1016/j.neucom.2021.03.108"
-        },
-        {
-            "section": "target",
-            "link": "https://doi.org/10.1016/j.patcog.2018.04.012"
-        },
-        {
-            "section": "target",
-            "link": "https://doi.org/10.1109/SPIN.2019.8711703"
-        },
-        {
-            "section": "target",
-            "link": "https://doi.org/10.1016/j.procs.2020.04.206"
-        },
-        {
-            "section": "target",
-            "link": "https://doi.org/10.1016/j.inffus.2020.10.0082021"
-        },
-        {
-            "section": "target",
-            "link": "https://arxiv.org/abs/1409.4842v1"
-        },
-        {
-            "section": "target",
-            "link": "https://arxiv.org/abs/1512.00567v3"
-        },
-        {
-            "section": "target",
-            "link": "https://arxiv.org/abs/1610.02357"
-        },
-        {
-            "section": "target",
-            "link": "https://arxiv.org/abs/1409.1556"
-        },
-        {
-            "section": "doi",
-            "link": "10.32604/iasc.2023.036323"
-        },
-        {
-            "section": "doi",
-            "link": "10.1016/j.media.2021.102188"
-        },
-        {
-            "section": "doi",
-            "link": "10.1142/9789811239014_0005"
-        },
-        {
-            "section": "doi",
-            "link": "10.1016/j.inffus.2020.04.002"
-        },
-        {
-            "section": "doi",
-            "link": "10.1016/j.patcog.2021.108146"
-        },
-        {
-            "section": "doi",
-            "link": "10.1088/1755-1315/428/1/012097"
-        },
-        {
-            "section": "doi",
-            "link": "10.1016/j.neucom.2022.03.062"
-        },
-        {
-            "section": "doi",
-            "link": "10.1016/j.neunet.2018.03.019"
-        },
-        {
-            "section": "doi",
-            "link": "10.1145/3357254.3357276"
-        },
-        {
-            "section": "doi",
-            "link": "10.1016/j.patcog.2020.107420"
-        },
-        {
-            "section": "doi",
-            "link": "10.1016/j.neucom.2021.03.108"
-        },
-        {
-            "section": "doi",
-            "link": "10.1016/j.patcog.2018.04.012"
-        },
-        {
-            "section": "doi",
-            "link": "10.1109/SPIN.2019.8711703"
-        },
-        {
-            "section": "doi",
-            "link": "10.1016/j.procs.2020.04.206"
-        },
-        {
-            "section": "doi",
-            "link": "10.1016/j.inffus.2020.10.0082021"
-        },
-        {
-            "section": "note",
-            "link": "https://doi.org/10"
-        },
-        {
-            "section": "note",
-            "link": "https://doi.org/10.1016/j"
-        },
-        {
-            "section": "note",
-            "link": "10.1016/j"
-        }
-    ]
+  "1505.04597v1.pdf": [
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "http://www.codesolorzano.com/celltrackingchallenge/Cell_Tracking_Challenge/Welcome.html",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "http://brainiac2.mit.edu/isbi_challenge/",
+      "context": ""
+    },
+    {
+      "section": "abstract",
+      "kind": "url",
+      "link": "http://lmb.informatik.uni-freiburg.de/people/ronneber/u-net",
+      "context": "512x512 image takes less than a second on a recent GPU. The full implementation (based on Caffe) and the trained networks are available at http://lmb.informatik.uni-freiburg.de/people/ronneber/u-net."
+    }
+  ],
+  "1506.02640v5.pdf": [
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "https://github.com/BVLC/caffe/wiki/Models-accuracy-on-ImageNet-2012-val.Ac-cessed",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "http://pjreddie.com/darknet/,2013-2016.3",
+      "context": ""
+    },
+    {
+      "section": "body",
+      "kind": "url",
+      "link": "http://pjreddie.com/yolo/.Second",
+      "context": "ean average precision of other real-time systems. For a demo of our system running in real-time on a webcam please see our project webpage: http://pjreddie.com/yolo/.Second, YOLO reasons globally about the image when making predictions. Unlike sliding window and region proposal-based techniques, YOLO sees the en"
+    },
+    {
+      "section": "body",
+      "kind": "url",
+      "link": "http://pjreddie.com/yolo/.ConclusionWe",
+      "context": "tecting objects as they move around and change in appearance. A demo of the system and the source code can be found on our project website: http://pjreddie.com/yolo/.ConclusionWe introduce YOLO, a unified model for object detection. Our model is simple to construct and can be trained directly on full images. Unlike c"
+    },
+    {
+      "section": "note",
+      "kind": "url",
+      "link": "http://pjreddie.com/darknet/",
+      "context": "J. Redmon. Darknet: Open source neural networks in c. http://pjreddie.com/darknet/, 2013-2016. 3"
+    }
+  ],
+  "1512.02595v1.pdf": [
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "http://arxiv.org/abs/1508.04395",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "https://nvlabs.github.io/moderngpu/",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "http://arxiv.org/abs/1508.01211",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "http://arxiv.org/abs/1412.1602",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "http://svail.github.io/rnn_perf",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "http://arxiv.org/abs/1412.5567",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "http://arxiv.org/abs/1408.2873",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "http://arxiv.org/abs/1510.01378",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "http://arxiv.org/abs/1211.5063",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "http://arxiv.org/abs/1507.06947",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "http://arxiv.org/abs/1409.3215",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "http://arxiv.org/abs/1502.03167",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "http://arxiv.org/abs/1410.4615",
+      "context": ""
+    },
+    {
+      "section": "body",
+      "kind": "url",
+      "link": "http://www.voxforge.org",
+      "context": "use only one of the six channels to test each utterance. Accented SpeechOur source for accented speech is the publicly available VoxForge (http://www.voxforge.org) dataset, which has clean speech read from speakers with many different accents. We group these accents into four categories. The American-C"
+    },
+    {
+      "section": "body",
+      "kind": "url",
+      "link": "http://commoncrawl.org",
+      "context": "entropy density, ∼41 bits/s compared to ∼58 bits/s, and can thus more easily be temporally compressed without losing character information. http://commoncrawl.org"
+    },
+    {
+      "section": "note",
+      "kind": "url",
+      "link": "http://svail.github.io/rnn_perf.Accessed",
+      "context": "E. Elsen. Optimizing RNN performance. http://svail.github.io/rnn_perf.Accessed: 2015-11-24."
+    },
+    {
+      "section": "reference",
+      "kind": "url",
+      "link": "http://arxiv.org/abs/1508.04395.The",
+      "context": ", J. Chorowski, D. Serdyuk, P. Brakel, and Y. Bengio. End-to-end attention-based large vocabulary speech recognition. abs/1508.04395, 2015. http://arxiv.org/abs/1508.04395.The third 'CHiME' speech separation and recognition challenge: Dataset, task and baselines JBarker EMarxer RicardVincent SWatanabe Submitted to"
+    },
+    {
+      "section": "reference",
+      "kind": "url",
+      "link": "https://nvlabs.github.io/moderngpu/.Curriculum",
+      "context": "nes. 2015. Submitted to IEEE 2015 Automatic Speech Recognition and Understanding Workshop (ASRU). SBaxter Modern GPU S. Baxter. Modern GPU. https://nvlabs.github.io/moderngpu/.Curriculum learning YBengio JLouradour RCollobert JWeston International Conference on Machine Learning 2009 Y. Bengio, J. Louradour, R. Collobert, and"
+    },
+    {
+      "section": "reference",
+      "kind": "url",
+      "link": "http://arxiv.org/abs/1508.01211.SChetlur",
+      "context": "QLe OVinyals Listen spell. abs/1508.01211 2015 W. Chan, N. Jaitly, Q. Le, and O. Vinyals. Listen, attend, and spell. abs/1508.01211, 2015. http://arxiv.org/abs/1508.01211.SChetlur CWoolley PVandermersch JCohen JTran BCatanzaro EShelhamer Efficient primitives for deep learning S. Chetlur, C. Woolley, P. Vandermersch, J"
+    },
+    {
+      "section": "reference",
+      "kind": "url",
+      "link": "http://arxiv.org/abs/1412.1602.The",
+      "context": "au, K. Cho, and Y. Bengio. End-to-end continuous speech recognition using attention-based recurrent nn: First results. abs/1412.1602, 2015. http://arxiv.org/abs/1412.1602.The Fisher corpus: a resource for the next generations of speech-totext CCieri DMiller KWalker LREC 2004 4 C. Cieri, D. Miller, and K. Walker."
+    },
+    {
+      "section": "reference",
+      "kind": "url",
+      "link": "http://arxiv.org/abs/1412.5567.First-pass",
+      "context": "sen, R. Prenger, S. Satheesh, S. Sengupta, A. Coates, and A. Y. Ng. Deep speech: Scaling up end-to-end speech recognition. 1412.5567, 2014. http://arxiv.org/abs/1412.5567.First-pass large vocabulary continuous speech recognition using bi-directional recurrent DNNs AYHannun ALMaas DJurafsky AYNg abs/1408.2873 2014 A. Y."
+    },
+    {
+      "section": "reference",
+      "kind": "url",
+      "link": "http://arxiv.org/abs/1408.2873.Scalable",
+      "context": "Jurafsky, and A. Y. Ng. First-pass large vocabulary continuous speech recognition using bi-directional recurrent DNNs. abs/1408.2873, 2014. http://arxiv.org/abs/1408.2873.Scalable modified Kneser-Ney language model estimation KHeafield IPouzyrevsky JHClark PKoehn Proceedings of the 51st Annual Meeting of the Associati"
+    },
+    {
+      "section": "reference",
+      "kind": "url",
+      "link": "http://arxiv.org/abs/1510.01378.Building",
+      "context": "10.01378 2015 C. Laurent, G. Pereyra, P. Brakel, Y. Zhang, and Y. Bengio. Batch normalized recurrent neural networks. abs/1510.01378, 2015. http://arxiv.org/abs/1510.01378.Building high-level features using large scale unsupervised learning QLe MRanzato RMonga MDevin KChen GCorrado JDean ANg International Conference on"
+    },
+    {
+      "section": "reference",
+      "kind": "url",
+      "link": "http://arxiv.org/abs/1211.5063.Bandwidth",
+      "context": "gio abs/1211.5063 2012 R. Pascanu, T. Mikolov, and Y. Bengio. On the difficulty of training recurrent neural networks. abs/1211.5063, 2012. http://arxiv.org/abs/1211.5063.Bandwidth optimal all-reduce algorithms for clusters of workstations PPatarasuk XYuan J. Parallel Distrib. Comput 69 2 Feb. 2009 P. Patarasuk and X."
+    },
+    {
+      "section": "reference",
+      "kind": "url",
+      "link": "http://arxiv.org/abs/1507.06947.Sequence",
+      "context": ". Senior, K. Rao, and F. Beaufays. Fast and accurate recurrent neural network acoustic models for speech recognition. abs/1507.06947, 2015. http://arxiv.org/abs/1507.06947.Sequence discriminative distributed training of long shortterm memory recurrent neural networks HSak OVinyals GHeigold ASenior EMcdermott RMonga MMa"
+    },
+    {
+      "section": "reference",
+      "kind": "url",
+      "link": "http://arxiv.org/abs/1409.3215.Batch",
+      "context": "al networks ISutskever OVinyals QVLe 2014 I. Sutskever, O. Vinyals, and Q. V. Le. Sequence to sequence learning with neural networks. 2014. http://arxiv.org/abs/1409.3215.Batch normalization: Accelerating deep network training by reducing internal covariate CSzegedy SIoffe shift. abs/1502.03167 2015 C. Szegedy and"
+    },
+    {
+      "section": "reference",
+      "kind": "url",
+      "link": "http://arxiv.org/abs/1502.03167.CSzegedy",
+      "context": ". Szegedy and S. Ioffe. Batch normalization: Accelerating deep network training by reducing internal covariate shift. abs/1502.03167, 2015. http://arxiv.org/abs/1502.03167.CSzegedy WLiu YJia PSermanet SReed DAnguelov DErhan VVanhoucke ARabinovich 2014 Going deeper with convolutions C. Szegedy, W. Liu, Y. Jia, P. Serman"
+    }
+  ],
+  "1606.05250v3.pdf": [
+    {
+      "section": "abstract",
+      "kind": "url",
+      "link": "https://stanford-qa.com",
+      "context": "6.8%) is much higher, indicating that the dataset presents a good challenge problem for future research. The dataset is freely available at https://stanford-qa.com."
+    },
+    {
+      "section": "body",
+      "kind": "url",
+      "link": "https://worksheets.codalab.org/worksheets/0xd53d03a48ef64b329c16b9baf0f99b0c/.Figure",
+      "context": "cant advances in reading comprehension. ReproducibilityAll code, data, and experiments for this paper are available on the CodaLab platform:https://worksheets.codalab.org/worksheets/0xd53d03a48ef64b329c16b9baf0f99b0c/.Figure 1 :1Figure 1: Question-answer pairs for a sample passage in the SQuAD dataset. Each of the answers is a segment of text from the passage. F"
+    }
+  ],
+  "1702.05373v2.pdf": [
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "http://www.nist.gov/srd/upload/nistsd19.pdf",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "http://portal.acm.org/citation.cfm?doid=1141277.1141468",
+      "context": ""
+    },
+    {
+      "section": "body",
+      "kind": "url",
+      "link": "https://www.westernsydney.edu.au/bens/home/reproducible",
+      "context": "taset. These results are then used to further characterize and validate the datasets.The EMNIST dataset can be accessed and downloaded from https://www.westernsydney.edu.au/bens/home/reproducible research/emnist. A. The MNIST and NIST DatasetThe NIST Special Database 19 [11] contains handwritten digits and characters collected from o"
+    }
+  ],
+  "1702.05747v2.pdf": [
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "http://dx.doi.org/10.1109/TMI.2015.2476509",
+      "context": ""
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.1109/TMI.2015.2476509",
+      "context": "10.1109/TMI.2015.2476509"
+    },
+    {
+      "section": "body",
+      "kind": "url",
+      "link": "https://github.com/Lasagne/Lasagne",
+      "context": "d by, among others, Facebook AI research.There are third-party packages written on top of one or more of these frameworks, such as Lasagne (https://github.com/Lasagne/Lasagne) or Keras (https: //keras.io/). It goes beyond the scope of this paper to discuss all these packages in detail. Deep Learning Uses in Medica"
+    },
+    {
+      "section": "body",
+      "kind": "url",
+      "link": "www.grand-challenge.org.BrainDNNs",
+      "context": "ibutions and discuss performance of systems on large data sets and on public challenge data sets. All these challenges are listed on http:\\\\www.grand-challenge.org.BrainDNNs have been extensively used for brain image analysis in several different application domains (Table 1). A large number of studies address c"
+    }
+  ],
+  "1706.03762v7.pdf": [
+    {
+      "section": "body",
+      "kind": "url",
+      "link": "https://github.com/tensorflow/tensor2tensor.Input-Input",
+      "context": "ideo. Making generation less sequential is another research goals of ours.The code we used to train and evaluate our models is available at https://github.com/tensorflow/tensor2tensor.Input-Input Layer5The Full attentions for head 5. Bottom: Isolated attentions from just the word 'its' for attention heads 5 and 6. Note that the atten"
+    }
+  ],
+  "1706.08612v2.pdf": [
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "http://databases.forensic-voice-comparison.net",
+      "context": ""
+    },
+    {
+      "section": "body",
+      "kind": "url",
+      "link": "http://www.robots.ox.ac.uk/",
+      "context": "ether there is a match between a given utterance and a target model. We provide baselines for both tasks.The dataset can be downloaded from http://www.robots.ox.ac.uk/ ˜vgg/data/voxceleb. Related WorksFor a long time, speaker identification was the domain of Gaussian Mixture Models (GMMs) trained on low di"
+    }
+  ],
+  "1707.02919v2.pdf": [
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "https://doi.org/10.3115/1119176.1119199",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "https://www.emc.com/collateral/analyst-reports/idc-the-digital-universe-in-2020.pdf",
+      "context": ""
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.3115/1119176.1119199",
+      "context": "10.3115/1119176.1119199"
+    },
+    {
+      "section": "body",
+      "kind": "url",
+      "link": "http://www.lemurproject.org/The",
+      "context": "one another in terms of the number of words they contain, normalizing document representations during the clustering process is important.5 http://www.lemurproject.org/The aforementioned text characteristics necessitates the design of specialized algorithms for representing text and broadly investigated in IR"
+    },
+    {
+      "section": "body",
+      "kind": "url",
+      "link": "http://www.crisp-dm.org/http://en.wikipedia.org/wiki/Statistics",
+      "context": "or large vocabulary sizes, and almost always performs better than Bernoulli if the size of the vocabulary chosen optimally for both models. http://www.crisp-dm.org/http://en.wikipedia.org/wiki/Statistics http://www.cs.waikato.ac.nz/ml/weka/http://www.w3.org/TR/webont-req/http://www.obofoundry.org/http://www.bioontology.org/http://bioportal.b"
+    },
+    {
+      "section": "body",
+      "kind": "url",
+      "link": "http://www.cs.waikato.ac.nz/ml/weka/http://www.w3.org/TR/webont-req/http://www.obofoundry.org/http://www.bioontology.org/http://bioportal.bioontology.org/https://uts.nlm.nih.gov/home.html",
+      "context": "n Bernoulli if the size of the vocabulary chosen optimally for both models. http://www.crisp-dm.org/http://en.wikipedia.org/wiki/Statistics http://www.cs.waikato.ac.nz/ml/weka/http://www.w3.org/TR/webont-req/http://www.obofoundry.org/http://www.bioontology.org/http://bioportal.bioontology.org/https://uts.nlm.nih.gov/home.html http://www.pharmgkb.org/"
+    },
+    {
+      "section": "body",
+      "kind": "url",
+      "link": "http://www.pharmgkb.org/",
+      "context": "3.org/TR/webont-req/http://www.obofoundry.org/http://www.bioontology.org/http://bioportal.bioontology.org/https://uts.nlm.nih.gov/home.html http://www.pharmgkb.org/"
+    },
+    {
+      "section": "note",
+      "kind": "url",
+      "link": "http://www.crisp-dm.org/",
+      "context": "http://www.crisp-dm.org/"
+    },
+    {
+      "section": "note",
+      "kind": "url",
+      "link": "http://en.wikipedia.org/wiki/Statistics",
+      "context": "http://en.wikipedia.org/wiki/Statistics"
+    },
+    {
+      "section": "note",
+      "kind": "url",
+      "link": "http://www.cs.waikato.ac.nz/ml/weka/",
+      "context": "http://www.cs.waikato.ac.nz/ml/weka/"
+    },
+    {
+      "section": "note",
+      "kind": "url",
+      "link": "http://www.w3.org/TR/webont-req/",
+      "context": "http://www.w3.org/TR/webont-req/"
+    },
+    {
+      "section": "note",
+      "kind": "url",
+      "link": "http://www.obofoundry.org/",
+      "context": "http://www.obofoundry.org/"
+    },
+    {
+      "section": "note",
+      "kind": "url",
+      "link": "http://www.bioontology.org/",
+      "context": "http://www.bioontology.org/"
+    },
+    {
+      "section": "note",
+      "kind": "url",
+      "link": "http://bioportal.bioontology.org/",
+      "context": "http://bioportal.bioontology.org/"
+    },
+    {
+      "section": "note",
+      "kind": "url",
+      "link": "https://uts.nlm.nih.gov/home.html",
+      "context": "https://uts.nlm.nih.gov/home.html"
+    },
+    {
+      "section": "reference",
+      "kind": "url",
+      "link": "https://www.emc.com/collateral/analyst-reports/idc-the-digital-universe-in-2020.pdf.Introducing",
+      "context": ", and Biggest Grow th in the Far East. Tech- nical Report 1. IDC, 5 Speen Street, Framingham, MA 01701 USA. Ac- cessed online on May, 2017. https://www.emc.com/collateral/analyst-reports/idc-the-digital-universe-in-2020.pdf.Introducing markov chain monte carlo. In Markov chain Monte Carlo in practice SylviaWalter R Gilks DavidJRichardson Spiegelhalter 1996 Springer Walter"
+    }
+  ],
+  "1708.05031v2.pdf": [
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.1145/3038912.3052569",
+      "context": "10.1145/3038912.3052569"
+    },
+    {
+      "section": "body",
+      "kind": "url",
+      "link": "http://alex.smola.org/teaching/berkeley2012/slides/8_Recommender.pdf",
+      "context": "2510.4090.4170.4260.432Pinterest80.1410.5260.5340.5360.539160.1410.5320.5360.5380.544320.1420.5370.5380.5420.546640.1410.5380.5420.5450.550 http://alex.smola.org/teaching/berkeley2012/slides/8_Recommender.pdf Assuming latent vectors are of a unit length. Let Ru be the set of items that user u has interacted with, then the Jaccard similarity of us"
+    },
+    {
+      "section": "body",
+      "kind": "url",
+      "link": "http://grouplens.org/datasets/movielens/1m/https://sites.google.com/site/xueatalphabeta/academic-projects",
+      "context": "set of items that user u has interacted with, then the Jaccard similarity of users i and j is defined as sij =|R i |∩|R j | |R i |∪|R j | . http://grouplens.org/datasets/movielens/1m/https://sites.google.com/site/xueatalphabeta/academic-projects https://github.com/hexiangnan/neural_collaborative_filtering"
+    },
+    {
+      "section": "body",
+      "kind": "url",
+      "link": "https://github.com/hexiangnan/neural_collaborative_filtering",
+      "context": "ij =|R i |∩|R j | |R i |∪|R j | . http://grouplens.org/datasets/movielens/1m/https://sites.google.com/site/xueatalphabeta/academic-projects https://github.com/hexiangnan/neural_collaborative_filtering"
+    },
+    {
+      "section": "note",
+      "kind": "url",
+      "link": "http://grouplens.org/datasets/movielens/1m/",
+      "context": "http://grouplens.org/datasets/movielens/1m/"
+    },
+    {
+      "section": "note",
+      "kind": "url",
+      "link": "https://sites.google.com/site/xueatalphabeta/academic-projects",
+      "context": "https://sites.google.com/site/xueatalphabeta/academic-projects"
+    }
+  ],
+  "1710.10903v3.pdf": [
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "https://www.tensorflow.org/.Softwareavail-ablefromtensorflow.org",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "http://arxiv.org/abs/1611.02344",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "http://papers.nips.cc/paper/6863-vain-attentional-multi-agent-predictive-modeling.pdf",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "http://arxiv.org/abs/1410.3916",
+      "context": ""
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.1109/72.572108",
+      "context": "10.1109/72.572108"
+    },
+    {
+      "section": "body",
+      "kind": "url",
+      "link": "https://github.com/PetarV-/GAT",
+      "context": "ol (Hamilton et al., 2017)0.600GraphSAGE *0.768Const-GAT (ours)0.934 ± 0.006GAT (ours) Our implementation of the GAT layer may be found at: https://github.com/PetarV-/GAT."
+    },
+    {
+      "section": "note",
+      "kind": "url",
+      "link": "https://www.tensorflow.org/.Software",
+      "context": "rtin Watten- berg, Martin Wicke, Yuan Yu, and Xiaoqiang Zheng. TensorFlow: Large-scale machine learning on heterogeneous systems, 2015. URL https://www.tensorflow.org/.Software avail- able from tensorflow.org."
+    },
+    {
+      "section": "reference",
+      "kind": "url",
+      "link": "http://arxiv.org/abs/1611.02344.Understanding",
+      "context": "el Auli, David Grangier, and Yann N. Dauphin. A convolutional encoder model for neural machine translation. CoRR, abs/1611.02344, 2016. URL http://arxiv.org/abs/1611.02344.Understanding the difficulty of training deep feedforward neural networks XavierGlorot YoshuaBengio Proceedings of the Thirteenth International Conferenc"
+    },
+    {
+      "section": "reference",
+      "kind": "url",
+      "link": "http://papers.nips.cc/paper/6863-vain-attentional-multi-agent-predictive-modeling.pdf.The",
+      "context": "wanathan, and R. Gar- nett (eds.), Advances in Neural Information Processing Systems 30, pp. 2698- 2708. Curran Associates, Inc., 2017. URL http://papers.nips.cc/paper/6863-vain-attentional-multi-agent-predictive-modeling.pdf.The one hundred layers tiramisu: Fully convolutional densenets for semantic segmentation SimonJégou MichalDrozdzal DavidVázquez AdrianaRomero Y"
+    },
+    {
+      "section": "reference",
+      "kind": "url",
+      "link": "http://arxiv.org/abs/1410.3916.Revisiting",
+      "context": "opra AntoineBordes CoRR, abs/1410.3916 2014 Jason Weston, Sumit Chopra, and Antoine Bordes. Memory networks. CoRR, abs/1410.3916, 2014. URL http://arxiv.org/abs/1410.3916.Revisiting semi-supervised learning with graph embeddings ZhilinYang WilliamCohen RuslanSalakhudinov International Conference on Machine Learning 2016"
+    }
+  ],
+  "1810.04805v2.pdf": [
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.18653/v1/S17-2001",
+      "context": "10.18653/v1/S17-2001"
+    },
+    {
+      "section": "body",
+      "kind": "url",
+      "link": "https://github.com/google-research/bert.Related",
+      "context": "any task-specific architectures.• BERT advances the state of the art for eleven NLP tasks. The code and pre-trained models are available at https://github.com/google-research/bert.Related WorkThere is a long history of pre-training general language representations, and we briefly review the most widely-used approaches in this"
+    },
+    {
+      "section": "body",
+      "kind": "url",
+      "link": "https://gluebenchmark.com/leaderboardWikipedia",
+      "context": "ibution does not include the Test labels, and we only made a single GLUE evaluation server submission for each of BERTBASE and BERTLARGE.10 https://gluebenchmark.com/leaderboardWikipedia containing the answer, the task is to predict the answer text span in the passage.As shown in Figure 1, in the question answering task, we"
+    },
+    {
+      "section": "body",
+      "kind": "url",
+      "link": "https://cloudplatform.googleblog.com/2018/06/Cloud-TPU-now-offers-preemptible-pricing-and-globalavailability.html",
+      "context": "rs. In addition to the architecture differences, BERT and OpenAI GPT are fine-tuning approaches, while ELMo is a feature-based approach. 13 https://cloudplatform.googleblog.com/2018/06/Cloud-TPU-now-offers-preemptible-pricing-and-globalavailability.html• Learning rate (Adam): 5e-5, 3e-5, 2e-5 • Number of epochs: 2, 3, 4 Figure 4 :4Figure 4: Illustrations of Fine-tuning BERT on Different Task"
+    },
+    {
+      "section": "body",
+      "kind": "url",
+      "link": "https://gluebenchmark.com/leaderboard).The",
+      "context": "ameters that have been pre-trained for k steps. The x-axis is the value of k. Table 1 :1GLUE Test results, scored by the evaluation server (https://gluebenchmark.com/leaderboard).The number below each task denotes the number of training examples. The \"Average\" column is slightly different than the official GLUE score, si"
+    },
+    {
+      "section": "body",
+      "kind": "url",
+      "link": "https://github.com/tensorflow/tensor2tensor",
+      "context": "ature-based80% 10% 10%84.295.494.9100%0%0%84.394.994.080%0% 20%84.195.294.680% 20%0%84.495.294.70% 20% 80%83.794.894.60%0% 100%83.694.994.6 https://github.com/tensorflow/tensor2tensor http://nlp.seas.harvard.edu/2018/04/03/attention.html In all cases we set the feed-forward/filter size to be 4H, i.e., 3072 for the H = 768"
+    },
+    {
+      "section": "body",
+      "kind": "url",
+      "link": "http://nlp.seas.harvard.edu/2018/04/03/attention.html",
+      "context": ".394.994.080%0% 20%84.195.294.680% 20%0%84.495.294.70% 20% 80%83.794.894.60%0% 100%83.694.994.6 https://github.com/tensorflow/tensor2tensor http://nlp.seas.harvard.edu/2018/04/03/attention.html In all cases we set the feed-forward/filter size to be 4H, i.e., 3072 for the H = 768 and 4096 for the H = 1024. The final model achieves 9"
+    },
+    {
+      "section": "body",
+      "kind": "url",
+      "link": "https://gluebenchmark.com/faq.QANet",
+      "context": "For example, the BERT SQuAD model can be trained in around 30 minutes on a single Cloud TPU to achieve a Dev F1 score of 91.0%. See (10) in https://gluebenchmark.com/faq.QANet is described in Yu et al. (2018), but the system has improved substantially after publication. Note that we only report single-task fine-tu"
+    },
+    {
+      "section": "body",
+      "kind": "url",
+      "link": "https://gluebenchmark.com/faq",
+      "context": "tially push the performance even further. For example, we did observe substantial improvements on RTE from multitask training with MNLI. 15 https://gluebenchmark.com/faq"
+    }
+  ],
+  "1812.08434v6.pdf": [
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "https://doi.org/10.24963/ijcai.2017/250",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "http://socialcomputing.asu.edu",
+      "context": ""
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.1016/j.aiopen.2021.01.001",
+      "context": "10.1016/j.aiopen.2021.01.001"
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.24963/ijcai.2017/250",
+      "context": "10.24963/ijcai.2017/250"
+    },
+    {
+      "section": "note",
+      "kind": "url",
+      "link": "http://soci",
+      "context": "Zafarani, R., Liu, H., 2009. Social Computing Data Repository at ASU. http://soci alcomputing.asu.edu."
+    },
+    {
+      "section": "note",
+      "kind": "url",
+      "link": "WWW.ACM",
+      "context": "Zhu, Z., Xu, S., Qu, M., Tang, J., 2019b. Graphvite: a high-performance cpu-gpu hybrid system for node embedding. In: Proceddings of WWW.ACM, pp. 2494-2504."
+    },
+    {
+      "section": "reference",
+      "kind": "url",
+      "link": "https://doi.org/10.24963/ijcai.2017/250.Inductive",
+      "context": "., 2017. Knowledge transfer for out- of-knowledge-base entities : a graph neural network approach. In: Proceedings of IJCAI, pp. 1802-1808. https://doi.org/10.24963/ijcai.2017/250.Inductive representation learning on large graphs WLHamilton ZYing JLeskovec Proceedings of NIPS NIPS 2017 Hamilton, W.L., Ying, Z., Leskovec, J., 20"
+    },
+    {
+      "section": "back",
+      "kind": "url",
+      "link": "https://github.com/ShinKyuY/Representation_Learning_on_Graphs_with_Jumping_Knowledge_Networks",
+      "context": "ion Rhino-Bird Focused Research Program 2018YFB1004503 NSFC No.61772302 Beijing Academy of Artificial Intelligence (BAAI Link JK-Net (2018) https://github.com/ShinKyuY/Representation_Learning_on_Graphs_with_Jumping_Knowledge_Networks SSE (2018) https://github.com/Hanjun-Dai/steady_state_embedding LGCN (2018) https://github.com/divelab/lgcn/FastGCN (2018) https://github.c"
+    },
+    {
+      "section": "back",
+      "kind": "url",
+      "link": "https://github.com/Hanjun-Dai/steady_state_embedding",
+      "context": "elligence (BAAI Link JK-Net (2018) https://github.com/ShinKyuY/Representation_Learning_on_Graphs_with_Jumping_Knowledge_Networks SSE (2018) https://github.com/Hanjun-Dai/steady_state_embedding LGCN (2018) https://github.com/divelab/lgcn/FastGCN (2018) https://github.com/matenure/FastGCN DiffPool (2018) https://github.com/RexYing/d"
+    },
+    {
+      "section": "back",
+      "kind": "url",
+      "link": "https://github.com/divelab/lgcn/FastGCN",
+      "context": "presentation_Learning_on_Graphs_with_Jumping_Knowledge_Networks SSE (2018) https://github.com/Hanjun-Dai/steady_state_embedding LGCN (2018) https://github.com/divelab/lgcn/FastGCN (2018) https://github.com/matenure/FastGCN DiffPool (2018) https://github.com/RexYing/diffpool GraphRNN (2018) https://github.com/snap-stan"
+    },
+    {
+      "section": "back",
+      "kind": "url",
+      "link": "https://github.com/matenure/FastGCN",
+      "context": "owledge_Networks SSE (2018) https://github.com/Hanjun-Dai/steady_state_embedding LGCN (2018) https://github.com/divelab/lgcn/FastGCN (2018) https://github.com/matenure/FastGCN DiffPool (2018) https://github.com/RexYing/diffpool GraphRNN (2018) https://github.com/snap-stanford/GraphRNN MolGAN (2018) https://github."
+    },
+    {
+      "section": "back",
+      "kind": "url",
+      "link": "https://github.com/RexYing/diffpool",
+      "context": "n-Dai/steady_state_embedding LGCN (2018) https://github.com/divelab/lgcn/FastGCN (2018) https://github.com/matenure/FastGCN DiffPool (2018) https://github.com/RexYing/diffpool GraphRNN (2018) https://github.com/snap-stanford/GraphRNN MolGAN (2018) https://github.com/nicola-decao/MolGAN NetGAN (2018) https://github"
+    },
+    {
+      "section": "back",
+      "kind": "url",
+      "link": "https://github.com/snap-stanford/GraphRNN",
+      "context": "hub.com/divelab/lgcn/FastGCN (2018) https://github.com/matenure/FastGCN DiffPool (2018) https://github.com/RexYing/diffpool GraphRNN (2018) https://github.com/snap-stanford/GraphRNN MolGAN (2018) https://github.com/nicola-decao/MolGAN NetGAN (2018) https://github.com/danielzuegner/netgan DCRNN (2018) https://github.com/"
+    },
+    {
+      "section": "back",
+      "kind": "url",
+      "link": "https://github.com/nicola-decao/MolGAN",
+      "context": "atenure/FastGCN DiffPool (2018) https://github.com/RexYing/diffpool GraphRNN (2018) https://github.com/snap-stanford/GraphRNN MolGAN (2018) https://github.com/nicola-decao/MolGAN NetGAN (2018) https://github.com/danielzuegner/netgan DCRNN (2018) https://github.com/liyaguang/DCRNN ST-GCN (2018) https://github.com/yysi"
+    },
+    {
+      "section": "back",
+      "kind": "url",
+      "link": "https://github.com/danielzuegner/netgan",
+      "context": "xYing/diffpool GraphRNN (2018) https://github.com/snap-stanford/GraphRNN MolGAN (2018) https://github.com/nicola-decao/MolGAN NetGAN (2018) https://github.com/danielzuegner/netgan DCRNN (2018) https://github.com/liyaguang/DCRNN ST-GCN (2018) https://github.com/yysijie/st-gcn RGCN (2018) https://github.com/tkipf/relati"
+    },
+    {
+      "section": "back",
+      "kind": "url",
+      "link": "https://github.com/liyaguang/DCRNN",
+      "context": "p-stanford/GraphRNN MolGAN (2018) https://github.com/nicola-decao/MolGAN NetGAN (2018) https://github.com/danielzuegner/netgan DCRNN (2018) https://github.com/liyaguang/DCRNN ST-GCN (2018) https://github.com/yysijie/st-gcn RGCN (2018) https://github.com/tkipf/relational-gcn AS-GCN (2018) https://github.com/huangw"
+    },
+    {
+      "section": "back",
+      "kind": "url",
+      "link": "https://github.com/yysijie/st-gcn",
+      "context": "com/nicola-decao/MolGAN NetGAN (2018) https://github.com/danielzuegner/netgan DCRNN (2018) https://github.com/liyaguang/DCRNN ST-GCN (2018) https://github.com/yysijie/st-gcn RGCN (2018) https://github.com/tkipf/relational-gcn AS-GCN (2018) https://github.com/huangwb/AS-GCN DGCN (2018) https://github.com/ZhuangCY"
+    },
+    {
+      "section": "back",
+      "kind": "url",
+      "link": "https://github.com/tkipf/relational-gcn",
+      "context": "github.com/danielzuegner/netgan DCRNN (2018) https://github.com/liyaguang/DCRNN ST-GCN (2018) https://github.com/yysijie/st-gcn RGCN (2018) https://github.com/tkipf/relational-gcn AS-GCN (2018) https://github.com/huangwb/AS-GCN DGCN (2018) https://github.com/ZhuangCY/DGCN GaAN (2018) https://github.com/jennyzhang0215/"
+    },
+    {
+      "section": "back",
+      "kind": "url",
+      "link": "https://github.com/huangwb/AS-GCN",
+      "context": "ithub.com/liyaguang/DCRNN ST-GCN (2018) https://github.com/yysijie/st-gcn RGCN (2018) https://github.com/tkipf/relational-gcn AS-GCN (2018) https://github.com/huangwb/AS-GCN DGCN (2018) https://github.com/ZhuangCY/DGCN GaAN (2018) https://github.com/jennyzhang0215/GaAN DGI (2019) https://github.com/PetarV-/DGI G"
+    },
+    {
+      "section": "back",
+      "kind": "url",
+      "link": "https://github.com/ZhuangCY/DGCN",
+      "context": "//github.com/yysijie/st-gcn RGCN (2018) https://github.com/tkipf/relational-gcn AS-GCN (2018) https://github.com/huangwb/AS-GCN DGCN (2018) https://github.com/ZhuangCY/DGCN GaAN (2018) https://github.com/jennyzhang0215/GaAN DGI (2019) https://github.com/PetarV-/DGI GraphWaveNet (2019) https://github.com/nnzhan/"
+    },
+    {
+      "section": "back",
+      "kind": "url",
+      "link": "https://github.com/jennyzhang0215/GaAN",
+      "context": "://github.com/tkipf/relational-gcn AS-GCN (2018) https://github.com/huangwb/AS-GCN DGCN (2018) https://github.com/ZhuangCY/DGCN GaAN (2018) https://github.com/jennyzhang0215/GaAN DGI (2019) https://github.com/PetarV-/DGI GraphWaveNet (2019) https://github.com/nnzhan/Graph-WaveNet HAN (2019) https://github.com/Jhy1993"
+    },
+    {
+      "section": "back",
+      "kind": "url",
+      "link": "https://github.com/PetarV-/DGI",
+      "context": "ttps://github.com/huangwb/AS-GCN DGCN (2018) https://github.com/ZhuangCY/DGCN GaAN (2018) https://github.com/jennyzhang0215/GaAN DGI (2019) https://github.com/PetarV-/DGI GraphWaveNet (2019) https://github.com/nnzhan/Graph-WaveNet HAN (2019) https://github.com/Jhy1993/HAN As the research filed grows rapidly,"
+    },
+    {
+      "section": "back",
+      "kind": "url",
+      "link": "https://github.com/nnzhan/Graph-WaveNet",
+      "context": "//github.com/ZhuangCY/DGCN GaAN (2018) https://github.com/jennyzhang0215/GaAN DGI (2019) https://github.com/PetarV-/DGI GraphWaveNet (2019) https://github.com/nnzhan/Graph-WaveNet HAN (2019) https://github.com/Jhy1993/HAN As the research filed grows rapidly, we recommend our readers the paper list published by our tea"
+    },
+    {
+      "section": "back",
+      "kind": "url",
+      "link": "https://github.com/Jhy1993/HAN",
+      "context": "ub.com/jennyzhang0215/GaAN DGI (2019) https://github.com/PetarV-/DGI GraphWaveNet (2019) https://github.com/nnzhan/Graph-WaveNet HAN (2019) https://github.com/Jhy1993/HAN As the research filed grows rapidly, we recommend our readers the paper list published by our team, GNNPapers (https://github.com/thunlp/gn"
+    },
+    {
+      "section": "back",
+      "kind": "url",
+      "link": "https://github.com/thunlp/gnnpapers",
+      "context": "tps://github.com/Jhy1993/HAN As the research filed grows rapidly, we recommend our readers the paper list published by our team, GNNPapers (https://github.com/thunlp/gnnpapers), for recent papers. Declaration of competing interestThe authors declare that they have no known competing financial interests or personal r"
+    }
+  ],
+  "1907.07374v5.pdf": [
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "http://www.heatmapping.org/slides/2018WCCI.pdf",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "http://iphome.hhi.de/samek/pdf/MonICML16.pdf",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "https://pair-code.github.io/saliency/",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "https://cs.stanford.edu/people/karpathy/cnnembed",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "https://distill.pub/2019/activation-atlas",
+      "context": ""
+    },
+    {
+      "section": "body",
+      "kind": "url",
+      "link": "https://distill.pub/2018/building-blocks/with",
+      "context": "patterns activate neurons strongly while in deeper layer, more complex features such as dog faces and ears do. Figure (B) is obtained from https://distill.pub/2018/building-blocks/with permission from Chris Olah. Fig. 3 .3Fig. 3. Overview on perceptive interpretability methods. (A) Saliency method with decomposition mechan"
+    },
+    {
+      "section": "note",
+      "kind": "url",
+      "link": "http://www.heatmapping.org/slides/2018",
+      "context": "Machine learning and ai for the sciences -towards interpretability, 2018. http://www.heatmapping.org/slides/2018 WCCI.pdf."
+    },
+    {
+      "section": "reference",
+      "kind": "url",
+      "link": "http://iphome.hhi.de/samek/pdf/MonICML16.pdf.Towards",
+      "context": "heatmapping.org/slides/2018 WCCI.pdf. Deep taylor decomposition of neural networks 2016 Deep taylor decomposition of neural networks, 2016. http://iphome.hhi.de/samek/pdf/MonICML16.pdf.Towards automatic concept-based explanations AmirataGhorbani JamesWexler JamesYZou BeenKim Advances in Neural Information Processing Systems HWalla"
+    },
+    {
+      "section": "reference",
+      "kind": "url",
+      "link": "https://cs.stanford.edu/people/karpathy/cnnembed.Exploring",
+      "context": "ve models. CoRR, abs/1901.01499, 2019. t-sne visualization of cnn codes AKarpathy 2014 A. Karpathy. t-sne visualization of cnn codes, 2014. https://cs.stanford.edu/people/karpathy/cnnembed.Exploring neural networks with activation atlases ShanCarter ZanArmstrong LudwigSchubert IanJohnson ChrisOlah 2019 Shan Carter, Zan Armstrong, Ludwig"
+    },
+    {
+      "section": "reference",
+      "kind": "url",
+      "link": "https://distill.pub/2019/activation-atlas.Probabilistic",
+      "context": "lah 2019 Shan Carter, Zan Armstrong, Ludwig Schubert, Ian Johnson, and Chris Olah. Exploring neural networks with activation atlases, 2019. https://distill.pub/2019/activation-atlas.Probabilistic representation and inverse design of metamaterials based on a deep generative model with semi-supervised learning strategy WeiMa FengCheng"
+    }
+  ],
+  "1908.04515v1.pdf": [
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.1364/optica.XX.XXXXXX",
+      "context": "10.1364/optica.XX.XXXXXX"
+    }
+  ],
+  "2004.03597v2.pdf": [
+    {
+      "section": "abstract",
+      "kind": "url",
+      "link": "http://www.crowd-counting.com.Furthermore",
+      "context": "s at both image-level and head-level. Several recent methods are evaluated and compared on this dataset. The dataset can be downloaded from http://www.crowd-counting.com.Furthermore, we propose a novel crowd counting network that progressively generates crowd density maps via residual error estimation. The proposed metho"
+    }
+  ],
+  "2101.00027v1.pdf": [
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "http://Skylion007.github.io/OpenWebTextCorpus",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "https://github.com/BIGBALLON/cifar-10-cnn",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "http://arXiv.org/abs/cs/0205028",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "https://twitter.com/theshawwn/status/1320282149329784833",
+      "context": ""
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.5281/zenodo.2591652",
+      "context": "10.5281/zenodo.2591652"
+    },
+    {
+      "section": "body",
+      "kind": "url",
+      "link": "https://pile.eleuther.ai/versity",
+      "context": "ta (Brown et al., 2020;Raffel et al., 2019). While training on the Common Crawl has been effective, recent work has shown that dataset di-1 https://pile.eleuther.ai/versity leads to better downstream generalization capability (Rosset, 2019). Additionally, large-scale language models have been shown to effective"
+    },
+    {
+      "section": "body",
+      "kind": "url",
+      "link": "www.fanfiction.net",
+      "context": "r general-purpose language modeling.2. Fanfiction. Hundreds of GiB of fanfiction has been written and put online, primarily on the websites www.fanfiction.net and www.https://archiveofourown.org/.This represents a significant untapped resource for language modeling as it is almost exclusively shor"
+    },
+    {
+      "section": "body",
+      "kind": "url",
+      "link": "www.https://archiveofourown.org/.This",
+      "context": "age modeling.2. Fanfiction. Hundreds of GiB of fanfiction has been written and put online, primarily on the websites www.fanfiction.net and www.https://archiveofourown.org/.This represents a significant untapped resource for language modeling as it is almost exclusively short-form fiction, a writing style that is no"
+    },
+    {
+      "section": "body",
+      "kind": "url",
+      "link": "https://github.com/SpamScope/mail-parser",
+      "context": "which 2GiB are used to create the validation and test splits, and the remainder is held in reserve. From the training set, we remove any 25 https://github.com/SpamScope/mail-parser elements that are also present verbatim in any of the held out data, to prevent leakage. D.1 WeightsSimilar to Brown et al. (2020), we incr"
+    },
+    {
+      "section": "body",
+      "kind": "url",
+      "link": "https://www.google.com/recaptcha/api.js?render=*site",
+      "context": "rifying user response\" part of the guide. I'm not an expert in coding. Basically I've added this code to the theme.liquid file <script src=\"https://www.google.com/recaptcha/api.js?render=*site key provided by google*\"></script> And then I've added th F.9 Wikipedia (en) and the third son of John Bland and Elizabeth née Birch, daugh"
+    },
+    {
+      "section": "body",
+      "kind": "url",
+      "link": "https://arxiv.org/help/stats/2019_by_area/Figure",
+      "context": "number of new submissions/year to arXiv grouped by domain over time.Right: fractional submission rates for each of the domains. Figure from https://arxiv.org/help/stats/2019_by_area/Figure 10: Left: number of new submissions/year to arXiv grouped by domain over time.Right: fractional submission rates for each of the domains. F"
+    },
+    {
+      "section": "body",
+      "kind": "url",
+      "link": "https://launchpad.net/bugs/1627643",
+      "context": "goče osvetliti politično voljo držav članic, da F.20 PhilPapersemingly wlan related) <Snappy:New> <linux-raspi2 (Ubuntu):New for p-pisati> <https://launchpad.net/bugs/1627643><ppisati> ogra_: or we punch a hole in the dev image so we can login viathe serial console and check what's really going on<ppisati> ogra_:"
+    },
+    {
+      "section": "body",
+      "kind": "url",
+      "link": "https://github.com/EleutherAI/the-pile",
+      "context": "skenronfridaysubjectpmpmsubjectdiskspacepowersentcchouknowccenronaliassubjectoctobernasubjectccgassaide Table 17 :17Topic Terms (continued) https://github.com/EleutherAI/the-pile https://www.courtlistener.com/https://archive.org/details/stackexchange https://bulkdata.uspto.gov/https://irclogs.ubuntu.com/https://philp"
+    },
+    {
+      "section": "body",
+      "kind": "url",
+      "link": "https://www.courtlistener.com/https://archive.org/details/stackexchange",
+      "context": "epowersentcchouknowccenronaliassubjectoctobernasubjectccgassaide Table 17 :17Topic Terms (continued) https://github.com/EleutherAI/the-pile https://www.courtlistener.com/https://archive.org/details/stackexchange https://bulkdata.uspto.gov/https://irclogs.ubuntu.com/https://philpapers.org/https://exporter.nih.gov/https://news.ycombinator.com While th"
+    },
+    {
+      "section": "body",
+      "kind": "url",
+      "link": "https://bulkdata.uspto.gov/https://irclogs.ubuntu.com/https://philpapers.org/https://exporter.nih.gov/https://news.ycombinator.com",
+      "context": "7 :17Topic Terms (continued) https://github.com/EleutherAI/the-pile https://www.courtlistener.com/https://archive.org/details/stackexchange https://bulkdata.uspto.gov/https://irclogs.ubuntu.com/https://philpapers.org/https://exporter.nih.gov/https://news.ycombinator.com While the sizes of GPT-3 models on the OpenAI API have not been publicized, we assume here that ada, babbage, curie and davinci models corr"
+    },
+    {
+      "section": "body",
+      "kind": "url",
+      "link": "http://data.statmt.org/cc-100/.cantly",
+      "context": "hat ada, babbage, curie and davinci models correspond to 2.7B, 6.7B, 13B and 175B parameter models respectively. The data was obtained from http://data.statmt.org/cc-100/.cantly on programming-related datasets like Github and StackExchange, on EuroParl, due to the lack of multilingual text in either other dataset, a"
+    },
+    {
+      "section": "body",
+      "kind": "url",
+      "link": "https://www.tensorflow.org/datasets/catalog/c4",
+      "context": "is applicable or appropriate to a particular situation. If in doubt, it is always advisable to speak to an intellectual property attorney. https://www.tensorflow.org/datasets/catalog/c4 https://arxiv.org/help/bulk_data_s3 https://www.courtlistener.com/api/bulk-info/https://www.tensorflow.org/datasets/catalog/wikipedia#wikip"
+    },
+    {
+      "section": "body",
+      "kind": "url",
+      "link": "https://arxiv.org/help/bulk_data_s3",
+      "context": "ituation. If in doubt, it is always advisable to speak to an intellectual property attorney. https://www.tensorflow.org/datasets/catalog/c4 https://arxiv.org/help/bulk_data_s3 https://www.courtlistener.com/api/bulk-info/https://www.tensorflow.org/datasets/catalog/wikipedia#wikipedia20200301enC.15 Ubuntu IRCWe proc"
+    },
+    {
+      "section": "body",
+      "kind": "url",
+      "link": "https://www.courtlistener.com/api/bulk-info/https://www.tensorflow.org/datasets/catalog/wikipedia#wikipedia20200301enC.15",
+      "context": "advisable to speak to an intellectual property attorney. https://www.tensorflow.org/datasets/catalog/c4 https://arxiv.org/help/bulk_data_s3 https://www.courtlistener.com/api/bulk-info/https://www.tensorflow.org/datasets/catalog/wikipedia#wikipedia20200301enC.15 Ubuntu IRCWe processed all logs from July 5, 2004 through September 1, 2020. http://www.statmt.org/europarl/https://github.com/jdepoix/yout"
+    },
+    {
+      "section": "body",
+      "kind": "url",
+      "link": "http://www.statmt.org/europarl/https://github.com/jdepoix/youtube-transcript-api",
+      "context": "sorflow.org/datasets/catalog/wikipedia#wikipedia20200301enC.15 Ubuntu IRCWe processed all logs from July 5, 2004 through September 1, 2020. http://www.statmt.org/europarl/https://github.com/jdepoix/youtube-transcript-api https://github.com/vphill/pyoaiharvester/https://github.com/sdtblck/PDFextract https://github.com/ekzhu/datasketch"
+    },
+    {
+      "section": "body",
+      "kind": "url",
+      "link": "https://github.com/vphill/pyoaiharvester/https://github.com/sdtblck/PDFextract",
+      "context": "ssed all logs from July 5, 2004 through September 1, 2020. http://www.statmt.org/europarl/https://github.com/jdepoix/youtube-transcript-api https://github.com/vphill/pyoaiharvester/https://github.com/sdtblck/PDFextract https://github.com/ekzhu/datasketch"
+    },
+    {
+      "section": "body",
+      "kind": "url",
+      "link": "https://github.com/ekzhu/datasketch",
+      "context": "g/europarl/https://github.com/jdepoix/youtube-transcript-api https://github.com/vphill/pyoaiharvester/https://github.com/sdtblck/PDFextract https://github.com/ekzhu/datasketch"
+    },
+    {
+      "section": "note",
+      "kind": "url",
+      "link": "https://www.courtlistener.com/",
+      "context": "https://www.courtlistener.com/"
+    },
+    {
+      "section": "note",
+      "kind": "url",
+      "link": "https://archive.org/details/stackexchange",
+      "context": "https://archive.org/details/stackexchange"
+    },
+    {
+      "section": "note",
+      "kind": "url",
+      "link": "https://bulkdata.uspto.gov/",
+      "context": "https://bulkdata.uspto.gov/"
+    },
+    {
+      "section": "note",
+      "kind": "url",
+      "link": "https://irclogs.ubuntu.com/",
+      "context": "https://irclogs.ubuntu.com/"
+    },
+    {
+      "section": "note",
+      "kind": "url",
+      "link": "https://philpapers.org/",
+      "context": "https://philpapers.org/"
+    },
+    {
+      "section": "note",
+      "kind": "url",
+      "link": "https://exporter.nih.gov/",
+      "context": "https://exporter.nih.gov/"
+    },
+    {
+      "section": "note",
+      "kind": "url",
+      "link": "https://news.ycombinator.com",
+      "context": "https://news.ycombinator.com"
+    },
+    {
+      "section": "note",
+      "kind": "url",
+      "link": "https://www.courtlistener.com/api/bulk-info/",
+      "context": "https://www.courtlistener.com/api/bulk-info/"
+    },
+    {
+      "section": "note",
+      "kind": "url",
+      "link": "https://www.tensorflow.org/datasets/catalog/wikipedia#wikipedia20200301enC.15",
+      "context": "https://www.tensorflow.org/datasets/catalog/wikipedia#wikipedia20200301enC.15 Ubuntu IRCWe processed all logs from July 5, 2004 through September 1, 2020."
+    },
+    {
+      "section": "note",
+      "kind": "url",
+      "link": "http://www.statmt.org/europarl/",
+      "context": "http://www.statmt.org/europarl/"
+    },
+    {
+      "section": "note",
+      "kind": "url",
+      "link": "https://github.com/jdepoix/youtube-transcript-api",
+      "context": "https://github.com/jdepoix/youtube-transcript-api"
+    },
+    {
+      "section": "note",
+      "kind": "url",
+      "link": "https://github.com/vphill/pyoaiharvester/",
+      "context": "https://github.com/vphill/pyoaiharvester/"
+    },
+    {
+      "section": "note",
+      "kind": "url",
+      "link": "https://github.com/sdtblck/PDFextract",
+      "context": "https://github.com/sdtblck/PDFextract"
+    },
+    {
+      "section": "reference",
+      "kind": "url",
+      "link": "http://Skylion007.github.io/OpenWebTextCorpus.Authors",
+      "context": "Kate Crawford. 2018. Datasheets for datasets. arXiv preprint arXiv:1803.09010. Aaron Gokaslan and Vanya Cohen. 2019. Openweb- text corpus. http://Skylion007.github.io/OpenWebTextCorpus.Authors Guild v. Google 804 202 2015 Docket No. 13-4829cv Authors Guild v. Google. 2015. . Docket No. 13-4829- cv, 804:202. When will AI exceed hum"
+    },
+    {
+      "section": "reference",
+      "kind": "url",
+      "link": "https://github.com/BIGBALLON/cifar-10-cnn.Europarl",
+      "context": "lassification research. In European Conference on Machine Learning, pages 217-226. Springer. Sosuke Kobayashi. 2018. Homemade bookcor- pus. https://github.com/BIGBALLON/cifar-10-cnn.Europarl: A parallel corpus for statistical machine translation PhilippKoehn MT summit Citeseer 2005 5 Philipp Koehn. 2005. Europarl: A parallel corp"
+    },
+    {
+      "section": "reference",
+      "kind": "url",
+      "link": "http://arXiv.org/abs/cs/0205028.JohnMacfarlane",
+      "context": "aching Natural Language Processing and Computa- tional Linguistics, pages 62-69. Somerset, NJ: Associa- tion for Computational Linguistics. http://arXiv.org/abs/cs/0205028.JohnMacfarlane 2006-2020 Pandoc: a universal document converter John MacFarlane. 2006-2020. Pandoc: a universal document converter. Distributed representa"
+    },
+    {
+      "section": "figure",
+      "kind": "url",
+      "link": "https://arxiv.org/help/stats/2019_by_area/",
+      "context": "number of new submissions/year to arXiv grouped by domain over time.Right: fractional submission rates for each of the domains. Figure from https://arxiv.org/help/stats/2019_by_area/"
+    }
+  ],
+  "2105.03011v1.pdf": [
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.18653/v1/2020.findings-emnlp.66",
+      "context": "10.18653/v1/2020.findings-emnlp.66"
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.18653/v1/D18-1241",
+      "context": "10.18653/v1/D18-1241"
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.1162/tacl_a_00317",
+      "context": "10.1162/tacl_a_00317"
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.18653/v1/D19-1606",
+      "context": "10.18653/v1/D19-1606"
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.18653/v1/N19-1423",
+      "context": "10.18653/v1/N19-1423"
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.18653/v1/N19-1246",
+      "context": "10.18653/v1/N19-1246"
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.18653/v1/2020.emnlp-main.86",
+      "context": "10.18653/v1/2020.emnlp-main.86"
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.18653/v1/P18-1031",
+      "context": "10.18653/v1/P18-1031"
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.18653/v1/D19-1259",
+      "context": "10.18653/v1/D19-1259"
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.18653/v1/P17-1147",
+      "context": "10.18653/v1/P17-1147"
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.18653/v1/2020.findings-emnlp.171",
+      "context": "10.18653/v1/2020.findings-emnlp.171"
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.1162/tacl_a_00023",
+      "context": "10.1162/tacl_a_00023"
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.1162/tacl_a_00276",
+      "context": "10.1162/tacl_a_00276"
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.18653/v1/2020.acl-main.703",
+      "context": "10.18653/v1/2020.acl-main.703"
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.18653/v1/2020.acl-main.604",
+      "context": "10.18653/v1/2020.acl-main.604"
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.18653/v1/2020.acl-main.447",
+      "context": "10.18653/v1/2020.acl-main.447"
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.18653/v1/W18-5301",
+      "context": "10.18653/v1/W18-5301"
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.18653/v1/2020.emnlp-demos.17",
+      "context": "10.18653/v1/2020.emnlp-demos.17"
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.18653/v1/D18-1258",
+      "context": "10.18653/v1/D18-1258"
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.18653/v1/2020.bionlp-1.15",
+      "context": "10.18653/v1/2020.bionlp-1.15"
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.18653/v1/D16-1264",
+      "context": "10.18653/v1/D16-1264"
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.18653/v1/D19-1500",
+      "context": "10.18653/v1/D19-1500"
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.1162/tacl_a_00266",
+      "context": "10.1162/tacl_a_00266"
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.18653/v1/W17-2623",
+      "context": "10.18653/v1/W17-2623"
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.1162/tacl_a_00021",
+      "context": "10.1162/tacl_a_00021"
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.18653/v1/D15-1237",
+      "context": "10.18653/v1/D15-1237"
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.18653/v1/D18-1259",
+      "context": "10.18653/v1/D18-1259"
+    },
+    {
+      "section": "body",
+      "kind": "url",
+      "link": "https://allenai.org/project/qasper.We",
+      "context": "rom Question Answering over Scientific Research Papers. The dataset, baseline code, and other information about the project can be found at https://allenai.org/project/qasper.We accessed both release versions 20190928 and 20200705v1. LaTeX allows us to avoid quality issues with PDF parsing. We chose those either tag"
+    },
+    {
+      "section": "body",
+      "kind": "url",
+      "link": "http://semanticscholar.org",
+      "context": "uality issues with PDF parsing. We chose those either tagged with the cs.CL arXiv category or published with an ACL Anthology identifier. 5 http://semanticscholar.org 6 https://www.upwork.com/Two domain-experts independently judged these, and achieved a Cohen's κ of 0.94. S2ORC provides section hierarchy"
+    },
+    {
+      "section": "body",
+      "kind": "url",
+      "link": "https://www.upwork.com/Two",
+      "context": "g. We chose those either tagged with the cs.CL arXiv category or published with an ACL Anthology identifier. 5 http://semanticscholar.org 6 https://www.upwork.com/Two domain-experts independently judged these, and achieved a Cohen's κ of 0.94. S2ORC provides section hierarchy derived from LaTeX source htt"
+    },
+    {
+      "section": "body",
+      "kind": "url",
+      "link": "https://paperswithcode.com/task/question-answering",
+      "context": "Two domain-experts independently judged these, and achieved a Cohen's κ of 0.94. S2ORC provides section hierarchy derived from LaTeX source https://paperswithcode.com/task/question-answering We tried a model that predicts answer type, then based on the type uses a different head to predict the corresponding answer. This model pe"
+    },
+    {
+      "section": "note",
+      "kind": "url",
+      "link": "https://allenai.org/project/qasper",
+      "context": "rom Question Answering over Scientific Research Papers. The dataset, baseline code, and other information about the project can be found at https://allenai.org/project/qasper."
+    },
+    {
+      "section": "note",
+      "kind": "url",
+      "link": "http://semanticscholar",
+      "context": "5 http://semanticscholar."
+    },
+    {
+      "section": "note",
+      "kind": "url",
+      "link": "https://www.upwork.com/",
+      "context": "org 6 https://www.upwork.com/"
+    }
+  ],
+  "2106.04463v3.pdf": [
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "https://doi.org/10.7303/syn26376615",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "http://www.pascal-network.org/challenges/VOC/voc2012/workshop/index.html",
+      "context": ""
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.7303/syn26376615",
+      "context": "10.7303/syn26376615"
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.1016/S0140-6736(13)61649-9",
+      "context": "10.1016/S0140-6736(13)61649-9"
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.1053/j.gastro.2019.01.260",
+      "context": "10.1053/j.gastro.2019.01.260"
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.1001/archsurg.1988.01400320112031",
+      "context": "10.1001/archsurg.1988.01400320112031"
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.1016/j.media.2021.102002",
+      "context": "10.1016/j.media.2021.102002"
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.2196/26151",
+      "context": "10.2196/26151"
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.1038/s41598-020-59413-5",
+      "context": "10.1038/s41598-020-59413-5"
+    },
+    {
+      "section": "body",
+      "kind": "url",
+      "link": "https://labelbox.com",
+      "context": "↑ MASD ↓JI: Jaccard index DSC: Dice coefficient F2: Fbeta-measure, with β = 2 PPV: positive predictive value Acc.: overall accuracy d 6/20 https://labelbox.com 20/20"
+    },
+    {
+      "section": "note",
+      "kind": "doi",
+      "link": "10.1001/archsurg.1988",
+      "context": "Stiegmann, G. V. Atlas of Gastrointestinal Endoscopy. Arch. Surg. 123, 1026-1026, 10.1001/archsurg.1988. 01400320112031 (1988)."
+    },
+    {
+      "section": "reference",
+      "kind": "url",
+      "link": "http://www.pascal-network.org/challenges/VOC/voc2012/workshop/index.html.Fully",
+      "context": "eringham, M., Van Gool, L., Williams, C. K. I., Winn, J. & Zisserman, A. The PASCAL Visual Object Classes Challenge 2012 (VOC2012) Results. http://www.pascal-network.org/challenges/VOC/voc2012/workshop/index.html.Fully convolutional networks for semantic segmentation JLong EShelhamer TDarrell Proceedings of the IEEE conference on computer vision and patter"
+    },
+    {
+      "section": "back",
+      "kind": "url",
+      "link": "https://github.com/sharibox/PolypGen-Benchmark.git.All",
+      "context": "s. Benchmark codes of the polypGen dataset with provided training and validation split in this paper for segmentation is also available at: https://github.com/sharibox/PolypGen-Benchmark.git.All the method codes are also available at different GitHub repositories provided in the Table 1. (27.10 vs 28.19) data compared to the DeepLab"
+    }
+  ],
+  "2111.02114v1.pdf": [
+    {
+      "section": "body",
+      "kind": "url",
+      "link": "https://laion.ai/laion-400-open-dataset/Preprint.Under",
+      "context": "dth ≥ 51267MNumber with height or width ≥ 512112MNumber with height and width ≥ 256 211MNumber with height or width ≥ 256268M Project page: https://laion.ai/laion-400-open-dataset/Preprint.Under review. https://rom1504.github.io/clip-retrieval/https://github.com/rom1504/img2dataset"
+    },
+    {
+      "section": "body",
+      "kind": "url",
+      "link": "https://rom1504.github.io/clip-retrieval/https://github.com/rom1504/img2dataset",
+      "context": "ight and width ≥ 256 211MNumber with height or width ≥ 256268M Project page: https://laion.ai/laion-400-open-dataset/Preprint.Under review. https://rom1504.github.io/clip-retrieval/https://github.com/rom1504/img2dataset"
+    },
+    {
+      "section": "note",
+      "kind": "url",
+      "link": "https://rom1504.github.io/clip-retrieval/",
+      "context": "https://rom1504.github.io/clip-retrieval/"
+    },
+    {
+      "section": "note",
+      "kind": "url",
+      "link": "https://github.com/rom1504/img2dataset",
+      "context": "https://github.com/rom1504/img2dataset"
+    }
+  ],
+  "2311.02709v1.pdf": [
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "https://github.com/facebookresearch/detectron2",
+      "context": ""
+    },
+    {
+      "section": "abstract",
+      "kind": "url",
+      "link": "www.sama.com/sama-coco-dataset/",
+      "context": "re important and that annotation pipelines should closely consider the task of interest. The dataset is made publicly available at https: //www.sama.com/sama-coco-dataset/."
+    }
+  ],
+  "2405.03991v2.pdf": [
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "http://doi.acm.org/10.1145/2666652.2666663.SeriesTitle:AISec'14",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "https://doi.org/10.1145/3564625.3567975",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "https://www.usenix.org/conference/usenixsecurity16/technical-sessions/presentation/andriesse",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "https://www.usenix.org/conference/usenixsecurity14/technical-sessions/presentation/bao",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "https://doi.org/10.1145/3379597.3387481",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "https://www.usenix.org/conference/usenixsecurity22/presentation/chen-qibin",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "http://arxiv.org/abs/2205.11794",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "https://doi.org/10.1145/3428293",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "https://api.semanticscholar.org/CorpusID",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "http://arxiv.org/abs/1806.04773",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "https://www.sciencedirect.com/science/article/pii/S0167739X21002090",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "https://doi.org/10.1145/3545948.3545956",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "https://doi.org/10.48550/arXiv.2405.03478",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "https://doi.org/10.1145/3548606.3560612",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "https://github.com/boozallen/MOTIF",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "https://doi.org/10.1145/3605764.3623907",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "http://dx.doi.org/10.1109/TSE.2022.3187689",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "https://github.com/huzecong/ghcc",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "https://www.sciencedirect.com/science/article/pii/S0167404821001954",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "https://api.semanticscholar.org/CorpusID:232134887",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "https://proceedings.mlr.press/v97/li19d.html",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "https://www.mdpi.com/2079-9292/12/7/1722",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "https://www.usenix.org/conference/usenixsecurity22/presentation/marcelli",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "https://vcpkg.io/en/",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "https://ceur-ws.org/Vol-3652/paper12.pdf",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "https://doi.org/10.1145/3427228.3427265",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "http://arxiv.org/abs/1909.06674",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "http://arxiv.org/abs/2012.09932",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "http://arxiv.org/abs/2006.09271",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "http://arxiv.org/abs/2009.03779",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "https://virusshare.com/",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "https://www.usenix.org/conference/raid2020/presentation/omar",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "https://doi.org/10.1145/3465361",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "http://dx.doi.org/10.1145/3366423.3380145",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "https://api.semanticscholar.org/CorpusID:33377904",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "https://gs.statcounter.com/os-market-share/desktop/worldwide/",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "https://api.semanticscholar.org/CorpusID:249674500",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "https://doi.org/10.1007/978-3-031-43412-9_16",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "https://www.usenix.org/conference/usenixsecurity22/presentation/yu-sheng",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "https://www.usenix.org/conference/usenixsecurity20/presentation/zhu",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "https://doi.org/10.1145/3372297.3420013",
+      "context": ""
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.1145/2666652.2666663",
+      "context": "10.1145/2666652.2666663"
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.1145/3564625.3567975",
+      "context": "10.1145/3564625.3567975"
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.1145/3379597.3387481",
+      "context": "10.1145/3379597.3387481"
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.1109/CGO51591.2021.9370322",
+      "context": "10.1109/CGO51591.2021.9370322"
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.1145/3428293",
+      "context": "10.1145/3428293"
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.1109/MALWARE.2018.8659360",
+      "context": "10.1109/MALWARE.2018.8659360"
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.1109/MSR.2013.6624034",
+      "context": "10.1109/MSR.2013.6624034"
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.1016/j.future.2021.06.014",
+      "context": "10.1016/j.future.2021.06.014"
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.1109/TrustCom53373.2021.00130",
+      "context": "10.1109/TrustCom53373.2021.00130"
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.1145/3545948.3545956",
+      "context": "10.1145/3545948.3545956"
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.48550/arXiv.2405.03478",
+      "context": "10.48550/arXiv.2405.03478"
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.1145/3548606.3560612",
+      "context": "10.1145/3548606.3560612"
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.1145/3474369.3486867",
+      "context": "10.1145/3474369.3486867"
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.48550/arXiv.2111.15031",
+      "context": "10.48550/arXiv.2111.15031"
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.1145/3605764.3623907",
+      "context": "10.1145/3605764.3623907"
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.1109/TSE.2022.3187689",
+      "context": "10.1109/TSE.2022.3187689"
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.1016/j.cose.2021.102371",
+      "context": "10.1016/j.cose.2021.102371"
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.3390/electronics12071722",
+      "context": "10.3390/electronics12071722"
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.1109/ICCD.2008.4751891",
+      "context": "10.1109/ICCD.2008.4751891"
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.1145/3427228.3427265",
+      "context": "10.1145/3427228.3427265"
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.1145/3411508.3421372",
+      "context": "10.1145/3411508.3421372"
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.1145/3465361",
+      "context": "10.1145/3465361"
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.1145/3366423.3380145",
+      "context": "10.1145/3366423.3380145"
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.1109/SP.2016.17",
+      "context": "10.1109/SP.2016.17"
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.1007/978-3-031-43412-9_16",
+      "context": "10.1007/978-3-031-43412-9_16"
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.1109/TrustCom53373.2021.00084",
+      "context": "10.1109/TrustCom53373.2021.00084"
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.1109/ISCC53001.2021.9631481",
+      "context": "10.1109/ISCC53001.2021.9631481"
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.1145/3372297.3420013",
+      "context": "10.1145/3372297.3420013"
+    },
+    {
+      "section": "abstract",
+      "kind": "url",
+      "link": "https://assemblage-dataset.net/.*",
+      "context": "aining modern learning-based binary analyses. ASSEMBLAGE code is open sourced under the MIT license, and the dataset can be downloaded from https://assemblage-dataset.net/.* Equal contributions 38th Conference on Neural Information Processing Systems (NeurIPS 2024) Track on Datasets and Benchmarks."
+    },
+    {
+      "section": "body",
+      "kind": "url",
+      "link": "https://github.com/Cisco-Talos/binary_function_similarity/.Linux",
+      "context": "iles whose types could not be parsed. Files in the unknown category include data files, some scripts, ASC files, and source code. Code from https://github.com/Cisco-Talos/binary_function_similarity/.Linux functions are generally far better behaved in their identifiability[53]."
+    },
+    {
+      "section": "note",
+      "kind": "url",
+      "link": "https://github.com/Cisco-Talos/binary_function_similarity/",
+      "context": "Code from https://github.com/Cisco-Talos/binary_function_similarity/."
+    },
+    {
+      "section": "note",
+      "kind": "url",
+      "link": "http://doi.acm.org/10.1145/2666652.2666663.Series",
+      "context": "ial Intelligent and Security Workshop, pages 37-45, New York, NY, USA, 2014. ACM. ISBN 978-1-4503-3153-1. doi: 10.1145/2666652.2666663. URL http://doi.acm.org/10.1145/2666652.2666663.Series Title: AISec '14."
+    },
+    {
+      "section": "note",
+      "kind": "doi",
+      "link": "10.1145/3379597",
+      "context": "e on Mining Software Repositories, MSR '20, page 374-384, New York, NY, USA, 2020. Association for Computing Machinery. ISBN 9781450375177. doi: 10.1145/3379597. 3387481. URL https://doi.org/10.1145/3379597.3387481."
+    },
+    {
+      "section": "note",
+      "kind": "url",
+      "link": "http://arxiv.org/abs/2205.11794.arXiv:2205.11794",
+      "context": "Z. Chen and Y. Sun. Accelerating Frank-Wolfe via Averaging Step Directions, May 2022. URL http://arxiv.org/abs/2205.11794.arXiv:2205.11794 [cs, math]."
+    },
+    {
+      "section": "note",
+      "kind": "url",
+      "link": "http://arxiv.org/abs/1806.04773.arXiv",
+      "context": "IEEE, Oct. 2018. ISBN 978-1-72810-155-2. doi: 10.1109/MALWARE.2018.8659360. URL http://arxiv.org/abs/1806.04773.arXiv: 1806.04773."
+    },
+    {
+      "section": "note",
+      "kind": "url",
+      "link": "https://github.com/boozallen/MOTIF.arXiv",
+      "context": "ruth Family Labels. In The AAAI-22 Workshop on Artificial Intelligence for Cyber Security (AICS), 2022. doi: 10.48550/arXiv.2111.15031. URL https://github.com/boozallen/MOTIF.arXiv: 2111.15031v1."
+    },
+    {
+      "section": "note",
+      "kind": "url",
+      "link": "https://github.com/huzecong/ghcc.(Accessed",
+      "context": "J. Lacomis and Z. Hu. Github cloner & compiler, 2020. URL https://github.com/huzecong/ghcc.(Accessed Aug 15, 2023)."
+    },
+    {
+      "section": "note",
+      "kind": "url",
+      "link": "https://api.semanticscholar.org/CorpusID:257532815",
+      "context": "OpenAI. Gpt-4 technical report. ArXiv, abs/2303.08774, 2023. URL https://api.semanticscholar.org/CorpusID:257532815."
+    },
+    {
+      "section": "note",
+      "kind": "url",
+      "link": "http://arxiv.org/abs/1909.06674.arXiv",
+      "context": "E. Raff. A Step Toward Quantifying Independently Reproducible Machine Learning Research. In NeurIPS, 2019. URL http://arxiv.org/abs/1909.06674.arXiv: 1909.06674."
+    },
+    {
+      "section": "note",
+      "kind": "url",
+      "link": "http://arxiv.org/abs/2012.09932.arXiv",
+      "context": "E. Raff. Research Reproducibility as a Survival Analysis. In The Thirty-Fifth AAAI Confer- ence on Artificial Intelligence, 2021. URL http://arxiv.org/abs/2012.09932.arXiv: 2012.09932."
+    },
+    {
+      "section": "note",
+      "kind": "url",
+      "link": "http://arxiv.org/abs/2006.09271.arXiv",
+      "context": "nd Challenges for Windows Malware Classification. In NeurIPS 2020 Workshop: ML Retrospectives, Surveys & Meta- Analyses (ML-RSA), 2020. URL http://arxiv.org/abs/2006.09271.arXiv: 2006.09271."
+    },
+    {
+      "section": "note",
+      "kind": "url",
+      "link": "https://gs.statcounter.com/os-market-share/desktop/worldwide/.Accessed",
+      "context": "tatcounter. Desktop operating system market share worldwide. https://gs.statcounter.com/os-market-share/desktop/worldwide/, Sept. 2023. URL https://gs.statcounter.com/os-market-share/desktop/worldwide/.Accessed: 2023-10-09."
+    },
+    {
+      "section": "note",
+      "kind": "url",
+      "link": "https://api.semanticscholar.org/CorpusID:249062999",
+      "context": "r binary code similarity detection. Proceedings of the 31st ACM SIGSOFT International Symposium on Software Testing and Analysis, 2022. URL https://api.semanticscholar.org/CorpusID:249062999."
+    },
+    {
+      "section": "reference",
+      "kind": "url",
+      "link": "https://doi.org/10.1145/3564625.3567975.Extending",
+      "context": "CSAC '22, page 361-374, New York, NY, USA, 2022. Association for Computing Machinery. ISBN 9781450397599. doi: 10.1145/3564625.3567975. URL https://doi.org/10.1145/3564625.3567975.Extending source code pre-trained language models to summarise decompiled binarie AAl-Kaswan TAhmed MIzadi AASawant PDevanbu AVan Deursen 2023 IEEE I"
+    },
+    {
+      "section": "reference",
+      "kind": "url",
+      "link": "https://www.usenix.org/conference/usenixsecurity16/technical-sessions/presentation/andriesse.FArtuso",
+      "context": "25th USENIX Security Symposium (USENIX Security 16), pages 583-600, Austin, TX, Aug. 2016. USENIX Association. ISBN 978-1-931971-32-4. URL https://www.usenix.org/conference/usenixsecurity16/technical-sessions/presentation/andriesse.FArtuso GA DLuna LMassarelli LQuerzoni nomine function: Naming functions in stripped binaries with neural networks 2021 F. Artuso, G. A. D. Luna, L"
+    },
+    {
+      "section": "reference",
+      "kind": "url",
+      "link": "https://www.usenix.org/conference/usenixsecurity14/technical-sessions/presentation/bao.Polyglot",
+      "context": "In 23rd USENIX Security Symposium (USENIX Security 14), pages 845-860, San Diego, CA, 2014. USENIX Association. ISBN 978-1-931971-15-7. URL https://www.usenix.org/conference/usenixsecurity14/technical-sessions/presentation/bao.Polyglot and distributed software repository mining with crossflow KBarmpis PNeubauer JCo DKolovos NMatragkas RFPaige 10.1145/3379597.3387481 Procee"
+    },
+    {
+      "section": "reference",
+      "kind": "url",
+      "link": "https://doi.org/10.1145/3379597.3387481.Evading",
+      "context": "MSR '20, page 374-384, New York, NY, USA, 2020. Association for Computing Machinery. ISBN 9781450375177. doi: 10.1145/3379597. 3387481. URL https://doi.org/10.1145/3379597.3387481.Evading malware classifiers via monte carlo mutant feature discovery JBoutsikas MEEren CVarga ERaff CMatuszek CNicholas 2021 J. Boutsikas, M. E. Er"
+    },
+    {
+      "section": "reference",
+      "kind": "url",
+      "link": "https://www.usenix.org/conference/usenixsecurity22/presentation/chen-qibin.Augmenting",
+      "context": "1st USENIX Security Symposium (USENIX Security 22), pages 4327-4343, Boston, MA, Aug. 2022. USENIX Association. ISBN 978-1-939133-31-1. URL https://www.usenix.org/conference/usenixsecurity22/presentation/chen-qibin.Augmenting decompiler output with learned variable names and types QChen JLacomis EJSchwartz CLe Goues GNeubig BVasilescu 31st USENIX Security Symposi"
+    },
+    {
+      "section": "reference",
+      "kind": "url",
+      "link": "https://www.usenix.org/conference/usenixsecurity22/presentation/chen-qibin.Accelerating",
+      "context": "escu. Aug- menting decompiler output with learned variable names and types. In 31st USENIX Secu- rity Symposium, Boston, MA, Aug. 2022. URL https://www.usenix.org/conference/usenixsecurity22/presentation/chen-qibin.Accelerating Frank-Wolfe via Averaging Step Directions ZChen YSun arXiv:2205.11794 May 2022 cs, math Z. Chen and Y. Sun. Accelerating Frank-Wolfe via Av"
+    },
+    {
+      "section": "reference",
+      "kind": "url",
+      "link": "https://doi.org/10.1145/3428293.Bert",
+      "context": "ineering of stripped binaries using augmented control flow graphs. Proc. ACM Program. Lang., 4(OOPSLA), nov 2020. doi: 10.1145/3428293. URL https://doi.org/10.1145/3428293.Bert: Pre-training of deep bidirectional transformers for language understanding JDevlin M.-WChang KLee KToutanova North American Chapter the Ass"
+    },
+    {
+      "section": "reference",
+      "kind": "url",
+      "link": "https://www.sciencedirect.com/science/article/pii/S0167739X21002090.Bertdeep-ware",
+      "context": "f-the-box reproducibility? Future Generation Computer Systems, 126:34-47, Jan. 2022. ISSN 0167-739X. doi: 10.1016/j.future.2021.06.014. URL https://www.sciencedirect.com/science/article/pii/S0167739X21002090.Bertdeep-ware: A cross-architecture malware detection solution for iot systems SAHamad DHTran QZSheng WEZhang 10.1109/TrustCom53373.2021.00130 2021 IEEE 2"
+    },
+    {
+      "section": "reference",
+      "kind": "url",
+      "link": "https://doi.org/10.1145/3545948.3545956.Synthetic",
+      "context": "RAID '22, page 350-363, New York, NY, USA, 2022. Association for Computing Machinery. ISBN 9781450397049. doi: 10.1145/3545948.3545956. URL https://doi.org/10.1145/3545948.3545956.Synthetic datasets for program similarity research AInterrante-Grant MWang LBaer RWhelan TLeek 10.48550/arXiv.2405.03478 2024 A. Interrante-Grant, M."
+    },
+    {
+      "section": "reference",
+      "kind": "url",
+      "link": "https://doi.org/10.48550/arXiv.2405.03478.Symlm",
+      "context": "R. Whelan, and T. Leek. Synthetic datasets for program similarity research. CoRR, abs/2405.03478, 2024. doi: 10.48550/ARXIV.2405.03478. URL https://doi.org/10.48550/arXiv.2405.03478.Symlm: Predicting function names in stripped binaries via context-sensitive execution-aware code embeddings XJin KPei JYWon ZLin 10.1145/3548606.3"
+    },
+    {
+      "section": "reference",
+      "kind": "url",
+      "link": "https://doi.org/10.1145/3548606.3560612.Rank-1",
+      "context": "ications Security, CCS '22, page 1631-1645, New York, NY, USA, 2022. Association for Computing Machinery. doi: 10.1145/3548606.3560612. URL https://doi.org/10.1145/3548606.3560612.Rank-1 Similarity Matrix Decomposition For Modeling Changes in Antivirus Consensus Through Time RJJoyce ERaff CNicholas arXiv:2201.00757v1 Proceed"
+    },
+    {
+      "section": "reference",
+      "kind": "url",
+      "link": "https://doi.org/10.1145/3605764.3623907.Revisiting",
+      "context": "ISec '23, page 185-196, New York, NY, USA, 2023. Association for Computing Machinery. ISBN 9798400702600. doi: 10.1145/3605764.3623907. URL https://doi.org/10.1145/3605764.3623907.Revisiting binary code similarity analysis using interpretable feature engineering and lessons learned DKim EKim SKCha SSon YKim 10.1109/TSE.2022.3187"
+    },
+    {
+      "section": "reference",
+      "kind": "url",
+      "link": "http://dx.doi.org/10.1109/TSE.2022.3187689.HKoo",
+      "context": "lessons learned. IEEE Transactions on Software Engineering, 49(4):1661-1682, Apr. 2023. ISSN 2326-3881. doi: 10.1109/tse.2022.3187689. URL http://dx.doi.org/10.1109/TSE.2022.3187689.HKoo SPark DChoi TKim Semantic-aware binary code representation with bert 2021 H. Koo, S. Park, D. Choi, and T. Kim. Semantic-aware binary code"
+    },
+    {
+      "section": "reference",
+      "kind": "url",
+      "link": "https://www.sciencedirect.com/science/article/pii/S0167404821001954.Palmtree",
+      "context": "tor using galaxy transformer. Computers & Security, 108:102371, 2021. ISSN 0167-4048. doi: https: //doi.org/10.1016/j.cose.2021.102371. URL https://www.sciencedirect.com/science/article/pii/S0167404821001954.Palmtree: Learning an assembly language model for instruction embedding XLi QYu HYin Proceedings of the 2021 ACM SIGSAC Conference on Computer and Co"
+    },
+    {
+      "section": "reference",
+      "kind": "url",
+      "link": "https://api.semanticscholar.org/CorpusID:232134887.Graph",
+      "context": "anguage model for instruction em- bedding. Proceedings of the 2021 ACM SIGSAC Conference on Computer and Communications Security, 2021. URL https://api.semanticscholar.org/CorpusID:232134887.Graph matching networks for learning the similarity of graph structured objects YLi CGu TDullien OVinyals PKohli PMLR Proceedings of the 36th Int"
+    },
+    {
+      "section": "reference",
+      "kind": "url",
+      "link": "https://proceedings.mlr.press/v97/li19d.html.Mining",
+      "context": "ational Conference on Machine Learning, volume 97 of Pro- ceedings of Machine Learning Research, pages 3835-3845. PMLR, 09-15 Jun 2019. URL https://proceedings.mlr.press/v97/li19d.html.Mining Internet-Scale Software Repositories ELinstead PRigor SBajracharya CLopes PBaldi Advances in Neural Information Processing Systems JPlatt D"
+    },
+    {
+      "section": "reference",
+      "kind": "url",
+      "link": "https://www.mdpi.com/2079-9292/12/7/1722.Automated",
+      "context": "ted transformer model for binary code similarity detection. Electronics, 12(7), 2023. ISSN 2079-9292. doi: 10.3390/electronics12071722. URL https://www.mdpi.com/2079-9292/12/7/1722.Automated binary analysis: A survey ZLiu CChen AEjaz DLiu JZhang Algorithms and Architectures for Parallel Processing WMeng RLu GMin JVaidya Cham Spr"
+    },
+    {
+      "section": "reference",
+      "kind": "url",
+      "link": "https://www.usenix.org/conference/usenixsecurity22/presentation/marcelli.How",
+      "context": "t USENIX Secu- rity Symposium (USENIX Security 22), pages 2099-2116, Boston, MA, Aug. 2022. USENIX Association. ISBN 978-1-939133-31-1. URL https://www.usenix.org/conference/usenixsecurity22/presentation/marcelli.How machine learning is solving the binary function similarity problem AMarcelli MGraziano XUgarte-Pedrero YFratantonio MMansouri DBalzarotti 3"
+    },
+    {
+      "section": "reference",
+      "kind": "url",
+      "link": "https://vcpkg.io/en/.Simulation",
+      "context": "116, 2022. vcpkg c/c++ dependency manager from microsoft 2022 Microsoft Microsoft. vcpkg c/c++ dependency manager from microsoft, 2022. URL https://vcpkg.io/en/.Simulation points for spec cpu 2006 AANair LKJohn 10.1109/ICCD.2008.4751891 2008 IEEE International Conference on Computer Design 2008 A. A. Nair and"
+    },
+    {
+      "section": "reference",
+      "kind": "url",
+      "link": "https://api.semanticscholar.org/CorpusID:257532815.Small",
+      "context": "751891. Gpt-4 technical report ArXiv, abs/2303.08774 2023 257532815 OpenAI OpenAI. Gpt-4 technical report. ArXiv, abs/2303.08774, 2023. URL https://api.semanticscholar.org/CorpusID:257532815.Small effect sizes in malware detection? make harder train/test splits! TPatel FLu ERaff CNicholas CMatuszek JHolt Conference on Applied Machine"
+    },
+    {
+      "section": "reference",
+      "kind": "url",
+      "link": "https://ceur-ws.org/Vol-3652/paper12.pdf.Probabilistic",
+      "context": "ion? make harder train/test splits! In Conference on Applied Machine Learning for Infor- mation Security (CAMLIS), pages 181-192, 2023. URL https://ceur-ws.org/Vol-3652/paper12.pdf.Probabilistic naming of functions in stripped binaries JPatrick-Evans LCavallaro JKinder 10.1145/3427228.3427265 Proceedings of the 36th Annual Computer"
+    },
+    {
+      "section": "reference",
+      "kind": "url",
+      "link": "https://doi.org/10.1145/3427228.3427265.Xda",
+      "context": "CSAC '20, page 373-385, New York, NY, USA, 2020. Association for Computing Machinery. ISBN 9781450388580. doi: 10.1145/3427228.3427265. URL https://doi.org/10.1145/3427228.3427265.Xda: Accurate, robust disassembly with transfer learning KPei JGuan DWKing JYang SJana Proceedings of the 2021 Network and Distributed System Se"
+    },
+    {
+      "section": "reference",
+      "kind": "url",
+      "link": "https://virusshare.com/.SourceFinder",
+      "context": "411508.3421372. URL http: //arxiv.org/abs/2009.03779. arXiv: 2009.03779. J.-MRoberts Virus Share 2011 J.-M. Roberts. Virus Share, 2011. URL https://virusshare.com/.SourceFinder: Finding Malware Source-Code from Publicly Available Repositories in GitHub MO FRokon RIslam ADarki EEPapalexakis MFaloutsos 23rd Internatio"
+    },
+    {
+      "section": "reference",
+      "kind": "url",
+      "link": "https://www.usenix.org/conference/raid2020/presentation/omar.Maat",
+      "context": "h in Attacks, Intrusions and Defenses (RAID 2020), pages 149-163, San Sebastian, Oct. 2020. USENIX Association. ISBN 978-1-939133-18-2. URL https://www.usenix.org/conference/raid2020/presentation/omar.Maat: Automatically analyzing virustotal for accurate labeling and effective malware detection ASalem SBanescu APretschner 10.1145/3465361 ACM Tr"
+    },
+    {
+      "section": "reference",
+      "kind": "url",
+      "link": "https://doi.org/10.1145/3465361.Abdelzaher.paper2repo",
+      "context": "for accurate labeling and effective malware detection. ACM Trans. Priv. Secur., 24(4), jul 2021. ISSN 2471-2566. doi: 10.1145/3465361. URL https://doi.org/10.1145/3465361.Abdelzaher.paper2repo: Github repository recommendation for academic papers HShao DSun JWu ZZhang AZhang SYao SLiu TWang CZhang T 10.1145/3366423.3380145 Proceedi"
+    },
+    {
+      "section": "reference",
+      "kind": "url",
+      "link": "http://dx.doi.org/10.1145/3366423.3380145.Ubuntu",
+      "context": "y recommendation for academic papers. In Proceedings of The Web Conference 2020, WWW '20. ACM, Apr. 2020. doi: 10.1145/3366423.3380145. URL http://dx.doi.org/10.1145/3366423.3380145.Ubuntu one investigation: Detecting evidences on client machines MBShariati ADehghantanha BMartini K.-KRChoo The Cloud Security Ecosystem 2015 M."
+    },
+    {
+      "section": "reference",
+      "kind": "url",
+      "link": "https://api.semanticscholar.org/CorpusID:33377904.Sok",
+      "context": "B. Martini, and K.-K. R. Choo. Ubuntu one investigation: Detecting evidences on client machines. In The Cloud Security Ecosystem, 2015. URL https://api.semanticscholar.org/CorpusID:33377904.Sok: (state of) the art of war: Offensive techniques in binary analysis YShoshitaishvili RWang CSalls NStephens MPolino ADutcher JGrosen SFeng C"
+    },
+    {
+      "section": "reference",
+      "kind": "url",
+      "link": "https://api.semanticscholar.org/CorpusID:249062999.Emergent",
+      "context": "r binary code similarity detection. Proceedings of the 31st ACM SIGSOFT International Symposium on Software Testing and Analysis, 2022. URL https://api.semanticscholar.org/CorpusID:249062999.Emergent abilities of large language models JWei YTay RBommasani CRaffel BZoph SBorgeaud DYogatama MBosma DZhou DMetzler EHChi THashimoto OVinyals P"
+    },
+    {
+      "section": "reference",
+      "kind": "url",
+      "link": "https://api.semanticscholar.org/CorpusID:249674500.Programmatic",
+      "context": "himoto, O. Vinyals, P. Liang, J. Dean, and W. Fedus. Emergent abilities of large language models. Trans. Mach. Learn. Res., 2022, 2022. URL https://api.semanticscholar.org/CorpusID:249674500.Programmatic data augmentation for deep malware detection MWong ERaff JHolt RNetravali Marvolo 10.1007/978-3-031-43412-9_16 Machine Learning and Knowled"
+    },
+    {
+      "section": "reference",
+      "kind": "url",
+      "link": "https://doi.org/10.1007/978-3-031-43412-9_16.Malware",
+      "context": "oceedings, Part I, page 270-285, Berlin, Heidelberg, 2023. Springer-Verlag. ISBN 978- 3-031-43411-2. doi: 10.1007/978-3-031-43412-9_16. URL https://doi.org/10.1007/978-3-031-43412-9_16.Malware classification by learning semantic and structural features of control flow graphs BWu YXu FZou 10.1109/TrustCom53373.2021.00084 2021 IEEE"
+    },
+    {
+      "section": "reference",
+      "kind": "url",
+      "link": "https://www.usenix.org/conference/usenixsecurity22/presentation/yu-sheng.firm",
+      "context": "1st USENIX Security Symposium (USENIX Security 22), pages 2709-2725, Boston, MA, Aug. 2022. USENIX Association. ISBN 978-1-939133-31-1. URL https://www.usenix.org/conference/usenixsecurity22/presentation/yu-sheng.firm vulseeker: Bert and siamese based vulnerability for embedded device firmware images YYu SGan XQin 10.1109/ISCC53001.2021.9631481 2021 IEEE"
+    },
+    {
+      "section": "reference",
+      "kind": "url",
+      "link": "https://www.usenix.org/conference/usenixsecurity20/presentation/zhu.Benchmarking",
+      "context": "cs of Online Anti-Malware Engines. In 29th USENIX Security Symposium (USENIX Security 20), Boston, MA, Aug. 2020. {USENIX} Association. URL https://www.usenix.org/conference/usenixsecurity20/presentation/zhu.Benchmarking label dynamics of virustotal engines SZhu ZZhang LYang LSong GWang 10.1145/3372297.3420013 Proceedings of the 2020 ACM SIGSAC Conference on"
+    },
+    {
+      "section": "reference",
+      "kind": "url",
+      "link": "https://doi.org/10.1145/3372297.3420013.WZhu",
+      "context": "CS '20, page 2081-2083, New York, NY, USA, 2020. Association for Computing Machinery. ISBN 9781450370899. doi: 10.1145/3372297.3420013. URL https://doi.org/10.1145/3372297.3420013.WZhu HWang YZhou JWang ZSha ZGao CZhang ktrans: Knowledge-aware transformer for binary code embedding 2023 W. Zhu, H. Wang, Y. Zhou, J. Wang, Z."
+    },
+    {
+      "section": "back",
+      "kind": "url",
+      "link": "https://assemblage-dataset.net/",
+      "context": "structure (GPUs and servers) was provided by Syracuse University. A Technical documentation and dataset accessThe homepage of ASSEMBLAGE is https://assemblage-dataset.net/, documentation for ASSEMBLAGE can be accessed at the link https://assemblagedocs.readthedocs.io, and the binary dataset built from repositor"
+    },
+    {
+      "section": "back",
+      "kind": "url",
+      "link": "https://assemblagedocs.readthedocs.io",
+      "context": "n and dataset accessThe homepage of ASSEMBLAGE is https://assemblage-dataset.net/, documentation for ASSEMBLAGE can be accessed at the link https://assemblagedocs.readthedocs.io, and the binary dataset built from repository with license is hosted on Hugging Face and accessible by everyone, all the links are listed in"
+    },
+    {
+      "section": "back",
+      "kind": "url",
+      "link": "https://github.com/Assemblage-Dataset/Assemblage.Anyone",
+      "context": "ssible by everyone, all the links are listed in the documentation.We also release the codes we used to build the dataset on GitHub, link at https://github.com/Assemblage-Dataset/Assemblage.Anyone can obtain the copy of our source code and replicate our dataset with our recipes. We also provide specific instructions on deployment. B N"
+    }
+  ],
+  "2501.11091v1.pdf": [
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "https://bitcoin.org/bitcoin.pdf",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "https://bitcoin.org/en/alert/2013-03-11-chain-fork",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "https://learnmeabitcoin.com/technical/blockchain/chain-reorganization/",
+      "context": ""
+    },
+    {
+      "section": "reference",
+      "kind": "url",
+      "link": "https://bitcoin.org/en/alert/2013-03-11-chain-fork.Chain",
+      "context": "nia, USA, August 16-20, 1992. Proceedings. Vol. 740. 1993. Chain Fork Bitcoin Org March 11. 2013 Bitcoin.org. \"Chain Fork.\" March 11, 2013. https://bitcoin.org/en/alert/2013-03-11-chain-fork.Chain Reorganization GregWalker Dec 8, 2024 Greg Walker. \"Chain Reorganization.\" Dec 8, 2024. https://learnmeabitcoin.com/technical/blockchain/ch"
+    }
+  ],
+  "4449.pdf": [
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "http://research.microsoft.com/barc/SortBenchmark/",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "http://alme1.almaden.ibm.com/cs/spsort.pdf",
+      "context": ""
+    },
+    {
+      "section": "reference",
+      "kind": "url",
+      "link": "http://research.microsoft.com/barc/SortBenchmark/.Using",
+      "context": "Notes in Computer Science 1124, pages 401-408. Springer-Verlag, 1996. Sort benchmark home page JimGray Jim Gray. Sort benchmark home page. http://research.microsoft.com/barc/SortBenchmark/.Using MPI: Portable Parallel Programming with the Message-Passing Interface WilliamGropp EwingLusk AnthonySkjellum 1999 MIT Press Cambridge, MA W"
+    }
+  ],
+  "NIPS-2012-imagenet-classification-with-deep-convolutional-neural-networks-Paper.pdf": [
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "http://www.image-net.org/challenges/LSVRC/2012/",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "http://authors.library.caltech.edu/7694",
+      "context": ""
+    },
+    {
+      "section": "body",
+      "kind": "url",
+      "link": "http://code.google.com/p/cuda-convnet/The",
+      "context": "usedby previous authors, but this doesnot affect the results appreciably.Our top-1 and top-5 error rateson this dataset are 67.4% and40.9%, http://code.google.com/p/cuda-convnet/The one-GPU net actually has the same number of kernels as the two-GPU net in the final convolutional layer. This is because most of the net's"
+    },
+    {
+      "section": "body",
+      "kind": "url",
+      "link": "http://code.google.com/p/cuda-convnet/.This",
+      "context": "nnot describe this network in detail due to space constraints, but it is specified precisely by the code and parameter files provided here: http://code.google.com/p/cuda-convnet/.This is the reason why the input images in Figure2are 224 × 224 × 3-dimensional. The error rates without averaging predictions over ten patches"
+    },
+    {
+      "section": "note",
+      "kind": "url",
+      "link": "http://code.google.com/p/cuda-convnet/",
+      "context": "http://code.google.com/p/cuda-convnet/"
+    },
+    {
+      "section": "note",
+      "kind": "url",
+      "link": "www.image-net.org/challenges.2010",
+      "context": "A. Berg, J. Deng, and L. Fei-Fei. Large scale visual recognition challenge 2010. www.image-net.org/challenges.2010."
+    },
+    {
+      "section": "reference",
+      "kind": "url",
+      "link": "www.imagenet.org/challenges",
+      "context": "sons from the netflix prize challenge. ACM SIGKDD Explorations Newsletter, 9(2):75-79, 2007. Large scale visual recognition challenge 2010. www.imagenet.org/challenges ABerg JDeng LFei-Fei 2010 A. Berg, J. Deng, and L. Fei-Fei. Large scale visual recognition challenge 2010. www.image-net.org/challenges.201"
+    },
+    {
+      "section": "reference",
+      "kind": "url",
+      "link": "www.image-net.org/challenges.2010.Random",
+      "context": "010. www.imagenet.org/challenges ABerg JDeng LFei-Fei 2010 A. Berg, J. Deng, and L. Fei-Fei. Large scale visual recognition challenge 2010. www.image-net.org/challenges.2010.Random forests LBreiman Machine learning 45 1 2001 L. Breiman. Random forests. Machine learning, 45(1):5-32, 2001. Multi-column deep neural networ"
+    },
+    {
+      "section": "reference",
+      "kind": "url",
+      "link": "http://www.image-net.org/challenges/LSVRC/2012/.Learning",
+      "context": "erg SSatheesh HSu AKhosla LFei-Fei ILSVRC-2012 2012 J. Deng, A. Berg, S. Satheesh, H. Su, A. Khosla, and L. Fei-Fei. ILSVRC-2012, 2012. URL http://www.image-net.org/challenges/LSVRC/2012/.Learning generative visual models from few training examples: An incremental bayesian approach tested on 101 object categories LFei-Fei RFergus PPer"
+    },
+    {
+      "section": "reference",
+      "kind": "url",
+      "link": "http://authors.library.caltech.edu/7694.Improving",
+      "context": "iffin, A. Holub, and P. Perona. Caltech-256 object category dataset. Technical Report 7694, Cali- fornia Institute of Technology, 2007. URL http://authors.library.caltech.edu/7694.Improving neural networks by preventing co-adaptation of feature detectors GEHinton NSrivastava AKrizhevsky ISutskever RRSalakhutdinov arXiv:1207.058"
+    }
+  ],
+  "TSP_IASC_36323.pdf": [
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "https://doi.org/10.1016/j.media.2021.102188",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "https://doi.org/10.1142/9789811239014_0005",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "https://doi.org/10.1016/j.inffus.2020.04.002",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "https://doi.org/10.1016/j.patcog.2021.108146",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "https://doi.org/10.1088/1755-1315/428/1/012097",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "https://doi.org/10.1016/j.neucom.2022.03.062",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "https://doi.org/10.1016/j.neunet.2018.03",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "https://doi.org/10.1145/3357254.3357276",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "https://doi.org/10.1016/j.patcog.2020.107420",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "https://doi.org/10.1016/j.neucom.2021.03.108",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "https://doi.org/10.1016/j.patcog.2018.04.012",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "https://doi.org/10.1109/SPIN.2019.8711703",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "https://doi.org/10.1016/j.procs.2020.04.206",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "https://doi.org/10.1016/j.inffus.2020.10.0082021",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "https://arxiv.org/abs/1409.4842v1",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "https://arxiv.org/abs/1512.00567v3",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "https://arxiv.org/abs/1610.02357",
+      "context": ""
+    },
+    {
+      "section": "target",
+      "kind": "url",
+      "link": "https://arxiv.org/abs/1409.1556",
+      "context": ""
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.32604/iasc.2023.036323",
+      "context": "10.32604/iasc.2023.036323"
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.1016/j.media.2021.102188",
+      "context": "10.1016/j.media.2021.102188"
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.1142/9789811239014_0005",
+      "context": "10.1142/9789811239014_0005"
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.1016/j.inffus.2020.04.002",
+      "context": "10.1016/j.inffus.2020.04.002"
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.1016/j.patcog.2021.108146",
+      "context": "10.1016/j.patcog.2021.108146"
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.1088/1755-1315/428/1/012097",
+      "context": "10.1088/1755-1315/428/1/012097"
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.1016/j.neucom.2022.03.062",
+      "context": "10.1016/j.neucom.2022.03.062"
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.1016/j.neunet.2018.03.019",
+      "context": "10.1016/j.neunet.2018.03.019"
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.1145/3357254.3357276",
+      "context": "10.1145/3357254.3357276"
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.1016/j.patcog.2020.107420",
+      "context": "10.1016/j.patcog.2020.107420"
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.1016/j.neucom.2021.03.108",
+      "context": "10.1016/j.neucom.2021.03.108"
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.1016/j.patcog.2018.04.012",
+      "context": "10.1016/j.patcog.2018.04.012"
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.1109/SPIN.2019.8711703",
+      "context": "10.1109/SPIN.2019.8711703"
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.1016/j.procs.2020.04.206",
+      "context": "10.1016/j.procs.2020.04.206"
+    },
+    {
+      "section": "idno_doi",
+      "kind": "doi",
+      "link": "10.1016/j.inffus.2020.10.0082021",
+      "context": "10.1016/j.inffus.2020.10.0082021"
+    },
+    {
+      "section": "note",
+      "kind": "url",
+      "link": "https://doi.org/10.1016/j.neunet.2018.03.019",
+      "context": "ral networks for handwritten digit recognition-Supervised learning and network optimization,\" Neural Networks, vol. 103, pp. 118-127, 2018. https://doi.org/10.1016/j.neunet.2018.03.019"
+    },
+    {
+      "section": "reference",
+      "kind": "url",
+      "link": "https://arxiv.org/abs/1409.4842v1.Rethinking",
+      "context": ". Jia, P. Sermanet, S. Reed et al., \"Going Deeper with Convolutions,\" Ithaca. NY, USA: Cornell University Press, 2014. [Online]. Available: https://arxiv.org/abs/1409.4842v1.Rethinking the Inception Architecture for Computer Vision CSzegedy VVanhoucke SIoffe JShlens ZWojna 2015 Cornell University Press Ithaca. NY, USA C. S"
+    },
+    {
+      "section": "reference",
+      "kind": "url",
+      "link": "https://arxiv.org/abs/1512.00567v3.Xception",
+      "context": ". Wojna, \"Rethinking the Inception Architecture for Computer Vision,\" Ithaca. NY, USA: Cornell University Press, 2015. [Online]. Available: https://arxiv.org/abs/1512.00567v3.Xception, Deep Learning with Depthwise Separable Convolutions FChollet 2017 Cornell University Press Ithaca. NY, USA F. Chollet, \"Xception, Deep Lear"
+    },
+    {
+      "section": "reference",
+      "kind": "url",
+      "link": "https://arxiv.org/abs/1610.02357.Very",
+      "context": "let, \"Xception, Deep Learning with Depthwise Separable Convolutions,\" Ithaca. NY, USA: Cornell University Press, 2017. [Online]. Available: https://arxiv.org/abs/1610.02357.Very Deep Convolutional Networks for Large-Scale Image Recognition KSimonyan AZisserman 2014 Cornell University Press Ithaca. NY, USA K. Simonya"
+    }
+  ]
 }

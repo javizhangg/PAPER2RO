@@ -1,11 +1,14 @@
 # normalize_urls.py
-# Limpia URLs, elimina ruido de GROBID, normaliza formatos y elimina duplicados
+# Limpia URLs, elimina ruido de GROBID, normaliza formatos
+# y elimina duplicados exactos + URLs parecidas
 
 import csv
 import json
 import re
 from pathlib import Path
 from urllib.parse import urlparse, urlunparse, parse_qsl, urlencode, unquote
+from difflib import SequenceMatcher
+
 
 INPUT_CSV = "outputs/all_links.csv"
 OUTPUT_CSV = "outputs/all_links_normalized.csv"
@@ -15,6 +18,15 @@ REMOVED_CSV = "outputs/removed_urls.csv"
 REMOVE_RAW_TEI = True
 REMOVE_STRUCTURED_DOI = False
 
+# Activa o desactiva eliminación de URLs parecidas
+REMOVE_SIMILAR_URLS = True
+
+# Cuanto más bajo, más agresivo elimina URLs parecidas
+# Recomendado: 0.90
+# Si quieres eliminar más: 0.85
+SIMILARITY_THRESHOLD = 0.90
+
+
 DATA_EXTENSIONS = {
     ".csv", ".tsv", ".json", ".xml", ".rdf",
     ".xlsx", ".xls", ".parquet", ".h5", ".hdf5",
@@ -23,12 +35,16 @@ DATA_EXTENSIONS = {
     ".db", ".sqlite", ".sqlite3"
 }
 
+
 TRACKING_PARAMS_PREFIXES = ("utm_",)
 
 TRACKING_PARAMS_EXACT = {
     "fbclid", "gclid", "dclid", "mc_cid", "mc_eid",
-    "igshid", "ref", "ref_src", "source", "spm"
+    "igshid", "ref", "ref_src", "source", "spm",
+    "campaign", "medium", "term", "content",
+    "sessionid", "phpsessid"
 }
+
 
 INTERNAL_GROBID_DOMAINS = {
     "www.tei-c.org",
@@ -36,6 +52,7 @@ INTERNAL_GROBID_DOMAINS = {
     "www.w3.org",
     "w3.org",
 }
+
 
 DOI_REGEX = re.compile(
     r'(?:https?://(?:dx\.)?doi\.org/|doi:)?(10\.\d{4,9}/[-._;()/:A-Z0-9]+)',
@@ -76,6 +93,7 @@ def remove_trailing_garbage(url: str) -> str:
         url = url.strip("<>()[]{}\"'")
         url = url.rstrip(".,;:!?)]}>\"'•·")
 
+        # Ruido típico cuando GROBID pega texto después de la URL
         url = re.sub(r'/\.[A-Za-z].*$', '', url)
 
         url = re.sub(
@@ -189,6 +207,7 @@ def normalize_url(url: str) -> str:
 
     low = url.lower()
 
+    # Normalizar DOI
     if (
         low.startswith("10.")
         or low.startswith("doi:")
@@ -197,11 +216,13 @@ def normalize_url(url: str) -> str:
     ):
         return normalize_doi(url)
 
+    # Añadir esquema si empieza por www
     if low.startswith("www."):
         url = "https://" + url
 
     parsed = urlparse(url)
 
+    # Añadir https si no tiene esquema
     if not parsed.scheme:
         parsed = urlparse("https://" + url)
 
@@ -239,11 +260,13 @@ def normalize_url(url: str) -> str:
         path=path
     )
 
+    # Normalización especial de arXiv
     if netloc == "arxiv.org":
         arxiv_norm = normalize_arxiv(fake_parsed)
         if arxiv_norm:
             return arxiv_norm
 
+    # Normalización especial de GitHub
     if netloc == "github.com":
         return normalize_github(fake_parsed)
 
@@ -276,6 +299,9 @@ def normalize_url(url: str) -> str:
 
 
 def dedup_key(url: str) -> str:
+    """
+    Clave para duplicados exactos después de normalizar.
+    """
     if not url:
         return ""
 
@@ -286,6 +312,93 @@ def dedup_key(url: str) -> str:
     query = parsed.query.lower()
 
     return f"{netloc}{path}?{query}"
+
+
+def simplify_path_for_similarity(path: str) -> str:
+    """
+    Simplifica el path para comparar URLs parecidas.
+
+    Ejemplos que se acercan:
+    /dataset
+    /dataset/
+    /dataset.html
+    /dataset/download
+    /dataset/view
+    /dataset.pdf
+    """
+    if not path:
+        return ""
+
+    path = unquote(path.lower().strip())
+    path = re.sub(r"/{2,}", "/", path)
+
+    if path != "/":
+        path = path.rstrip("/")
+
+    # Quitar archivos índice típicos
+    path = re.sub(r"/index\.(html|htm|php|asp|aspx)$", "", path)
+
+    # Quitar extensiones poco relevantes para similitud
+    path = re.sub(r"\.(html|htm|php|asp|aspx|pdf)$", "", path)
+
+    # Quitar sufijos frecuentes que suelen apuntar al mismo recurso
+    path = re.sub(
+        r"/(download|downloads|view|viewer|preview|file|files|full|abstract|record)$",
+        "",
+        path
+    )
+
+    # Normalizar separadores
+    path = re.sub(r"[-_]+", "-", path)
+
+    return path.strip("/")
+
+
+def are_urls_similar(url1: str, url2: str) -> bool:
+    """
+    Decide si dos URLs son parecidas.
+    Solo compara URLs del mismo dominio para evitar eliminar cosas distintas.
+    """
+    p1 = urlparse(url1)
+    p2 = urlparse(url2)
+
+    domain1 = p1.netloc.lower()
+    domain2 = p2.netloc.lower()
+
+    if domain1 != domain2:
+        return False
+
+    path1 = simplify_path_for_similarity(p1.path)
+    path2 = simplify_path_for_similarity(p2.path)
+
+    if not path1 or not path2:
+        return False
+
+    # Si son exactamente iguales tras simplificar
+    if path1 == path2:
+        return True
+
+    # Si uno contiene al otro
+    if path1 in path2 or path2 in path1:
+        return True
+
+    similarity = SequenceMatcher(None, path1, path2).ratio()
+
+    return similarity >= SIMILARITY_THRESHOLD
+
+
+def find_similar_url(norm: str, kept_urls_by_domain: dict) -> str:
+    """
+    Busca si norm se parece a alguna URL ya conservada.
+    Solo compara dentro del mismo dominio.
+    """
+    domain = get_domain(norm)
+
+    for existing_url in kept_urls_by_domain.get(domain, []):
+        if are_urls_similar(norm, existing_url):
+            return existing_url
+
+    return ""
 
 
 def get_domain(url: str) -> str:
@@ -333,6 +446,10 @@ def process_rows(rows):
     seen = {}
     kept = []
     removed = []
+
+    # Aquí guardamos las URLs conservadas agrupadas por dominio
+    # para buscar URLs parecidas solo dentro del mismo dominio.
+    kept_urls_by_domain = {}
 
     for row in rows:
         raw_url = row["url"]
@@ -384,6 +501,7 @@ def process_rows(rows):
             })
             continue
 
+        # 1. Duplicado exacto tras normalizar
         key = dedup_key(norm)
 
         if key in seen:
@@ -393,10 +511,26 @@ def process_rows(rows):
                 "original_url": raw_url,
                 "normalized_url": norm,
                 "duplicate_of": seen[key],
-                "reason": "duplicate"
+                "reason": "duplicate_exact"
             })
             continue
 
+        # 2. Duplicado parecido
+        if REMOVE_SIMILAR_URLS:
+            similar_to = find_similar_url(norm, kept_urls_by_domain)
+
+            if similar_to:
+                removed.append({
+                    "paper": row["paper"],
+                    "section": row["section"],
+                    "original_url": raw_url,
+                    "normalized_url": norm,
+                    "duplicate_of": similar_to,
+                    "reason": "duplicate_similar"
+                })
+                continue
+
+        # Si no es duplicado ni parecido, se conserva
         seen[key] = norm
 
         domain = get_domain(norm)
@@ -412,6 +546,8 @@ def process_rows(rows):
             "is_data_extension": is_data_extension(ext)
         })
 
+        kept_urls_by_domain.setdefault(domain, []).append(norm)
+
     return kept, removed
 
 
@@ -422,6 +558,7 @@ def save_csv(rows, path):
         return
 
     fields = []
+
     for row in rows:
         for key in row.keys():
             if key not in fields:
@@ -448,6 +585,7 @@ def main():
         return
 
     rows = load_csv(INPUT_CSV)
+
     print(f"URLs originales: {len(rows)}")
 
     kept, removed = process_rows(rows)
@@ -466,9 +604,13 @@ def main():
 
     if removed:
         print("\n=== URLs ELIMINADAS ===")
+
         for r in removed:
-            if r["reason"] == "duplicate":
-                print(f"[duplicate] {r['original_url']} -> {r['duplicate_of']}")
+            if r["reason"] in {"duplicate_exact", "duplicate_similar"}:
+                print(
+                    f"[{r['reason']}] "
+                    f"{r['original_url']} -> {r['duplicate_of']}"
+                )
             else:
                 print(f"[{r['reason']}] {r['original_url']}")
 
