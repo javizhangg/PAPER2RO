@@ -1,29 +1,33 @@
-# extract_links_improved.py
-# Extrae URLs y DOIs desde PDFs usando GROBID TEI.
-# Mejoras principales:
-# - extracción más robusta de URLs rotas por espacios/saltos de línea
-# - limpieza de HTML entities (&amp;, &lt;, &gt;)
-# - captura de DOI en forma pura, doi:10..., https://doi.org/...
-# - elimina duplicados por paper de forma estable
-# - guarda contexto cercano para poder aplicar heurísticas de dataset después
+# extractLinks.py
+# Workflow sencillo:
+# - Lee todos los PDF de la carpeta pdfs/
+# - Extrae URLs http, https, www y DOIs
+# - Convierte DOIs puros a https://doi.org/...
+# - Guarda SOLO dos columnas: pdf, url
+#
+# Uso:
+#   py extractLinks.py
+#
+# Salida:
+#   outputs/all_links.csv
 
 import argparse
 import csv
 import html
-import json
-import os
 import re
-import xml.etree.ElementTree as ET
 from pathlib import Path
 
 import requests
 
-NS = {"tei": "http://www.tei-c.org/ns/1.0"}
+try:
+    import fitz  # PyMuPDF
+except ImportError:
+    fitz = None
 
-DEFAULT_EXCLUDED_EXACT_URLS = {
-    "https://github.com/kermitt2/grobid",
-    "http://github.com/kermitt2/grobid",
-}
+
+# ==============================
+# REGEX
+# ==============================
 
 URL_REGEX = re.compile(
     r"""(?ix)
@@ -38,11 +42,19 @@ URL_REGEX = re.compile(
 
 DOI_REGEX = re.compile(
     r"""(?ix)
-    (?:doi:\s*|https?://(?:dx\.)?doi\.org/)?
+    (?:
+        doi:\s*
+        |
+        https?://(?:dx\.)?doi\.org/
+    )?
     (?P<doi>10\.\d{4,9}/[^\s<>"'\\]+)
     """
 )
 
+
+# ==============================
+# GROBID
+# ==============================
 
 def check_url_alive(url: str, timeout: int = 5) -> bool:
     try:
@@ -52,7 +64,7 @@ def check_url_alive(url: str, timeout: int = 5) -> bool:
         return False
 
 
-def resolve_grobid_url(explicit_url: str | None = None) -> str:
+def resolve_grobid_url(explicit_url: str | None = None) -> str | None:
     if explicit_url:
         return explicit_url.rstrip("/") + "/api/processFulltextDocument"
 
@@ -65,12 +77,14 @@ def resolve_grobid_url(explicit_url: str | None = None) -> str:
         if check_url_alive(base + "/api/isalive"):
             return base + "/api/processFulltextDocument"
 
-    raise ConnectionError(
-        "No encuentro GROBID. Arranca GROBID en Docker/local o usa --grobid-base-url."
-    )
+    return None
 
 
-def process_pdf(pdf_path: Path, grobid_process_url: str, timeout: int = 180) -> str | None:
+def process_pdf_with_grobid(
+    pdf_path: Path,
+    grobid_process_url: str,
+    timeout: int = 180,
+) -> str | None:
     data = {
         "includeRawCitations": "1",
         "includeRawAffiliations": "1",
@@ -87,63 +101,118 @@ def process_pdf(pdf_path: Path, grobid_process_url: str, timeout: int = 180) -> 
                 timeout=timeout,
             )
     except requests.RequestException as e:
-        print(f"[ERROR] No se pudo conectar con GROBID para {pdf_path.name}: {e}")
+        print(f"[WARN] GROBID no pudo procesar {pdf_path.name}: {e}")
         return None
 
     if response.status_code != 200:
-        print(f"[ERROR] GROBID falló con {pdf_path.name}: HTTP {response.status_code}")
+        print(f"[WARN] GROBID falló con {pdf_path.name}: HTTP {response.status_code}")
         return None
 
     return response.text
 
 
+# ==============================
+# TEXTO PDF
+# ==============================
+
+def extract_text_with_pymupdf(pdf_path: Path) -> str:
+    if fitz is None:
+        print("[WARN] PyMuPDF no está instalado. Ejecuta: pip install pymupdf")
+        return ""
+
+    try:
+        doc = fitz.open(pdf_path)
+    except Exception as e:
+        print(f"[WARN] No se pudo abrir {pdf_path.name}: {e}")
+        return ""
+
+    all_text = []
+
+    for page_index in range(len(doc)):
+        try:
+            page = doc[page_index]
+            text = page.get_text("text")
+            all_text.append(text)
+        except Exception as e:
+            print(f"[WARN] Error leyendo página {page_index + 1} de {pdf_path.name}: {e}")
+
+    doc.close()
+
+    return "\n".join(all_text)
+
+
+# ==============================
+# LIMPIEZA Y NORMALIZACIÓN
+# ==============================
+
 def normalize_text_for_extraction(text: str) -> str:
-    """
-    Prepara texto de TEI para detectar URLs/DOIs.
-    No normaliza la URL final; solo arregla casos típicos de PDFs/GROBID.
-    """
     if not text:
         return ""
 
     text = html.unescape(text)
-    text = text.replace("\u200b", "").replace("\ufeff", "")
-    text = text.replace("\r", " ").replace("\n", " ")
 
-    # https:// example.com -> https://example.com
+    text = text.replace("\u200b", "")
+    text = text.replace("\ufeff", "")
+    text = text.replace("\u00ad", "")
+    text = text.replace("\xa0", " ")
+
+    text = text.replace("\r", " ")
+    text = text.replace("\n", " ")
+
+    # Arregla espacios raros en protocolos:
+    # https : // ejemplo.com -> https://ejemplo.com
+    text = re.sub(r"http\s*:\s*/\s*/\s*", "http://", text, flags=re.I)
+    text = re.sub(r"https\s*:\s*/\s*/\s*", "https://", text, flags=re.I)
+    text = re.sub(r"ftp\s*:\s*/\s*/\s*", "ftp://", text, flags=re.I)
+
+    # https:// ejemplo.com -> https://ejemplo.com
     text = re.sub(r"(https?://|ftp://|www\.)\s+", r"\1", text, flags=re.I)
 
-    # Repara roturas típicas dentro de URL:
-    # https://example.com/ dataset.zip -> https://example.com/dataset.zip
-    # https://doi.org/10.1145/ 123456 -> https://doi.org/10.1145/123456
-    for _ in range(3):
+    # Repara URLs cortadas por espacios o saltos de línea.
+    # Ejemplo:
+    # https://zenodo.org/ records/12345
+    # pasa a:
+    # https://zenodo.org/records/12345
+    for _ in range(10):
         text = re.sub(
-            r"((?:https?://|ftp://|www\.)[^\s<>'\"]*[\/#?&=._~%-])\s+([A-Za-z0-9._~:/?#@!$&()*+,;=%-]+)",
+            r"((?:https?://|ftp://|www\.)[^\s<>'\"]*[\/#?&=._~:%-])\s+([A-Za-z0-9._~:/?#@!$&()*+,;=%-]+)",
+            r"\1\2",
+            text,
+            flags=re.I,
+        )
+
+    # Repara DOI partido:
+    # 10.5194/ essd-17-7359-2025
+    # pasa a:
+    # 10.5194/essd-17-7359-2025
+    for _ in range(6):
+        text = re.sub(
+            r"(10\.\d{4,9}/[A-Za-z0-9._;()/:+-]*)\s+([A-Za-z0-9._;()/:+-]+)",
             r"\1\2",
             text,
             flags=re.I,
         )
 
     text = re.sub(r"\s+", " ", text)
+
     return text.strip()
 
 
-def is_external_url(value: str) -> bool:
-    return bool(
-        value
-        and value.strip().lower().startswith(
-            ("http://", "https://", "ftp://", "www.")
-        )
-    )
+def strip_trailing_punctuation(value: str) -> str:
+    if not value:
+        return ""
 
+    value = value.strip()
+    value = value.strip("<>[]{}\"'")
 
-def strip_balanced_trailing_punctuation(value: str) -> str:
-    """
-    Quita puntuación final sin cargarse paréntesis que pueden pertenecer a un DOI/URL.
-    """
-    value = value.strip().strip("<>[]{}\"'")
     value = value.rstrip(".,;:!?\"'•·")
 
-    pairs = [("(", ")"), ("[", "]"), ("{", "}")]
+    pairs = [
+        ("(", ")"),
+        ("[", "]"),
+        ("{", "}"),
+    ]
+
     changed = True
 
     while changed and value:
@@ -151,333 +220,239 @@ def strip_balanced_trailing_punctuation(value: str) -> str:
 
         for left, right in pairs:
             if value.endswith(right) and value.count(right) > value.count(left):
-                value = value[:-1].rstrip(".,;:!?\"'•·")
+                value = value[:-1]
+                value = value.rstrip(".,;:!?\"'•·")
                 changed = True
 
-    return value
+    return value.strip()
 
 
-def clean_extracted_link(link: str, excluded_exact_urls: set[str]) -> str | None:
-    if not link:
+def clean_url(raw_url: str) -> str | None:
+    if not raw_url:
         return None
 
-    link = html.unescape(str(link)).strip()
-    link = link.replace("\u200b", "").replace("\ufeff", "")
-    link = strip_balanced_trailing_punctuation(link)
+    url = html.unescape(str(raw_url)).strip()
 
-    if not is_external_url(link):
+    url = url.replace("\u200b", "")
+    url = url.replace("\ufeff", "")
+    url = url.replace("\u00ad", "")
+    url = url.replace("\\", "")
+
+    url = strip_trailing_punctuation(url)
+
+    if not url:
         return None
 
-    normalized_for_compare = link.lower().rstrip("/")
-    excluded = {x.lower().rstrip("/") for x in excluded_exact_urls}
+    if url.lower().startswith("www."):
+        url = "https://" + url
 
-    if normalized_for_compare in excluded:
+    if not url.lower().startswith(("http://", "https://", "ftp://")):
         return None
 
-    return link
+    return url
 
 
-def clean_extracted_doi(raw: str) -> str | None:
+def clean_doi(raw: str) -> str | None:
     if not raw:
         return None
 
     raw = html.unescape(str(raw)).strip()
-    raw = raw.replace("\u200b", "").replace("\ufeff", "")
-    raw = strip_balanced_trailing_punctuation(raw)
+
+    raw = raw.replace("\u200b", "")
+    raw = raw.replace("\ufeff", "")
+    raw = raw.replace("\u00ad", "")
+
+    raw = strip_trailing_punctuation(raw)
 
     match = DOI_REGEX.search(raw)
 
     if not match:
         return None
 
-    doi = strip_balanced_trailing_punctuation(match.group("doi"))
+    doi = match.group("doi")
+    doi = strip_trailing_punctuation(doi)
 
-    # Evita DOIs claramente rotos o que terminan en palabras pegadas del texto.
+    # Corta basura típica pegada al DOI
     doi = re.sub(
-        r"(?i)(?:\.?accessed|\.?available|\.?retrieved|\.?figure|\.?table|\.?section).*$",
+        r"(?i)(?:\.?accessed|\.?available|\.?retrieved|\.?figure|\.?table|\.?section|\.?supplementary|\.?appendix).*$",
         "",
         doi,
     )
 
-    doi = strip_balanced_trailing_punctuation(doi)
+    doi = strip_trailing_punctuation(doi)
 
     if not re.fullmatch(r"10\.\d{4,9}/.+", doi, flags=re.I):
         return None
 
-    return doi
+    return f"https://doi.org/{doi}"
 
 
-def get_context(text: str, start: int, end: int, window: int = 140) -> str:
-    left = max(0, start - window)
-    right = min(len(text), end + window)
-    context = text[left:right]
-    return re.sub(r"\s+", " ", context).strip()
+# ==============================
+# EXTRACCIÓN
+# ==============================
 
-
-def extract_urls_from_text(text: str) -> list[dict]:
+def extract_links_from_text(text: str, pdf_name: str) -> list[dict]:
     """
-    Devuelve elementos:
+    Devuelve solo:
     {
-      "link": "...",
-      "kind": "url" | "doi",
-      "context": "texto cercano"
+        "pdf": nombre_pdf,
+        "url": url_extraida
     }
+
+    No elimina duplicados.
     """
     text = normalize_text_for_extraction(text)
 
-    results: list[dict] = []
-    url_spans: list[tuple[int, int]] = []
+    results = []
+    url_spans = []
 
-    # URLs normales
+    # 1. Extraer URLs normales
     for match in URL_REGEX.finditer(text):
         raw = match.group(0)
-        clean = clean_extracted_link(raw, DEFAULT_EXCLUDED_EXACT_URLS)
+        url = clean_url(raw)
 
-        if clean:
+        if url:
             url_spans.append(match.span())
-            results.append(
-                {
-                    "link": clean,
-                    "kind": "url",
-                    "context": get_context(text, match.start(), match.end()),
-                }
-            )
+            results.append({
+                "pdf": pdf_name,
+                "url": url
+            })
 
-    # DOI puros. Si el DOI ya estaba dentro de una URL capturada, no lo duplicamos.
+    # 2. Extraer DOI puro
     for match in DOI_REGEX.finditer(text):
-        span = match.span()
+        start, end = match.span()
 
-        if any(span[0] >= a and span[1] <= b for a, b in url_spans):
+        # Si el DOI ya estaba dentro de una URL tipo https://doi.org/..., no lo repetimos desde el mismo texto.
+        inside_existing_url = any(start >= a and end <= b for a, b in url_spans)
+
+        if inside_existing_url:
             continue
 
-        clean = clean_extracted_doi(match.group(0))
+        raw = match.group(0)
+        doi_url = clean_doi(raw)
 
-        if clean:
-            results.append(
-                {
-                    "link": clean,
-                    "kind": "doi",
-                    "context": get_context(text, match.start(), match.end()),
-                }
-            )
+        if doi_url:
+            results.append({
+                "pdf": pdf_name,
+                "url": doi_url
+            })
 
     return results
 
 
-def safe_itertext(element: ET.Element) -> str:
-    return "".join(element.itertext()) if element is not None else ""
+def extract_from_pdf(pdf_path: Path, grobid_process_url: str | None, timeout: int) -> list[dict]:
+    """
+    Intenta extraer enlaces de un PDF usando:
+    1. PyMuPDF directamente.
+    2. GROBID TEI si está disponible.
 
+    Devuelve solo columnas pdf y url.
+    """
+    all_links = []
 
-def add_unique(
-    links: list[dict],
-    seen: set[str],
-    paper: str,
-    section: str,
-    raw_link: str,
-    kind: str,
-    context: str = "",
-) -> None:
-    clean = clean_extracted_link(raw_link, DEFAULT_EXCLUDED_EXACT_URLS)
+    # Método 1: texto directo del PDF
+    pdf_text = extract_text_with_pymupdf(pdf_path)
 
-    if not clean:
-        clean = clean_extracted_doi(raw_link)
+    if pdf_text:
+        links_pymupdf = extract_links_from_text(pdf_text, pdf_path.name)
+        all_links.extend(links_pymupdf)
+        print(f"       PyMuPDF -> {len(links_pymupdf)} enlaces")
+    else:
+        print("       PyMuPDF -> 0 enlaces")
 
-    if not clean:
-        return
-
-    key = clean.lower().rstrip("/")
-
-    if key in seen:
-        return
-
-    seen.add(key)
-
-    links.append(
-        {
-            "paper": paper,
-            "section": section,
-            "kind": kind,
-            "link": clean,
-            "context": re.sub(r"\s+", " ", context).strip(),
-        }
-    )
-
-
-def extract_links_from_tei(tei_xml: str, filename: str) -> list[dict]:
-    root = ET.fromstring(tei_xml)
-
-    links: list[dict] = []
-    seen: set[str] = set()
-
-    # 1) Atributos target/ref de TEI.
-    for elem in root.findall(".//*[@target]"):
-        target = elem.attrib.get("target", "").strip()
-
-        if target:
-            add_unique(
-                links=links,
-                seen=seen,
-                paper=filename,
-                section="target",
-                raw_link=target,
-                kind="url" if is_external_url(target) else "doi",
-                context=safe_itertext(elem),
-            )
-
-    # 2) idno estructurados: DOI, URI, URL, arXiv, etc.
-    for elem in root.findall(".//tei:idno", NS):
-        id_type = elem.attrib.get("type", "").lower().strip()
-        value = safe_itertext(elem).strip()
-
-        if not value:
-            continue
-
-        if id_type == "doi":
-            add_unique(
-                links=links,
-                seen=seen,
-                paper=filename,
-                section="idno_doi",
-                raw_link=value,
-                kind="doi",
-                context=value,
-            )
-
-        elif id_type in {"url", "uri", "arxiv"}:
-            add_unique(
-                links=links,
-                seen=seen,
-                paper=filename,
-                section=f"idno_{id_type}",
-                raw_link=value,
-                kind="url",
-                context=value,
-            )
-
-        for item in extract_urls_from_text(value):
-            add_unique(
-                links=links,
-                seen=seen,
-                paper=filename,
-                section="idno_text",
-                raw_link=item["link"],
-                kind=item["kind"],
-                context=item["context"],
-            )
-
-    # 3) Texto de secciones importantes.
-    sections = {
-        "front": ".//tei:front",
-        "abstract": ".//tei:abstract",
-        "body": ".//tei:body",
-        "note": ".//tei:note",
-        "reference": ".//tei:listBibl",
-        "back": ".//tei:back",
-        "table": ".//tei:table",
-        "figure": ".//tei:figure",
-    }
-
-    for section, path in sections.items():
-        for element in root.findall(path, NS):
-            text = safe_itertext(element)
-
-            for item in extract_urls_from_text(text):
-                add_unique(
-                    links=links,
-                    seen=seen,
-                    paper=filename,
-                    section=section,
-                    raw_link=item["link"],
-                    kind=item["kind"],
-                    context=item["context"],
-                )
-
-    return links
-
-
-def save_outputs(all_links: list[dict], output_dir: Path) -> None:
-    output_dir.mkdir(parents=True, exist_ok=True)
-
-    csv_path = output_dir / "all_links.csv"
-    json_path = output_dir / "all_links.json"
-
-    fields = ["paper", "section", "kind", "link", "context"]
-
-    with csv_path.open("w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=fields)
-        writer.writeheader()
-        writer.writerows(all_links)
-
-    grouped: dict[str, list[dict]] = {}
-
-    for row in all_links:
-        grouped.setdefault(row["paper"], []).append(
-            {
-                "section": row["section"],
-                "kind": row["kind"],
-                "link": row["link"],
-                "context": row["context"],
-            }
+    # Método 2: GROBID
+    if grobid_process_url:
+        tei_xml = process_pdf_with_grobid(
+            pdf_path=pdf_path,
+            grobid_process_url=grobid_process_url,
+            timeout=timeout,
         )
 
-    with json_path.open("w", encoding="utf-8") as f:
-        json.dump(grouped, f, indent=2, ensure_ascii=False)
+        if tei_xml:
+            links_grobid = extract_links_from_text(tei_xml, pdf_path.name)
+            all_links.extend(links_grobid)
+            print(f"       GROBID  -> {len(links_grobid)} enlaces")
+        else:
+            print("       GROBID  -> 0 enlaces")
+    else:
+        print("       GROBID  -> no disponible")
 
-    print(f"[OK] Guardadas {len(all_links)} URLs/DOIs en {csv_path}")
+    return all_links
 
+
+# ==============================
+# GUARDADO
+# ==============================
+
+def save_csv(rows: list[dict], output_dir: Path) -> None:
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    output_csv = output_dir / "all_links.csv"
+
+    with output_csv.open("w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=["pdf", "url"])
+        writer.writeheader()
+        writer.writerows(rows)
+
+    print(f"\n[OK] CSV guardado en: {output_csv}")
+    print(f"[INFO] Total enlaces guardados: {len(rows)}")
+
+
+# ==============================
+# MAIN
+# ==============================
 
 def main() -> None:
     parser = argparse.ArgumentParser()
+
     parser.add_argument("--pdf-dir", default="pdfs")
     parser.add_argument("--output-dir", default="outputs")
+    parser.add_argument("--timeout", type=int, default=180)
     parser.add_argument(
         "--grobid-base-url",
         default=None,
-        help="Ejemplo: http://localhost:8070",
+        help="Ejemplo: http://localhost:8070"
     )
-    parser.add_argument("--timeout", type=int, default=180)
 
     args = parser.parse_args()
 
     pdf_dir = Path(args.pdf_dir)
     output_dir = Path(args.output_dir)
 
-    if not pdf_dir.is_dir():
-        raise FileNotFoundError(f"No existe la carpeta de PDFs: {pdf_dir}")
+    if not pdf_dir.exists():
+        raise FileNotFoundError(f"No existe la carpeta: {pdf_dir}")
 
-    grobid_process_url = resolve_grobid_url(args.grobid_base_url)
-    print(f"[INFO] Usando GROBID: {grobid_process_url}")
-
-    all_links: list[dict] = []
     pdf_files = sorted(pdf_dir.glob("*.pdf"))
 
     if not pdf_files:
-        print(f"[WARN] No hay PDFs en {pdf_dir}")
+        print(f"[WARN] No hay PDFs en: {pdf_dir}")
         return
 
-    for pdf_path in pdf_files:
-        print(f"[INFO] Procesando {pdf_path.name}...")
+    grobid_process_url = resolve_grobid_url(args.grobid_base_url)
 
-        tei_xml = process_pdf(
+    if grobid_process_url:
+        print(f"[INFO] GROBID detectado: {grobid_process_url}")
+    else:
+        print("[WARN] GROBID no detectado. Se usará solo PyMuPDF.")
+
+    all_rows = []
+
+    for pdf_path in pdf_files:
+        print(f"\n[INFO] Procesando {pdf_path.name}")
+
+        links = extract_from_pdf(
             pdf_path=pdf_path,
             grobid_process_url=grobid_process_url,
             timeout=args.timeout,
         )
 
-        if not tei_xml:
-            continue
+        all_rows.extend(links)
 
-        try:
-            links = extract_links_from_tei(tei_xml, pdf_path.name)
-        except ET.ParseError as e:
-            print(f"[ERROR] XML mal formado en {pdf_path.name}: {e}")
-            continue
+        print(f"       TOTAL   -> {len(links)} enlaces")
 
-        print(f"       -> {len(links)} URLs/DOIs extraídos")
-        all_links.extend(links)
+    save_csv(all_rows, output_dir)
 
-    save_outputs(all_links, output_dir)
-    print("[DONE]")
+    print("\n[DONE]")
 
 
 if __name__ == "__main__":

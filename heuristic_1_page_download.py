@@ -21,8 +21,9 @@ REQUEST_TIMEOUT = 10
 MAX_SAMPLE_BYTES = 1_000_000
 MAX_WORKERS = 16
 
-# Si está en False, solo acepta descargables del mismo dominio raíz.
-# Si quieres aceptar descargables externos encontrados en JSON/HTML, ponlo en True.
+# Si está en False, solo acepta descargables:
+# - del mismo dominio raíz
+# - o de repositorios confiables de datasets
 ALLOW_EXTERNAL_DATASET_LINKS = False
 
 
@@ -33,6 +34,10 @@ ALLOW_EXTERNAL_DATASET_LINKS = False
 URL_REGEX = re.compile(r'https?://[^\s"\'<>\)\]]+', re.IGNORECASE)
 HREF_REGEX = re.compile(r'href=["\']([^"\']+)["\']', re.IGNORECASE)
 SRC_REGEX = re.compile(r'src=["\']([^"\']+)["\']', re.IGNORECASE)
+CONTENT_DISPOSITION_FILENAME_REGEX = re.compile(
+    r'filename\*?=(?:UTF-8\'\')?["\']?([^"\';]+)',
+    re.IGNORECASE
+)
 
 
 # ==============================
@@ -68,8 +73,10 @@ DATASET_DOWNLOAD_EXTENSIONS = {
     ".mat"
 }
 
-# OJO: estos no se aceptan siempre.
-# Solo se aceptan si el nombre/ruta tiene contexto de dataset.
+# Estos no se aceptan siempre.
+# Se aceptan si:
+# 1) vienen combinados con una extensión clara de dataset: .csv.gz, .tsv.gz, etc.
+# 2) o si el nombre/ruta tiene contexto de dataset.
 COMPRESSED_EXTENSIONS = {
     ".zip",
     ".gz",
@@ -80,7 +87,7 @@ COMPRESSED_EXTENSIONS = {
 }
 
 # Extensiones que NO queremos aceptar como dataset directo
-# porque dan muchísimos falsos positivos.
+# porque dan muchos falsos positivos.
 EXCLUDED_EXTENSIONS = {
     ".json",
     ".xml",
@@ -92,13 +99,16 @@ EXCLUDED_EXTENSIONS = {
     ".htm",
     ".php",
     ".asp",
-    ".aspx"
+    ".aspx",
+    ".pdf",
+    ".txt"
 }
 
 DATASET_NAME_KEYWORDS = {
     "dataset",
     "datasets",
     "data",
+    "datos",
     "train",
     "training",
     "test",
@@ -115,8 +125,62 @@ DATASET_NAME_KEYWORDS = {
     "corpus",
     "benchmark",
     "database",
+    "db",
     "tables",
-    "table"
+    "table",
+    "supplementary",
+    "supplemental",
+    "supporting",
+    "raw",
+    "processed"
+}
+
+# Content-Type que pueden indicar archivo descargable de dataset.
+# OJO: application/octet-stream por sí solo no basta.
+# Se acepta si además hay filename o contexto de dataset.
+DATASET_CONTENT_TYPES = {
+    "text/csv",
+    "text/tab-separated-values",
+    "application/vnd.ms-excel",
+    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    "application/vnd.oasis.opendocument.spreadsheet",
+    "application/x-parquet",
+    "application/parquet",
+    "application/vnd.apache.parquet",
+    "application/zip",
+    "application/gzip",
+    "application/x-gzip",
+    "application/x-hdf5",
+    "application/x-sqlite3",
+    "application/octet-stream"
+}
+
+HTML_OR_TEXT_CONTENT_TYPES = {
+    "text/html",
+    "application/xhtml+xml",
+    "text/plain"
+}
+
+# Repositorios externos habituales donde sí es razonable aceptar descargables
+# aunque no estén en el mismo dominio que la URL original.
+TRUSTED_DATA_REPOSITORY_DOMAINS = {
+    "zenodo.org",
+    "figshare.com",
+    "osf.io",
+    "datadryad.org",
+    "dryad.figshare.com",
+    "github.com",
+    "raw.githubusercontent.com",
+    "huggingface.co",
+    "kaggle.com",
+    "mendeley.com",
+    "data.mendeley.com",
+    "dataverse.harvard.edu",
+    "openaire.eu",
+    "ebi.ac.uk",
+    "ncbi.nlm.nih.gov",
+    "ftp.ncbi.nlm.nih.gov",
+    "www.ebi.ac.uk"
 }
 
 
@@ -128,7 +192,7 @@ def clean_url(url: str) -> str:
     if not url:
         return ""
 
-    return url.strip().rstrip(".,;:!?)]}>'\"")
+    return str(url).strip().rstrip(".,;:!?)]}>'\"")
 
 
 def get_domain(url: str) -> str:
@@ -149,6 +213,8 @@ def root_domain(domain: str) -> str:
     if len(parts) <= 2:
         return domain
 
+    # Regla simple. Para máxima precisión con dominios tipo .co.uk
+    # se podría usar tldextract, pero así evitamos dependencias externas.
     return ".".join(parts[-2:])
 
 
@@ -183,7 +249,7 @@ def get_all_extensions(url: str) -> list:
 def filename_has_dataset_context(url: str) -> bool:
     """
     Comprueba si el nombre/ruta/query de la URL parece de dataset.
-    Esto sirve sobre todo para aceptar comprimidos como .zip, .tar.gz, etc.
+    Esto sirve sobre todo para aceptar comprimidos genéricos como .zip.
     """
 
     try:
@@ -205,7 +271,10 @@ def url_ends_with_dataset_file(url: str) -> bool:
     """
     Devuelve True si la URL acaba en un formato típico de dataset.
 
-    No acepta JSON/XML/RDF/HTML para evitar falsos positivos.
+    Importante:
+    - No acepta JSON/XML/RDF/HTML/PDF/TXT como dataset directo.
+    - Acepta .csv.gz, .tsv.gz, .parquet.gz, etc.
+    - Acepta .zip/.tar.gz solo si el nombre/ruta parece de dataset.
     """
 
     url = clean_url(url)
@@ -220,8 +289,15 @@ def url_ends_with_dataset_file(url: str) -> bool:
     if ext in DATASET_DOWNLOAD_EXTENSIONS:
         return True
 
-    # Comprimidos: solo si el nombre/ruta parece de dataset
-    if any(e in COMPRESSED_EXTENSIONS for e in all_ext):
+    has_dataset_ext = any(e in DATASET_DOWNLOAD_EXTENSIONS for e in all_ext)
+    has_compressed_ext = any(e in COMPRESSED_EXTENSIONS for e in all_ext)
+
+    # Ejemplo: .csv.gz, .tsv.gz, .parquet.gz
+    if has_dataset_ext and has_compressed_ext:
+        return True
+
+    # Ejemplo: dataset.zip, training_data.tar.gz
+    if has_compressed_ext:
         return filename_has_dataset_context(url)
 
     return False
@@ -230,7 +306,9 @@ def url_ends_with_dataset_file(url: str) -> bool:
 def get_dataset_file_type(url: str) -> str:
     """
     Devuelve la extensión principal detectada.
-    Sirve para guardarla en el CSV.
+
+    Para .csv.gz devuelve .csv,
+    porque lo importante es el tipo de dato real.
     """
 
     all_ext = get_all_extensions(url)
@@ -251,6 +329,232 @@ def is_same_root_domain(url1: str, url2: str) -> bool:
     d2 = root_domain(get_domain(url2))
 
     return bool(d1 and d2 and d1 == d2)
+
+
+def is_trusted_data_repository(url: str) -> bool:
+    domain = get_domain(url)
+
+    if not domain:
+        return False
+
+    domain = domain.lower()
+
+    if domain.startswith("www."):
+        domain_no_www = domain[4:]
+    else:
+        domain_no_www = domain
+
+    if domain_no_www in TRUSTED_DATA_REPOSITORY_DOMAINS:
+        return True
+
+    # Permite subdominios de repositorios confiables.
+    for trusted in TRUSTED_DATA_REPOSITORY_DOMAINS:
+        if domain_no_www.endswith("." + trusted):
+            return True
+
+    return False
+
+
+def is_allowed_dataset_link(input_url: str, candidate_url: str) -> bool:
+    """
+    Controla si aceptamos un descargable encontrado.
+
+    Por defecto:
+    - mismo dominio raíz: sí
+    - repositorio confiable: sí
+    - externo desconocido: no, salvo que ALLOW_EXTERNAL_DATASET_LINKS=True
+    """
+
+    if ALLOW_EXTERNAL_DATASET_LINKS:
+        return True
+
+    if is_same_root_domain(input_url, candidate_url):
+        return True
+
+    if is_trusted_data_repository(candidate_url):
+        return True
+
+    return False
+
+
+def filename_from_content_disposition(value: str) -> str:
+    if not value:
+        return ""
+
+    match = CONTENT_DISPOSITION_FILENAME_REGEX.search(value)
+
+    if match:
+        return clean_url(match.group(1).strip())
+
+    return ""
+
+
+# ==============================
+# REVISIÓN DE CABECERAS HTTP
+# ==============================
+
+def check_url_headers_for_dataset_file(url: str, session=None) -> dict:
+    """
+    Mira cabeceras HTTP para detectar si una URL que no termina en .csv/.xlsx/etc.
+    realmente devuelve un archivo de dataset.
+
+    Ejemplo:
+    https://example.com/download?id=123
+    Content-Disposition: attachment; filename="data.csv"
+    """
+
+    headers = {
+        "User-Agent": "Mozilla/5.0 dataset-header-detector/1.0",
+        "Accept": "*/*"
+    }
+
+    client = session if session else requests
+
+    try:
+        response = client.head(
+            url,
+            headers=headers,
+            timeout=REQUEST_TIMEOUT,
+            allow_redirects=True
+        )
+
+        # Algunos servidores bloquean HEAD o lo implementan mal.
+        # En ese caso hacemos GET con Range para no descargar todo.
+        if response.status_code in (403, 405) or response.status_code >= 500:
+            response = client.get(
+                url,
+                headers={**headers, "Range": "bytes=0-2048"},
+                timeout=REQUEST_TIMEOUT,
+                allow_redirects=True,
+                stream=True
+            )
+
+        status_code = response.status_code
+        content_type = response.headers.get(
+            "Content-Type", ""
+        ).split(";")[0].strip().lower()
+
+        content_disposition = response.headers.get("Content-Disposition", "")
+        content_length = response.headers.get("Content-Length", "")
+        final_url = response.url
+
+        if status_code >= 400:
+            return {
+                "matched": False,
+                "reason": f"header_http_status_{status_code}",
+                "status_code": status_code,
+                "final_url": final_url,
+                "content_type": content_type,
+                "content_disposition": content_disposition,
+                "content_length": content_length
+            }
+
+        filename = filename_from_content_disposition(content_disposition)
+
+        candidates = [final_url]
+
+        if filename:
+            # Si Content-Disposition dice filename="data.csv"
+            # lo revisamos como candidato.
+            candidates.append(urljoin(final_url, filename))
+
+        for candidate in candidates:
+            if url_ends_with_dataset_file(candidate):
+                return {
+                    "matched": True,
+                    "reason": "headers_indicate_dataset_file",
+                    "status_code": status_code,
+                    "final_url": final_url,
+                    "content_type": content_type,
+                    "content_disposition": content_disposition,
+                    "content_length": content_length,
+                    "filename": filename,
+                    "dataset_url": final_url,
+                    "tipo_dataset_descargable": get_dataset_file_type(candidate)
+                }
+
+        # Content-Type por sí solo puede ser ambiguo.
+        # application/octet-stream solo se acepta si hay attachment/filename/contexto.
+        if content_type in DATASET_CONTENT_TYPES:
+            has_attachment = "attachment" in content_disposition.lower()
+            has_filename = bool(filename)
+            has_dataset_context = filename_has_dataset_context(final_url)
+
+            if content_type != "application/octet-stream":
+                if has_attachment or has_filename or has_dataset_context:
+                    return {
+                        "matched": True,
+                        "reason": "content_type_indicates_dataset_file",
+                        "status_code": status_code,
+                        "final_url": final_url,
+                        "content_type": content_type,
+                        "content_disposition": content_disposition,
+                        "content_length": content_length,
+                        "filename": filename,
+                        "dataset_url": final_url,
+                        "tipo_dataset_descargable": get_dataset_file_type(filename or final_url)
+                    }
+
+            if content_type == "application/octet-stream":
+                if has_attachment and (has_filename or has_dataset_context):
+                    return {
+                        "matched": True,
+                        "reason": "octet_stream_with_dataset_context",
+                        "status_code": status_code,
+                        "final_url": final_url,
+                        "content_type": content_type,
+                        "content_disposition": content_disposition,
+                        "content_length": content_length,
+                        "filename": filename,
+                        "dataset_url": final_url,
+                        "tipo_dataset_descargable": get_dataset_file_type(filename or final_url)
+                    }
+
+        return {
+            "matched": False,
+            "reason": "headers_do_not_indicate_dataset_file",
+            "status_code": status_code,
+            "final_url": final_url,
+            "content_type": content_type,
+            "content_disposition": content_disposition,
+            "content_length": content_length,
+            "filename": filename
+        }
+
+    except Exception as e:
+        return {
+            "matched": False,
+            "reason": "header_check_exception",
+            "error": str(e)
+        }
+
+
+def validate_candidate_headers(candidate_url: str, session=None) -> dict:
+    """
+    Valida un candidato encontrado en HTML/JSON.
+
+    Para máxima precisión:
+    - primero se acepta por extensión clara;
+    - si no hay extensión clara, se mira Content-Disposition / Content-Type.
+    """
+
+    candidate_url = clean_url(candidate_url)
+
+    if not candidate_url:
+        return {
+            "matched": False,
+            "reason": "empty_candidate"
+        }
+
+    if url_ends_with_dataset_file(candidate_url):
+        return {
+            "matched": True,
+            "reason": "candidate_url_ends_with_dataset_file",
+            "dataset_url": candidate_url,
+            "tipo_dataset_descargable": get_dataset_file_type(candidate_url)
+        }
+
+    return check_url_headers_for_dataset_file(candidate_url, session=session)
 
 
 # ==============================
@@ -373,6 +677,8 @@ def fetch_html_sample(url: str, session=None) -> dict:
     """
     Descarga HTML/texto de la URL para revisar si dentro hay enlaces
     a archivos descargables de dataset.
+
+    Ahora evita parsear binarios/PDF/ZIP como si fueran HTML.
     """
 
     headers = {
@@ -402,6 +708,16 @@ def fetch_html_sample(url: str, session=None) -> dict:
                 return {
                     "ok": False,
                     "reason": f"http_status_{status_code}",
+                    "status_code": status_code,
+                    "content_type": content_type,
+                    "final_url": final_url,
+                    "text": ""
+                }
+
+            if content_type and content_type not in HTML_OR_TEXT_CONTENT_TYPES:
+                return {
+                    "ok": False,
+                    "reason": "response_is_not_html_or_text",
                     "status_code": status_code,
                     "content_type": content_type,
                     "final_url": final_url,
@@ -561,6 +877,8 @@ def extract_downloadable_candidates_from_json(obj, base_url: str) -> list:
     # 2) Buscar URLs completas en cualquier string del JSON
     all_strings = extract_strings_from_json(obj)
 
+    possible_extensions = DATASET_DOWNLOAD_EXTENSIONS.union(COMPRESSED_EXTENSIONS)
+
     for text in all_strings:
         text = text.strip()
 
@@ -571,10 +889,7 @@ def extract_downloadable_candidates_from_json(obj, base_url: str) -> list:
         # puede ser una ruta relativa tipo /files/train.tsv
         lower_text = text.lower()
 
-        if any(ext in lower_text for ext in DATASET_DOWNLOAD_EXTENSIONS):
-            found.add(clean_url(urljoin(base_url, text)))
-
-        if any(ext in lower_text for ext in COMPRESSED_EXTENSIONS):
+        if any(ext in lower_text for ext in possible_extensions):
             found.add(clean_url(urljoin(base_url, text)))
 
     return sorted(found)
@@ -636,12 +951,15 @@ def extract_downloadable_candidates_from_html(html: str, base_url: str) -> list:
 # FILTRADO DE DESCARGABLES DATASET
 # ==============================
 
-def find_dataset_downloadables(input_url: str, candidates: list) -> list:
+def find_dataset_downloadables(input_url: str, candidates: list, session=None) -> list:
     """
     De todos los candidatos encontrados, devuelve solo descargables
     con formato típico de dataset.
 
-    No acepta JSON/XML/HTML para evitar falsos positivos.
+    Para máxima precisión:
+    - primero exige dominio permitido;
+    - después valida por extensión;
+    - si no hay extensión clara, revisa cabeceras.
     """
 
     dataset_links = []
@@ -652,14 +970,19 @@ def find_dataset_downloadables(input_url: str, candidates: list) -> list:
         if not link:
             continue
 
-        if not url_ends_with_dataset_file(link):
+        if not link.startswith(("http://", "https://")):
             continue
 
-        if not ALLOW_EXTERNAL_DATASET_LINKS:
-            if not is_same_root_domain(input_url, link):
-                continue
+        if not is_allowed_dataset_link(input_url, link):
+            continue
 
-        dataset_links.append(link)
+        validation = validate_candidate_headers(link, session=session)
+
+        if not validation.get("matched"):
+            continue
+
+        dataset_url = validation.get("dataset_url", link)
+        dataset_links.append(clean_url(dataset_url))
 
     return sorted(set(dataset_links))
 
@@ -704,7 +1027,8 @@ def check_json_for_dataset_downloadables(url: str, session=None) -> dict:
 
     dataset_downloadables = find_dataset_downloadables(
         url,
-        downloadable_candidates
+        downloadable_candidates,
+        session=session
     )
 
     if dataset_downloadables:
@@ -776,7 +1100,8 @@ def check_html_for_dataset_downloadables(url: str, session=None) -> dict:
 
     dataset_downloadables = find_dataset_downloadables(
         url,
-        html_candidates
+        html_candidates,
+        session=session
     )
 
     if dataset_downloadables:
@@ -815,22 +1140,26 @@ def check_html_for_dataset_downloadables(url: str, session=None) -> dict:
 
 def heuristic_1(url: str, session=None) -> dict:
     """
-    Heurística 1:
+    Heurística 1 precisa:
 
     1. Si la URL acaba en un formato descargable de dataset:
        dataset = True.
 
     2. Si no:
+       revisa cabeceras HTTP.
+       Esto detecta URLs tipo /download?id=123 que devuelven data.csv.
+
+    3. Si no:
        intenta descargar/parsear JSON.
        Si el JSON contiene un descargable tipo dataset:
        dataset = True.
 
-    3. Si no:
-       descarga HTML.
+    4. Si no:
+       descarga HTML solo si realmente es HTML/texto.
        Si el HTML contiene un descargable tipo dataset:
        dataset = True.
 
-    4. Si no:
+    5. Si no:
        dataset = False.
     """
 
@@ -853,6 +1182,41 @@ def heuristic_1(url: str, session=None) -> dict:
                 "dataset_descargables_encontrados": [url],
                 "json_descargado": False,
                 "html_descargado": False,
+                "header_checked": False,
+                "header_content_type": "",
+                "header_content_disposition": "",
+                "total_descargables_json": 0,
+                "total_descargables_html": 0,
+                "json_dataset_descargables_encontrados": [],
+                "html_dataset_descargables_encontrados": []
+            }
+        }
+
+    # ==============================
+    # PASO 1B: cabeceras HTTP
+    # ==============================
+
+    header_check = check_url_headers_for_dataset_file(url, session=session)
+
+    if header_check.get("matched"):
+        dataset_url = header_check.get("dataset_url", url)
+
+        return {
+            "matched": True,
+            "reason": header_check.get("reason", "headers_indicate_dataset_file"),
+            "value": {
+                "url": url,
+                "es_dataset_directo": True,
+                "tipo_dataset_descargable": header_check.get("tipo_dataset_descargable", ""),
+                "pagina_con_descargables": False,
+                "dataset_descargable": dataset_url,
+                "dataset_descargables_encontrados": [dataset_url],
+                "json_descargado": False,
+                "html_descargado": False,
+                "header_checked": True,
+                "header_content_type": header_check.get("content_type", ""),
+                "header_content_disposition": header_check.get("content_disposition", ""),
+                "header_final_url": header_check.get("final_url", ""),
                 "total_descargables_json": 0,
                 "total_descargables_html": 0,
                 "json_dataset_descargables_encontrados": [],
@@ -885,6 +1249,9 @@ def heuristic_1(url: str, session=None) -> dict:
                 ),
                 "json_descargado": bool(json_value.get("json_descargado", False)),
                 "html_descargado": False,
+                "header_checked": True,
+                "header_content_type": header_check.get("content_type", ""),
+                "header_content_disposition": header_check.get("content_disposition", ""),
                 "total_descargables_json": json_value.get("total_descargables_json", 0),
                 "total_descargables_html": 0,
                 "descargables_json_sample": json_value.get("descargables_json_sample", []),
@@ -924,6 +1291,9 @@ def heuristic_1(url: str, session=None) -> dict:
                 ),
                 "json_descargado": bool(json_value.get("json_descargado", False)),
                 "html_descargado": bool(html_value.get("html_descargado", False)),
+                "header_checked": True,
+                "header_content_type": header_check.get("content_type", ""),
+                "header_content_disposition": header_check.get("content_disposition", ""),
                 "total_descargables_json": json_value.get("total_descargables_json", 0),
                 "total_descargables_html": html_value.get("total_descargables_html", 0),
                 "descargables_json_sample": json_value.get("descargables_json_sample", []),
@@ -950,7 +1320,7 @@ def heuristic_1(url: str, session=None) -> dict:
 
     return {
         "matched": False,
-        "reason": "no_dataset_downloadable_found_in_url_json_or_html",
+        "reason": "no_dataset_downloadable_found_in_url_headers_json_or_html",
         "value": {
             "url": url,
             "es_dataset_directo": False,
@@ -960,6 +1330,10 @@ def heuristic_1(url: str, session=None) -> dict:
             "dataset_descargables_encontrados": [],
             "json_descargado": bool(json_value.get("json_descargado", False)),
             "html_descargado": bool(html_value.get("html_descargado", False)),
+            "header_checked": True,
+            "header_content_type": header_check.get("content_type", ""),
+            "header_content_disposition": header_check.get("content_disposition", ""),
+            "header_error_reason": header_check.get("reason", ""),
             "total_descargables_json": total_json,
             "total_descargables_html": total_html,
             "descargables_json_sample": json_value.get("descargables_json_sample", []),
@@ -1025,11 +1399,16 @@ def save_csv_simple(rows: list, path: str) -> str:
         "es_dataset_directo",
         "json_descargado",
         "html_descargado",
+        "header_checked",
         "pagina_con_descargables",
         "dataset_descargable",
         "tipo_dataset_descargable",
         "total_descargables_json",
         "total_descargables_html",
+        "header_content_type",
+        "header_content_disposition",
+        "json_content_type",
+        "html_content_type",
         "motivo"
     ]
 
@@ -1099,7 +1478,7 @@ def main():
 
     print(f"-> Filas leídas: {len(input_rows)}")
     print(f"-> URLs únicas a procesar: {len(unique_urls)}")
-    print(f"-> Iniciando heurística 1 con {MAX_WORKERS} hilos...")
+    print(f"-> Iniciando heurística 1 precisa con {MAX_WORKERS} hilos...")
 
     url_results = {}
 
@@ -1134,11 +1513,16 @@ def main():
                         "es_dataset_directo": False,
                         "json_descargado": False,
                         "html_descargado": False,
+                        "header_checked": False,
                         "pagina_con_descargables": False,
                         "dataset_descargable": "",
                         "tipo_dataset_descargable": "",
                         "total_descargables_json": 0,
-                        "total_descargables_html": 0
+                        "total_descargables_html": 0,
+                        "header_content_type": "",
+                        "header_content_disposition": "",
+                        "json_content_type": "",
+                        "html_content_type": ""
                     }
                 }
 
@@ -1175,11 +1559,16 @@ def main():
             "es_dataset_directo": bool(value.get("es_dataset_directo", False)),
             "json_descargado": bool(value.get("json_descargado", False)),
             "html_descargado": bool(value.get("html_descargado", False)),
+            "header_checked": bool(value.get("header_checked", False)),
             "pagina_con_descargables": bool(value.get("pagina_con_descargables", False)),
             "dataset_descargable": value.get("dataset_descargable", ""),
             "tipo_dataset_descargable": value.get("tipo_dataset_descargable", ""),
             "total_descargables_json": value.get("total_descargables_json", 0),
             "total_descargables_html": value.get("total_descargables_html", 0),
+            "header_content_type": value.get("header_content_type", ""),
+            "header_content_disposition": value.get("header_content_disposition", ""),
+            "json_content_type": value.get("json_content_type", ""),
+            "html_content_type": value.get("html_content_type", ""),
             "motivo": h.get("reason", "")
         })
 
