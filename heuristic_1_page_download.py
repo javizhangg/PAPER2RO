@@ -19,10 +19,10 @@ INPUT_CSV = "outputs/all_links_normalized.csv"
 OUTPUT_CSV = "outputs/heuristic_1_results.csv"
 OUTPUT_JSON = "outputs/heuristic_1_results.json"
 
-REQUEST_TIMEOUT = 10
-MAX_SAMPLE_BYTES = 1_000_000
-MAX_ZIP_DOWNLOAD_BYTES = 100_000_000  # 100 MB máximo para inspeccionar ZIPs
-MAX_WORKERS = 16
+REQUEST_TIMEOUT = 5
+MAX_SAMPLE_BYTES = 500_000
+MAX_ZIP_DOWNLOAD_BYTES = 20_000_000  # 20 MB máximo para inspeccionar ZIPs
+MAX_WORKERS = 24
 
 # Si está en False, solo acepta descargables:
 # - del mismo dominio raíz
@@ -556,63 +556,6 @@ def is_trusted_data_repository(url: str) -> bool:
 
     return False
 
-def is_super_famous_dataset_domain_url(url: str) -> bool:
-    """
-    Marca directamente como dataset URLs de repositorios muy famosos.
-
-    OJO:
-    - Kaggle se acepta directamente si es Kaggle.
-    - Zenodo solo si es /record/ o /records/.
-    - HuggingFace solo si es /datasets/.
-    - GitHub NO se acepta directamente porque puede ser código, no dataset.
-    """
-
-    try:
-        url = clean_url(url)
-        parsed = urlparse(url)
-        domain = parsed.netloc.lower()
-
-        if domain.startswith("www."):
-            domain = domain[4:]
-
-        path = unquote(parsed.path or "").lower()
-
-        # Kaggle: tú querías que Kaggle sea positivo directamente
-        if domain == "kaggle.com" or domain.endswith(".kaggle.com"):
-            return True
-
-        # Zenodo datasets/records
-        if domain == "zenodo.org":
-            return path.startswith("/record/") or path.startswith("/records/")
-
-        # Figshare
-        if domain == "figshare.com" or domain.endswith(".figshare.com"):
-            return "/articles/" in path or "/datasets/" in path
-
-        # Dryad
-        if domain in {"datadryad.org", "dryad.figshare.com"}:
-            return True
-
-        # Mendeley Data
-        if domain == "data.mendeley.com":
-            return "/datasets/" in path
-
-        # Harvard Dataverse
-        if domain == "dataverse.harvard.edu":
-            return "dataset.xhtml" in path or "/dataset/" in path
-
-        # OSF
-        if domain == "osf.io":
-            return True
-
-        # HuggingFace datasets
-        if domain == "huggingface.co":
-            return path.startswith("/datasets/")
-
-        return False
-
-    except Exception:
-        return False
 
 def is_allowed_dataset_link(input_url: str, candidate_url: str) -> bool:
     """
@@ -682,8 +625,11 @@ def is_zip_by_headers(content_type: str, content_disposition: str, final_url: st
 
 def inspect_zip_bytes(raw_zip: bytes) -> dict:
     """
-    Abre un ZIP en memoria y revisa si contiene archivos típicos de dataset.
-    No acepta JSON ni XML como dataset.
+    Abre un ZIP en memoria y revisa qué ficheros contiene.
+
+    Devuelve:
+    - zip_csv_encontrados: todos los .csv encontrados dentro.
+    - zip_archivos_sample: muestra de archivos internos.
     """
 
     try:
@@ -693,16 +639,15 @@ def inspect_zip_bytes(raw_zip: bytes) -> dict:
                 if name and not name.endswith("/")
             ]
 
-            dataset_files = [
+            csv_files = [
                 name for name in names
                 if Path(name).suffix.lower() in ZIP_DATASET_EXTENSIONS_TO_REPORT
             ]
 
             return {
                 "ok": True,
-                "zip_contiene_dataset": bool(dataset_files),
-                "zip_contiene_csv": bool(dataset_files),  # mantengo el nombre para compatibilidad
-                "zip_csv_encontrados": dataset_files,     # aquí ahora van CSV, TSV, XLSX, etc.
+                "zip_contiene_csv": bool(csv_files),
+                "zip_csv_encontrados": csv_files,
                 "zip_total_archivos": len(names),
                 "zip_archivos_sample": names[:50],
                 "zip_error": ""
@@ -711,7 +656,6 @@ def inspect_zip_bytes(raw_zip: bytes) -> dict:
     except zipfile.BadZipFile:
         return {
             "ok": False,
-            "zip_contiene_dataset": False,
             "zip_contiene_csv": False,
             "zip_csv_encontrados": [],
             "zip_total_archivos": 0,
@@ -722,7 +666,6 @@ def inspect_zip_bytes(raw_zip: bytes) -> dict:
     except Exception as e:
         return {
             "ok": False,
-            "zip_contiene_dataset": False,
             "zip_contiene_csv": False,
             "zip_csv_encontrados": [],
             "zip_total_archivos": 0,
@@ -1691,256 +1634,566 @@ def check_html_for_dataset_downloadables(url: str, session=None) -> dict:
     }
 
 
+
+
+# ==============================
+# OPTIMIZACIÓN H1: HELPERS RÁPIDOS
+# ==============================
+
+def is_super_famous_dataset_domain_url(url: str) -> bool:
+    """
+    Repositorios muy famosos de datasets que se aceptan directamente.
+    Así evitamos descargar HTML/JSON cuando ya sabemos que es una página de dataset.
+    """
+    try:
+        url = clean_url(url)
+        parsed = urlparse(url)
+        domain = parsed.netloc.lower().strip()
+        if domain.startswith("www."):
+            domain = domain[4:]
+        path = unquote(parsed.path or "").lower()
+
+        # Kaggle: se acepta directamente como pediste.
+        if domain == "kaggle.com" or domain.endswith(".kaggle.com"):
+            return True
+
+        # Zenodo: solo records/record, no communities/search/docs.
+        if domain == "zenodo.org":
+            return path.startswith("/record/") or path.startswith("/records/")
+
+        # Figshare
+        if domain == "figshare.com" or domain.endswith(".figshare.com"):
+            return "/articles/" in path or "/datasets/" in path
+
+        # Dryad
+        if domain in {"datadryad.org", "dryad.figshare.com"}:
+            return True
+
+        # Mendeley Data
+        if domain == "data.mendeley.com":
+            return "/datasets/" in path
+
+        # Harvard Dataverse
+        if domain == "dataverse.harvard.edu":
+            return "dataset.xhtml" in path or "/dataset/" in path
+
+        # OSF: bastante usado para datos/material suplementario.
+        if domain == "osf.io":
+            return True
+
+        # HuggingFace datasets
+        if domain == "huggingface.co":
+            return path.startswith("/datasets/")
+
+        return False
+    except Exception:
+        return False
+
+
+def check_url_headers_for_dataset_file_no_zip_download(url: str, session=None) -> dict:
+    """
+    Revisión rápida de cabeceras.
+
+    Optimización:
+    - Si por cabecera/filename/final_url vemos .csv, .tsv, .xlsx, .parquet, etc. => True.
+    - NO acepta JSON/XML.
+    - NO descarga ZIP aquí. Los ZIP se dejan para el último paso.
+    """
+    headers = {
+        "User-Agent": "Mozilla/5.0 dataset-header-fast-detector/1.0",
+        "Accept": "*/*"
+    }
+    client = session if session else requests
+
+    try:
+        response = client.head(
+            url,
+            headers=headers,
+            timeout=REQUEST_TIMEOUT,
+            allow_redirects=True
+        )
+
+        if response.status_code in (403, 405) or response.status_code >= 500:
+            response = client.get(
+                url,
+                headers={**headers, "Range": "bytes=0-2048"},
+                timeout=REQUEST_TIMEOUT,
+                allow_redirects=True,
+                stream=True
+            )
+
+        status_code = response.status_code
+        content_type = response.headers.get("Content-Type", "").split(";")[0].strip().lower()
+        content_disposition = response.headers.get("Content-Disposition", "")
+        content_length = response.headers.get("Content-Length", "")
+        final_url = response.url
+        filename = filename_from_content_disposition(content_disposition)
+
+        try:
+            response.close()
+        except Exception:
+            pass
+
+        if status_code >= 400:
+            return {
+                "matched": False,
+                "reason": f"header_http_status_{status_code}",
+                "status_code": status_code,
+                "final_url": final_url,
+                "content_type": content_type,
+                "content_disposition": content_disposition,
+                "content_length": content_length,
+                "filename": filename,
+            }
+
+        # Candidatos: URL final y filename de Content-Disposition.
+        candidates = [final_url]
+        if filename:
+            candidates.append(urljoin(final_url, filename))
+
+        for candidate in candidates:
+            # Si es ZIP, no se descarga aquí.
+            if is_zip_by_url(candidate):
+                continue
+
+            if url_ends_with_dataset_file(candidate):
+                return {
+                    "matched": True,
+                    "reason": "headers_indicate_dataset_file_no_zip",
+                    "status_code": status_code,
+                    "final_url": final_url,
+                    "content_type": content_type,
+                    "content_disposition": content_disposition,
+                    "content_length": content_length,
+                    "filename": filename,
+                    "dataset_url": final_url,
+                    "tipo_dataset_descargable": get_dataset_file_type(candidate),
+                }
+
+        # Content-Type rápido. No aceptamos application/zip aquí.
+        non_zip_dataset_content_types = DATASET_CONTENT_TYPES - {
+            "application/zip", "application/gzip", "application/x-gzip", "application/octet-stream"
+        }
+
+        if content_type in non_zip_dataset_content_types:
+            if filename and not is_zip_by_url(filename):
+                if url_ends_with_dataset_file(filename):
+                    return {
+                        "matched": True,
+                        "reason": "content_type_and_filename_indicate_dataset_no_zip",
+                        "status_code": status_code,
+                        "final_url": final_url,
+                        "content_type": content_type,
+                        "content_disposition": content_disposition,
+                        "content_length": content_length,
+                        "filename": filename,
+                        "dataset_url": final_url,
+                        "tipo_dataset_descargable": get_dataset_file_type(filename),
+                    }
+
+            # Para text/csv o excel claro, aunque no haya filename.
+            if content_type in {
+                "text/csv",
+                "text/tab-separated-values",
+                "application/vnd.ms-excel",
+                "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                "application/vnd.oasis.opendocument.spreadsheet",
+                "application/x-parquet",
+                "application/parquet",
+                "application/vnd.apache.parquet",
+                "application/x-hdf5",
+                "application/x-sqlite3",
+            }:
+                return {
+                    "matched": True,
+                    "reason": "content_type_indicates_dataset_no_zip",
+                    "status_code": status_code,
+                    "final_url": final_url,
+                    "content_type": content_type,
+                    "content_disposition": content_disposition,
+                    "content_length": content_length,
+                    "filename": filename,
+                    "dataset_url": final_url,
+                    "tipo_dataset_descargable": get_dataset_file_type(filename or final_url),
+                }
+
+        return {
+            "matched": False,
+            "reason": "headers_do_not_indicate_dataset_file_no_zip",
+            "status_code": status_code,
+            "final_url": final_url,
+            "content_type": content_type,
+            "content_disposition": content_disposition,
+            "content_length": content_length,
+            "filename": filename,
+        }
+
+    except Exception as e:
+        return {
+            "matched": False,
+            "reason": "header_check_exception",
+            "error": str(e),
+        }
+
+
+def extract_body_from_html(html: str) -> str:
+    """
+    Devuelve solo el contenido entre <body>...</body>.
+    Si no hay body, devuelve el HTML entero como fallback.
+    """
+    if not html:
+        return ""
+
+    match = re.search(r"<body[^>]*>(.*?)</body>", html, flags=re.IGNORECASE | re.DOTALL)
+    if match:
+        return match.group(1)
+
+    return html
+
+
+def html_body_has_dataset_context(body_html: str) -> bool:
+    """
+    Solo permite revisar ZIPs si en el body aparece contexto de dataset/datos.
+    Esto evita descargar ZIPs genéricos sin contexto.
+    """
+    if not body_html:
+        return False
+
+    text = re.sub(r"<[^>]+>", " ", body_html).lower()
+    tokens = {t for t in re.split(r"[^a-zA-Z0-9áéíóúñ]+", text) if t}
+
+    return bool(tokens.intersection(DATASET_NAME_KEYWORDS))
+
+
+def extract_downloadable_candidates_from_html_body(html: str, base_url: str) -> list:
+    """
+    Extrae candidatos solo desde el BODY del HTML.
+    Así los ZIPs del head/scripts/metadatos no se descargan.
+    """
+    body_html = extract_body_from_html(html)
+    return extract_downloadable_candidates_from_html(body_html, base_url)
+
+
+def find_direct_dataset_downloadables_no_zip(input_url: str, candidates: list, session=None) -> list:
+    """
+    Busca descargables tipo dataset, pero saltándose ZIP.
+    Si encuentra .csv/.tsv/.xlsx/.parquet/etc. devuelve positivo directamente.
+    """
+    dataset_links = []
+
+    for link in candidates:
+        link = clean_url(link)
+
+        if not link or not link.startswith(("http://", "https://")):
+            continue
+
+        if not is_allowed_dataset_link(input_url, link):
+            continue
+
+        # ZIP se deja para el último paso.
+        if is_zip_by_url(link):
+            continue
+
+        if url_ends_with_dataset_file(link):
+            dataset_links.append(link)
+            continue
+
+        # Validación por cabeceras sin descargar ZIP.
+        validation = check_url_headers_for_dataset_file_no_zip_download(link, session=session)
+        if validation.get("matched"):
+            dataset_links.append(clean_url(validation.get("dataset_url", link)))
+
+    return sorted(set(dataset_links))
+
+
+def find_zip_dataset_downloadables_from_body(input_url: str, body_candidates: list, session=None) -> dict:
+    """
+    Último paso:
+    - Solo mira ZIPs encontrados en el body.
+    - Solo los descarga si el enlace/ruta tiene contexto de dataset.
+    - Abre el ZIP y comprueba si dentro hay formatos dataset.
+    """
+    checked_zips = []
+
+    for link in body_candidates:
+        link = clean_url(link)
+
+        if not link or not link.startswith(("http://", "https://")):
+            continue
+
+        if not is_allowed_dataset_link(input_url, link):
+            continue
+
+        if not is_zip_by_url(link):
+            continue
+
+        # ZIP solo si el propio enlace parece de datos.
+        if not filename_has_dataset_context(link):
+            continue
+
+        checked_zips.append(link)
+        zip_check = check_zip_for_csv(link, session=session)
+
+        if zip_check.get("matched"):
+            zip_check["checked_zip_links"] = checked_zips
+            return zip_check
+
+    return {
+        "matched": False,
+        "reason": "no_zip_with_dataset_context_found_or_zip_without_dataset_files",
+        "checked_zip_links": checked_zips,
+        "zip_descargado": bool(checked_zips),
+        "zip_contiene_csv": False,
+        "zip_csv_encontrados": [],
+        "zip_total_archivos": 0,
+        "zip_archivos_sample": [],
+        "zip_error": "",
+    }
+
+
 # ==============================
 # HEURÍSTICA 1
 # ==============================
 
 def heuristic_1(url: str, session=None) -> dict:
     """
-    Orden correcto de la heurística 1:
+    Heurística 1 optimizada según el nuevo orden:
 
-    1. Si la URL pertenece a un dominio famoso de datasets, dataset=True.
-    2. Si la URL acaba en .csv, .tsv, .xlsx, .parquet, etc., dataset=True.
-       No acepta .json ni .xml.
-    3. Si la URL es .zip, descarga el ZIP y mira dentro.
-    4. Descarga el HTML y busca enlaces descargables.
-       Si encuentra .csv, .tsv, .xlsx, .parquet, .zip, etc., dataset=True.
-       Si encuentra ZIP, abre el ZIP y mira dentro.
-    5. Como apoyo final, revisa cabeceras HTTP.
-    6. Si nada funciona, dataset=False.
+    1) Cabeceras HTTP:
+       si Content-Disposition / URL final / Content-Type indican .csv, .tsv, .xlsx,
+       .parquet, etc. => dataset=True y NO descarga HTML ni JSON.
+       No acepta JSON/XML. No abre ZIP aquí.
+
+    2) Dominio famoso:
+       Kaggle, Zenodo records, Figshare, Dryad, Mendeley Data, Dataverse,
+       OSF, HuggingFace datasets => dataset=True y NO descarga HTML ni JSON.
+
+    3) URL directa:
+       si la URL termina en formato dataset => dataset=True.
+
+    4) HTML:
+       descarga HTML, usa solo el BODY, extrae href/src/URLs y busca descargables
+       directos .csv/.tsv/.xlsx/.parquet/etc. Si hay uno => dataset=True y NO mira ZIP.
+
+    5) ZIP último:
+       solo si el BODY tiene contexto de dataset/datos y el ZIP está enlazado en el BODY.
+       Además el enlace ZIP debe tener contexto de dataset en su nombre/ruta.
+       Se abre el ZIP y se comprueba si contiene formatos dataset.
+
+    6) No se usa JSON en esta versión para optimizar tiempo.
     """
 
     url = clean_url(url)
 
+    # Valores base para mantener compatibilidad con tu CSV/JSON de salida.
+    base_value = {
+        "url": url,
+        "es_dataset_directo": False,
+        "tipo_dataset_descargable": "",
+        "pagina_con_descargables": False,
+        "dataset_descargable": "",
+        "dataset_descargables_encontrados": [],
+        "json_descargado": False,
+        "html_descargado": False,
+        "header_checked": False,
+        "zip_descargado": False,
+        "zip_contiene_csv": False,
+        "zip_csv_encontrados": [],
+        "zip_total_archivos": 0,
+        "zip_archivos_sample": [],
+        "zip_error": "",
+        "header_content_type": "",
+        "header_content_disposition": "",
+        "total_descargables_json": 0,
+        "total_descargables_html": 0,
+        "json_dataset_descargables_encontrados": [],
+        "html_dataset_descargables_encontrados": [],
+        "descargables_json_sample": [],
+        "descargables_html_sample": [],
+        "json_content_type": "",
+        "html_content_type": "",
+    }
+
     # ==============================
-    # PASO 0: dominio famoso de dataset
+    # PASO 1: cabeceras rápidas
+    # ==============================
+    header_check = check_url_headers_for_dataset_file_no_zip_download(url, session=session)
+
+    if header_check.get("matched"):
+        dataset_url = header_check.get("dataset_url", url)
+        value = dict(base_value)
+        value.update({
+            "es_dataset_directo": True,
+            "tipo_dataset_descargable": header_check.get("tipo_dataset_descargable", ""),
+            "dataset_descargable": dataset_url,
+            "dataset_descargables_encontrados": [dataset_url],
+            "header_checked": True,
+            "header_content_type": header_check.get("content_type", ""),
+            "header_content_disposition": header_check.get("content_disposition", ""),
+            "header_final_url": header_check.get("final_url", ""),
+        })
+        return {
+            "matched": True,
+            "reason": header_check.get("reason", "headers_indicate_dataset_file_no_zip"),
+            "value": value,
+        }
+
+    # ==============================
+    # PASO 2: dominio famoso
     # ==============================
     if is_super_famous_dataset_domain_url(url):
+        value = dict(base_value)
+        value.update({
+            "es_dataset_directo": True,
+            "tipo_dataset_descargable": "dataset_repository_page",
+            "pagina_con_descargables": True,
+            "dataset_descargable": url,
+            "dataset_descargables_encontrados": [url],
+            "header_checked": True,
+            "header_content_type": header_check.get("content_type", ""),
+            "header_content_disposition": header_check.get("content_disposition", ""),
+        })
         return {
             "matched": True,
             "reason": "super_famous_dataset_domain",
-            "value": {
-                "url": url,
-                "es_dataset_directo": True,
-                "tipo_dataset_descargable": "dataset_repository_page",
-                "pagina_con_descargables": True,
-                "dataset_descargable": url,
-                "dataset_descargables_encontrados": [url],
-                "json_descargado": False,
-                "html_descargado": False,
-                "header_checked": False,
-                "zip_descargado": False,
-                "zip_contiene_csv": False,
-                "zip_csv_encontrados": [],
-                "zip_total_archivos": 0,
-                "zip_archivos_sample": [],
-                "zip_error": "",
-                "header_content_type": "",
-                "header_content_disposition": "",
-                "total_descargables_json": 0,
-                "total_descargables_html": 0,
-                "json_dataset_descargables_encontrados": [],
-                "html_dataset_descargables_encontrados": []
-            }
+            "value": value,
         }
 
     # ==============================
-    # PASO 1: URL directa con extensión dataset
+    # PASO 3: URL directa con extensión dataset
     # ==============================
     if url_ends_with_dataset_file(url):
+        value = dict(base_value)
+        value.update({
+            "es_dataset_directo": True,
+            "tipo_dataset_descargable": get_dataset_file_type(url),
+            "dataset_descargable": url,
+            "dataset_descargables_encontrados": [url],
+            "header_checked": True,
+            "header_content_type": header_check.get("content_type", ""),
+            "header_content_disposition": header_check.get("content_disposition", ""),
+        })
         return {
             "matched": True,
             "reason": "url_ends_with_dataset_file",
-            "value": {
-                "url": url,
-                "es_dataset_directo": True,
-                "tipo_dataset_descargable": get_dataset_file_type(url),
-                "pagina_con_descargables": False,
-                "dataset_descargable": url,
-                "dataset_descargables_encontrados": [url],
-                "json_descargado": False,
-                "html_descargado": False,
-                "header_checked": False,
-                "zip_descargado": False,
-                "zip_contiene_csv": False,
-                "zip_csv_encontrados": [],
-                "zip_total_archivos": 0,
-                "zip_archivos_sample": [],
-                "zip_error": "",
-                "header_content_type": "",
-                "header_content_disposition": "",
-                "total_descargables_json": 0,
-                "total_descargables_html": 0,
-                "json_dataset_descargables_encontrados": [],
-                "html_dataset_descargables_encontrados": []
-            }
+            "value": value,
         }
 
     # ==============================
-    # PASO 2: si la propia URL es ZIP, abrirlo
+    # PASO 4: HTML body y descargables directos
     # ==============================
-    if is_zip_by_url(url):
-        zip_check = check_zip_for_csv(url, session=session)
+    html_response = fetch_html_sample(url, session=session)
 
-        if zip_check.get("matched"):
+    if html_response.get("ok"):
+        final_url = html_response.get("final_url", url)
+        html = html_response.get("text", "")
+        body_html = extract_body_from_html(html)
+        body_candidates = extract_downloadable_candidates_from_html_body(html, final_url)
+
+        direct_dataset_links = find_direct_dataset_downloadables_no_zip(
+            url,
+            body_candidates,
+            session=session,
+        )
+
+        if direct_dataset_links:
+            dataset_url = direct_dataset_links[0]
+            value = dict(base_value)
+            value.update({
+                "es_dataset_directo": False,
+                "tipo_dataset_descargable": get_dataset_file_type(dataset_url),
+                "pagina_con_descargables": True,
+                "dataset_descargable": dataset_url,
+                "dataset_descargables_encontrados": direct_dataset_links,
+                "html_descargado": True,
+                "header_checked": True,
+                "header_content_type": header_check.get("content_type", ""),
+                "header_content_disposition": header_check.get("content_disposition", ""),
+                "total_descargables_html": len(body_candidates),
+                "descargables_html_sample": body_candidates[:20],
+                "html_content_type": html_response.get("content_type", ""),
+                "html_dataset_descargables_encontrados": direct_dataset_links,
+            })
             return {
                 "matched": True,
-                "reason": "zip_contains_dataset_file",
-                "value": {
-                    "url": url,
-                    "es_dataset_directo": True,
+                "reason": "html_body_contains_direct_dataset_downloadable_no_zip_checked",
+                "value": value,
+            }
+
+        # ==============================
+        # PASO 5: ZIP último, solo con contexto dataset en body
+        # ==============================
+        if html_body_has_dataset_context(body_html):
+            zip_check = find_zip_dataset_downloadables_from_body(
+                url,
+                body_candidates,
+                session=session,
+            )
+
+            if zip_check.get("matched"):
+                dataset_url = zip_check.get("dataset_url", url)
+                value = dict(base_value)
+                value.update({
+                    "es_dataset_directo": False,
                     "tipo_dataset_descargable": ".zip",
-                    "pagina_con_descargables": False,
-                    "dataset_descargable": zip_check.get("dataset_url", url),
-                    "dataset_descargables_encontrados": [zip_check.get("dataset_url", url)],
-                    "json_descargado": False,
-                    "html_descargado": False,
-                    "header_checked": False,
+                    "pagina_con_descargables": True,
+                    "dataset_descargable": dataset_url,
+                    "dataset_descargables_encontrados": [dataset_url],
+                    "html_descargado": True,
+                    "header_checked": True,
+                    "header_content_type": header_check.get("content_type", ""),
+                    "header_content_disposition": header_check.get("content_disposition", ""),
                     "zip_descargado": bool(zip_check.get("zip_descargado", False)),
                     "zip_contiene_csv": bool(zip_check.get("zip_contiene_csv", False)),
                     "zip_csv_encontrados": zip_check.get("zip_csv_encontrados", []),
                     "zip_total_archivos": zip_check.get("zip_total_archivos", 0),
                     "zip_archivos_sample": zip_check.get("zip_archivos_sample", []),
                     "zip_error": zip_check.get("zip_error", ""),
-                    "header_content_type": "",
-                    "header_content_disposition": "",
-                    "total_descargables_json": 0,
-                    "total_descargables_html": 0,
-                    "json_dataset_descargables_encontrados": [],
-                    "html_dataset_descargables_encontrados": []
+                    "total_descargables_html": len(body_candidates),
+                    "descargables_html_sample": body_candidates[:20],
+                    "html_content_type": html_response.get("content_type", ""),
+                    "html_dataset_descargables_encontrados": [dataset_url],
+                })
+                return {
+                    "matched": True,
+                    "reason": "html_body_dataset_context_zip_contains_dataset_file",
+                    "value": value,
                 }
-            }
 
-    # ==============================
-    # PASO 3: HTML
-    # ==============================
-    html_check = check_html_for_dataset_downloadables(url, session=session)
-    html_value = html_check.get("value", {})
-
-    if html_check.get("matched"):
-        dataset_url = html_value.get("html_dataset_descargable", "")
-
-        zip_metadata = collect_zip_metadata_from_dataset_links(
-            html_value.get("html_dataset_descargables_encontrados", []),
-            session=session
-        )
-
-        return {
-            "matched": True,
-            "reason": "html_contains_dataset_downloadable",
-            "value": {
-                "url": url,
-                "es_dataset_directo": False,
-                "tipo_dataset_descargable": get_dataset_file_type(dataset_url),
-                "pagina_con_descargables": True,
-                "dataset_descargable": dataset_url,
-                "dataset_descargables_encontrados": html_value.get(
-                    "html_dataset_descargables_encontrados",
-                    []
-                ),
-                "json_descargado": False,
-                "html_descargado": bool(html_value.get("html_descargado", False)),
-                "header_checked": False,
-                "header_content_type": "",
-                "header_content_disposition": "",
-                "zip_descargado": bool(zip_metadata.get("zip_descargado", False)),
-                "zip_contiene_csv": bool(zip_metadata.get("zip_contiene_csv", False)),
-                "zip_csv_encontrados": zip_metadata.get("zip_csv_encontrados", []),
-                "zip_total_archivos": zip_metadata.get("zip_total_archivos", 0),
-                "zip_archivos_sample": zip_metadata.get("zip_archivos_sample", []),
-                "zip_error": zip_metadata.get("zip_error", ""),
-                "total_descargables_json": 0,
-                "total_descargables_html": html_value.get("total_descargables_html", 0),
-                "descargables_json_sample": [],
-                "descargables_html_sample": html_value.get("descargables_html_sample", []),
-                "json_content_type": "",
-                "html_content_type": html_value.get("html_content_type", ""),
-                "json_dataset_descargables_encontrados": [],
-                "html_dataset_descargables_encontrados": html_value.get(
-                    "html_dataset_descargables_encontrados",
-                    []
-                )
-            }
-        }
-
-    # ==============================
-    # PASO 4: cabeceras HTTP como apoyo final
-    # ==============================
-    header_check = check_url_headers_for_dataset_file(url, session=session)
-
-    if header_check.get("matched"):
-        dataset_url = header_check.get("dataset_url", url)
-
-        return {
-            "matched": True,
-            "reason": header_check.get("reason", "headers_indicate_dataset_file"),
-            "value": {
-                "url": url,
-                "es_dataset_directo": True,
-                "tipo_dataset_descargable": header_check.get("tipo_dataset_descargable", ""),
-                "pagina_con_descargables": False,
-                "dataset_descargable": dataset_url,
-                "dataset_descargables_encontrados": [dataset_url],
-                "json_descargado": False,
-                "html_descargado": bool(html_value.get("html_descargado", False)),
-                "header_checked": True,
-                "header_content_type": header_check.get("content_type", ""),
-                "header_content_disposition": header_check.get("content_disposition", ""),
-                "header_final_url": header_check.get("final_url", ""),
-                "zip_descargado": bool(header_check.get("zip_descargado", False)),
-                "zip_contiene_csv": bool(header_check.get("zip_contiene_csv", False)),
-                "zip_csv_encontrados": header_check.get("zip_csv_encontrados", []),
-                "zip_total_archivos": header_check.get("zip_total_archivos", 0),
-                "zip_archivos_sample": header_check.get("zip_archivos_sample", []),
-                "zip_error": header_check.get("zip_error", ""),
-                "total_descargables_json": 0,
-                "total_descargables_html": html_value.get("total_descargables_html", 0),
-                "json_dataset_descargables_encontrados": [],
-                "html_dataset_descargables_encontrados": html_value.get(
-                    "html_dataset_descargables_encontrados",
-                    []
-                )
-            }
-        }
-
-    # ==============================
-    # PASO 5: no encontrado
-    # ==============================
-    return {
-        "matched": False,
-        "reason": "no_dataset_downloadable_found_in_url_html_zip_or_headers",
-        "value": {
-            "url": url,
-            "es_dataset_directo": False,
-            "tipo_dataset_descargable": "",
-            "pagina_con_descargables": bool(html_value.get("total_descargables_html", 0)),
-            "dataset_descargable": "",
-            "dataset_descargables_encontrados": [],
-            "json_descargado": False,
-            "html_descargado": bool(html_value.get("html_descargado", False)),
+        value = dict(base_value)
+        value.update({
+            "html_descargado": True,
             "header_checked": True,
             "header_content_type": header_check.get("content_type", ""),
             "header_content_disposition": header_check.get("content_disposition", ""),
-            "header_error_reason": header_check.get("reason", ""),
-            "zip_descargado": bool(header_check.get("zip_descargado", False)),
-            "zip_contiene_csv": bool(header_check.get("zip_contiene_csv", False)),
-            "zip_csv_encontrados": header_check.get("zip_csv_encontrados", []),
-            "zip_total_archivos": header_check.get("zip_total_archivos", 0),
-            "zip_archivos_sample": header_check.get("zip_archivos_sample", []),
-            "zip_error": header_check.get("zip_error", ""),
-            "total_descargables_json": 0,
-            "total_descargables_html": html_value.get("total_descargables_html", 0),
-            "descargables_json_sample": [],
-            "descargables_html_sample": html_value.get("descargables_html_sample", []),
-            "json_content_type": "",
-            "html_content_type": html_value.get("html_content_type", ""),
-            "json_dataset_descargables_encontrados": [],
-            "html_dataset_descargables_encontrados": html_value.get(
-                "html_dataset_descargables_encontrados",
-                []
-            ),
-            "html_error_reason": html_value.get("html_error_reason", "")
+            "total_descargables_html": len(body_candidates),
+            "descargables_html_sample": body_candidates[:20],
+            "html_content_type": html_response.get("content_type", ""),
+            "html_body_has_dataset_context": html_body_has_dataset_context(body_html),
+        })
+        return {
+            "matched": False,
+            "reason": "html_body_downloaded_but_no_direct_dataset_and_no_valid_dataset_zip",
+            "value": value,
         }
+
+    # ==============================
+    # PASO 6: no se pudo descargar HTML o no había dataset
+    # ==============================
+    value = dict(base_value)
+    value.update({
+        "html_descargado": False,
+        "header_checked": True,
+        "header_content_type": header_check.get("content_type", ""),
+        "header_content_disposition": header_check.get("content_disposition", ""),
+        "header_error_reason": header_check.get("reason", ""),
+        "html_error_reason": html_response.get("reason", ""),
+        "html_content_type": html_response.get("content_type", ""),
+    })
+    return {
+        "matched": False,
+        "reason": "no_dataset_found_headers_domain_direct_url_or_html_body",
+        "value": value,
     }
 
 
