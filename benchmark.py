@@ -1,563 +1,519 @@
-# benchmark.py
-# Compara las URLs detectadas por heurísticas contra el benchmark manual.
+# benchmark_h1_h2_manual_unique_strict.py
+# Benchmark H1 y H2 contra Benchmark/UrlManual_normalized.xlsx
 #
-# CAMBIO IMPORTANTE:
-# Ya NO se exige que la URL detectada y la URL manual sean exactamente iguales.
-# Se usa comparación aproximada:
-#   - misma URL normalizada
-#   - una URL contiene a la otra
-#   - mismo dominio y ruta parecida
-#   - tokens / identificadores relevantes compartidos
+# Objetivo:
+#   - Que el benchmark NO marque mas URLs como dataset por culpa de matches parecidos.
+#   - Se usan URLs manuales unicas, no filas repetidas por PDF.
+#   - Cada URL de H1/H2 solo puede emparejarse con una URL manual.
+#   - La comparacion parecida es estricta: exacta o una URL contiene claramente a la otra.
 #
-# Esto evita falsos "no está en manual" cuando, por ejemplo:
-#   manual:    https://zenodo.org/records/12345
-#   detectada: https://zenodo.org/records/12345/files/data.csv
+# Salidas sencillas:
+#   benchmark_Results/benchmark_h1_h2_comparison.csv
+#   benchmark_Results/benchmark_h1_h2_comparison_simple.xlsx
+#   benchmark_Results/benchmark_h1_h2_summary.csv
+#   benchmark_Results/benchmark_h1_h2_summary_simple.xlsx
+#   benchmark_Results/benchmark_h1_h2_report.txt
 
-import re
 from pathlib import Path
-from urllib.parse import urlparse
-from difflib import SequenceMatcher
+from typing import Any, Dict, List, Tuple
+from urllib.parse import urlparse, unquote
+from datetime import datetime
+import re
 
 import pandas as pd
-from sklearn.metrics import (
-    accuracy_score,
-    precision_score,
-    recall_score,
-    f1_score,
-    confusion_matrix,
-    classification_report,
-)
+
+
+# ==============================
+# RUTAS
+# ==============================
 
 BASE_DIR = Path(__file__).resolve().parent
 
-MANUAL_FILE = BASE_DIR / "Benchmark" / "UrlManual.xlsx"
-HEURISTICS_FILE = BASE_DIR / "outputs" / "heuristics_results.csv"
+MANUAL_FILE = BASE_DIR / "Benchmark" / "UrlManual_normalized.xlsx"
+H1_FILE = BASE_DIR / "outputs" / "heuristic_1_results.csv"
+H2_FILE = BASE_DIR / "outputs" / "heuristic_2_results.csv"
 
-OUTPUT_COMPARISON_FILE = BASE_DIR / "outputs" / "benchmark_comparison.csv"
-OUTPUT_SUMMARY_FILE = BASE_DIR / "outputs" / "benchmark_summary.csv"
-OUTPUT_REPORT_FILE = BASE_DIR / "outputs" / "benchmark_report.txt"
+OUT_DIR = BASE_DIR / "benchmark_Results"
+OUT_COMPARISON = OUT_DIR / "benchmark_h1_h2_comparison.csv"
+OUT_SUMMARY = OUT_DIR / "benchmark_h1_h2_summary.csv"
+OUT_REPORT = OUT_DIR / "benchmark_h1_h2_report.txt"
+OUT_COMPARISON_XLSX = OUT_DIR / "benchmark_h1_h2_comparison_simple.xlsx"
+OUT_SUMMARY_XLSX = OUT_DIR / "benchmark_h1_h2_summary_simple.xlsx"
+
+# Con esta funcion estricta, 0.94 acepta:
+# - exacto = 1.00
+# - una URL contiene a la otra en el mismo dominio = 0.97 / 0.94
+# No acepta similitud por tokens ni SequenceMatcher.
+MATCH_THRESHOLD = 0.94
 
 
-# ==========================================================
-# Columnas esperadas del CSV de heuristics.py
-# ==========================================================
-HEURISTIC_COLUMNS = {
-    "heuristica_1_extension_url_o_archivo": "heuristica_1_extension_url_o_archivo_matched",
-    "heuristica_2_http_metadata": "heuristica_2_http_metadata_matched",
-    "heuristica_3_gap_kge": "heuristica_3_gap_kge_matched",
-    "prediccion_final_label": "label",
-}
+# ==============================
+# UTILIDADES
+# ==============================
 
-
-# ==========================================================
-# Normalización básica
-# ==========================================================
-def normalize_bool(value) -> bool:
+def clean_url_exact(value: Any) -> str:
     if pd.isna(value):
-        return False
-
-    if isinstance(value, bool):
-        return value
-
-    if isinstance(value, (int, float)):
-        return value != 0
-
-    value = str(value).strip().lower()
-
-    return value in {
-        "true", "1", "yes", "y", "si", "sí", "dataset",
-        "maybe_dataset", "positive", "positivo"
-    }
+        return ""
+    return str(value).strip()
 
 
-def normalize_label(value):
-    """
-    Normaliza etiquetas manuales o predichas a:
-    1 -> dataset
-    0 -> no dataset
-    None -> desconocido
-    """
+def normalize_bool(value: Any) -> int:
     if pd.isna(value):
-        return None
-
-    value = str(value).strip().lower()
-
-    positive_values = {
-        "1", "true", "yes", "y", "si", "sí", "dataset",
-        "maybe_dataset", "positive", "positivo", "data", "datos"
-    }
-
-    negative_values = {
-        "0", "false", "no", "not_dataset", "negative",
-        "negativo", "no dataset", "not dataset", "no_data", "sin datos"
-    }
-
-    if value in positive_values:
-        return 1
-
-    if value in negative_values:
         return 0
 
-    return None
+    if isinstance(value, bool):
+        return int(value)
+
+    if isinstance(value, (int, float)):
+        return 1 if value != 0 else 0
+
+    value = str(value).strip().lower()
+
+    positives = {
+        "true", "1", "yes", "y", "si", "sí", "dataset",
+        "positive", "positivo"
+    }
+
+    return 1 if value in positives else 0
 
 
-# ==========================================================
-# Normalización y comparación aproximada de URLs
-# ==========================================================
-def normalize_url_for_matching(url):
-    if pd.isna(url):
+def url_for_matching(value: Any) -> str:
+    """
+    Normaliza SOLO para comparar.
+    No cambia la URL que se guarda en el resultado.
+    """
+    if pd.isna(value):
         return ""
 
-    url = str(url).strip().lower()
+    url = str(value).strip().lower()
+    url = re.sub(r"\s+", "", url)
 
     if not url:
         return ""
 
-    # Quitar espacios raros
-    url = re.sub(r"\s+", "", url)
-
-    # Quitar fragmentos y query params
+    # Quitar fragmentos y parametros para comparar el recurso base
     url = url.split("#")[0]
     url = url.split("?")[0]
 
-    # Normalizar protocolo
+    # Comparacion ligera: http/www no deben crear URLs distintas
     url = url.replace("http://", "https://")
-
-    # Quitar www.
     url = url.replace("https://www.", "https://")
-
-    # Quitar barra final
     url = url.rstrip("/")
 
     return url
 
 
-def get_domain_for_matching(url):
+def get_domain(url: str) -> str:
     try:
         return urlparse(url).netloc.lower().replace("www.", "")
     except Exception:
         return ""
 
 
-def get_path_for_matching(url):
+def get_path(url: str) -> str:
     try:
-        return urlparse(url).path.lower().rstrip("/")
+        return unquote(urlparse(url).path.lower()).rstrip("/")
     except Exception:
         return ""
 
 
-def sequence_similarity(a, b):
-    if not a or not b:
-        return 0.0
-    return SequenceMatcher(None, a, b).ratio()
+def simplify_path(path: str) -> str:
+    path = unquote((path or "").lower()).strip()
+    path = re.sub(r"/{2,}", "/", path)
+
+    if path != "/":
+        path = path.rstrip("/")
+
+    # Quitar finales que suelen ser vistas del mismo recurso
+    path = re.sub(
+        r"/(data|download|downloads|files|file|view|preview|metadata|code|versions)$",
+        "",
+        path,
+    )
+
+    # Quitar extensiones de paginas, no extensiones de datos
+    path = re.sub(r"\.(html|htm|php|aspx)$", "", path)
+
+    return path.strip("/")
 
 
-def extract_url_tokens(url):
+def is_general_page(path: str) -> bool:
     """
-    Extrae tokens útiles de la URL.
-    Sirve para detectar coincidencias por identificadores, repositorios, records, etc.
+    Evita que paginas generales se emparejen con datasets concretos.
     """
-    url = normalize_url_for_matching(url)
-    parsed = urlparse(url)
+    p = "/" + path.strip("/") + "/"
 
-    raw = f"{parsed.netloc} {parsed.path}".lower()
-    tokens = re.split(r"[/_\-.=&?:#]+", raw)
+    general_patterns = [
+        "/communities/",
+        "/search/",
+        "/explore/",
+        "/topics/",
+        "/docs/",
+        "/documentation/",
+        "/about/",
+        "/help/",
+        "/login/",
+        "/signup/",
+        "/repositories/",
+        "/collections/",
+    ]
 
-    tokens = {t for t in tokens if len(t) >= 3}
-
-    stop_tokens = {
-        "www", "com", "org", "net", "edu", "gov", "https", "http",
-        "dataset", "datasets", "data", "download", "downloads",
-        "file", "files", "record", "records", "article", "articles",
-        "view", "main", "tree", "blob", "raw", "source", "index",
-        "paper", "papers", "docs", "documentation", "html", "php"
-    }
-
-    return tokens - stop_tokens
+    return any(pattern in p for pattern in general_patterns)
 
 
-def url_match_score(url1, url2):
+def url_match_score(manual_url: str, heuristic_url: str) -> Tuple[float, str]:
     """
-    Devuelve una puntuación de parecido entre 0 y 1.
-    A partir de 0.75 se considera match aproximado.
-    """
-    u1 = normalize_url_for_matching(url1)
-    u2 = normalize_url_for_matching(url2)
+    Match estricto.
 
-    if not u1 or not u2:
+    Acepta:
+    - exacto tras normalizacion ligera
+    - mismo dominio y una URL contiene claramente a la otra
+
+    Rechaza:
+    - dominios distintos
+    - similitud por tokens
+    - SequenceMatcher
+    - paginas generales
+    """
+    m = url_for_matching(manual_url)
+    h = url_for_matching(heuristic_url)
+
+    if not m or not h:
         return 0.0, "empty_url"
 
-    # 1. Coincidencia exacta tras normalización
-    if u1 == u2:
-        return 1.0, "exact_normalized_match"
+    if m == h:
+        return 1.0, "exact_match_after_light_normalization"
 
-    # 2. Una URL contiene a la otra
-    # Ejemplo: /records/12345 y /records/12345/files/data.csv
-    if u1 in u2 or u2 in u1:
-        return 0.95, "url_contains_other_url"
+    dm = get_domain(m)
+    dh = get_domain(h)
 
-    d1 = get_domain_for_matching(u1)
-    d2 = get_domain_for_matching(u2)
+    if not dm or not dh:
+        return 0.0, "missing_domain"
 
-    p1 = get_path_for_matching(u1)
-    p2 = get_path_for_matching(u2)
-
-    # Si los dominios son distintos, solo permitimos match si comparten
-    # identificadores largos muy claros. En general, distinto dominio = no match.
-    same_domain = d1 and d2 and d1 == d2
-
-    tokens1 = extract_url_tokens(u1)
-    tokens2 = extract_url_tokens(u2)
-    common_tokens = tokens1.intersection(tokens2)
-
-    long_common_tokens = [t for t in common_tokens if len(t) >= 6]
-
-    if not same_domain:
-        if long_common_tokens:
-            return 0.78, "different_domain_but_shared_long_identifier"
+    if dm != dh:
         return 0.0, "different_domain"
 
-    # 3. Mismo dominio y una ruta contiene a la otra
-    if p1 and p2 and (p1 in p2 or p2 in p1):
-        return 0.92, "same_domain_path_contains_other_path"
+    pm = simplify_path(get_path(m))
+    ph = simplify_path(get_path(h))
 
-    # 4. Mismo dominio y rutas parecidas
-    path_sim = sequence_similarity(p1, p2)
-    if path_sim >= 0.75:
-        return path_sim, "same_domain_similar_path"
+    if not pm or not ph:
+        return 0.0, "empty_path"
 
-    # 5. Tokens relevantes compartidos
-    if tokens1 and tokens2:
-        min_size = min(len(tokens1), len(tokens2))
-        overlap_ratio = len(common_tokens) / min_size if min_size > 0 else 0
+    if is_general_page(pm) or is_general_page(ph):
+        return 0.0, "general_page_rejected"
 
-        if overlap_ratio >= 0.60:
-            return max(0.75, overlap_ratio), "same_domain_token_overlap"
+    # Caso claro:
+    # manual:     zenodo.org/records/12345
+    # heuristica: zenodo.org/records/12345/files/data.csv
+    if m in h or h in m:
+        return 0.97, "same_domain_one_url_contains_the_other"
 
-    # 6. Identificador largo compartido
-    if long_common_tokens:
-        return 0.85, "same_domain_shared_long_identifier"
+    if pm in ph or ph in pm:
+        return 0.94, "same_domain_path_contains_other"
 
-    return 0.0, "no_match"
+    return 0.0, "no_match_strict"
 
 
-def urls_roughly_match(url1, url2, threshold=0.75):
-    score, _ = url_match_score(url1, url2)
-    return score >= threshold
+# ==============================
+# CARGA DE DATOS
+# ==============================
 
-
-# ==========================================================
-# Detección flexible de columnas en Excel/CSV
-# ==========================================================
-def normalize_column_name(col):
-    return str(col).strip().lower().replace(" ", "_").replace("-", "_")
-
-
-def find_first_existing_column(df, candidates):
-    normalized_map = {normalize_column_name(c): c for c in df.columns}
-
-    for candidate in candidates:
-        c_norm = normalize_column_name(candidate)
-        if c_norm in normalized_map:
-            return normalized_map[c_norm]
-
-    # Segunda pasada: columnas que contengan el texto candidato
-    for candidate in candidates:
-        c_norm = normalize_column_name(candidate)
-        for normalized, original in normalized_map.items():
-            if c_norm in normalized:
-                return original
-
-    return None
-
-
-def detect_url_column(df):
-    candidates = [
-        "normalized_url", "url", "URL", "manual_url", "url_manual",
-        "original_url", "link", "enlace", "dataset_url", "data_url"
-    ]
-    return find_first_existing_column(df, candidates)
-
-
-def detect_label_column(df):
-    candidates = [
-        "label", "manual_label", "is_dataset", "dataset", "es_dataset",
-        "is_data", "ground_truth", "class", "clase", "tipo", "resultado"
-    ]
-    return find_first_existing_column(df, candidates)
-
-
-# ==========================================================
-# Carga de manual y heurísticas
-# ==========================================================
-def load_manual_file(path):
+def load_manual(path: Path) -> pd.DataFrame:
     if not path.exists():
-        raise FileNotFoundError(f"No existe el archivo manual: {path}")
+        raise FileNotFoundError(f"No existe el Excel manual: {path}")
 
-    manual_df = pd.read_excel(path)
+    df = pd.read_excel(path)
 
-    url_col = detect_url_column(manual_df)
-    if not url_col:
-        raise ValueError(
-            "No encuentro la columna de URL en el Excel manual. "
-            "Usa un nombre como 'url', 'normalized_url', 'manual_url' o 'original_url'."
-        )
+    required = {"url", "es_dataset"}
+    missing = required - set(df.columns)
+    if missing:
+        raise ValueError(f"Faltan columnas en el Excel manual: {missing}")
 
-    label_col = detect_label_column(manual_df)
+    if "pdf" not in df.columns:
+        df["pdf"] = ""
 
-    manual_rows = []
+    df = df.copy()
+    df["url"] = df["url"].apply(clean_url_exact)
+    df["es_dataset_manual"] = df["es_dataset"].apply(normalize_bool)
+    df = df[df["url"] != ""].copy()
 
-    for _, row in manual_df.iterrows():
-        url = row.get(url_col, "")
-        norm_url = normalize_url_for_matching(url)
-
-        if not norm_url:
-            continue
-
-        if label_col:
-            manual_label = normalize_label(row.get(label_col, None))
-            # Si la etiqueta no se entiende, asumimos que esa fila manual es positiva.
-            # Esto permite usar un Excel que solo contiene datasets anotados.
-            if manual_label is None:
-                manual_label = 1
-        else:
-            manual_label = 1
-
-        manual_rows.append({
-            "manual_url": str(url).strip(),
-            "manual_url_norm": norm_url,
-            "manual_label": manual_label,
+    # IMPORTANTE:
+    # El benchmark es por URL, no por fila/PDF.
+    # Si la misma URL aparece varias veces, se queda una sola.
+    # Si alguna repeticion estaba marcada dataset, se conserva dataset=1.
+    grouped = (
+        df.groupby("url", as_index=False)
+        .agg({
+            "pdf": "first",
+            "es_dataset_manual": "max",
         })
+    )
 
-    return manual_rows, url_col, label_col
+    return grouped.reset_index(drop=True)
 
 
-def load_heuristics_file(path):
+def load_heuristic_rows(path: Path, heuristic_name: str) -> List[Dict[str, Any]]:
     if not path.exists():
-        raise FileNotFoundError(f"No existe el archivo de heurísticas: {path}")
+        raise FileNotFoundError(f"No existe el CSV de {heuristic_name}: {path}")
 
     df = pd.read_csv(path)
 
-    if "normalized_url" not in df.columns:
-        raise ValueError("El CSV de heurísticas debe tener una columna 'normalized_url'.")
+    required = {"url", "heuristica"}
+    missing = required - set(df.columns)
+    if missing:
+        raise ValueError(f"Faltan columnas en {path.name}: {missing}")
 
-    return df
+    rows = []
+
+    for idx, row in df.iterrows():
+        url = clean_url_exact(row.get("url", ""))
+
+        if not url:
+            continue
+
+        rows.append({
+            "id": idx,
+            "url": url,
+            "prediction": normalize_bool(row.get("heuristica", 0)),
+        })
+
+    return rows
 
 
-# ==========================================================
-# Buscar mejor coincidencia manual para cada URL detectada
-# ==========================================================
-def find_best_manual_match(url, manual_rows, threshold=0.75):
-    best = {
-        "matched_manual_url": "",
-        "manual_label": 0,
-        "match_score": 0.0,
-        "match_reason": "no_match",
-        "found_in_manual": False,
+# ==============================
+# MATCH ONE-TO-ONE
+# ==============================
+
+def get_one_to_one_predictions(
+    manual_urls: List[str],
+    heuristic_rows: List[Dict[str, Any]],
+    threshold: float = MATCH_THRESHOLD,
+) -> Tuple[List[int], int, int]:
+    """
+    Devuelve predicciones para cada URL manual.
+
+    Regla clave:
+    - Cada URL de la heuristica solo puede usarse una vez.
+    - Asi una misma URL positiva no puede marcar 5 URLs manuales como dataset.
+    """
+    candidates = []
+
+    for manual_idx, manual_url in enumerate(manual_urls):
+        for h_idx, hrow in enumerate(heuristic_rows):
+            score, reason = url_match_score(manual_url, hrow["url"])
+
+            if score >= threshold:
+                candidates.append({
+                    "manual_idx": manual_idx,
+                    "heuristic_idx": h_idx,
+                    "score": score,
+                    "prediction": int(hrow["prediction"]),
+                    "reason": reason,
+                })
+
+    # Primero matches mas claros.
+    # No priorizamos positivos, porque eso puede inflar datasets.
+    candidates.sort(key=lambda x: x["score"], reverse=True)
+
+    predictions = [0] * len(manual_urls)
+    used_manual = set()
+    used_heuristic = set()
+    matched_count = 0
+
+    for c in candidates:
+        m = c["manual_idx"]
+        h = c["heuristic_idx"]
+
+        if m in used_manual:
+            continue
+
+        if h in used_heuristic:
+            continue
+
+        predictions[m] = c["prediction"]
+        used_manual.add(m)
+        used_heuristic.add(h)
+        matched_count += 1
+
+    raw_positive_count = sum(int(r["prediction"]) for r in heuristic_rows)
+
+    return predictions, matched_count, raw_positive_count
+
+
+# ==============================
+# METRICAS
+# ==============================
+
+def confusion_counts(y_true: List[int], y_pred: List[int]) -> Dict[str, int]:
+    tp = sum(1 for t, p in zip(y_true, y_pred) if t == 1 and p == 1)
+    tn = sum(1 for t, p in zip(y_true, y_pred) if t == 0 and p == 0)
+    fp = sum(1 for t, p in zip(y_true, y_pred) if t == 0 and p == 1)
+    fn = sum(1 for t, p in zip(y_true, y_pred) if t == 1 and p == 0)
+    return {"TP": tp, "TN": tn, "FP": fp, "FN": fn}
+
+
+def safe_div(num: float, den: float) -> float:
+    return num / den if den else 0.0
+
+
+def metrics_from_counts(c: Dict[str, int]) -> Dict[str, float]:
+    tp = c["TP"]
+    tn = c["TN"]
+    fp = c["FP"]
+    fn = c["FN"]
+    total = tp + tn + fp + fn
+
+    precision = safe_div(tp, tp + fp)
+    recall = safe_div(tp, tp + fn)
+
+    return {
+        "accuracy": safe_div(tp + tn, total),
+        "precision": precision,
+        "recall": recall,
+        "f1_score": safe_div(2 * precision * recall, precision + recall),
+        "specificity": safe_div(tn, tn + fp),
     }
 
-    for manual in manual_rows:
-        score, reason = url_match_score(url, manual["manual_url_norm"])
 
-        if score > best["match_score"]:
-            best = {
-                "matched_manual_url": manual["manual_url"],
-                "manual_label": manual["manual_label"],
-                "match_score": score,
-                "match_reason": reason,
-                "found_in_manual": score >= threshold,
-            }
+# ==============================
+# GUARDADO SEGURO
+# ==============================
 
-    if not best["found_in_manual"]:
-        best["matched_manual_url"] = ""
-        best["manual_label"] = 0
-        best["match_reason"] = "no_match_above_threshold"
-
-    return best
+def safe_to_csv(df: pd.DataFrame, path: Path) -> Path:
+    try:
+        df.to_csv(path, index=False, encoding="utf-8-sig")
+        return path
+    except PermissionError:
+        alt = path.with_name(f"{path.stem}_{datetime.now().strftime('%Y%m%d_%H%M%S')}{path.suffix}")
+        df.to_csv(alt, index=False, encoding="utf-8-sig")
+        return alt
 
 
-# ==========================================================
-# Predicciones
-# ==========================================================
-def get_prediction_from_row(row, column_name):
-    if column_name not in row.index:
-        return 0
-
-    value = row[column_name]
-
-    # Caso especial: label final
-    if column_name == "label":
-        label = normalize_label(value)
-        return 1 if label == 1 else 0
-
-    return 1 if normalize_bool(value) else 0
+def safe_to_excel(df: pd.DataFrame, path: Path) -> Path:
+    try:
+        df.to_excel(path, index=False)
+        return path
+    except PermissionError:
+        alt = path.with_name(f"{path.stem}_{datetime.now().strftime('%Y%m%d_%H%M%S')}{path.suffix}")
+        df.to_excel(alt, index=False)
+        return alt
 
 
-# ==========================================================
-# Benchmark
-# ==========================================================
-def build_comparison_dataframe(heuristics_df, manual_rows):
-    comparison_rows = []
-
-    for _, row in heuristics_df.iterrows():
-        url = row.get("normalized_url", "")
-        match = find_best_manual_match(url, manual_rows)
-
-        output_row = {
-            "paper": row.get("paper", ""),
-            "section": row.get("section", ""),
-            "original_url": row.get("original_url", ""),
-            "normalized_url": url,
-            "domain": row.get("domain", ""),
-            "extension": row.get("extension", ""),
-
-            "found_in_manual": match["found_in_manual"],
-            "matched_manual_url": match["matched_manual_url"],
-            "manual_label": match["manual_label"],
-            "match_score": round(match["match_score"], 4),
-            "match_reason": match["match_reason"],
-        }
-
-        # Añadimos predicción de cada heurística principal
-        for heuristic_name, column in HEURISTIC_COLUMNS.items():
-            output_row[f"{heuristic_name}_prediction"] = get_prediction_from_row(row, column)
-
-            if column in row.index:
-                output_row[f"{heuristic_name}_raw_value"] = row[column]
-            else:
-                output_row[f"{heuristic_name}_raw_value"] = "COLUMN_NOT_FOUND"
-
-        # Datos útiles de trazabilidad si existen
-        for optional_col in [
-            "decision_reason",
-            "total_score",
-            "heuristica_1_extension_url_o_archivo_score",
-            "heuristica_2_http_metadata_score",
-            "heuristica_3_gap_kge_score",
-            "gap_kge_style_matched",
-            "gap_kge_style_score",
-        ]:
-            if optional_col in row.index:
-                output_row[optional_col] = row.get(optional_col, "")
-
-        comparison_rows.append(output_row)
-
-    return pd.DataFrame(comparison_rows)
+def safe_write_text(text: str, path: Path) -> Path:
+    try:
+        path.write_text(text, encoding="utf-8")
+        return path
+    except PermissionError:
+        alt = path.with_name(f"{path.stem}_{datetime.now().strftime('%Y%m%d_%H%M%S')}{path.suffix}")
+        alt.write_text(text, encoding="utf-8")
+        return alt
 
 
-def evaluate_predictions(comparison_df):
+# ==============================
+# MAIN
+# ==============================
+
+def main() -> None:
+    OUT_DIR.mkdir(parents=True, exist_ok=True)
+
+    print("Cargando manual...")
+    manual = load_manual(MANUAL_FILE)
+
+    print("Cargando H1...")
+    h1_rows = load_heuristic_rows(H1_FILE, "h1")
+
+    print("Cargando H2...")
+    h2_rows = load_heuristic_rows(H2_FILE, "h2")
+
+    manual_urls = manual["url"].tolist()
+
+    print("Comparando URLs manuales contra H1 con match estricto one-to-one...")
+    h1_predictions, h1_matched_count, h1_raw_positive_count = get_one_to_one_predictions(manual_urls, h1_rows)
+
+    print("Comparando URLs manuales contra H2 con match estricto one-to-one...")
+    h2_predictions, h2_matched_count, h2_raw_positive_count = get_one_to_one_predictions(manual_urls, h2_rows)
+
+    comparison = pd.DataFrame({
+        "pdf": manual["pdf"],
+        "url": manual["url"],
+        "es_dataset_manual": manual["es_dataset_manual"].astype(int),
+        "h1_prediction": h1_predictions,
+        "h2_prediction": h2_predictions,
+    })
+
     summary_rows = []
     report_lines = []
 
-    y_true = comparison_df["manual_label"].astype(int).tolist()
+    for heuristic_name, pred_col, raw_positive_count, matched_count in [
+        ("heuristica_1", "h1_prediction", h1_raw_positive_count, h1_matched_count),
+        ("heuristica_2", "h2_prediction", h2_raw_positive_count, h2_matched_count),
+    ]:
+        y_true = comparison["es_dataset_manual"].astype(int).tolist()
+        y_pred = comparison[pred_col].astype(int).tolist()
 
-    for heuristic_name in HEURISTIC_COLUMNS.keys():
-        pred_col = f"{heuristic_name}_prediction"
-
-        if pred_col not in comparison_df.columns:
-            continue
-
-        y_pred = comparison_df[pred_col].astype(int).tolist()
-
-        accuracy = accuracy_score(y_true, y_pred)
-        precision = precision_score(y_true, y_pred, zero_division=0)
-        recall = recall_score(y_true, y_pred, zero_division=0)
-        f1 = f1_score(y_true, y_pred, zero_division=0)
-
-        cm = confusion_matrix(y_true, y_pred, labels=[0, 1])
-        tn, fp, fn, tp = cm.ravel()
-
-        urls_found_in_manual = int(comparison_df["found_in_manual"].sum())
-        urls_not_found_in_manual = int((~comparison_df["found_in_manual"].astype(bool)).sum())
+        counts = confusion_counts(y_true, y_pred)
+        metrics = metrics_from_counts(counts)
+        benchmark_positive_count = int(comparison[pred_col].sum())
 
         summary_rows.append({
-            "heuristic": heuristic_name,
-            "total_urls": len(comparison_df),
-            "urls_found_in_manual_roughly": urls_found_in_manual,
-            "urls_not_found_in_manual_roughly": urls_not_found_in_manual,
-            "accuracy": accuracy,
-            "precision": precision,
-            "recall": recall,
-            "f1_score": f1,
-            "true_positive": int(tp),
-            "true_negative": int(tn),
-            "false_positive": int(fp),
-            "false_negative": int(fn),
+            "heuristica": heuristic_name,
+            "match_threshold": MATCH_THRESHOLD,
+            "total_manual_urls_unicas_usadas_en_benchmark": len(comparison),
+            "manual_positives_dataset": int(comparison["es_dataset_manual"].sum()),
+            "manual_negatives_no_dataset": int(len(comparison) - comparison["es_dataset_manual"].sum()),
+            "raw_positive_count_in_heuristic_csv": raw_positive_count,
+            "positive_count_after_benchmark_matching": benchmark_positive_count,
+            "matched_manual_urls_count": matched_count,
+            "accuracy": metrics["accuracy"],
+            "precision": metrics["precision"],
+            "recall": metrics["recall"],
+            "f1_score": metrics["f1_score"],
+            "specificity": metrics["specificity"],
+            "true_positive": counts["TP"],
+            "true_negative": counts["TN"],
+            "false_positive": counts["FP"],
+            "false_negative": counts["FN"],
         })
 
-        report_lines.append("=" * 80)
-        report_lines.append(f"RESULTADOS PARA: {heuristic_name}")
-        report_lines.append("=" * 80)
-        report_lines.append(f"Accuracy : {accuracy:.4f}")
-        report_lines.append(f"Precision: {precision:.4f}")
-        report_lines.append(f"Recall   : {recall:.4f}")
-        report_lines.append(f"F1-score : {f1:.4f}")
+        report_lines.append("=" * 70)
+        report_lines.append(heuristic_name)
+        report_lines.append("=" * 70)
+        report_lines.append(f"Umbral de parecido usado: {MATCH_THRESHOLD}")
+        report_lines.append(f"Total URLs manuales unicas usadas: {len(comparison)}")
+        report_lines.append(f"Datasets reales manuales: {int(comparison['es_dataset_manual'].sum())}")
+        report_lines.append(f"No datasets reales manuales: {int(len(comparison) - comparison['es_dataset_manual'].sum())}")
+        report_lines.append(f"Positivos en CSV original de la heuristica: {raw_positive_count}")
+        report_lines.append(f"Positivos tras matching del benchmark: {benchmark_positive_count}")
+        report_lines.append(f"URLs manuales emparejadas con algun resultado: {matched_count}")
         report_lines.append("")
-        report_lines.append("Matriz de confusión [labels 0, 1]:")
-        report_lines.append(str(cm))
+        report_lines.append(f"TP: {counts['TP']}")
+        report_lines.append(f"TN: {counts['TN']}")
+        report_lines.append(f"FP: {counts['FP']}")
+        report_lines.append(f"FN: {counts['FN']}")
         report_lines.append("")
-        report_lines.append("Classification report:")
-        report_lines.append(classification_report(y_true, y_pred, zero_division=0))
+        report_lines.append(f"Accuracy   : {metrics['accuracy']:.4f}")
+        report_lines.append(f"Precision  : {metrics['precision']:.4f}")
+        report_lines.append(f"Recall     : {metrics['recall']:.4f}")
+        report_lines.append(f"F1-score   : {metrics['f1_score']:.4f}")
+        report_lines.append(f"Specificity: {metrics['specificity']:.4f}")
         report_lines.append("")
 
-    summary_df = pd.DataFrame(summary_rows)
-    return summary_df, "\n".join(report_lines)
+    summary = pd.DataFrame(summary_rows)
 
+    saved_comparison = safe_to_csv(comparison, OUT_COMPARISON)
+    saved_comparison_xlsx = safe_to_excel(comparison, OUT_COMPARISON_XLSX)
+    saved_summary = safe_to_csv(summary, OUT_SUMMARY)
+    saved_summary_xlsx = safe_to_excel(summary, OUT_SUMMARY_XLSX)
+    saved_report = safe_write_text("\n".join(report_lines), OUT_REPORT)
 
-# ==========================================================
-# Guardado
-# ==========================================================
-def ensure_output_dir():
-    (BASE_DIR / "outputs").mkdir(parents=True, exist_ok=True)
-
-
-def save_outputs(comparison_df, summary_df, report_text):
-    ensure_output_dir()
-
-    comparison_df.to_csv(OUTPUT_COMPARISON_FILE, index=False, encoding="utf-8")
-    summary_df.to_csv(OUTPUT_SUMMARY_FILE, index=False, encoding="utf-8")
-
-    with open(OUTPUT_REPORT_FILE, "w", encoding="utf-8") as f:
-        f.write(report_text)
-
-
-# ==========================================================
-# MAIN
-# ==========================================================
-def main():
-    print("Cargando benchmark manual...")
-    manual_rows, manual_url_col, manual_label_col = load_manual_file(MANUAL_FILE)
-
-    print(f"Filas manuales cargadas: {len(manual_rows)}")
-    print(f"Columna URL manual: {manual_url_col}")
-    print(f"Columna label manual: {manual_label_col if manual_label_col else 'NO DETECTADA; se asume que todas son dataset'}")
-
-    print("\nCargando resultados de heurísticas...")
-    heuristics_df = load_heuristics_file(HEURISTICS_FILE)
-    print(f"URLs en heurísticas: {len(heuristics_df)}")
-
-    print("\nConstruyendo comparación aproximada...")
-    comparison_df = build_comparison_dataframe(heuristics_df, manual_rows)
-
-    print("Evaluando métricas...")
-    summary_df, report_text = evaluate_predictions(comparison_df)
-
-    save_outputs(comparison_df, summary_df, report_text)
-
-    print("\nResultados guardados en:")
-    print(f"- {OUTPUT_COMPARISON_FILE}")
-    print(f"- {OUTPUT_SUMMARY_FILE}")
-    print(f"- {OUTPUT_REPORT_FILE}")
-
-    print("\nResumen:")
-    if not summary_df.empty:
-        print(summary_df.to_string(index=False))
-
-        best = summary_df.sort_values("f1_score", ascending=False).iloc[0]
-        print("\n===== MEJOR HEURÍSTICA SEGÚN F1-SCORE =====")
-        print(best)
-    else:
-        print("No se pudieron calcular métricas.")
+    print("\nBenchmark terminado.")
+    print(f"Comparacion CSV:  {saved_comparison}")
+    print(f"Comparacion XLSX: {saved_comparison_xlsx}")
+    print(f"Resumen CSV:      {saved_summary}")
+    print(f"Resumen XLSX:     {saved_summary_xlsx}")
+    print(f"Reporte:          {saved_report}")
+    print("")
+    print(summary.to_string(index=False))
 
 
 if __name__ == "__main__":

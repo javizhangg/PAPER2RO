@@ -351,6 +351,9 @@ def value_contains_dataset(value) -> bool:
     if isinstance(value, list):
         return any(value_contains_dataset(v) for v in value)
 
+    if isinstance(value, dict):
+        return any(value_contains_dataset(v) for v in value.values())
+
     value_text = str(value).strip().lower()
 
     dataset_values = {
@@ -360,7 +363,9 @@ def value_contains_dataset(value) -> bool:
         "dcat:dataset",
         "schema:dataset",
         "http://schema.org/dataset",
-        "https://schema.org/dataset"
+        "https://schema.org/dataset",
+        "http://www.w3.org/ns/dcat#dataset",
+        "https://www.w3.org/ns/dcat#dataset",
     }
 
     if value_text in dataset_values:
@@ -369,7 +374,13 @@ def value_contains_dataset(value) -> bool:
     if "schema.org/dataset" in value_text:
         return True
 
+    if "dcat#dataset" in value_text:
+        return True
+
     if value_text.endswith(":dataset"):
+        return True
+
+    if value_text.endswith("/dataset"):
         return True
 
     return False
@@ -379,12 +390,15 @@ def metadata_says_dataset(metadata_obj) -> dict:
     """
     Detecta si los metadatos dicen que el recurso es un Dataset.
 
-    Casos que detecta:
+    Detecta:
     - schema.org: @type = Dataset
     - JSON-LD: type = Dataset
     - DataCite: resourceTypeGeneral = Dataset
+    - DataCite: types.resourceTypeGeneral = Dataset
     - CSL: type = dataset
     - DCAT: @type = dcat:Dataset
+    - Dublin Core: dc:type / dcterms:type = Dataset
+    - additionalType = Dataset
     """
 
     if metadata_obj is None:
@@ -395,39 +409,42 @@ def metadata_says_dataset(metadata_obj) -> dict:
             "evidence": ""
         }
 
+    dataset_keys = {
+        "@type",
+        "type",
+        "resourcetypegeneral",
+        "resourcetype",
+        "genre",
+        "additionaltype",
+        "dctype",
+        "dctermstype",
+        "dc.type",
+        "dcterms.type",
+    }
+
     for path, value in iter_json_paths(metadata_obj):
         key = path.split(".")[-1]
         key_norm = normalize_metadata_key(key)
 
-        # schema.org / JSON-LD
-        if key_norm in {"@type", "type"}:
-            if value_contains_dataset(value):
-                return {
-                    "matched": True,
-                    "field": path,
-                    "value": safe_json_dumps(value),
-                    "evidence": "metadata_type_is_dataset"
-                }
+        # También miramos la ruta completa por si aparece data.attributes.types.resourceTypeGeneral
+        path_norm = normalize_metadata_key(path)
 
-        # DataCite
-        if key_norm in {"resourcetypegeneral"}:
-            if value_contains_dataset(value):
-                return {
-                    "matched": True,
-                    "field": path,
-                    "value": safe_json_dumps(value),
-                    "evidence": "datacite_resourceTypeGeneral_is_dataset"
-                }
+        is_relevant_key = (
+            key_norm in dataset_keys
+            or path_norm.endswith("resourcetypegeneral")
+            or path_norm.endswith("resourcetype")
+            or path_norm.endswith("additionaltype")
+            or path_norm.endswith("dctype")
+            or path_norm.endswith("dctermstype")
+        )
 
-        # Algunos metadatos usan genre
-        if key_norm in {"genre"}:
-            if value_contains_dataset(value):
-                return {
-                    "matched": True,
-                    "field": path,
-                    "value": safe_json_dumps(value),
-                    "evidence": "genre_is_dataset"
-                }
+        if is_relevant_key and value_contains_dataset(value):
+            return {
+                "matched": True,
+                "field": path,
+                "value": safe_json_dumps(value),
+                "evidence": f"{path}_indicates_dataset"
+            }
 
     return {
         "matched": False,
@@ -435,7 +452,6 @@ def metadata_says_dataset(metadata_obj) -> dict:
         "value": "",
         "evidence": ""
     }
-
 
 # ==============================
 # HEURÍSTICA 2
