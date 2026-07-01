@@ -1,0 +1,40 @@
+type: paper
+title: Measurements of nearshore ocean-surface kinematics through coherent arrays of free-drifting buoys
+summary: Surface gravity wave breaking occurs along coastlines in complex spatial and temporal patterns that significantly
+  impact erosion, scalar transport, and flooding. Numerical models are used to predict wave breaking and associated processes
+  but many lack sufficient evaluation with observations. To fill the need for more nearshore wave measurements, we deployed
+  coherent arrays of small-scale, free-drifting buoys named mi-croSWIFTs. The microSWIFT is a small buoy equipped with a GPS
+  module to measure the buoy's position, horizontal velocities, and an inertial measurement unit (IMU) to directly measure
+  the buoy's rotation rates, accelerations, and heading. Measurements were collected over a 27 d field experiment in October
+  2021 at the US Army Corps of Engineers Field Research Facility in Duck, NC. The microSWIFTs were deployed as a series of
+  coherent arrays, meaning they all sampled simultaneously with a common time reference, leading to a rich spatial and temporal
+  dataset during each deployment. Measurements spanned offshore significant wave heights ranging from 0.5 to 3 m and peak
+  wave periods ranging from 5 to 15 s over the entire experiment. The completed dataset consists of 67 deployment files that
+  contain 971 drift tracks that contain all associated data. We use an attitude and heading reference system (AHRS) 9-degrees-of-freedom
+  Kalman filter to rotate the measured accelerations from the reference frame of the buoy to the Earth reference frame. We
+  then use the corrected accelerations to compute the vertical velocity and sea-surface elevation. We give example evaluations
+  of wave spectral energy density estimates from individual microSWIFTs compared with a nearby acoustic wave and current (AWAC)
+  sensor. A zero-crossing algorithm is applied to each buoy time series of sea-surface elevation to extract realizations of
+  measured surface gravity waves, yielding 116 307 wave realizations throughout the experiment. We also compute significant
+  wave height estimates from the aggregate wave realizations and compare these estimates with the nearby AWAC estimates. An
+  example of spatial variability in cross-shore velocity and vertical acceleration is explored. Wave-breaking events, detected
+  by high-intensity vertical acceleration peaks, are explored, and the cross-shore distribution of all breaking events detected
+  in the experiment is shown. A total of 3419 wave-breaking events were detected across the entire experiment. These data
+  are available at https://doi.org/10.5061/dryad.hx3ffbgk0 (Rainville et al., 2023) and will be used to investigate nearshore
+  wave kinematics, transport of buoyant particles, and wave-breaking processes.
+datasets:
+- https://doi.org/10.5061/dryad.hx3ffbgk0
+- https://doi.org/10.5281/zenodo.10198469
+authors:
+- orcid: 0000-0001-8781-5242
+  role: author
+- name: Jim Thomson
+  role: author
+- name: Melissa Moulton
+  role: author
+- name: Morteza Derakhti
+  role: author
+bibliography:
+- https://doi.org/10.5194/essd-15-5135-2023
+- 'Source PDF: essd-15-5135-2023.pdf'
+- 'Dataset extraction file: essd-15-5135-2023.dataset.json'

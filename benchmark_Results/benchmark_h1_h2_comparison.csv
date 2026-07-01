@@ -2,7 +2,7 @@
 s41597-026-07203-5_reference.pdf,http://creativecommons.org/licenses/by-nc-nd/4.0,0,0,0
 s41597-026-07353-6_reference.pdf,http://creativecommons.org/licenses/by/4.0,0,0,0
 Otterloo-Burda-Utrecht_Housing_dataset_CSR2025.pdf,http://data.europa.eu/eli/reg/2016/679/oj,0,0,0
-2506.10412v4.pdf,http://data.gdeltproject.org/gdeltv2/masterfilelist.txt,0,0,0
+2506.10412v4.pdf,http://data.gdeltproject.org/gdeltv2/masterfilelist.txt,0,1,0
 s41597-026-06867-3.pdf,http://ominoproject.eu,0,0,0
 s41597-026-07353-6_reference.pdf,http://onlinelibrary.wiley.com/doi/10.1029/2004WR003726/abstract,0,0,0
 s41597-025-04605-9.pdf,http://orcid.org/0000-0002-1223-0861,0,0,0
@@ -373,10 +373,10 @@ essd-13-5337-2021.pdf,https://doi.org/10.5061/dryad.6hdr7sqzx,1,0,1
 essd-16-525-2024.pdf,https://doi.org/10.5061/dryad.hx3ffbgkh,1,0,1
 essd-16-525-2024.pdf,https://doi.org/10.5061/dryad.n2z34tn0x,1,0,1
 essd-17-7359-2025.pdf,https://doi.org/10.5061/dryad.sf7m0cg72,1,0,1
-s41597-026-06866-4_reference.pdf,https://doi.org/10.5066/F74X5684,1,0,1
-s41597-026-06866-4_reference.pdf,https://doi.org/10.5066/F78P5XZM,1,0,1
+s41597-026-06866-4_reference.pdf,https://doi.org/10.5066/F74X5684,1,0,0
+s41597-026-06866-4_reference.pdf,https://doi.org/10.5066/F78P5XZM,1,0,0
 essd-18-2397-2026.pdf,https://doi.org/10.5066/F7DF6PQS,1,0,1
-s41597-026-06866-4_reference.pdf,https://doi.org/10.5066/F7WD3Z10,1,0,1
+s41597-026-06866-4_reference.pdf,https://doi.org/10.5066/F7WD3Z10,1,0,0
 essd-17-7359-2025.pdf,https://doi.org/10.5066/P94UXNTS,1,0,1
 essd-17-7359-2025.pdf,https://doi.org/10.5066/P9ZXGFY3,1,0,1
 essd-18-2397-2026.pdf,https://doi.org/10.5194/acp-15-8739-2015,0,0,0
@@ -414,7 +414,7 @@ essd-16-525-2024.pdf,https://doi.org/10.5281/zenodo.10492448,1,1,0
 essd-16-525-2024.pdf,https://doi.org/10.5281/zenodo.10511851,1,1,0
 s41597-025-04605-9.pdf,https://doi.org/10.5281/zenodo.12206815,1,1,1
 s41597-025-04605-9.pdf,https://doi.org/10.5281/zenodo.13327692,1,1,1
-s41597-025-04605-9.pdf,https://doi.org/10.5281/zenodo.13327891,1,0,1
+s41597-025-04605-9.pdf,https://doi.org/10.5281/zenodo.13327891,1,0,0
 s41597-025-04605-9.pdf,https://doi.org/10.5281/zenodo.13329625,1,0,0
 s41597-025-04605-9.pdf,https://doi.org/10.5281/zenodo.13329670,1,0,1
 s41597-025-04605-9.pdf,https://doi.org/10.5281/zenodo.13349402,1,1,1

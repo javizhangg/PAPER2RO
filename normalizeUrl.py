@@ -1,26 +1,3 @@
-# urlNormalized.py
-# Normalizador SUAVE para URLs extraidas automaticamente.
-#
-# Entrada:
-#   outputs/all_links.csv
-#
-# Salidas:
-#   outputs/all_links_normalized.csv
-#   outputs/removed_urls.csv
-#
-# Resultado final:
-#   pdf,url
-#
-# Hace:
-# - limpia basura de extraccion
-# - NO fuerza www
-# - NO cambia http a https si la URL ya venia con http
-# - NO cambia dominios salvo casos especiales muy claros como DOI puro
-# - elimina parametros de tracking
-# - elimina duplicados exactos
-# - elimina URLs parecidas
-# - conserva la URL mas simple/corta entre URLs parecidas
-
 import csv
 import re
 from pathlib import Path
@@ -96,6 +73,28 @@ def remove_trailing_garbage(url: str) -> str:
     if not url:
         return ""
 
+    # Extensiones reales que NO se deben cortar
+    SAFE_FILE_EXTENSIONS = {
+        "csv", "tsv", "xls", "xlsx",
+        "parquet", "h5", "hdf5",
+        "zip", "gz", "tar", "tgz",
+        "npy", "npz", "mat",
+        "sqlite", "db",
+        "txt", "pdf",
+        "json", "xml",  # aunque luego tú puedas descartarlos en heurísticas
+    }
+
+    # Palabras típicas que se pegan al final por el texto del paper
+    TRAILING_WORDS = (
+        "Second", "First", "Third",
+        "The", "This", "These",
+        "Figure", "Table", "Section", "Appendix",
+        "Related", "Introducing", "Rethinking",
+        "Towards", "Exploring", "Using",
+        "From", "With", "And", "For",
+        "Only", "Accessed", "Retrieved"
+    )
+
     old = None
 
     while old != url:
@@ -105,15 +104,20 @@ def remove_trailing_garbage(url: str) -> str:
         url = url.strip("<>()[]{}\"'")
         url = url.rstrip(".,;:!?)]}>\"'•·")
 
+        # Caso raro: / .Texto pegado después de una barra
         url = re.sub(r"/\.[A-Za-z].*$", "", url)
 
+        # Elimina palabras típicas pegadas después de un punto:
+        # ejemplo: dataset.csv.This  -> dataset.csv
+        # ejemplo: FNSPID.Only        -> FNSPID
         url = re.sub(
-            r"\.(Second|First|Third|The|This|These|Figure|Table|Section|Appendix|Related|Introducing|Rethinking|Towards|Exploring|Using|From|With|And|For).*$",
+            rf"\.({'|'.join(TRAILING_WORDS)})(?:\s|$|[.,;:!?].*)",
             "",
             url,
             flags=re.IGNORECASE,
         )
 
+        # Elimina textos bibliográficos pegados
         url = re.sub(r"\.Ac-?cessed:?.*$", "", url, flags=re.IGNORECASE)
 
         url = re.sub(
@@ -123,9 +127,40 @@ def remove_trailing_garbage(url: str) -> str:
             flags=re.IGNORECASE,
         )
 
-        url = re.sub(r"\.[A-Z][A-Za-z-]{8,}.*$", "", url)
-        url = re.sub(r"(?<=\d)\.[A-Z][A-Za-z]+.*$", "", url)
+        # Elimina año pegado tipo: url,2023...
         url = re.sub(r",\d{4}.*$", "", url)
+
+        # Protección importante:
+        # si la URL termina en una extensión válida, no se toca.
+        last_part = url.rsplit("/", 1)[-1]
+        if "." in last_part:
+            ext = last_part.rsplit(".", 1)[-1].lower()
+            ext = ext.split("?")[0].split("#")[0]
+
+            if ext in SAFE_FILE_EXTENSIONS:
+                continue
+
+        # Regla más suave:
+        # elimina solo palabras largas pegadas con mayúscula,
+        # pero NO si parecen una extensión de archivo.
+        def remove_bad_dot_word(match):
+            word = match.group(1)
+            if word.lower() in SAFE_FILE_EXTENSIONS:
+                return "." + word
+            return ""
+
+        url = re.sub(
+            r"\.([A-Z][A-Za-z-]{8,})(?:\s|$|[.,;:!?].*)",
+            remove_bad_dot_word,
+            url,
+        )
+
+        # Caso: algo tipo 1234.ThisIsGarbage
+        url = re.sub(
+            r"(?<=\d)\.([A-Z][A-Za-z]+)(?:\s|$|[.,;:!?].*)",
+            remove_bad_dot_word,
+            url,
+        )
 
     return url
 

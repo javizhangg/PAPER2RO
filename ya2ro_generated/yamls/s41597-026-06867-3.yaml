@@ -1,0 +1,29 @@
+type: paper
+title: s41597-026-06867-3
+summary: 'the PreprinttoPaper dataset connects bioRxiv preprints with their corresponding journal publications, enabling large-scale
+  analysis of the preprint-to-publication process. It comprises metadata for 145,517 preprints from two periods, 2016-2018
+  (pre-pandemic) and 2020-2022 (pandemic), retrieved via the bioRxiv and Crossref aPIs. We selected the two periods to capture
+  preprint-publication dynamics before and during the COVID-19 pandemic while avoiding transitional years. Each record includes
+  bibliographic information such as titles, abstracts, authors, institutions, submission dates, licenses, and subject categories,
+  alongside enriched publication metadata including journal names, publication dates, author lists, and further information.
+  In addition to the main dataset, a version-history subset provides all available versions of preprints within the two selected
+  periods, enabling analysis of how preprints evolve over time. Preprints are categorized into three groups: Published (formally
+  linked to a journal article), Preprint Only (posted on a preprint server), and Gray Zone (potentially published in a journal
+  but unlinked). To enhance reliability, title and author similarity scores were computed, and a human-annotated subset of
+  299 records was created to evaluate Gray Zone cases. The dataset supports diverse applications, including studies of scholarly
+  communication, open science policies, bibliometric tool development, and natural language processing research on textual
+  changes between preprints and their corresponding journal articles.'
+datasets:
+- https://zenodo.org/records/17992421
+- https://zenodo.org/records/15124417
+authors:
+- orcid: 0009-0005-3525-0717
+  role: author
+- orcid: 0000-0003-2097-1499
+  role: author
+- orcid: 0000-0002-6656-1658
+  role: author
+bibliography:
+- https://doi.org/10.1038/s41597-026-06867-3
+- 'Source PDF: s41597-026-06867-3.pdf'
+- 'Dataset extraction file: s41597-026-06867-3.dataset.json'

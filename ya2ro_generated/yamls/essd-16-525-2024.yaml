@@ -1,0 +1,67 @@
+type: paper
+title: 'A global FAOSTAT reference database of cropland nutrient budgets and nutrient use efficiency (1961-2020): nitrogen,
+  phosphorus and potassium'
+summary: 'Nutrient budgets help to identify the excess or insufficient use of fertilizers and other nutrient sources in agriculture.
+  They allow for the calculation of indicators, such as the nutrient balance (surplus if positive or deficit if negative)
+  and nutrient use efficiency, that help to monitor agricultural productivity and sustainability across the world. We present
+  a global database of country-level budget estimates for nitrogen (N), phosphorus (P) and potassium (K) on cropland. The
+  database, disseminated in FAOSTAT, is meant to provide a global reference, synthesizing and continuously updating the state
+  of the art on this topic. The database covers 205 countries and territories, as well as regional and global aggregates,
+  for the period from 1961 to 2020. Results highlight the wide range in nutrient use and nutrient use efficiencies across
+  geographic regions, nutrients, and time. The average N balance on global cropland has remained fairly steady at about 50-55
+  kg ha-1 yr-1 during the past 15 years, despite increasing N inputs. Regional trends, however, show recent average N surpluses
+  that range from a low of about 10 kg N ha-1 yr-1 in Africa to more than 90 kg N ha-1 yr-1 in Asia. Encouragingly, average
+  global cropland N use efficiency decreased from about 59 % in 1961 to a low of 43 % in 1988, but it has risen since then
+  to a level of 55 %. Phosphorus deficits are mainly found in Africa, whereas potassium deficits occur in Africa and the Americas.
+  This study introduces improvements over previous work in relation to the key nutrient coefficients affecting nutrient budgets
+  and nutrient use efficiency estimates, especially with respect to nutrient removal in crop products, manure nutrient content,
+  atmospheric deposition and crop biological N fixation rates. We conclude by discussing future research directions and highlighting
+  the need to align statistical Published by Copernicus Publications. 526 C. I. Ludemann et al.: A global FAOSTAT reference
+  database of cropland nutrient budgets definitions across research groups as well as to further refine plant and livestock
+  coefficients and expand estimates to all agricultural land, including nutrient flows in meadows and pastures. Further information
+  is available from https://doi.org/10.5061/dryad.hx3ffbgkh (Ludemann et al., 2023b) as well as the FAOSTAT database (https://
+  www.fao.org/faostat/en/#data/ESB; FAO, 2022a) and is updated annually.'
+datasets:
+- https://zenodo.org/records/10511851
+- https://zenodo.org/records/10492448
+- https://doi.org/10.5061/dryad.hx3ffbgkh
+- https://doi.org/10.5061/dryad.hx3ffbgkh(
+- https://doi.org/10.5061/dryad.n2z34tn0x
+- https://doi.org/10.5281/zenodo.10491879
+- https://doi.org/10.5281/zenodo.7133336
+- https://doi.org/10.5281/zenodo.10491880
+authors:
+- orcid: 0000-0002-8902-7052
+  role: author
+- name: Nathan Wanner
+  role: author
+- name: Pauline Chivenge
+  role: author
+- name: Achim Dobermann
+  role: author
+- orcid: 0000-0002-7587-6280
+  role: author
+- name: Patricio Grassini
+  role: author
+- name: Armelle Gruere
+  role: author
+- name: Kevin Jackson
+  role: author
+- orcid: 0000-0001-9428-2149
+  role: author
+- orcid: 0000-0002-7878-8112
+  role: author
+- name: Griffiths Obli-Laryea
+  role: author
+- name: Martin K Van Ittersum
+  role: author
+- orcid: 0000-0003-1674-4197
+  role: author
+- name: Xin Zhang
+  role: author
+- orcid: 0000-0003-4617-4690
+  role: author
+bibliography:
+- https://doi.org/10.5194/essd-16-525-2024
+- 'Source PDF: essd-16-525-2024.pdf'
+- 'Dataset extraction file: essd-16-525-2024.dataset.json'

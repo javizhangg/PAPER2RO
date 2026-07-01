@@ -1,0 +1,171 @@
+{
+    "@context": "https://w3id.org/ro/crate/1.1/context",
+    "@graph": [
+        {
+            "@id": "ro-crate-metadata.json",
+            "@type": "CreativeWork",
+            "about": {
+                "@id": "./"
+            },
+            "conformsTo": {
+                "@id": "https://w3id.org/ro/crate/1.1"
+            },
+            "description": "RO-Crate Metadata File Descriptor (this file)"
+        },
+        {
+            "@id": "./",
+            "@type": "Dataset",
+            "DataType": "Paper",
+            "author": [
+                {
+                    "@id": "#ching_chang"
+                },
+                {
+                    "@id": "#jeehyun_hwang"
+                },
+                {
+                    "@id": "#yidan_shi"
+                },
+                {
+                    "@id": "#haixin_wang"
+                },
+                {
+                    "@id": "#wen-chih_peng"
+                },
+                {
+                    "@id": "#tien-fu_chen"
+                },
+                {
+                    "@id": "#wei_wang"
+                }
+            ],
+            "description": "Time series data in real-world applications such as healthcare, climate modeling, and finance are often irregular, multimodal, and messy, with varying sampling rates, asynchronous modalities, and pervasive missingness. However, existing benchmarks typically assume clean, regularly sampled, unimodal data, creating a significant gap between research and real-world deployment. We introduce TIME-IMM, a dataset specifically designed to capture cause-driven irregularity in multimodal multivariate time series. TIME-IMM represents nine distinct types of time series irregularity, categorized into trigger-based, constraint-based, and artifact-based mechanisms. Complementing the dataset, we introduce IMM-TSF, a benchmark library for forecasting on irregular multimodal time series, enabling asynchronous integration and realistic evaluation. IMM-TSF includes specialized fusion modules, including a timestamp-to-text fusion module and a multimodality fusion module, which support both recency-aware averaging and attention-based integration strategies. Empirical results demonstrate that explicitly modeling multimodality on irregular time series data leads to substantial gains in forecasting performance. TIME-IMM and IMM-TSF provide a foundation for advancing time series analysis under real-world conditions. The dataset is publicly available at https://github.com/blacksnail789521/Time-IMM, and the benchmark library can be accessed at https://github.com/blacksnail789521/IMM-TSF.",
+            "hasPart": [
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "ro-crate-preview.html"
+                }
+            ],
+            "name": "TIME-IMM: A Dataset and Benchmark for Irregular Multimodal Multivariate Time Series"
+        },
+        {
+            "@id": "#ching_chang",
+            "@type": "Person",
+            "name": "Ching Chang"
+        },
+        {
+            "@id": "#jeehyun_hwang",
+            "@type": "Person",
+            "name": "Jeehyun Hwang"
+        },
+        {
+            "@id": "#yidan_shi",
+            "@type": "Person",
+            "name": "Yidan Shi"
+        },
+        {
+            "@id": "#haixin_wang",
+            "@type": "Person",
+            "name": "Haixin Wang"
+        },
+        {
+            "@id": "#wen-chih_peng",
+            "@type": "Person",
+            "name": "Wen-Chih Peng"
+        },
+        {
+            "@id": "#tien-fu_chen",
+            "@type": "Person",
+            "name": "Tien-Fu Chen"
+        },
+        {
+            "@id": "#wei_wang",
+            "@type": "Person",
+            "name": "Wei Wang"
+        },
+        {
+            "@id": "#none",
+            "@type": "Dataset",
+            "distribution": {
+                "@id": "https://physionet.org/content/mimi-civ/1.0"
+            }
+        },
+        {
+            "@id": "#none",
+            "@type": "Dataset",
+            "distribution": {
+                "@id": "https://archive.physionet.org/challenge/2012"
+            }
+        },
+        {
+            "@id": "#none",
+            "@type": "Dataset",
+            "distribution": {
+                "@id": "https://physionet.org/content/mimiciv/3.1"
+            }
+        },
+        {
+            "@id": "#none",
+            "@type": "Dataset",
+            "distribution": {
+                "@id": "https://physionet.org/content/mimiciv/3.1/"
+            }
+        },
+        {
+            "@id": "#none",
+            "@type": "Dataset",
+            "distribution": {
+                "@id": "https://www.kaggle.com/datasets/blacksnail789521/time-imm"
+            }
+        },
+        {
+            "@id": "#none",
+            "@type": "Dataset",
+            "distribution": {
+                "@id": "https://huggingface.co/datasets/Zihan1004/FNSPID"
+            }
+        },
+        {
+            "@id": "#none",
+            "@type": "Dataset",
+            "distribution": {
+                "@id": "https://archive.ics.uci.edu/dataset/321/electricityloaddiagrams20112014"
+            }
+        },
+        {
+            "@id": "#none",
+            "@type": "Dataset",
+            "distribution": {
+                "@id": "https://archive.ics.uci.edu/dataset/196/localization+"
+            }
+        },
+        {
+            "@id": "ro-crate-preview.html",
+            "@type": "WebPage",
+            "name": "HTML representation of this data."
+        }
+    ]
+}

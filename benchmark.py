@@ -1,19 +1,3 @@
-# benchmark_h1_h2_manual_unique_strict.py
-# Benchmark H1 y H2 contra Benchmark/UrlManual_normalized.xlsx
-#
-# Objetivo:
-#   - Que el benchmark NO marque mas URLs como dataset por culpa de matches parecidos.
-#   - Se usan URLs manuales unicas, no filas repetidas por PDF.
-#   - Cada URL de H1/H2 solo puede emparejarse con una URL manual.
-#   - La comparacion parecida es estricta: exacta o una URL contiene claramente a la otra.
-#
-# Salidas sencillas:
-#   benchmark_Results/benchmark_h1_h2_comparison.csv
-#   benchmark_Results/benchmark_h1_h2_comparison_simple.xlsx
-#   benchmark_Results/benchmark_h1_h2_summary.csv
-#   benchmark_Results/benchmark_h1_h2_summary_simple.xlsx
-#   benchmark_Results/benchmark_h1_h2_report.txt
-
 from pathlib import Path
 from typing import Any, Dict, List, Tuple
 from urllib.parse import urlparse, unquote

@@ -1,0 +1,27 @@
+type: paper
+title: A multisource dataset for anomaly detection and fault prediction in urban water distribution networks
+summary: "This multi-source dataset was compiled to support research on anomaly-based leak detection in urban water distribution\
+  \ networks (WDNs). It contains one year of hourly data collected from a Slovak water utility, combining supervisory control\
+  \ and data acquisition (SCADA) measurements (flow and pressure), energy consumption variables (kilowatts, kW; kilovolt-ampere\
+  \ reactive, kvar), and environmental indicators such as groundwater level, temperature, and humidity. All features were\
+  \ transformed into standardized anomaly scores on a 0-100 scale using Elastic Machine Learning and Isolation Forest methods.\
+  \ Confirmed leak records from the utility's operational information system were mapped to binary labels using a \xB17-day\
+  \ temporal window. Feature selection resulted in 18 variables retained based on their statistical association with leak\
+  \ labels using the Goodman-Kruskal gamma coefficient. The dataset can be used for benchmarking anomaly detection and prediction\
+  \ models, evaluating lead-time sensitivity, and developing data-driven early-warning systems. It is also suitable for studies\
+  \ on spatially segmented WDN analysis and is publicly available to support reproducible research."
+datasets:
+- https://zenodo.org/records/15096167
+- https://doi.org/10.5281/zenodo.15096167)andconsistsoftheprimary
+- https://doi.org/10.5281/zenodo.15096167
+authors:
+- orcid: 0009-0009-2422-3376
+  role: author
+- name: Michal Munk
+  role: author
+- name: Dasa Munkova
+  role: author
+bibliography:
+- https://doi.org/10.1038/s41597-026-07203-5
+- 'Source PDF: s41597-026-07203-5_reference.pdf'
+- 'Dataset extraction file: s41597-026-07203-5_reference.dataset.json'

@@ -1,0 +1,59 @@
+{
+    "@context": "https://w3id.org/ro/crate/1.1/context",
+    "@graph": [
+        {
+            "@id": "ro-crate-metadata.json",
+            "@type": "CreativeWork",
+            "about": {
+                "@id": "./"
+            },
+            "conformsTo": {
+                "@id": "https://w3id.org/ro/crate/1.1"
+            },
+            "description": "RO-Crate Metadata File Descriptor (this file)"
+        },
+        {
+            "@id": "./",
+            "@type": "Dataset",
+            "DataType": "Paper",
+            "author": [
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#none"
+                }
+            ],
+            "description": "This paper introduces a real-world dataset for analysing and predicting house prices. The dataset consists of actual data on the Dutch housing market collected in 2024 for a total of 153 houses in one city (Utrecht in The Netherlands). The dataset incorporates diverse variables on individual houses, including property characteristics (e.g., house type, build year, geolocation, area, energy label) and market metrics (e.g., asking price, final price). The data was collected from two public sources. The dataset has been created to help researchers and educators to demonstrate machine learning principles on several problem types. It can be used for classification (energy label and energy efficiency) and regression/ price estimation. There are ten original input features and one derived feature. The dataset can be freely used without restrictions under a Creative Commons license and is available via open data platform Kaggle.",
+            "hasPart": [
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "ro-crate-preview.html"
+                }
+            ],
+            "name": "The Utrecht Housing dataset: A housing appraisal dataset"
+        },
+        {
+            "@id": "#none",
+            "@type": "Person"
+        },
+        {
+            "@id": "#none",
+            "@type": "Person"
+        },
+        {
+            "@id": "#none",
+            "@type": "Dataset",
+            "distribution": {
+                "@id": "https://www.kaggle.com/datasets/shashanknecrothapa/ames-housing-dataset"
+            }
+        },
+        {
+            "@id": "ro-crate-preview.html",
+            "@type": "WebPage",
+            "name": "HTML representation of this data."
+        }
+    ]
+}

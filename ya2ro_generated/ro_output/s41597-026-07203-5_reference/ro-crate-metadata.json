@@ -1,0 +1,90 @@
+{
+    "@context": "https://w3id.org/ro/crate/1.1/context",
+    "@graph": [
+        {
+            "@id": "ro-crate-metadata.json",
+            "@type": "CreativeWork",
+            "about": {
+                "@id": "./"
+            },
+            "conformsTo": {
+                "@id": "https://w3id.org/ro/crate/1.1"
+            },
+            "description": "RO-Crate Metadata File Descriptor (this file)"
+        },
+        {
+            "@id": "./",
+            "@type": "Dataset",
+            "DataType": "Paper",
+            "author": [
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#michal_munk"
+                },
+                {
+                    "@id": "#dasa_munkova"
+                }
+            ],
+            "description": "This multi-source dataset was compiled to support research on anomaly-based leak detection in urban water distribution networks (WDNs). It contains one year of hourly data collected from a Slovak water utility, combining supervisory control and data acquisition (SCADA) measurements (flow and pressure), energy consumption variables (kilowatts, kW; kilovolt-ampere reactive, kvar), and environmental indicators such as groundwater level, temperature, and humidity. All features were transformed into standardized anomaly scores on a 0-100 scale using Elastic Machine Learning and Isolation Forest methods. Confirmed leak records from the utility's operational information system were mapped to binary labels using a \u00b17-day temporal window. Feature selection resulted in 18 variables retained based on their statistical association with leak labels using the Goodman-Kruskal gamma coefficient. The dataset can be used for benchmarking anomaly detection and prediction models, evaluating lead-time sensitivity, and developing data-driven early-warning systems. It is also suitable for studies on spatially segmented WDN analysis and is publicly available to support reproducible research.",
+            "hasPart": [
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#hourly_anomaly_scores_and_leak_labels_from_a_multi-source_urban_water_distribution_network_dataset"
+                },
+                {
+                    "@id": "ro-crate-preview.html"
+                }
+            ],
+            "name": "A multisource dataset for anomaly detection and fault prediction in urban water distribution networks"
+        },
+        {
+            "@id": "#none",
+            "@type": "Person"
+        },
+        {
+            "@id": "#michal_munk",
+            "@type": "Person",
+            "name": "Michal Munk"
+        },
+        {
+            "@id": "#dasa_munkova",
+            "@type": "Person",
+            "name": "Dasa Munkova"
+        },
+        {
+            "@id": "#none",
+            "@type": "Dataset",
+            "distribution": {
+                "@id": "https://zenodo.org/records/15096167"
+            }
+        },
+        {
+            "@id": "#none",
+            "@type": "Dataset",
+            "distribution": {
+                "@id": "https://doi.org/10.5281/zenodo.15096167)andconsistsoftheprimary"
+            }
+        },
+        {
+            "@id": "#hourly_anomaly_scores_and_leak_labels_from_a_multi-source_urban_water_distribution_network_dataset",
+            "@type": "Dataset",
+            "description": "Dataset: Hourly Anomaly Scores and Leak Labels from a Multi-Source Urban Water Distribution Network Dataset\n\nDescription:This dataset includes hourly time series from an anonymized urban Water Distribution Network (WDN), combining SCADA sensor readings, operational energy usage, and environmental conditions. Anomaly scores were generated using Elastic ML and Isolation Forest. Binary labels indicate proximity (\u00b17 days) to real leak events.\n\nColumns:- timestamp: DD-MM-YYYY HH:00- fault_d7: Binary leak proximity label- *_kW, *_power_hour: Energy-based anomaly scores- *_ws_*: Sensor-based anomaly scores (pressure, temp, vigor)- temp_site1_anomaly_score: Environmental temperature anomalies- gw_lvl_site2_anomaly_score: Groundwater level anomalies",
+            "distribution": {
+                "@id": "https://doi.org/10.5281/zenodo.15096167"
+            },
+            "name": "Hourly Anomaly Scores and Leak Labels from a Multi-Source Urban Water Distribution Network Dataset"
+        },
+        {
+            "@id": "ro-crate-preview.html",
+            "@type": "WebPage",
+            "name": "HTML representation of this data."
+        }
+    ]
+}

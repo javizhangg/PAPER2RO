@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<title>A global FAOSTAT reference database of cropland nutrient budgets and nutrient use efficiency (1961-2020): nitrogen, phosphorus and potassium</title>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="https://www.w3schools.com/w3css/4/w3.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet"/>
+<style id="style">
+
+body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+body {font-size:16px; text-align: justify;}
+.w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
+.w3-half img:hover{opacity:1}
+img {display: block;margin-left: auto;margin-right: auto;}
+.column {float: left;width: 50%;padding: 5px;}
+.row::after {content: ""; clear: both; display: table;}
+.centered-element {margin: 0;position: absolute;top: 50%;transform: translateY(-50%);}
+
+
+
+            h1,h1 b{color:#fff!important}
+            .w3-light-grey{background-color:#ddd!important;color:#222831!important}
+            .w3-green{background-color:#30475e!important}.w3-round{border:5px solid #f05454!important}
+            body{background-color:#222831!important;color:#fff!important}
+            </style>
+<body>
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-green w3-collapse w3-top w3-large w3-padding" id="mySidebar" style="z-index:3;width:300px;font-weight:bold;"><br/>
+<a class="w3-button w3-hide-large w3-display-topleft" href="javascript:void(0)" onclick="w3_close()" style="width:100%;font-size:22px">Close Menu</a>
+<!-- LOGO if recognized -->
+<div class="row" style="margin-bottom:2em;margin-top:2em;">
+<div class="column">
+<!-- Requiremnts okay logo -->
+<span id="recogn_logo"><a href="#">
+<img alt="Complete-Paper" src="images/complete_paper.png" style="width: 8em;" title="This paper has the necessary characteristics to be recognized as an complete paper."/>
+</a></span>
+</div>
+</div>
+<div class="w3-bar-block centered-element">
+<span id="sidebar"><a class="w3-bar-item w3-button w3-hover-white" href="#summary" onclick="w3_close()">Summary</a><a class="w3-bar-item w3-button w3-hover-white" href="#datasets" onclick="w3_close()">Datasets</a><a class="w3-bar-item w3-button w3-hover-white" href="#bibliography" onclick="w3_close()">Bibliography</a><a class="w3-bar-item w3-button w3-hover-white" href="#authors" onclick="w3_close()">About the authors</a></span>
+</div>
+<div class="row" style="position: absolute; bottom: 25px; height: 50px;">
+<div class="column">
+<a href="ro-crate-metadata.json" id="jsonld_svg">
+<img alt="JSON-LD" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/JSON-LD.svg/512px-JSON-LD.svg.png" style="filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(57deg) brightness(101%) contrast(102%); width: 30px; margin: 0; " title="Retrieve the JSON-LD ro-crate representation of this web."/>
+</a>
+</div>
+<div class="column">
+<!-- Help button -->
+<a href="help.html" id="help-button">
+<img alt="help-button" src="https://img.icons8.com/material-outlined/48/000000/help.png" style="filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(57deg) brightness(101%) contrast(102%); width: 30px; margin: 0;" title="Description of each element and how was this web created."/>
+</a>
+</div>
+</div>
+
+</nav>
+<!-- Top menu on small screens -->
+<header class="w3-container w3-top w3-hide-large w3-green w3-xlarge w3-padding">
+<a class="w3-button w3-green w3-margin-right" href="javascript:void(0)" onclick="w3_open()">☰</a>
+</header>
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" id="myOverlay" onclick="w3_close()" style="cursor:pointer" title="close side menu"></div>
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin:auto; padding-left: 340px; max-width: 1500px;">
+<!-- Header -->
+<div class="w3-container" id="showcase" style="margin-top:80px">
+<h1>A global FAOSTAT reference database of cropland nutrient budgets and nutrient use efficiency (1961-2020): nitrogen, phosphorus and potassium</h1>
+</div>
+<!-- Summary -->
+<span id="summary"><div class="w3-container" style="margin-top:15px">
+<h1 class="w3-xxxlarge w3-text-green"><b>Summary</b></h1>
+<hr class="w3-round" style="width:50px;border:5px solid green"/>
+<p>Nutrient budgets help to identify the excess or insufficient use of fertilizers and other nutrient sources in agriculture. They allow for the calculation of indicators, such as the nutrient balance (surplus if positive or deficit if negative) and nutrient use efficiency, that help to monitor agricultural productivity and sustainability across the world. We present a global database of country-level budget estimates for nitrogen (N), phosphorus (P) and potassium (K) on cropland. The database, disseminated in FAOSTAT, is meant to provide a global reference, synthesizing and continuously updating the state of the art on this topic. The database covers 205 countries and territories, as well as regional and global aggregates, for the period from 1961 to 2020. Results highlight the wide range in nutrient use and nutrient use efficiencies across geographic regions, nutrients, and time. The average N balance on global cropland has remained fairly steady at about 50-55 kg ha-1 yr-1 during the past 15 years, despite increasing N inputs. Regional trends, however, show recent average N surpluses that range from a low of about 10 kg N ha-1 yr-1 in Africa to more than 90 kg N ha-1 yr-1 in Asia. Encouragingly, average global cropland N use efficiency decreased from about 59 % in 1961 to a low of 43 % in 1988, but it has risen since then to a level of 55 %. Phosphorus deficits are mainly found in Africa, whereas potassium deficits occur in Africa and the Americas. This study introduces improvements over previous work in relation to the key nutrient coefficients affecting nutrient budgets and nutrient use efficiency estimates, especially with respect to nutrient removal in crop products, manure nutrient content, atmospheric deposition and crop biological N fixation rates. We conclude by discussing future research directions and highlighting the need to align statistical Published by Copernicus Publications. 526 C. I. Ludemann et al.: A global FAOSTAT reference database of cropland nutrient budgets definitions across research groups as well as to further refine plant and livestock coefficients and expand estimates to all agricultural land, including nutrient flows in meadows and pastures. Further information is available from https://doi.org/10.5061/dryad.hx3ffbgkh (Ludemann et al., 2023b) as well as the FAOSTAT database (https:// www.fao.org/faostat/en/#data/ESB; FAO, 2022a) and is updated annually.</p>
+</div></span>
+<!-- Goal -->
+<span id="goal"></span>
+<!-- Social Motivation -->
+<span id="social_motivation"></span>
+<!-- Areas -->
+<span id="areas"></span>
+<!-- Activities -->
+<span id="activities"></span>
+<!-- Sketch -->
+<span id="sketch"></span>
+<!-- Demo -->
+<span id="demo"></span>
+<!-- datasets -->
+<span id="datasets"><div class="w3-container" id="datasets" style="margin-top:75px">
+<h1 class="w3-xxxlarge w3-text-green"><b>Datasets</b></h1>
+<hr class="w3-round" style="width:50px;border:5px solid green"/>
+<ul><li><p><a href="https://zenodo.org/records/10511851">https://zenodo.org/records/10511851</a></p>
+<ul></ul></li><li><p><a href="https://zenodo.org/records/10492448">https://zenodo.org/records/10492448</a></p>
+<ul></ul></li><li><p><a href="https://doi.org/10.5061/dryad.hx3ffbgkh">Data from: A global FAOSTAT reference database of cropland nutrient budgets and nutrient use efficiency (1961–2020): nitrogen, phosphorus and potassium</a></p>
+<ul><li><b>Description:</b> Agricultural nutrient budgets help to identify an excess or an
+ insufficiency in use of fertilizers and other nutrient sources. Nutrient
+ budgets allow for indicators such as the nutrient balance (surplus or
+ deficit) and nutrient use efficiency to be estimated. This can help in the
+ monitoring of agricultural productivity and sustainability globally. The
+ present dataset is a global database of country-level budget estimates for
+ nitrogen (N), phosphorus (P) and potassium (K) in cropland. The database
+ is disseminated in FAOSTAT and provides a global reference, synthesizing
+ and continuously updating the state-of-the-art on this topic. The database
+ covers the period 961 to 2020 for 205 countries and territories, as well
+ as regional and global aggregates. Results indicate the wide range in
+ nutrient use and use efficiencies across regions, nutrients, and time.
+ This dataset introduces improvements over previous work in relation to key
+ nutrient coefficients affecting nutrient budgets and use efficiency
+ estimates. This is especially for nutrient removal in crop products,
+ manure nutrient content, atmospheric deposition and crop biological N
+ fixation rates. </li><li><b>License:</b> https://creativecommons.org/publicdomain/zero/1.0/legalcode</li></ul></li><li><p><a href="https://doi.org/10.5061/dryad.hx3ffbgkh(">https://doi.org/10.5061/dryad.hx3ffbgkh(</a></p>
+<ul></ul></li><li><p><a href="https://doi.org/10.5061/dryad.n2z34tn0x">Global data on crop nutrient concentration and harvest indices</a></p>
+<ul><li><b>Description:</b> Estimates of crop nutrient removal (as crop products and crop residues)
+ are an important component of crop nutrient balances. Crop nutrient
+ removal can be estimated through multiplication of the quantity of crop
+ products or crop residues (removed) by the nutrient concentration of those
+ crop products and crop residue components respectively. Data for
+ quantities of crop products removed at a country level are available
+ through FAOSTAT (https://www.fao.org/faostat/en/), but equivalent data for
+ quantities of crop residues are not available at a global level. However,
+ quantities of crop residues can be estimated if the relationship between
+ quantity of crop residues and crop products is known. Harvest index (HI)
+ provides one such indication of the relationship between quantity of crop
+ products and crop residues. HI is the proportion of above-ground biomass
+ as crop products and can be used to estimate quantity of crop residues
+ based on quantity of crop products. Previously, meta-analyses or surveys
+ have been performed to estimate nutrient concentrations of crop products
+ and crop residues and harvest indices (collectively known as crop
+ coefficients). The challenges for using these coefficients in global
+ nutrient balances include the representativeness of world regions or
+ countries. Moreover, it may be unclear which countries or crop types are
+ actually represented in the analyses of data. In addition, units used
+ among studies differ which makes comparisons challenging. To overcome
+ these challenges, data from meta-analyses and surveys were collated in one
+ dataset with standardised units and referrals to the original region and
+ crop names used by the sources of data. Original region and crop names
+ were converted into internationally recognised names, and crop
+ coefficients were summarised into two Tiers of data, representing the
+ world (Tier 1, with single coefficient values for the world) and specific
+ regions or countries of the world (Tier 2, with single coefficient values
+ for each country). This dataset will aid both global and regional analyses
+ for crop nutrient balances. </li><li><b>License:</b> https://creativecommons.org/publicdomain/zero/1.0/legalcode</li></ul></li><li><p><a href="https://doi.org/10.5281/zenodo.10491879">ludemannc/fao_cnb: FAO cropland nutrient budget analysis</a></p>
+<ul><li><b>Description:</b> Data and code used for creating Cropland Nutrient Budget (1961-2020) related figures and tables in the Ludemann et al Earth Systems Science Data article available at: https://doi.org/10.5194/essd-2023-206.</li><li><b>License:</b> https://creativecommons.org/licenses/by/4.0/legalcode</li><li><b>Author:</b> Cameron Ludemann</li></ul></li><li><p><a href="https://doi.org/10.5281/zenodo.7133336">rasmuse/bnf-faostat: v1.4</a></p>
+<ul><li><b>Description:</b> v1.4 of this repository produces the results that are used in the 2024 dissemination of FAOSTAT cropland nutrient budgets.</li><li><b>License:</b> https://creativecommons.org/licenses/by/4.0/legalcode</li><li><b>Author:</b>  Rasmus Einarsson</li></ul></li><li><p><a href="https://doi.org/10.5281/zenodo.10491880">ludemannc/fao_cnb: FAO cropland nutrient budget analysis</a></p>
+<ul><li><b>Description:</b> Data and code used for creating Cropland Nutrient Budget (1961-2020) related figures and tables in the Ludemann et al Earth Systems Science Data article available at: https://doi.org/10.5194/essd-2023-206.</li><li><b>License:</b> https://creativecommons.org/licenses/by/4.0/legalcode</li><li><b>Author:</b> Cameron Ludemann</li></ul></li></ul>
+</div></span>
+<!-- Software -->
+<span id="software"></span>
+<!-- Bibliography -->
+<span id="bibliography"><div class="w3-container" id="bib" style="margin-top:75px">
+<h1 class="w3-xxxlarge w3-text-green"><b>Bibliography</b></h1>
+<hr class="w3-round" style="width:50px;border:5px solid green"/>
+<ul><li>Ludemann, C. I., Wanner, N., Chivenge, P., Dobermann, A., Einarsson, R., Grassini, P., Gruere, A., Jackson, K., Lassaletta, L., Maggi, F., Obli-Laryea, G., van Ittersum, M. K., Vishwakarma, S., Zhang, X., &amp; Tubiello, F. N. (2024). A global FAOSTAT reference database of cropland nutrient budgets and nutrient use efficiency (1961â2020): nitrogen, phosphorus and potassium. Earth System Science Data, 16(1), 525â541. <a href="https://doi.org/10.5194/essd-16-525-2024
+" target="_blank">https://doi.org/10.5194/essd-16-525-2024
+</a></li><li>Source PDF: essd-16-525-2024.pdf</li><li>Dataset extraction file: essd-16-525-2024.dataset.json</li></ul>
+</div></span>
+<!-- Contact -->
+<span id="contact"></span>
+<!-- Authors -->
+<span id="authors"><div class="w3-container" id="authors" style="margin-top:75px">
+<h1 class="w3-xxxlarge w3-text-green"><b>About the authors</b></h1>
+<hr class="w3-round" style="width:50px;border:5px solid green"/>
+<div class="w3-row-padding">
+<div class="w3-col m4 w3-margin-bottom">
+<div class="w3-light-grey" style="padding-bottom: 10px;">
+<div style="width:90%; height:0; overflow:hidden; height:0; padding-top: 12px; padding-bottom: 90%;
+                            margin: auto;">
+<img alt="" src="images\default_author.jpg" style="width:100%;"/>
+</div>
+<div class="w3-container">
+<p class="w3-opacity">author</p>
+</div>
+</div>
+</div>
+<div class="w3-col m4 w3-margin-bottom">
+<div class="w3-light-grey" style="padding-bottom: 10px;">
+<div style="width:90%; height:0; overflow:hidden; height:0; padding-top: 12px; padding-bottom: 90%;
+                            margin: auto;">
+<img alt="Nathan Wanner" src="images\default_author.jpg" style="width:100%;"/>
+</div>
+<div class="w3-container">
+<h3><a href="">Nathan Wanner</a></h3>
+<p class="w3-opacity">author</p>
+</div>
+</div>
+</div>
+<div class="w3-col m4 w3-margin-bottom">
+<div class="w3-light-grey" style="padding-bottom: 10px;">
+<div style="width:90%; height:0; overflow:hidden; height:0; padding-top: 12px; padding-bottom: 90%;
+                            margin: auto;">
+<img alt="Pauline Chivenge" src="images\default_author.jpg" style="width:100%;"/>
+</div>
+<div class="w3-container">
+<h3><a href="">Pauline Chivenge</a></h3>
+<p class="w3-opacity">author</p>
+</div>
+</div>
+</div>
+</div><div class="w3-row-padding">
+<div class="w3-col m4 w3-margin-bottom">
+<div class="w3-light-grey" style="padding-bottom: 10px;">
+<div style="width:90%; height:0; overflow:hidden; height:0; padding-top: 12px; padding-bottom: 90%;
+                            margin: auto;">
+<img alt="Achim Dobermann" src="images\default_author.jpg" style="width:100%;"/>
+</div>
+<div class="w3-container">
+<h3><a href="">Achim Dobermann</a></h3>
+<p class="w3-opacity">author</p>
+</div>
+</div>
+</div>
+<div class="w3-col m4 w3-margin-bottom">
+<div class="w3-light-grey" style="padding-bottom: 10px;">
+<div style="width:90%; height:0; overflow:hidden; height:0; padding-top: 12px; padding-bottom: 90%;
+                            margin: auto;">
+<img alt="" src="images\default_author.jpg" style="width:100%;"/>
+</div>
+<div class="w3-container">
+<p class="w3-opacity">author</p>
+</div>
+</div>
+</div>
+<div class="w3-col m4 w3-margin-bottom">
+<div class="w3-light-grey" style="padding-bottom: 10px;">
+<div style="width:90%; height:0; overflow:hidden; height:0; padding-top: 12px; padding-bottom: 90%;
+                            margin: auto;">
+<img alt="Patricio Grassini" src="images\default_author.jpg" style="width:100%;"/>
+</div>
+<div class="w3-container">
+<h3><a href="">Patricio Grassini</a></h3>
+<p class="w3-opacity">author</p>
+</div>
+</div>
+</div>
+</div><div class="w3-row-padding">
+<div class="w3-col m4 w3-margin-bottom">
+<div class="w3-light-grey" style="padding-bottom: 10px;">
+<div style="width:90%; height:0; overflow:hidden; height:0; padding-top: 12px; padding-bottom: 90%;
+                            margin: auto;">
+<img alt="Armelle Gruere" src="images\default_author.jpg" style="width:100%;"/>
+</div>
+<div class="w3-container">
+<h3><a href="">Armelle Gruere</a></h3>
+<p class="w3-opacity">author</p>
+</div>
+</div>
+</div>
+<div class="w3-col m4 w3-margin-bottom">
+<div class="w3-light-grey" style="padding-bottom: 10px;">
+<div style="width:90%; height:0; overflow:hidden; height:0; padding-top: 12px; padding-bottom: 90%;
+                            margin: auto;">
+<img alt="Kevin Jackson" src="images\default_author.jpg" style="width:100%;"/>
+</div>
+<div class="w3-container">
+<h3><a href="">Kevin Jackson</a></h3>
+<p class="w3-opacity">author</p>
+</div>
+</div>
+</div>
+<div class="w3-col m4 w3-margin-bottom">
+<div class="w3-light-grey" style="padding-bottom: 10px;">
+<div style="width:90%; height:0; overflow:hidden; height:0; padding-top: 12px; padding-bottom: 90%;
+                            margin: auto;">
+<img alt="" src="images\default_author.jpg" style="width:100%;"/>
+</div>
+<div class="w3-container">
+<p class="w3-opacity">author</p>
+</div>
+</div>
+</div>
+</div><div class="w3-row-padding">
+<div class="w3-col m4 w3-margin-bottom">
+<div class="w3-light-grey" style="padding-bottom: 10px;">
+<div style="width:90%; height:0; overflow:hidden; height:0; padding-top: 12px; padding-bottom: 90%;
+                            margin: auto;">
+<img alt="" src="images\default_author.jpg" style="width:100%;"/>
+</div>
+<div class="w3-container">
+<p class="w3-opacity">author</p>
+</div>
+</div>
+</div>
+<div class="w3-col m4 w3-margin-bottom">
+<div class="w3-light-grey" style="padding-bottom: 10px;">
+<div style="width:90%; height:0; overflow:hidden; height:0; padding-top: 12px; padding-bottom: 90%;
+                            margin: auto;">
+<img alt="Griffiths Obli-Laryea" src="images\default_author.jpg" style="width:100%;"/>
+</div>
+<div class="w3-container">
+<h3><a href="">Griffiths Obli-Laryea</a></h3>
+<p class="w3-opacity">author</p>
+</div>
+</div>
+</div>
+<div class="w3-col m4 w3-margin-bottom">
+<div class="w3-light-grey" style="padding-bottom: 10px;">
+<div style="width:90%; height:0; overflow:hidden; height:0; padding-top: 12px; padding-bottom: 90%;
+                            margin: auto;">
+<img alt="Martin K Van Ittersum" src="images\default_author.jpg" style="width:100%;"/>
+</div>
+<div class="w3-container">
+<h3><a href="">Martin K Van Ittersum</a></h3>
+<p class="w3-opacity">author</p>
+</div>
+</div>
+</div>
+</div><div class="w3-row-padding">
+<div class="w3-col m4 w3-margin-bottom">
+<div class="w3-light-grey" style="padding-bottom: 10px;">
+<div style="width:90%; height:0; overflow:hidden; height:0; padding-top: 12px; padding-bottom: 90%;
+                            margin: auto;">
+<img alt="" src="images\default_author.jpg" style="width:100%;"/>
+</div>
+<div class="w3-container">
+<p class="w3-opacity">author</p>
+</div>
+</div>
+</div>
+<div class="w3-col m4 w3-margin-bottom">
+<div class="w3-light-grey" style="padding-bottom: 10px;">
+<div style="width:90%; height:0; overflow:hidden; height:0; padding-top: 12px; padding-bottom: 90%;
+                            margin: auto;">
+<img alt="Xin Zhang" src="images\default_author.jpg" style="width:100%;"/>
+</div>
+<div class="w3-container">
+<h3><a href="">Xin Zhang</a></h3>
+<p class="w3-opacity">author</p>
+</div>
+</div>
+</div>
+<div class="w3-col m4 w3-margin-bottom">
+<div class="w3-light-grey" style="padding-bottom: 10px;">
+<div style="width:90%; height:0; overflow:hidden; height:0; padding-top: 12px; padding-bottom: 90%;
+                            margin: auto;">
+<img alt="" src="images\default_author.jpg" style="width:100%;"/>
+</div>
+<div class="w3-container">
+<p class="w3-opacity">author</p>
+</div>
+</div>
+</div>
+</div></div></span>
+<!-- Bibtext -->
+<span id="bibtext"></span>
+</div>
+
+
+
+
+<!-- End page content -->
+
+<script>
+// Script to open and close sidebar
+function w3_open() {
+	document.getElementById("mySidebar").style.display = "block";
+	document.getElementById("myOverlay").style.display = "block";
+}
+
+function w3_close() {
+	document.getElementById("mySidebar").style.display = "none";
+	document.getElementById("myOverlay").style.display = "none";
+}
+
+// Modal Image Gallery
+function onClick(element) {
+	document.getElementById("img01").src = element.src;
+	document.getElementById("modal01").style.display = "block";
+	var captionText = document.getElementById("caption");
+	captionText.innerHTML = element.alt;
+}
+</script>
+</body>
+</html>

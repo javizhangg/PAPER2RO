@@ -1,0 +1,125 @@
+{
+    "@context": "https://w3id.org/ro/crate/1.1/context",
+    "@graph": [
+        {
+            "@id": "ro-crate-metadata.json",
+            "@type": "CreativeWork",
+            "about": {
+                "@id": "./"
+            },
+            "conformsTo": {
+                "@id": "https://w3id.org/ro/crate/1.1"
+            },
+            "description": "RO-Crate Metadata File Descriptor (this file)"
+        },
+        {
+            "@id": "./",
+            "@type": "Dataset",
+            "DataType": "Paper",
+            "author": [
+                {
+                    "@id": "#yi-wei_zhang"
+                },
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#zhiyao_tang"
+                },
+                {
+                    "@id": "#yuhao_feng"
+                },
+                {
+                    "@id": "#xinrong_zhu"
+                },
+                {
+                    "@id": "#wenting_xu"
+                },
+                {
+                    "@id": "#yongfei_bai"
+                },
+                {
+                    "@id": "#guoyi_zhou"
+                },
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#jingyun_fang"
+                }
+            ],
+            "description": "Recent increases in atmospheric carbon dioxide (CO 2) and temperature relieve their limitations on terrestrial ecosystem productivity, while nutrient availability constrains the increasing plant photosynthesis more intensively. Nitrogen (N) and phosphorus (P) are critical for plant physiological activities and consequently regulate ecosystem productivity. Here, for the first time, we mapped N and P densities and concentrations of leaves, woody stems, roots, litter, and soil in forest, shrubland, and grassland ecosystems across China based on an intensive investigation at 4868 sites, covering species composition, biomass, and nutrient concentrations of different tissues of living plants, litter, and soil. Forest, shrubland, and grassland ecosystems in China stored 6803.6 Tg N, with 6635.2 Tg N (97.5 %) fixed in soil (to a depth of 1 m) and 27.7 (0.4 %), 57.8 (0.8 %), 71.2 (1 %), and 11.7 Tg N (0.2 %) in leaves, stems, roots, and litter, respectively. The forest, shrubland, and grassland ecosystems in China stored 2806.0 Tg P, with 2786.1 Tg P (99.3 %) fixed in soil (to a depth of 1 m) and 2.7 (0.1 %), 9.4 (0.3 %), 6.7 (0.2 %), and 1.0 Tg P (< 0.1 %) in leaves, stems, roots, and litter, respectively. Our estimation showed that N pools were low in northern China, except in the Changbai Mountains, Mount Tianshan, and Mount Alta, while relatively higher values existed in the eastern Qinghai-Tibetan Plateau and Yunnan. P densities in vegetation were higher towards the southern and northeastern part of China, while soil P density was higher towards the northern and western part of China. The estimated N and P density and concentration datasets, \"Patterns of nitrogen and phosphorus pools in terrestrial ecosystems in China\" (https://doi.org/10.5061/dryad.6hdr7sqzx), are available from the Dryad digital repository (Zhang et al., 2021). These patterns of N and P densities could potentially improve existing earth system models and large-scale research on ecosystem nutrients.",
+            "hasPart": [
+                {
+                    "@id": "#patterns_of_nitrogen_and_phosphorus_pools_in_terrestrial_ecosystems_in_china"
+                },
+                {
+                    "@id": "ro-crate-preview.html"
+                }
+            ],
+            "name": "Patterns of nitrogen and phosphorus pools in terrestrial ecosystems in China"
+        },
+        {
+            "@id": "#yi-wei_zhang",
+            "@type": "Person",
+            "name": "Yi-Wei Zhang"
+        },
+        {
+            "@id": "#none",
+            "@type": "Person"
+        },
+        {
+            "@id": "#zhiyao_tang",
+            "@type": "Person",
+            "name": "Zhiyao Tang"
+        },
+        {
+            "@id": "#yuhao_feng",
+            "@type": "Person",
+            "name": "Yuhao Feng"
+        },
+        {
+            "@id": "#xinrong_zhu",
+            "@type": "Person",
+            "name": "Xinrong Zhu"
+        },
+        {
+            "@id": "#wenting_xu",
+            "@type": "Person",
+            "name": "Wenting Xu"
+        },
+        {
+            "@id": "#yongfei_bai",
+            "@type": "Person",
+            "name": "Yongfei Bai"
+        },
+        {
+            "@id": "#guoyi_zhou",
+            "@type": "Person",
+            "name": "Guoyi Zhou"
+        },
+        {
+            "@id": "#none",
+            "@type": "Person"
+        },
+        {
+            "@id": "#jingyun_fang",
+            "@type": "Person",
+            "name": "Jingyun Fang"
+        },
+        {
+            "@id": "#patterns_of_nitrogen_and_phosphorus_pools_in_terrestrial_ecosystems_in_china",
+            "@type": "Dataset",
+            "description": "Recent increases in atmospheric carbon dioxide (CO2) and temperature\n relieve their limitations on terrestrial ecosystem productivity, while\n nutrient availability constrains the increasing plant photosynthesis more\n intensively. Nitrogen (N) and phosphorus (P) are critical for plant\n physiological activities and consequently regulates ecosystem\n productivity. Here, for the first time, we mapped N and P densities and\n concentrations of leaves, woody stems, roots, litter and soil in forest,\n shrubland and grassland ecosystems across China, based on an intensive\n investigation in 4,868 sites, covering species composition, biomass, and\n nutrient concentrations of different tissues of living plants, litter and\n soil. Forest, shrubland and grassland ecosystems in China stored 6,803.6\n Tg N, with 6,635.2 Tg N (97.5%) fixed in soil (to a depth of one metre),\n and 27.7 Tg N (0.4%), 57.8 Tg N (0.8%), 71.2 Tg N (1%) and 11.7 Tg N\n (0.2%) in leaves, stems, roots and litter, respectively. The forest,\n shrubland and grassland ecosystems in China stored 2,806.0 Tg P, with\n 2,786.1 Tg P (99.3%) fixed in soil (to a depth of one metre), and 2.7 Tg P\n (0.1%), 9.4 Tg P (0.3%), 6.7 Tg P (0.2%) and 1.0 Tg P (&lt; 0.1%) in\n leaves, stems, roots and litter, respectively. Our estimation showed that\n N pools were low in northern China except Changbai Mountains, Mount\n Tianshan and Mount Alta, while relatively higher values existed in eastern\n Qinghai-Tibetan Plateau and Yunnan. P densities in vegetation were higher\n towards the south and northeast part of China, while soil P density was\n higher towards the north and west part of China. These patterns of N and P\n densities could potentially improve existing earth system models and\n large-scale researches on ecosystem nutrients.",
+            "distribution": {
+                "@id": "https://doi.org/10.5061/dryad.6hdr7sqzx"
+            },
+            "name": "Patterns of nitrogen and phosphorus pools in terrestrial ecosystems in China"
+        },
+        {
+            "@id": "ro-crate-preview.html",
+            "@type": "WebPage",
+            "name": "HTML representation of this data."
+        }
+    ]
+}

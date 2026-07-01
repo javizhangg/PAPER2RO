@@ -1,0 +1,95 @@
+{
+    "@context": "https://w3id.org/ro/crate/1.1/context",
+    "@graph": [
+        {
+            "@id": "ro-crate-metadata.json",
+            "@type": "CreativeWork",
+            "about": {
+                "@id": "./"
+            },
+            "conformsTo": {
+                "@id": "https://w3id.org/ro/crate/1.1"
+            },
+            "description": "RO-Crate Metadata File Descriptor (this file)"
+        },
+        {
+            "@id": "./",
+            "@type": "Dataset",
+            "DataType": "Paper",
+            "author": [
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#none"
+                }
+            ],
+            "description": "The collection of in situ data is generally a costly process, with the Arctic being no exception. Indeed, there has been a perception that the Arctic is lacking in situ sampling; however, after many years of concerted effort and international collaboration, the Arctic is now rather well sampled, with many cruise expeditions every year. For example, the GLODAP (Global Ocean Data Analysis Project) product has a greater density of in situ sampling points within the Arctic than along the Equator. While this is useful for open-ocean processes, the fjords of the Arctic, which serve as crucially important intersections of terrestrial, coastal, and marine processes, are sampled in a much more ad hoc process. This is not to say they are not well sampled but rather that the data are more difficult to source and combine for further analysis. It was therefore noted that the fjords of the Arctic are lacking in FAIR (findable, accessible, interoperable, and reusable) data. To address this issue, a single dataset has been created from publicly available, predominantly in situ data from seven study sites in Svalbard and Greenland. After finding and accessing the data from a number of online platforms, they were amalgamated into a single project-wide standard, ensuring their interoperability. The dataset was then uploaded to PANGAEA so that it can be findable and reusable in the future. The focus of the data collection was driven by the key drivers of change in Arctic fjords identified in a companion review paper. To demonstrate the usability of this dataset, an analysis of the relationship between the different drivers was performed. Via the use of an Arctic biogeochemical model, these relationships were projected forward to 2100 via Representative Carbon Pathways (RCPs) 2.6, 4.5, and 8.5. This dataset is a work in progress, and as new datasets containing the relevant key drivers are released, they will be added to an updated version planned for the middle of 2024.",
+            "hasPart": [
+                {
+                    "@id": "#par_measurements_at_hansneset,_kongsfjorden,_above_and_below_kelp_canopies_from_2012_to_2013"
+                },
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#code_used_for_the_analysis_of_a_dataset_for_investigating_socio-ecological_changes_in_arctic_fjords"
+                },
+                {
+                    "@id": "#a_dataset_for_investigating_socio-ecological_changes_in_arctic_fjords"
+                },
+                {
+                    "@id": "ro-crate-preview.html"
+                }
+            ],
+            "name": "A dataset for investigating socio-ecological changes in Arctic fjords"
+        },
+        {
+            "@id": "#none",
+            "@type": "Person"
+        },
+        {
+            "@id": "#none",
+            "@type": "Person"
+        },
+        {
+            "@id": "#par_measurements_at_hansneset,_kongsfjorden,_above_and_below_kelp_canopies_from_2012_to_2013",
+            "@type": "Dataset",
+            "description": "Calibrated diurnal variation of irradiance in the PAR range (Ed(PAR,Z)) (10 min intervals) (in \u00b5mol/m\u00b2/s) measured at several depths above and below the kelp forest off Hansneset between 5 to 31 July 2012. The Odyssey loggers were mounted on each of four vertical racks which were fixed at the seafloor at 2.5, 5, 10 and 15 m depth MLW accompanying the study of Bartsch et al. (2016) (Polar Biology; doi:10.1007/s00300-015-1870-1). One logger was installed below the kelp canopy, approx. 20 cm (\u00b110 cm) above the seafloor representing the \u201cbelow canopy\u201d situation, and another logger was mounted 90 cm (\u00b110 cm) above the first logger, representing the \u201cabove canopy\u201d situation. At 15 m depth, there was only one sensor above ground as this was below the kelp forest in the red algal zone. The loggers at the 10 and 15 m depths were left to run until June 2013 however, as the sensors were not cleaned in regular intervals from August 2012 onwards, absolute values have to be considered with care.",
+            "distribution": {
+                "@id": "https://doi.org/10.1594/PANGAEA.945341"
+            },
+            "name": "PAR measurements at Hansneset, Kongsfjorden, above and below kelp canopies from 2012 to 2013"
+        },
+        {
+            "@id": "#none",
+            "@type": "Dataset",
+            "distribution": {
+                "@id": "https://pangaea.de"
+            }
+        },
+        {
+            "@id": "#code_used_for_the_analysis_of_a_dataset_for_investigating_socio-ecological_changes_in_arctic_fjords",
+            "@type": "Dataset",
+            "description": "This R script contains the code used to analyse the FACE-IT v1.0 dataset, which is available on PANGAEA at: https://doi.pangaea.de/10.1594/PANGAEA.953115 . Also contained herein is the code to generate the figures and tables seen in the manuscript submitted for review at Earth System Science Data (ESSD). Note that much of this code is designed to be run within the code base found at: https://github.com/FACE-IT-project/WP1 . It also requires access to many large data files available via Robert Schlegel's pCloud account.",
+            "distribution": {
+                "@id": "https://doi.org/10.5281/zenodo.8263692"
+            },
+            "name": "Code used for the analysis of a dataset for investigating socio-ecological changes in Arctic fjords"
+        },
+        {
+            "@id": "#a_dataset_for_investigating_socio-ecological_changes_in_arctic_fjords",
+            "@type": "Dataset",
+            "description": "The collection of in situ data is generally a costly process, with the Arctic being no exception. Indeed, there has been a perception that the Arctic lacks for in situ sampling; however, after many years of concerted effort and international collaboration, the Arctic is now rather well sampled with many cruise expeditions every year. For example, the GLODAP product has a greater density of in situ sample points within the Arctic than along the equator. While this is useful for open ocean processes, the fjords of the Arctic, which serve as crucially important intersections of terrestrial, coastal, and marine processes, are sampled in a much more ad hoc process. This is not to say they are not well sampled, but rather that the data are more difficult to source and combine for further analysis. It was therefore noted that the fjords of the Arctic are lacking in FAIR (Findable, Accessible, Interoperable, and Reusable) data. To address this issue a single dataset has been created from publicly available, predominantly in situ data from a number of online platforms. After finding and accessing the data, they were amalgamated into a single project-wide standard, ensuring their interoperability. The dataset was then uploaded to PANGAEA so that it itself can be findable and reusable into the future. The focus of the data collection was driven by the key drivers of change in Arctic fjords identified in a companion review paper. This dataset is a work in progress and as new datasets containing the relevant key drivers are released they will be added to an updated version planned for late 2024.",
+            "distribution": {
+                "@id": "https://doi.org/10.1594/PANGAEA.953115"
+            },
+            "name": "A Dataset for Investigating Socio-ecological Changes in Arctic Fjords"
+        },
+        {
+            "@id": "ro-crate-preview.html",
+            "@type": "WebPage",
+            "name": "HTML representation of this data."
+        }
+    ]
+}

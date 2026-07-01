@@ -1,0 +1,76 @@
+type: paper
+title: 'Moho depths beneath the European Alps: a homogeneously processed map and receiver functions database'
+summary: 'We use seismic waveform data from the AlpArray Seismic Network and three other temporary seismic networks, to perform
+  receiver function (RF) calculations and time-to-depth migration to update the knowledge of the Moho discontinuity beneath
+  the broader European Alps. In particular, we set up a homogeneous processing scheme to compute RFs using the time-domain
+  iterative deconvolution method and apply consistent quality control to yield 112 205 high-quality RFs. We then perform time-to-depth
+  migration in a newly implemented 3D spherical coordinate system using a European-scale reference P and S wave velocity model.
+  This approach, together with the dense data coverage, provide us with a 3D migrated volume, from which we present Published
+  by Copernicus Publications. 2118 K. Michailos et al.: Moho depths beneath the European Alps migrated profiles that reflect
+  the first-order crustal thickness structure. We create a detailed Moho map by manually picking the discontinuity in a set
+  of orthogonal profiles covering the entire area. We make the RF dataset, the software for the entire processing workflow,
+  as well as the Moho map, openly available; these open-access datasets and results will allow other researchers to build
+  on the current study.'
+datasets:
+- https://zenodo.org/records/7695125
+- https://doi.org/10.5281/zenodo.7937575
+- https://doi.org/10.5281/zenodo.5501399
+authors:
+- orcid: 0000-0003-3011-6939
+  role: author
+- orcid: 0000-0001-9036-4761
+  role: author
+- orcid: 0000-0002-3853-5962
+  role: author
+- orcid: 0000-0002-1419-4892
+  role: author
+- orcid: 0000-0001-8630-5531
+  role: author
+- orcid: 0000-0001-7595-3648
+  role: author
+- orcid: 0000-0002-3387-9336
+  role: author
+- name: Massimo Di Bona
+  role: author
+- orcid: 0000-0002-0017-5260
+  role: author
+- orcid: 0000-0003-3782-1606
+  role: author
+- orcid: 0000-0002-5915-9740
+  role: author
+- name: "D\xE1niel Kalm\xE1r"
+  role: author
+- name: Rainer Kind
+  role: author
+- orcid: 0000-0003-1639-0093
+  role: author
+- orcid: 0000-0002-8717-1720
+  role: author
+- orcid: 0000-0001-9241-1322
+  role: author
+- orcid: 0000-0001-8079-8451
+  role: author
+- name: Stefan Mroczek
+  role: author
+- orcid: 0000-0002-5973-1786
+  role: author
+- orcid: 0000-0003-3478-5128
+  role: author
+- orcid: 0000-0002-1618-4217
+  role: author
+- orcid: 0000-0002-9188-9487
+  role: author
+- orcid: 0000-0002-1077-5833
+  role: author
+- name: Frederik Tilmann
+  role: author
+- name: "Piotr \u015Aroda"
+  role: author
+- orcid: 0000-0003-1731-9360
+  role: author
+- name: Alparray-Pacase Working
+  role: author
+bibliography:
+- https://doi.org/10.5194/essd-15-2117-2023
+- 'Source PDF: essd-15-2117-2023.pdf'
+- 'Dataset extraction file: essd-15-2117-2023.dataset.json'

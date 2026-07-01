@@ -1,0 +1,155 @@
+{
+    "@context": "https://w3id.org/ro/crate/1.1/context",
+    "@graph": [
+        {
+            "@id": "ro-crate-metadata.json",
+            "@type": "CreativeWork",
+            "about": {
+                "@id": "./"
+            },
+            "conformsTo": {
+                "@id": "https://w3id.org/ro/crate/1.1"
+            },
+            "description": "RO-Crate Metadata File Descriptor (this file)"
+        },
+        {
+            "@id": "./",
+            "@type": "Dataset",
+            "DataType": "Paper",
+            "author": [
+                {
+                    "@id": "#zi-jian_cheng"
+                },
+                {
+                    "@id": "#zi-yi_jia"
+                },
+                {
+                    "@id": "#zhi_zhou"
+                },
+                {
+                    "@id": "#yu-feng_li"
+                },
+                {
+                    "@id": "#lan-zhe_guo"
+                }
+            ],
+            "description": "Tabular data, owing to its ubiquitous presence in real-world domains, has garnered significant attention in machine learning research. While tree-based models have long dominated tabular machine learning tasks, the recently proposed deep learning model TabPFN v2 has emerged, demonstrating unparalleled performance and scalability potential. Although extensive research has been conducted on TabPFN v2 to further improve performance, the majority of this research remains confined to closed environments, neglecting the challenges that frequently arise in open environments. This raises the question: Can TabPFN v2 maintain good performance in open environments? To this end, we conduct the first comprehensive evaluation of TabPFN v2's adaptability in open environments. We construct a unified evaluation framework covering various real-world challenges and assess the robustness of TabPFN v2 under open environments scenarios using this framework. Empirical results demonstrate that TabPFN v2 shows significant limitations in open environments but is suitable for small-scale, covariate-shifted, and classbalanced tasks. Tree-based models remain the optimal choice for general tabular tasks in open environments. To facilitate future research on open environments challenges, we advocate for open environments tabular benchmarks, multimetric evaluation, and universal modules to strengthen model robustness. We publicly release our evaluation framework at the URL.",
+            "hasPart": [
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "ro-crate-preview.html"
+                }
+            ],
+            "name": "Realistic Evaluation of TabPFN v2 in Open Environments"
+        },
+        {
+            "@id": "#zi-jian_cheng",
+            "@type": "Person",
+            "name": "Zi-Jian Cheng"
+        },
+        {
+            "@id": "#zi-yi_jia",
+            "@type": "Person",
+            "name": "Zi-Yi Jia"
+        },
+        {
+            "@id": "#zhi_zhou",
+            "@type": "Person",
+            "name": "Zhi Zhou"
+        },
+        {
+            "@id": "#yu-feng_li",
+            "@type": "Person",
+            "name": "Yu-Feng Li"
+        },
+        {
+            "@id": "#lan-zhe_guo",
+            "@type": "Person",
+            "name": "Lan-Zhe Guo"
+        },
+        {
+            "@id": "#none",
+            "@type": "Dataset",
+            "distribution": {
+                "@id": "https://www.kaggle.com/datasets/vinnyr12/eye-movements"
+            }
+        },
+        {
+            "@id": "#none",
+            "@type": "Dataset",
+            "distribution": {
+                "@id": "https://www.kaggle.com/datasets/vstacknocopyright/electricity"
+            }
+        },
+        {
+            "@id": "#none",
+            "@type": "Dataset",
+            "distribution": {
+                "@id": "https://www.kaggle.com/datasets/fedesoriano/heart-failure-prediction"
+            }
+        },
+        {
+            "@id": "#none",
+            "@type": "Dataset",
+            "distribution": {
+                "@id": "https://www.kaggle.com/datasets/alexanderliapatis/miniboone"
+            }
+        },
+        {
+            "@id": "#none",
+            "@type": "Dataset",
+            "distribution": {
+                "@id": "https://www.kaggle.com/datasets/uciml/iris"
+            }
+        },
+        {
+            "@id": "#none",
+            "@type": "Dataset",
+            "distribution": {
+                "@id": "https://www.kaggle.com/datasets/youssefaboelwafa/clusteringpenguins-species"
+            }
+        },
+        {
+            "@id": "#none",
+            "@type": "Dataset",
+            "distribution": {
+                "@id": "https://www.kaggle.com/datasets/rodolfomendes/abalone-dataset"
+            }
+        },
+        {
+            "@id": "#none",
+            "@type": "Dataset",
+            "distribution": {
+                "@id": "https://www.kaggle.com/datasets/abdullapathan/bikesharingdemand"
+            }
+        },
+        {
+            "@id": "ro-crate-preview.html",
+            "@type": "WebPage",
+            "name": "HTML representation of this data."
+        }
+    ]
+}

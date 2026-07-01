@@ -1,0 +1,37 @@
+type: paper
+title: Realistic Evaluation of TabPFN v2 in Open Environments
+summary: 'Tabular data, owing to its ubiquitous presence in real-world domains, has garnered significant attention in machine
+  learning research. While tree-based models have long dominated tabular machine learning tasks, the recently proposed deep
+  learning model TabPFN v2 has emerged, demonstrating unparalleled performance and scalability potential. Although extensive
+  research has been conducted on TabPFN v2 to further improve performance, the majority of this research remains confined
+  to closed environments, neglecting the challenges that frequently arise in open environments. This raises the question:
+  Can TabPFN v2 maintain good performance in open environments? To this end, we conduct the first comprehensive evaluation
+  of TabPFN v2''s adaptability in open environments. We construct a unified evaluation framework covering various real-world
+  challenges and assess the robustness of TabPFN v2 under open environments scenarios using this framework. Empirical results
+  demonstrate that TabPFN v2 shows significant limitations in open environments but is suitable for small-scale, covariate-shifted,
+  and classbalanced tasks. Tree-based models remain the optimal choice for general tabular tasks in open environments. To
+  facilitate future research on open environments challenges, we advocate for open environments tabular benchmarks, multimetric
+  evaluation, and universal modules to strengthen model robustness. We publicly release our evaluation framework at the URL.'
+datasets:
+- https://www.kaggle.com/datasets/vinnyr12/eye-movements
+- https://www.kaggle.com/datasets/vstacknocopyright/electricity
+- https://www.kaggle.com/datasets/fedesoriano/heart-failure-prediction
+- https://www.kaggle.com/datasets/alexanderliapatis/miniboone
+- https://www.kaggle.com/datasets/uciml/iris
+- https://www.kaggle.com/datasets/youssefaboelwafa/clusteringpenguins-species
+- https://www.kaggle.com/datasets/rodolfomendes/abalone-dataset
+- https://www.kaggle.com/datasets/abdullapathan/bikesharingdemand
+authors:
+- name: Zi-Jian Cheng
+  role: author
+- name: Zi-Yi Jia
+  role: author
+- name: Zhi Zhou
+  role: author
+- name: Yu-Feng Li
+  role: author
+- name: Lan-Zhe Guo
+  role: author
+bibliography:
+- 'Source PDF: 2505.16226v1.pdf'
+- 'Dataset extraction file: 2505.16226v1.dataset.json'

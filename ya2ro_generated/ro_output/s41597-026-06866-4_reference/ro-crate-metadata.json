@@ -1,0 +1,110 @@
+{
+    "@context": "https://w3id.org/ro/crate/1.1/context",
+    "@graph": [
+        {
+            "@id": "ro-crate-metadata.json",
+            "@type": "CreativeWork",
+            "about": {
+                "@id": "./"
+            },
+            "conformsTo": {
+                "@id": "https://w3id.org/ro/crate/1.1"
+            },
+            "description": "RO-Crate Metadata File Descriptor (this file)"
+        },
+        {
+            "@id": "./",
+            "@type": "Dataset",
+            "DataType": "Paper",
+            "author": [
+                {
+                    "@id": "#tao_wang"
+                },
+                {
+                    "@id": "#xinle_zhang"
+                },
+                {
+                    "@id": "#mulin_shan"
+                },
+                {
+                    "@id": "#mingyuan_deng"
+                },
+                {
+                    "@id": "#jiaheng_wang"
+                },
+                {
+                    "@id": "#huanjun_liu"
+                },
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#jinyu_sun"
+                }
+            ],
+            "description": "The American satellite reconnaissance program (Keyhole imagery) is serving as a significant data source for geoscience research because of its high-resolution and early temporal coverage, while lack of spatial and temporal description of its uneven distribution could hinder researchers from selecting/accessing appropriate the Keyhole images. Here we introduce a global grid-based dataset that organizes declassified U.S. Keyhole imagery (1960-1984) for direct reuse, built on a global equal-area sinusoidal grid. This dataset standardizes scene metadata and provides indicators designed to inform study design and data integration: coverage count (how often a place was imaged), unique acquisition dates (temporal sampling richness), first/last observation year (temporal bounds), observation span (duration), peak observation year and a three-year window (temporal concentration), resolution class (C1 -C3), temporal-coverage class across five five-year intervals, and resolution-coverage class (A-G) for multi-scale availability. This dataset enables users to quickly locate usable scenes, assess temporal suitability, combine historical images with modern satellites, and determine which non-free images to purchase if free images were unsuitable for their research.",
+            "hasPart": [
+                {
+                    "@id": "#keyhole_reconnaissance_imagery_spatio-temporal_coverage\uff08krist\uff09"
+                },
+                {
+                    "@id": "ro-crate-preview.html"
+                }
+            ],
+            "name": "Global 0.05\u00b0 Grid-Based Dataset of Keyhole Imagery with Spatio-Temporal Indicators (1960-1984)"
+        },
+        {
+            "@id": "#tao_wang",
+            "@type": "Person",
+            "name": "Tao Wang"
+        },
+        {
+            "@id": "#xinle_zhang",
+            "@type": "Person",
+            "name": "Xinle Zhang"
+        },
+        {
+            "@id": "#mulin_shan",
+            "@type": "Person",
+            "name": "Mulin Shan"
+        },
+        {
+            "@id": "#mingyuan_deng",
+            "@type": "Person",
+            "name": "Mingyuan Deng"
+        },
+        {
+            "@id": "#jiaheng_wang",
+            "@type": "Person",
+            "name": "Jiaheng Wang"
+        },
+        {
+            "@id": "#huanjun_liu",
+            "@type": "Person",
+            "name": "Huanjun Liu"
+        },
+        {
+            "@id": "#none",
+            "@type": "Person"
+        },
+        {
+            "@id": "#jinyu_sun",
+            "@type": "Person",
+            "name": "Jinyu Sun"
+        },
+        {
+            "@id": "#keyhole_reconnaissance_imagery_spatio-temporal_coverage\uff08krist\uff09",
+            "@type": "Dataset",
+            "description": "This project provides the <i>Keyhole Imagery Global Coverage Dataset (1960\u20131984)</i>, a globally consistent framework for evaluating the spatio-temporal availability of declassified U.S. Keyhole reconnaissance imagery. The dataset is built on a global equal-area sinusoidal grid of ~25 million points with ~5.6 km spacing and integrates multiple resolution classes (C1: meter-level, C2: five-meter, C3: ten-meter). Standardized indicators are provided, including cover count, number of unique observation dates, first/last observation year, temporal span, peak observation year, and multi-period coverage classification.The project includes fololwing components:<b>global_keyhole.zip</b>: Including two gpkg files as global_keyhole_free.gpkg and global_keyhole_full.gpkg. Each contains three layers as Declass1, Declass2, and Declass3 downloaded from USGS explore.<b>classification.zip</b>: Including two gpkg files as classification_free.gpkg and classification_full.gpkg. Each contains four layers as C1 (meter-level images), C2 (three-meter images), C3 (ten-meter images), as well as the combined layer C0 layer.<b>global_grid.zip</b>: a global equal-area sinusoidal grid of ~25 million points with ~5.6 km spacing.<b>nc+h5.zip</b>: The netCDF file stores numeric variables (e.g., <i>cover_count, unique_date_count</i>). The HDF5 file stores the complete list of metadata URLs for each grid point at that resolution, which could enable users to quickly check cloud conditions through thumbnails and locate download links within the selected area of interest. Both includes eight files as free/full_C{0\u20133}.<b>Code</b>: Python scripts implementing the workflow as merging shapefiles to gpkg, imagery classification, global grid generation, and point-based property calculation, as well as, querying the complete list of metadata URLs on a specific grid point.The dataset supports reproducible Earth system research, historical land use reconstruction, and environmental change studies. Users are encouraged to cite the associated publication and dataset DOI when using these resources.",
+            "distribution": {
+                "@id": "https://doi.org/10.6084/m9.figshare.30017944"
+            },
+            "name": "Keyhole Reconnaissance Imagery Spatio-Temporal coverage\uff08KRIST\uff09"
+        },
+        {
+            "@id": "ro-crate-preview.html",
+            "@type": "WebPage",
+            "name": "HTML representation of this data."
+        }
+    ]
+}

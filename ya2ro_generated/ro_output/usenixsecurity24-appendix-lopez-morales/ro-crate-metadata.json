@@ -1,0 +1,123 @@
+{
+    "@context": "https://w3id.org/ro/crate/1.1/context",
+    "@graph": [
+        {
+            "@id": "ro-crate-metadata.json",
+            "@type": "CreativeWork",
+            "about": {
+                "@id": "./"
+            },
+            "conformsTo": {
+                "@id": "https://w3id.org/ro/crate/1.1"
+            },
+            "description": "RO-Crate Metadata File Descriptor (this file)"
+        },
+        {
+            "@id": "./",
+            "@type": "Dataset",
+            "DataType": "Paper",
+            "author": [
+                {
+                    "@id": "#efr\u00e9n_l\u00f3pez-morales"
+                },
+                {
+                    "@id": "#ulysse_planta"
+                },
+                {
+                    "@id": "#carlos_rubio-medrano"
+                },
+                {
+                    "@id": "#ali_abbasi"
+                },
+                {
+                    "@id": "#alvaro_a_cardenas"
+                },
+                {
+                    "@id": "#texas_a&m_university-corpus_christi;_texas_a&m_university-corpus_christi"
+                },
+                {
+                    "@id": "#texas_a&m_university-corpus_christi_texas_a&m_university-corpus_christi"
+                },
+                {
+                    "@id": "#university_of_california,_santa_cruz_university_of_california_santa_cruz"
+                }
+            ],
+            "description": "In our paper, we provide a systematization of knowledge that covers 133 research papers that account for 17 years of research on the security of PLCs. This SoK produced two artifacts. A systematic literature review dataset and a threat taxonomy called ICS 2 Matrix.",
+            "hasPart": [
+                {
+                    "@id": "#plc-sok-dataset"
+                },
+                {
+                    "@id": "#ics2matrix"
+                },
+                {
+                    "@id": "ro-crate-preview.html"
+                }
+            ],
+            "name": "This artifact appendix is included in the Artifact Appendices to the Proceedings of the 33rd USENIX Security Symposium and appends to the paper of the same name that appears in the Proceedings of the 33rd USENIX Security Symposium"
+        },
+        {
+            "@id": "#efr\u00e9n_l\u00f3pez-morales",
+            "@type": "Person",
+            "name": "Efr\u00e9n L\u00f3pez-Morales"
+        },
+        {
+            "@id": "#ulysse_planta",
+            "@type": "Person",
+            "name": "Ulysse Planta"
+        },
+        {
+            "@id": "#carlos_rubio-medrano",
+            "@type": "Person",
+            "name": "Carlos Rubio-Medrano"
+        },
+        {
+            "@id": "#ali_abbasi",
+            "@type": "Person",
+            "name": "Ali Abbasi"
+        },
+        {
+            "@id": "#alvaro_a_cardenas",
+            "@type": "Person",
+            "name": "Alvaro A Cardenas"
+        },
+        {
+            "@id": "#texas_a&m_university-corpus_christi;_texas_a&m_university-corpus_christi",
+            "@type": "Person",
+            "name": "Texas A&M University-Corpus Christi; Texas A&M University-Corpus Christi"
+        },
+        {
+            "@id": "#texas_a&m_university-corpus_christi_texas_a&m_university-corpus_christi",
+            "@type": "Person",
+            "name": "Texas A&M University-Corpus Christi Texas A&M University-Corpus Christi"
+        },
+        {
+            "@id": "#university_of_california,_santa_cruz_university_of_california_santa_cruz",
+            "@type": "Person",
+            "name": "University of California, Santa Cruz University of California Santa Cruz"
+        },
+        {
+            "@id": "#plc-sok-dataset",
+            "@type": "Dataset",
+            "description": "Dataset files detected by the heuristics in the GitHub repository. Files: attack_methods.csv, dataset_papers.csv, defense_methods.csv. Context from GAP-KGE/datastet: The threat taxonomy ICS 2 Matrix is available at https://github.com/efrenlopezm/ics2matrix/tree/e60ba236a45483bec81b16677b8c71314267f235.",
+            "distribution": {
+                "@id": "https://github.com/efrenlopezm/plc-sok-dataset"
+            },
+            "name": "plc-sok-dataset"
+        },
+        {
+            "@id": "#ics2matrix",
+            "@type": "Dataset",
+            "description": "Dataset files detected by the heuristics in the GitHub repository. Files: ics2matrix.xlsx. Context from GAP-KGE/datastet: The threat taxonomy ICS 2 Matrix is available at https://github.com/efrenlopezm/ics2matrix/tree/e60ba236a45483bec81b16677b8c71314267f235.",
+            "distribution": {
+                "@id": "https://github.com/efrenlopezm/ics2matrix"
+            },
+            "name": "ics2matrix"
+        },
+        {
+            "@id": "ro-crate-preview.html",
+            "@type": "WebPage",
+            "name": "HTML representation of this data."
+        }
+    ]
+}

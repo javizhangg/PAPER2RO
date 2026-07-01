@@ -1,0 +1,265 @@
+{
+    "@context": "https://w3id.org/ro/crate/1.1/context",
+    "@graph": [
+        {
+            "@id": "ro-crate-metadata.json",
+            "@type": "CreativeWork",
+            "about": {
+                "@id": "./"
+            },
+            "conformsTo": {
+                "@id": "https://w3id.org/ro/crate/1.1"
+            },
+            "description": "RO-Crate Metadata File Descriptor (this file)"
+        },
+        {
+            "@id": "./",
+            "@type": "Dataset",
+            "DataType": "Paper",
+            "author": [
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#massimo_di_bona"
+                },
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#d\u00e1niel_kalm\u00e1r"
+                },
+                {
+                    "@id": "#rainer_kind"
+                },
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#stefan_mroczek"
+                },
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#frederik_tilmann"
+                },
+                {
+                    "@id": "#piotr_\u015broda"
+                },
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#alparray-pacase_working"
+                }
+            ],
+            "description": "We use seismic waveform data from the AlpArray Seismic Network and three other temporary seismic networks, to perform receiver function (RF) calculations and time-to-depth migration to update the knowledge of the Moho discontinuity beneath the broader European Alps. In particular, we set up a homogeneous processing scheme to compute RFs using the time-domain iterative deconvolution method and apply consistent quality control to yield 112 205 high-quality RFs. We then perform time-to-depth migration in a newly implemented 3D spherical coordinate system using a European-scale reference P and S wave velocity model. This approach, together with the dense data coverage, provide us with a 3D migrated volume, from which we present Published by Copernicus Publications. 2118 K. Michailos et al.: Moho depths beneath the European Alps migrated profiles that reflect the first-order crustal thickness structure. We create a detailed Moho map by manually picking the discontinuity in a set of orthogonal profiles covering the entire area. We make the RF dataset, the software for the entire processing workflow, as well as the Moho map, openly available; these open-access datasets and results will allow other researchers to build on the current study.",
+            "hasPart": [
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#rfmpy"
+                },
+                {
+                    "@id": "#scientific_colour_maps"
+                },
+                {
+                    "@id": "ro-crate-preview.html"
+                }
+            ],
+            "name": "Moho depths beneath the European Alps: a homogeneously processed map and receiver functions database"
+        },
+        {
+            "@id": "#none",
+            "@type": "Person"
+        },
+        {
+            "@id": "#none",
+            "@type": "Person"
+        },
+        {
+            "@id": "#none",
+            "@type": "Person"
+        },
+        {
+            "@id": "#none",
+            "@type": "Person"
+        },
+        {
+            "@id": "#none",
+            "@type": "Person"
+        },
+        {
+            "@id": "#none",
+            "@type": "Person"
+        },
+        {
+            "@id": "#none",
+            "@type": "Person"
+        },
+        {
+            "@id": "#massimo_di_bona",
+            "@type": "Person",
+            "name": "Massimo Di Bona"
+        },
+        {
+            "@id": "#none",
+            "@type": "Person"
+        },
+        {
+            "@id": "#none",
+            "@type": "Person"
+        },
+        {
+            "@id": "#none",
+            "@type": "Person"
+        },
+        {
+            "@id": "#d\u00e1niel_kalm\u00e1r",
+            "@type": "Person",
+            "name": "D\u00e1niel Kalm\u00e1r"
+        },
+        {
+            "@id": "#rainer_kind",
+            "@type": "Person",
+            "name": "Rainer Kind"
+        },
+        {
+            "@id": "#none",
+            "@type": "Person"
+        },
+        {
+            "@id": "#none",
+            "@type": "Person"
+        },
+        {
+            "@id": "#none",
+            "@type": "Person"
+        },
+        {
+            "@id": "#none",
+            "@type": "Person"
+        },
+        {
+            "@id": "#stefan_mroczek",
+            "@type": "Person",
+            "name": "Stefan Mroczek"
+        },
+        {
+            "@id": "#none",
+            "@type": "Person"
+        },
+        {
+            "@id": "#none",
+            "@type": "Person"
+        },
+        {
+            "@id": "#none",
+            "@type": "Person"
+        },
+        {
+            "@id": "#none",
+            "@type": "Person"
+        },
+        {
+            "@id": "#none",
+            "@type": "Person"
+        },
+        {
+            "@id": "#frederik_tilmann",
+            "@type": "Person",
+            "name": "Frederik Tilmann"
+        },
+        {
+            "@id": "#piotr_\u015broda",
+            "@type": "Person",
+            "name": "Piotr \u015aroda"
+        },
+        {
+            "@id": "#none",
+            "@type": "Person"
+        },
+        {
+            "@id": "#alparray-pacase_working",
+            "@type": "Person",
+            "name": "Alparray-Pacase Working"
+        },
+        {
+            "@id": "#none",
+            "@type": "Dataset",
+            "distribution": {
+                "@id": "https://zenodo.org/records/7695125"
+            }
+        },
+        {
+            "@id": "#rfmpy",
+            "@type": "Dataset",
+            "description": "First pre-release of rfmpy software in alpha stages.",
+            "distribution": {
+                "@id": "https://doi.org/10.5281/zenodo.7937575"
+            },
+            "name": "rfmpy"
+        },
+        {
+            "@id": "#scientific_colour_maps",
+            "@type": "Dataset",
+            "description": "Suite of scientific, <strong>colour-vision deficiency friendly</strong> and <strong>perceptually uniform colour maps</strong> (www.fabiocrameri.ch/colourmaps) that prevent both excluding readers and significant visual errors, which would otherwise visually distort the underlying data and mislead the reader.",
+            "distribution": {
+                "@id": "https://doi.org/10.5281/zenodo.5501399"
+            },
+            "name": "Scientific colour maps"
+        },
+        {
+            "@id": "ro-crate-preview.html",
+            "@type": "WebPage",
+            "name": "HTML representation of this data."
+        }
+    ]
+}

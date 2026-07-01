@@ -1,0 +1,37 @@
+type: paper
+title: three-dimensional, multimodal synchrotron data for machine learning applications
+summary: Machine learning techniques are being increasingly applied in medical and physical sciences across a variety of imaging
+  modalities; however, an important issue when developing these tools is the availability of good quality training data. Here
+  we present a unique, multimodal synchrotron dataset of a bespoke zinc-doped Zeolite 13X sample that can be used to develop
+  advanced deep learning and data fusion pipelines. Multi-resolution micro X-ray computed tomography was performed on a zincdoped
+  Zeolite 13X fragment to characterise its pores and features before spatially resolved X-ray diffraction computed tomography
+  was carried out to characterise the topographical distribution of sodium and zinc phases. Zinc absorption was controlled
+  to create a simple, spatially isolated, twophase material. Both raw and processed data are available as a series of Zenodo
+  entries. altogether we present a spatially resolved, three-dimensional, multimodal, multi-resolution dataset that can be
+  used to develop machine learning techniques. Such techniques include the development of super-resolution, multimodal data
+  fusion, and 3D reconstruction algorithms.
+datasets:
+- https://zenodo.org/records/13327692
+- https://zenodo.org/records/14245751
+- https://zenodo.org/records/13349402
+- https://zenodo.org/records/12206815
+- https://doi.org/10.5281/zenodo.13329670asaseriesof.ascfiles
+authors:
+- orcid: 0000-0002-1223-0861
+  role: author
+- name: Shashidhara Marathe
+  role: author
+- name: Liam Perera
+  role: author
+- name: Alberto Leonardi
+  role: author
+- name: Killian Gmyrek
+  role: author
+- orcid: 0000-0002-5518-499X
+  role: author
+- orcid: 0000-0002-1576-0673
+  role: author
+bibliography:
+- https://doi.org/10.1038/s41597-025-04605-9
+- 'Source PDF: s41597-025-04605-9.pdf'
+- 'Dataset extraction file: s41597-025-04605-9.dataset.json'

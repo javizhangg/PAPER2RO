@@ -1,0 +1,33 @@
+type: paper
+title: 'SEEPS4ALL: an open dataset for the verification of daily precipitation forecasts using station climate statistics'
+summary: Forecast verification is an essential task when developing a forecasting model. How well does a model perform? How
+  does the forecast performance compare with previous versions or other models? Which aspects of the forecast could be improved?
+  In weather forecasting, these questions apply in particular to precipitation, a key weather parameter with vital societal
+  applications. Scores specifically designed to assess the performance of precipitation forecasts have been developed over
+  the years. One example is the Stable and Equitable Error in Probability Space (SEEPS, Rodwell et al., 2010). The computation
+  of this score is however not straightforward because it requires information about the precipitation climatology at the
+  verification locations. More generally, climate statistics are key to assessing forecasts for extreme precipitation and
+  high-impact events. Here, we introduce SEEPS4ALL, a set of data and tools that democratize the use of climate statistics
+  for verification purposes. In particular, verification results for daily precipitation are showcased with both deterministic
+  and probabilistic forecasts.
+datasets:
+- https://doi.org/10.5281/zenodo.18197534
+- https://doi.org/10.5281/zenodo.18392043
+- https://doi.org/10.5281/zenodo.18392042
+authors:
+- orcid: 0000-0003-2914-4203
+  role: author
+- name: Ana Prieto-Nemesio
+  role: author
+- orcid: 0000-0001-5280-1035
+  role: author
+- orcid: 0000-0002-3003-3888
+  role: author
+- name: Marlies Van Der Schee
+  role: author
+- orcid: 0000-0001-7701-5671
+  role: author
+bibliography:
+- https://doi.org/10.5194/essd-18-713-2026
+- 'Source PDF: essd-18-713-2026.pdf'
+- 'Dataset extraction file: essd-18-713-2026.dataset.json'

@@ -1,0 +1,10 @@
+type: paper
+title: 'NutritionVerse-Real: An Open Access Manually Collected 2D Food Scene Dataset for Dietary Intake Estimation Chi-en
+  Amy Tai1 Saeejith Nair1'
+summary: The NutritionVerse-Real dataset was created by manually collecting images of food scenes in real life.
+datasets:
+- https://www.kaggle.com/datasets/nutritionverse/nutritionverse-real
+- https://www.kaggle.com/datasets/37th
+bibliography:
+- 'Source PDF: 2401.08598v1.pdf'
+- 'Dataset extraction file: 2401.08598v1.dataset.json'

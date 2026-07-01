@@ -1,0 +1,57 @@
+type: paper
+title: A manually labeled contrail dataset from MSG/SEVIRI
+summary: "Contrails-thin ice clouds formed by aircraft-are a major contributor to aviation-induced climate forcing, yet their\
+  \ observational characterization remains limited. We present a manually labeled contrail dataset derived from observations\
+  \ of the Meteosat Second Generation (MSG) SEVIRI instrument over Europe and the North Atlantic, comprising 140 scenes of\
+  \ 256 \xD7 256 pixels at 3 km nominal resolution. The dataset covers the time period in which Meteosat-10 was the operational\
+  \ satellite (from January 2013 through February 2018 and from March 2023 through March 2024) and scenes are distributed\
+  \ randomly over the whole SEVIRI disk. Each scene was independently annotated by three labelers, with ground truth established\
+  \ via majority consensus. To provide additional context, the dataset includes outputs from two satellite retrievals: CiPS\
+  \ (Cirrus Properties from SEVIRI) and ProPS (Probabilistic Cloud Top Phase retrieval), offering information on cloud cover\
+  \ and cloud top phase, cirrus probability, ice optical thickness, and ice cloud top height. These complementary variables\
+  \ enable detailed investigations, such as factors influencing contrail visibility. The dataset supports analyses of contrail\
+  \ detection, contrail characteristics, cloud-contrail interactions, and environmental conditions affecting detection. By\
+  \ providing high-quality labeled data with auxiliary cloud information, this resource facilitates the development and evaluation\
+  \ of contrail studies, contributes to improved understanding of aviationrelated cloud effects, and informs strategies for\
+  \ climate impact mitigation. The full dataset is available under:"
+datasets:
+- https://doi.org/10.5281/zenodo.17669443
+authors:
+- name: Vanessa Santos
+  role: author
+- orcid: 0000-0003-4793-0101
+  role: author
+- name: Mara Montag
+  role: author
+- name: Sabrina Ries
+  role: author
+- name: Ziming Wang
+  role: author
+- name: Kai Widmaier
+  role: author
+- orcid: 0009-0002-1540-1731
+  role: author
+- orcid: 0000-0003-3772-3678
+  role: author
+- orcid: 0000-0002-9691-9534
+  role: author
+- orcid: 0009-0003-1111-2745
+  role: author
+- orcid: 0000-0002-5006-2133
+  role: author
+- name: Elena De La
+  role: author
+- name: Torre Castro
+  role: author
+- orcid: 0000-0002-4199-6962
+  role: author
+- name: Monika Scheibe
+  role: author
+- orcid: 0000-0001-8925-7731
+  role: author
+- name: European Space Agency, Frascati, Italy European Space Agency Frascati Italy
+  role: author
+bibliography:
+- https://doi.org/10.5281/zenodo.17669443
+- 'Source PDF: essd-18-2397-2026.pdf'
+- 'Dataset extraction file: essd-18-2397-2026.dataset.json'

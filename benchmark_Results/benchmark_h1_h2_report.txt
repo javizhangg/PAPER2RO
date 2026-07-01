@@ -6,19 +6,19 @@ Total URLs manuales unicas usadas: 544
 Datasets reales manuales: 97
 No datasets reales manuales: 447
 Positivos en CSV original de la heuristica: 48
-Positivos tras matching del benchmark: 40
+Positivos tras matching del benchmark: 41
 URLs manuales emparejadas con algun resultado: 511
 
 TP: 33
-TN: 440
-FP: 7
+TN: 439
+FP: 8
 FN: 64
 
-Accuracy   : 0.8695
-Precision  : 0.8250
+Accuracy   : 0.8676
+Precision  : 0.8049
 Recall     : 0.3402
-F1-score   : 0.4818
-Specificity: 0.9843
+F1-score   : 0.4783
+Specificity: 0.9821
 
 ======================================================================
 heuristica_2
@@ -27,17 +27,17 @@ Umbral de parecido usado: 0.94
 Total URLs manuales unicas usadas: 544
 Datasets reales manuales: 97
 No datasets reales manuales: 447
-Positivos en CSV original de la heuristica: 47
-Positivos tras matching del benchmark: 41
+Positivos en CSV original de la heuristica: 43
+Positivos tras matching del benchmark: 37
 URLs manuales emparejadas con algun resultado: 511
 
-TP: 37
+TP: 33
 TN: 443
 FP: 4
-FN: 60
+FN: 64
 
-Accuracy   : 0.8824
-Precision  : 0.9024
-Recall     : 0.3814
-F1-score   : 0.5362
+Accuracy   : 0.8750
+Precision  : 0.8919
+Recall     : 0.3402
+F1-score   : 0.4925
 Specificity: 0.9911

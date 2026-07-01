@@ -1,0 +1,82 @@
+{
+    "@context": "https://w3id.org/ro/crate/1.1/context",
+    "@graph": [
+        {
+            "@id": "ro-crate-metadata.json",
+            "@type": "CreativeWork",
+            "about": {
+                "@id": "./"
+            },
+            "conformsTo": {
+                "@id": "https://w3id.org/ro/crate/1.1"
+            },
+            "description": "RO-Crate Metadata File Descriptor (this file)"
+        },
+        {
+            "@id": "./",
+            "@type": "Dataset",
+            "DataType": "Paper",
+            "author": [
+                {
+                    "@id": "#a_park_williams"
+                },
+                {
+                    "@id": "#caroline_s_juang"
+                },
+                {
+                    "@id": "#none"
+                }
+            ],
+            "description": "Wildfire regimes of the western United States (US) have changed dramatically since the 1980s but our understanding of the causes and effects of these changes is limited by a lack of a quality-controlled, publicly available wildfire database that (1) spans from the 1980s to present, (2) represents wildfires across a wide range of sizes, and (3) includes mapped fire perimeters and the areas burned within. Here we present an updated and improved Western US MTBS-Interagency database (WUMI2024a) of wildfire occurrences, perimeters, and burned-area maps, covering the period 1984-2024 and the geographic domain of the 11 westernmost states in the contiguous US. The database represents 22 234 wildfires \u2265 1 km 2 in size, which we compile by merging seven publicly available government databases. For over 47 % of wildfires in our database (more than 10 300 wildfires), the maps of fire perimeters and area burned are based on 30 m satellite data provided by the US government's Monitoring Trends in Burn Severity (MTBS) project, allowing our mapping and assessments of total area burned to account for heterogeneity within fire boundaries. For another 24 % of fires, our database includes perimeter observations provided by non-MTBS sources, meaning that only 29 % of fire occurrences are without perimeter observations. For these fires, which are generally small and account for < 5 % of total burned area in the database, we tentatively assume perimeters are circular centred on the ignition location, but with shapes adjusted to not include areas dominated by open water or barren ground. The fire perimeters and burned area maps in our database are intended to improve assessments of temporal variations and trends in wildfire frequency and area burned, assessments of the landcover types that burn, and simulations of how historical fires have affected ecosystems, smoke emissions, and hydrology. The WUMI2024a can be quickly updated as new and improved data become available. The WUMI2024a dataset and the code used to produce the dataset are available at https://doi.org/10.5061/dryad.63xsj3vd4 (Williams et al., 2025a).",
+            "hasPart": [
+                {
+                    "@id": "#the_western_united_states_mtbs-interagency_database_of_large_wildfires,_1984\u20132024_(wumi2024a)"
+                },
+                {
+                    "@id": "#the_western_united_states_mtbs-interagency_database_of_large_wildfires,_1984\u20132024_(wumi2024a)"
+                },
+                {
+                    "@id": "ro-crate-preview.html"
+                }
+            ],
+            "name": "The Western United States MTBS-Interagency database of large wildfires, 1984-2024 (WUMI2024a)"
+        },
+        {
+            "@id": "#a_park_williams",
+            "@type": "Person",
+            "name": "A Park Williams"
+        },
+        {
+            "@id": "#caroline_s_juang",
+            "@type": "Person",
+            "name": "Caroline S Juang"
+        },
+        {
+            "@id": "#none",
+            "@type": "Person"
+        },
+        {
+            "@id": "#the_western_united_states_mtbs-interagency_database_of_large_wildfires,_1984\u20132024_(wumi2024a)",
+            "@type": "Dataset",
+            "description": "This Western US MTBS-Interagency database (WUMI) of wildfires covers the\n period 1984\u20132024 and the geographic domain of the 11 westernmost states in\n the contiguous US. This is an update of a previous WUMI verson of the\n WUMI, so here has the version number 2024a. The previous version can be\n found at https://doi.org/10.5061/dryad.sf7m0cg72. The WUMI2024a represents\n 21,940 wildfires \u22651 km2 in size, or 22,234 if fire complexes are\n disaggregated into their constituents. We compile the WUMI2024a by merging\n seven government databases and quality controlling by identifying and\n removing duplicate occurrences of fires. An important feature of this\n database is that it includes fire perimeters and 1-km resolution maps of\n the areas burned within. For more than 10,300 wildfires, the map of area\n burned is based on 30-m satellite data and accounts for unburned areas\n within fire boundaries. The fire perimeters and burn maps aid assessment\n of the landcover types that burn and can be used to improve simulations of\n how historical fires have affected ecosystems and smoke emissions. The\n WUMI2024a can be quickly updated as new and improved data become available\n and can thus be used to monitor trends, assess the historical context of\n extreme events, and update statistical analyses of the drivers and effects\n of western US wildfire in near real-time.",
+            "distribution": {
+                "@id": "https://doi.org/10.5061/dryad.63xsj3vd4"
+            },
+            "name": "The Western United States MTBS-Interagency Database of Large Wildfires, 1984\u20132024 (WUMI2024a)"
+        },
+        {
+            "@id": "#the_western_united_states_mtbs-interagency_database_of_large_wildfires,_1984\u20132024_(wumi2024a)",
+            "@type": "Dataset",
+            "description": "This Western US MTBS-Interagency database (WUMI) of wildfires covers the period 1984\u20132024 and the geographic domain of the 11 westernmost states in the contiguous US. This is an update of a previous WUMI verson of the WUMI, so here has the version number 2024a. The previous version can be found at https://doi.org/10.5061/dryad.sf7m0cg72. The WUMI2024a represents 21,940 wildfires \u22651 km2 in size, or 22,234 if fire complexes are disaggregated into their constituents. We compile the WUMI2024a by merging seven government databases and quality controlling by identifying and removing duplicate occurrences of fires. An important feature of this database is that it includes fire perimeters and 1-km resolution maps of the areas burned within. For more than 10,300 wildfires, the map of area burned is based on 30-m satellite data and accounts for unburned areas within fire boundaries. The fire perimeters and burn maps aid assessment of the landcover types that burn and can be used to improve simulations of how historical fires have affected ecosystems and smoke emissions. The WUMI2024a can be quickly updated as new and improved data become available and can thus be used to monitor trends, assess the historical context of extreme events, and update statistical analyses of the drivers and effects of western US wildfire in near real-time.",
+            "distribution": {
+                "@id": "https://doi.org/10.5281/zenodo.17298252"
+            },
+            "name": "The Western United States MTBS-Interagency Database of Large Wildfires, 1984\u20132024 (WUMI2024a)"
+        },
+        {
+            "@id": "ro-crate-preview.html",
+            "@type": "WebPage",
+            "name": "HTML representation of this data."
+        }
+    ]
+}

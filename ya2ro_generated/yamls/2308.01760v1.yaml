@@ -1,0 +1,13 @@
+type: paper
+title: 'NuInsSeg: A Fully Annotated Dataset for Nuclei Instance Segmentation in H&E-Stained Histological Images Amirreza Mahbod1,2,*,
+  Christine Polak2, Katharina Feldmann2, Rumsha Khan2, Katharina Gelles2, Georg Dorffner3, Ramona Woitek1, Sepideh Hatamikia1,4,
+  and Isabella Ellinger2'
+summary: In computational pathology, automatic nuclei instance segmentation plays an essential role in whole slide image analysis.
+  While many computerized approaches have been proposed for this task, supervised deep learning (DL)
+datasets:
+- https://www.kaggle.com/datasets/ipateam/nuinsseg
+- https://www.kaggle.com/datasets/ipateam/nuinsseg/code?datasetId=1911713
+bibliography:
+- https://doi.org/10.1007/s00412-016-0614-5
+- 'Source PDF: 2308.01760v1.pdf'
+- 'Dataset extraction file: 2308.01760v1.dataset.json'

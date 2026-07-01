@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<title>BirdsEye-RU: A Dataset For Detecting Faces from Overhead Images</title>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="https://www.w3schools.com/w3css/4/w3.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet"/>
+<style id="style">
+
+body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+body {font-size:16px; text-align: justify;}
+.w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
+.w3-half img:hover{opacity:1}
+img {display: block;margin-left: auto;margin-right: auto;}
+.column {float: left;width: 50%;padding: 5px;}
+.row::after {content: ""; clear: both; display: table;}
+.centered-element {margin: 0;position: absolute;top: 50%;transform: translateY(-50%);}
+
+
+
+            h1,h1 b{color:#fff!important}
+            .w3-light-grey{background-color:#ddd!important;color:#222831!important}
+            .w3-green{background-color:#30475e!important}.w3-round{border:5px solid #f05454!important}
+            body{background-color:#222831!important;color:#fff!important}
+            </style>
+<body>
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-green w3-collapse w3-top w3-large w3-padding" id="mySidebar" style="z-index:3;width:300px;font-weight:bold;"><br/>
+<a class="w3-button w3-hide-large w3-display-topleft" href="javascript:void(0)" onclick="w3_close()" style="width:100%;font-size:22px">Close Menu</a>
+<!-- LOGO if recognized -->
+<div class="row" style="margin-bottom:2em;margin-top:2em;">
+<div class="column">
+<!-- Requiremnts okay logo -->
+<span id="recogn_logo"><a href="#">
+<img alt="Complete-Paper" src="images/complete_paper.png" style="width: 8em;" title="This paper has the necessary characteristics to be recognized as an complete paper."/>
+</a></span>
+</div>
+</div>
+<div class="w3-bar-block centered-element">
+<span id="sidebar"><a class="w3-bar-item w3-button w3-hover-white" href="#summary" onclick="w3_close()">Summary</a><a class="w3-bar-item w3-button w3-hover-white" href="#datasets" onclick="w3_close()">Datasets</a><a class="w3-bar-item w3-button w3-hover-white" href="#bibliography" onclick="w3_close()">Bibliography</a><a class="w3-bar-item w3-button w3-hover-white" href="#authors" onclick="w3_close()">About the authors</a></span>
+</div>
+<div class="row" style="position: absolute; bottom: 25px; height: 50px;">
+<div class="column">
+<a href="ro-crate-metadata.json" id="jsonld_svg">
+<img alt="JSON-LD" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/JSON-LD.svg/512px-JSON-LD.svg.png" style="filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(57deg) brightness(101%) contrast(102%); width: 30px; margin: 0; " title="Retrieve the JSON-LD ro-crate representation of this web."/>
+</a>
+</div>
+<div class="column">
+<!-- Help button -->
+<a href="help.html" id="help-button">
+<img alt="help-button" src="https://img.icons8.com/material-outlined/48/000000/help.png" style="filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(57deg) brightness(101%) contrast(102%); width: 30px; margin: 0;" title="Description of each element and how was this web created."/>
+</a>
+</div>
+</div>
+
+</nav>
+<!-- Top menu on small screens -->
+<header class="w3-container w3-top w3-hide-large w3-green w3-xlarge w3-padding">
+<a class="w3-button w3-green w3-margin-right" href="javascript:void(0)" onclick="w3_open()">☰</a>
+</header>
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" id="myOverlay" onclick="w3_close()" style="cursor:pointer" title="close side menu"></div>
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin:auto; padding-left: 340px; max-width: 1500px;">
+<!-- Header -->
+<div class="w3-container" id="showcase" style="margin-top:80px">
+<h1>BirdsEye-RU: A Dataset For Detecting Faces from Overhead Images</h1>
+</div>
+<!-- Summary -->
+<span id="summary"><div class="w3-container" style="margin-top:15px">
+<h1 class="w3-xxxlarge w3-text-green"><b>Summary</b></h1>
+<hr class="w3-round" style="width:50px;border:5px solid green"/>
+<p>Detecting faces in overhead images remains a significant challenge due to extreme scale variations and environmental clutter. To address this, we created the BirdsEye-RU dataset, a comprehensive collection of 2,978 images containing over eight thousand annotated faces. This dataset is specifically designed to capture small and distant faces across diverse environments, containing both drone images and smartphone-captured images from high altitude. We present a detailed description of the BirdsEye-RU dataset in this paper. We made our dataset freely available to the public, and it can be accessed at https://www.kaggle.com/datasets/mdahanafarifkhan/birdseye-ru.</p>
+</div></span>
+<!-- Goal -->
+<span id="goal"></span>
+<!-- Social Motivation -->
+<span id="social_motivation"></span>
+<!-- Areas -->
+<span id="areas"></span>
+<!-- Activities -->
+<span id="activities"></span>
+<!-- Sketch -->
+<span id="sketch"></span>
+<!-- Demo -->
+<span id="demo"></span>
+<!-- datasets -->
+<span id="datasets"><div class="w3-container" id="datasets" style="margin-top:75px">
+<h1 class="w3-xxxlarge w3-text-green"><b>Datasets</b></h1>
+<hr class="w3-round" style="width:50px;border:5px solid green"/>
+<ul><li><p><a href="https://www.kaggle.com/datasets/mdahanafarifkhan/birdseye-ru">https://www.kaggle.com/datasets/mdahanafarifkhan/birdseye-ru</a></p>
+<ul></ul></li><li><p><a href="https://www.kaggle.com/datasets/mdahanafarifkhan/birdseye-ru.6">https://www.kaggle.com/datasets/mdahanafarifkhan/birdseye-ru.6</a></p>
+<ul></ul></li></ul>
+</div></span>
+<!-- Software -->
+<span id="software"></span>
+<!-- Bibliography -->
+<span id="bibliography"><div class="w3-container" id="bib" style="margin-top:75px">
+<h1 class="w3-xxxlarge w3-text-green"><b>Bibliography</b></h1>
+<hr class="w3-round" style="width:50px;border:5px solid green"/>
+<ul><li>Hsu, H.-J., &amp; Chen, K.-T. (2017). DroneFace. Proceedings of the 8th ACM on Multimedia Systems Conference, 187â192. <a href="https://doi.org/10.1145/3083187.3083214
+" target="_blank">https://doi.org/10.1145/3083187.3083214
+</a></li><li>Source PDF: 2601.12533v2.pdf</li><li>Dataset extraction file: 2601.12533v2.dataset.json</li></ul>
+</div></span>
+<!-- Contact -->
+<span id="contact"></span>
+<!-- Authors -->
+<span id="authors"><div class="w3-container" id="authors" style="margin-top:75px">
+<h1 class="w3-xxxlarge w3-text-green"><b>About the authors</b></h1>
+<hr class="w3-round" style="width:50px;border:5px solid green"/>
+<div class="w3-row-padding">
+<div class="w3-col m4 w3-margin-bottom">
+<div class="w3-light-grey" style="padding-bottom: 10px;">
+<div style="width:90%; height:0; overflow:hidden; height:0; padding-top: 12px; padding-bottom: 90%;
+                            margin: auto;">
+<img alt="Md Ahanaf" src="images\default_author.jpg" style="width:100%;"/>
+</div>
+<div class="w3-container">
+<h3><a href="">Md Ahanaf</a></h3>
+<p class="w3-opacity">author</p>
+</div>
+</div>
+</div>
+<div class="w3-col m4 w3-margin-bottom">
+<div class="w3-light-grey" style="padding-bottom: 10px;">
+<div style="width:90%; height:0; overflow:hidden; height:0; padding-top: 12px; padding-bottom: 90%;
+                            margin: auto;">
+<img alt="Arif Khan" src="images\default_author.jpg" style="width:100%;"/>
+</div>
+<div class="w3-container">
+<h3><a href="">Arif Khan</a></h3>
+<p class="w3-opacity">author</p>
+</div>
+</div>
+</div>
+<div class="w3-col m4 w3-margin-bottom">
+<div class="w3-light-grey" style="padding-bottom: 10px;">
+<div style="width:90%; height:0; overflow:hidden; height:0; padding-top: 12px; padding-bottom: 90%;
+                            margin: auto;">
+<img alt="Md Iqbal" src="images\default_author.jpg" style="width:100%;"/>
+</div>
+<div class="w3-container">
+<h3><a href="">Md Iqbal</a></h3>
+<p class="w3-opacity">author</p>
+</div>
+</div>
+</div>
+</div><div class="w3-row-padding">
+<div class="w3-col m4 w3-margin-bottom">
+<div class="w3-light-grey" style="padding-bottom: 10px;">
+<div style="width:90%; height:0; overflow:hidden; height:0; padding-top: 12px; padding-bottom: 90%;
+                            margin: auto;">
+<img alt="Aziz Khan" src="images\default_author.jpg" style="width:100%;"/>
+</div>
+<div class="w3-container">
+<h3><a href="">Aziz Khan</a></h3>
+<p class="w3-opacity">author</p>
+</div>
+</div>
+</div>
+<div class="w3-col m4 w3-margin-bottom">
+<div class="w3-light-grey" style="padding-bottom: 10px;">
+<div style="width:90%; height:0; overflow:hidden; height:0; padding-top: 12px; padding-bottom: 90%;
+                            margin: auto;">
+<img alt="Sangeeta Biswas" src="images\default_author.jpg" style="width:100%;"/>
+</div>
+<div class="w3-container">
+<h3><a href="">Sangeeta Biswas</a></h3>
+<p class="w3-opacity">author</p>
+</div>
+</div>
+</div>
+<div class="w3-col m4 w3-margin-bottom">
+<div class="w3-light-grey" style="padding-bottom: 10px;">
+<div style="width:90%; height:0; overflow:hidden; height:0; padding-top: 12px; padding-bottom: 90%;
+                            margin: auto;">
+<img alt=", Ariful Islam Ariful Islam" src="images\default_author.jpg" style="width:100%;"/>
+</div>
+<div class="w3-container">
+<h3><a href="">, Ariful Islam Ariful Islam</a></h3>
+<p class="w3-opacity">author</p>
+</div>
+</div>
+</div>
+</div></div></span>
+<!-- Bibtext -->
+<span id="bibtext"></span>
+</div>
+
+
+
+
+<!-- End page content -->
+
+<script>
+// Script to open and close sidebar
+function w3_open() {
+	document.getElementById("mySidebar").style.display = "block";
+	document.getElementById("myOverlay").style.display = "block";
+}
+
+function w3_close() {
+	document.getElementById("mySidebar").style.display = "none";
+	document.getElementById("myOverlay").style.display = "none";
+}
+
+// Modal Image Gallery
+function onClick(element) {
+	document.getElementById("img01").src = element.src;
+	document.getElementById("modal01").style.display = "block";
+	var captionText = document.getElementById("caption");
+	captionText.innerHTML = element.alt;
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+type: paper
+title: 'A national-scale database of groundwater level data for Switzerland ARTICLE IN PRESS CONFIDENTIAL COPY OF SUBMISSION
+  FOR PEER REVIEW ONLY Tracking no: SDATA-25-04112B A national-scale database of groundwater level data for Switzerland'
+summary: Groundwater is a vital component of the global supply of freshwater, playing a critical role for human populations,
+  agriculture, and ecosystems. Due to the complex interactions between groundwater, surface water, climate, and human activity,
+  these systems are frequently studied using advanced data analysis and modeling techniques. The effectiveness of these methods
+  is generally enhanced by the availability and quality of data. In Switzerland, the focus area of this study, groundwater
+  data is fragmented and lacks a standardized nationwide compilation. Consequently, the process of conducting nationwide studies
+  with substantial sample sizes is both resourceintensive and time-consuming. In this paper we introduce the Swiss Groundwater
+  Database, a comprehensive compilation of groundwater time series and associated metadata throughout Switzerland. The current
+  database consists of groundwater level data from 985 monitoring wells, which were completed with additional static and time-varying
+  variables. The environmental characteristics and climate indices were compiled and determined for each monitoring well.
+  The database is designed to facilitate and support large-sample hydrological research related to groundwater in Switzerland
+  and beyond.
+datasets:
+- https://zenodo.org/records/14260400
+- https://doi.org/10.5281/zenodo.14260400
+- https://doi.org/10.5281/zenodo
+- name: CAMELS
+  description: 'Dataset file detected by the heuristics: essd-15-5755-2023-t01.xlsx. Context from GAP-KGE/datastet: Meanwhile,
+    over a dozen CAMELS datasets have been developed for multiple countries and regions, also culminating in the CARAVAN global
+    dataset .'
+  link: https://essd.copernicus.org/articles/15/5755/2023
+- name: CAMELS
+  description: 'Dataset file detected by the heuristics: hess-29-6221-2025-t01.xlsx. Context from GAP-KGE/datastet: Meanwhile,
+    over a dozen CAMELS datasets have been developed for multiple countries and regions, also culminating in the CARAVAN global
+    dataset .'
+  link: https://hess.copernicus.org/articles/29/6221/2025
+- name: CAMELS
+  description: 'Dataset file detected by the heuristics: gmd-17-7083-2024-t01.xlsx. Context from GAP-KGE/datastet: Meanwhile,
+    over a dozen CAMELS datasets have been developed for multiple countries and regions, also culminating in the CARAVAN global
+    dataset .'
+  link: https://gmd.copernicus.org/articles/17/7083/2024
+- name: CAMELS
+  description: 'Dataset file detected by the heuristics: essd-15-5755-2023-t02.xlsx. Context from GAP-KGE/datastet: Meanwhile,
+    over a dozen CAMELS datasets have been developed for multiple countries and regions, also culminating in the CARAVAN global
+    dataset .'
+  link: https://essd.copernicus.org/articles/15/5755/2023
+- name: CAMELS
+  description: 'Dataset file detected by the heuristics: essd-15-5755-2023-t03.xlsx. Context from GAP-KGE/datastet: Meanwhile,
+    over a dozen CAMELS datasets have been developed for multiple countries and regions, also culminating in the CARAVAN global
+    dataset .'
+  link: https://essd.copernicus.org/articles/15/5755/2023
+authors:
+- orcid: 0000-0001-7843-1538
+  role: author
+- name: Joaquin Jimenez-Martinez
+  role: author
+- name: Mario Schirmer
+  role: author
+- orcid: 0000-0002-1980-4039
+  role: author
+bibliography:
+- https://doi.org/10.1038/s41597-026-07353-6
+- 'Source PDF: s41597-026-07353-6_reference.pdf'
+- 'Dataset extraction file: s41597-026-07353-6_reference.dataset.json'

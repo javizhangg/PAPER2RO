@@ -1,0 +1,54 @@
+{
+    "@context": "https://w3id.org/ro/crate/1.1/context",
+    "@graph": [
+        {
+            "@id": "ro-crate-metadata.json",
+            "@type": "CreativeWork",
+            "about": {
+                "@id": "./"
+            },
+            "conformsTo": {
+                "@id": "https://w3id.org/ro/crate/1.1"
+            },
+            "description": "RO-Crate Metadata File Descriptor (this file)"
+        },
+        {
+            "@id": "./",
+            "@type": "Dataset",
+            "DataType": "Paper",
+            "author": [],
+            "description": "In computational pathology, automatic nuclei instance segmentation plays an essential role in whole slide image analysis. While many computerized approaches have been proposed for this task, supervised deep learning (DL)",
+            "hasPart": [
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "ro-crate-preview.html"
+                }
+            ],
+            "name": "NuInsSeg: A Fully Annotated Dataset for Nuclei Instance Segmentation in H&E-Stained Histological Images Amirreza Mahbod1,2,*, Christine Polak2, Katharina Feldmann2, Rumsha Khan2, Katharina Gelles2, Georg Dorffner3, Ramona Woitek1, Sepideh Hatamikia1,4, and Isabella Ellinger2"
+        },
+        {
+            "@id": "#none",
+            "@type": "Dataset",
+            "distribution": {
+                "@id": "https://www.kaggle.com/datasets/ipateam/nuinsseg"
+            }
+        },
+        {
+            "@id": "#none",
+            "@type": "Dataset",
+            "distribution": {
+                "@id": "https://www.kaggle.com/datasets/ipateam/nuinsseg/code?datasetId=1911713"
+            }
+        },
+        {
+            "@id": "ro-crate-preview.html",
+            "@type": "WebPage",
+            "name": "HTML representation of this data."
+        }
+    ]
+}

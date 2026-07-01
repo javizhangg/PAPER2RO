@@ -1,0 +1,89 @@
+{
+    "@context": "https://w3id.org/ro/crate/1.1/context",
+    "@graph": [
+        {
+            "@id": "ro-crate-metadata.json",
+            "@type": "CreativeWork",
+            "about": {
+                "@id": "./"
+            },
+            "conformsTo": {
+                "@id": "https://w3id.org/ro/crate/1.1"
+            },
+            "description": "RO-Crate Metadata File Descriptor (this file)"
+        },
+        {
+            "@id": "./",
+            "@type": "Dataset",
+            "DataType": "Paper",
+            "author": [
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#jim_thomson"
+                },
+                {
+                    "@id": "#melissa_moulton"
+                },
+                {
+                    "@id": "#morteza_derakhti"
+                }
+            ],
+            "description": "Surface gravity wave breaking occurs along coastlines in complex spatial and temporal patterns that significantly impact erosion, scalar transport, and flooding. Numerical models are used to predict wave breaking and associated processes but many lack sufficient evaluation with observations. To fill the need for more nearshore wave measurements, we deployed coherent arrays of small-scale, free-drifting buoys named mi-croSWIFTs. The microSWIFT is a small buoy equipped with a GPS module to measure the buoy's position, horizontal velocities, and an inertial measurement unit (IMU) to directly measure the buoy's rotation rates, accelerations, and heading. Measurements were collected over a 27 d field experiment in October 2021 at the US Army Corps of Engineers Field Research Facility in Duck, NC. The microSWIFTs were deployed as a series of coherent arrays, meaning they all sampled simultaneously with a common time reference, leading to a rich spatial and temporal dataset during each deployment. Measurements spanned offshore significant wave heights ranging from 0.5 to 3 m and peak wave periods ranging from 5 to 15 s over the entire experiment. The completed dataset consists of 67 deployment files that contain 971 drift tracks that contain all associated data. We use an attitude and heading reference system (AHRS) 9-degrees-of-freedom Kalman filter to rotate the measured accelerations from the reference frame of the buoy to the Earth reference frame. We then use the corrected accelerations to compute the vertical velocity and sea-surface elevation. We give example evaluations of wave spectral energy density estimates from individual microSWIFTs compared with a nearby acoustic wave and current (AWAC) sensor. A zero-crossing algorithm is applied to each buoy time series of sea-surface elevation to extract realizations of measured surface gravity waves, yielding 116 307 wave realizations throughout the experiment. We also compute significant wave height estimates from the aggregate wave realizations and compare these estimates with the nearby AWAC estimates. An example of spatial variability in cross-shore velocity and vertical acceleration is explored. Wave-breaking events, detected by high-intensity vertical acceleration peaks, are explored, and the cross-shore distribution of all breaking events detected in the experiment is shown. A total of 3419 wave-breaking events were detected across the entire experiment. These data are available at https://doi.org/10.5061/dryad.hx3ffbgk0 (Rainville et al., 2023) and will be used to investigate nearshore wave kinematics, transport of buoyant particles, and wave-breaking processes.",
+            "hasPart": [
+                {
+                    "@id": "#measurements_of_nearshore_waves_through_coherent_arrays_of_free-drifting_wave_buoys"
+                },
+                {
+                    "@id": "#dunexmainexp"
+                },
+                {
+                    "@id": "ro-crate-preview.html"
+                }
+            ],
+            "name": "Measurements of nearshore ocean-surface kinematics through coherent arrays of free-drifting buoys"
+        },
+        {
+            "@id": "#none",
+            "@type": "Person"
+        },
+        {
+            "@id": "#jim_thomson",
+            "@type": "Person",
+            "name": "Jim Thomson"
+        },
+        {
+            "@id": "#melissa_moulton",
+            "@type": "Person",
+            "name": "Melissa Moulton"
+        },
+        {
+            "@id": "#morteza_derakhti",
+            "@type": "Person",
+            "name": "Morteza Derakhti"
+        },
+        {
+            "@id": "#measurements_of_nearshore_waves_through_coherent_arrays_of_free-drifting_wave_buoys",
+            "@type": "Dataset",
+            "description": "Surface gravity wave breaking occurs along coastlines in complex spatial\n and temporal patterns that significantly impact erosion, scalar transport,\n and flooding. Numerical models are used to predict these processes, but\n many models lack sufficient evaluation with observations during storm\n events. To fill the need for more nearshore wave measurements during\n extreme conditions, we deployed coherent arrays of small-scale,\n free-drifting wave buoys named microSWIFTs. The result is a large dataset\n covering a range of conditions. The microSWIFT is a small wave buoy with a\n GPS module, and Inertial Measurement Unit (IMU) used to directly measure\n the buoy's global position, horizontal velocities, rotation rates,\n accelerations, and heading. We use an Attitude and Heading Reference\n System (AHRS), 9 degrees-of-freedom Kalman filter to rotate the measured\n accelerations from the reference frame of the buoy to the Earth reference\n frame. We then use the corrected accelerations to compute the vertical\n velocity and sea surface elevation. The measurements were collected over a\n 27-day field experiment in October 2021 at the US Army Corps of Engineers\n Field Research Facility in Duck, NC. The microSWIFTs were deployed as a\n series of coherent arrays. They all sampled simultaneously with a common\n time reference, leading to a robust spatial and temporal dataset during\n each deployment. We evaluate wave spectral energy density estimates from\n individual microSWIFTs by comparing them with a nearby acoustic waves and\n currents (AWAC) sensor. We also compare significant wave height estimates\n from the coherent arrays with the nearby AWAC estimates. A zero crossing\n algorithm is applied to each buoy time series of sea surface elevation to\n extract realizations of measured surface gravity waves, yielding 116,307\n wave realizations throughout the experiment. These measurements spanned\n offshore significant wave heights ranging from 0.5 meters to 3 meters and\n peak wave periods ranging from 5 to 15 seconds over the entire\n experiment.\u00a0",
+            "distribution": {
+                "@id": "https://doi.org/10.5061/dryad.hx3ffbgk0"
+            },
+            "name": "Measurements of nearshore waves through coherent arrays of free-drifting wave buoys"
+        },
+        {
+            "@id": "#dunexmainexp",
+            "@type": "Dataset",
+            "distribution": {
+                "@id": "https://doi.org/10.5281/zenodo.10198469"
+            },
+            "name": "DUNEXMainExp"
+        },
+        {
+            "@id": "ro-crate-preview.html",
+            "@type": "WebPage",
+            "name": "HTML representation of this data."
+        }
+    ]
+}

@@ -1,0 +1,32 @@
+type: paper
+title: A dataset for investigating socio-ecological changes in Arctic fjords
+summary: The collection of in situ data is generally a costly process, with the Arctic being no exception. Indeed, there has
+  been a perception that the Arctic is lacking in situ sampling; however, after many years of concerted effort and international
+  collaboration, the Arctic is now rather well sampled, with many cruise expeditions every year. For example, the GLODAP (Global
+  Ocean Data Analysis Project) product has a greater density of in situ sampling points within the Arctic than along the Equator.
+  While this is useful for open-ocean processes, the fjords of the Arctic, which serve as crucially important intersections
+  of terrestrial, coastal, and marine processes, are sampled in a much more ad hoc process. This is not to say they are not
+  well sampled but rather that the data are more difficult to source and combine for further analysis. It was therefore noted
+  that the fjords of the Arctic are lacking in FAIR (findable, accessible, interoperable, and reusable) data. To address this
+  issue, a single dataset has been created from publicly available, predominantly in situ data from seven study sites in Svalbard
+  and Greenland. After finding and accessing the data from a number of online platforms, they were amalgamated into a single
+  project-wide standard, ensuring their interoperability. The dataset was then uploaded to PANGAEA so that it can be findable
+  and reusable in the future. The focus of the data collection was driven by the key drivers of change in Arctic fjords identified
+  in a companion review paper. To demonstrate the usability of this dataset, an analysis of the relationship between the different
+  drivers was performed. Via the use of an Arctic biogeochemical model, these relationships were projected forward to 2100
+  via Representative Carbon Pathways (RCPs) 2.6, 4.5, and 8.5. This dataset is a work in progress, and as new datasets containing
+  the relevant key drivers are released, they will be added to an updated version planned for the middle of 2024.
+datasets:
+- https://doi.org/10.1594/PANGAEA.945341
+- https://pangaea.de
+- https://doi.org/10.5281/zenodo.8263692
+- https://doi.org/10.1594/PANGAEA.953115
+authors:
+- orcid: 0000-0002-0705-1287
+  role: author
+- orcid: 0000-0002-4533-4114
+  role: author
+bibliography:
+- https://doi.org/10.5194/essd-15-3733-2023
+- 'Source PDF: essd-15-3733-2023.pdf'
+- 'Dataset extraction file: essd-15-3733-2023.dataset.json'

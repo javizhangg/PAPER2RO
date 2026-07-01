@@ -1,0 +1,44 @@
+{
+    "@context": "https://w3id.org/ro/crate/1.1/context",
+    "@graph": [
+        {
+            "@id": "ro-crate-metadata.json",
+            "@type": "CreativeWork",
+            "about": {
+                "@id": "./"
+            },
+            "conformsTo": {
+                "@id": "https://w3id.org/ro/crate/1.1"
+            },
+            "description": "RO-Crate Metadata File Descriptor (this file)"
+        },
+        {
+            "@id": "./",
+            "@type": "Dataset",
+            "DataType": "Paper",
+            "author": [],
+            "description": "This paper presents the Sokoto Coventry Fingerprint Dataset (SOCO- Fing), a biometric fingerprint database designed for academic research purposes. SOCOFing is made up of 6,000 fingerprint images from 600 African subjects. SOCOFing contains unique attributes such as labels for gender, hand and finger name as well as synthetically altered versions with three different levels of alter- ation for obliteration, central rotation, and z-cut. The dataset is freely available for noncommercial research purposes at: https://www.kaggle.com/ruizgara/socofing",
+            "hasPart": [
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "ro-crate-preview.html"
+                }
+            ],
+            "name": "Sokoto Coventry Fingerprint Dataset Yahaya Isah Shehu1\u2709, Ariel Ruiz-Garcia1\u2709, Vasile Palade1 and Anne James2 1 Coventry University, Faculty of Engineering, Environment and Computing. Priory Street, CV1 5FB, Coventry, UK 2 Nottingham Trent University, Faculty of Science and Technology,"
+        },
+        {
+            "@id": "#none",
+            "@type": "Dataset",
+            "distribution": {
+                "@id": "https://www.kaggle.com/ruizgara/socofing"
+            }
+        },
+        {
+            "@id": "ro-crate-preview.html",
+            "@type": "WebPage",
+            "name": "HTML representation of this data."
+        }
+    ]
+}

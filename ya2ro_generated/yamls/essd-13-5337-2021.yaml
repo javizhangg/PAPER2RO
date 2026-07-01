@@ -1,0 +1,46 @@
+type: paper
+title: Patterns of nitrogen and phosphorus pools in terrestrial ecosystems in China
+summary: Recent increases in atmospheric carbon dioxide (CO 2) and temperature relieve their limitations on terrestrial ecosystem
+  productivity, while nutrient availability constrains the increasing plant photosynthesis more intensively. Nitrogen (N)
+  and phosphorus (P) are critical for plant physiological activities and consequently regulate ecosystem productivity. Here,
+  for the first time, we mapped N and P densities and concentrations of leaves, woody stems, roots, litter, and soil in forest,
+  shrubland, and grassland ecosystems across China based on an intensive investigation at 4868 sites, covering species composition,
+  biomass, and nutrient concentrations of different tissues of living plants, litter, and soil. Forest, shrubland, and grassland
+  ecosystems in China stored 6803.6 Tg N, with 6635.2 Tg N (97.5 %) fixed in soil (to a depth of 1 m) and 27.7 (0.4 %), 57.8
+  (0.8 %), 71.2 (1 %), and 11.7 Tg N (0.2 %) in leaves, stems, roots, and litter, respectively. The forest, shrubland, and
+  grassland ecosystems in China stored 2806.0 Tg P, with 2786.1 Tg P (99.3 %) fixed in soil (to a depth of 1 m) and 2.7 (0.1
+  %), 9.4 (0.3 %), 6.7 (0.2 %), and 1.0 Tg P (< 0.1 %) in leaves, stems, roots, and litter, respectively. Our estimation showed
+  that N pools were low in northern China, except in the Changbai Mountains, Mount Tianshan, and Mount Alta, while relatively
+  higher values existed in the eastern Qinghai-Tibetan Plateau and Yunnan. P densities in vegetation were higher towards the
+  southern and northeastern part of China, while soil P density was higher towards the northern and western part of China.
+  The estimated N and P density and concentration datasets, "Patterns of nitrogen and phosphorus pools in terrestrial ecosystems
+  in China" (https://doi.org/10.5061/dryad.6hdr7sqzx), are available from the Dryad digital repository (Zhang et al., 2021).
+  These patterns of N and P densities could potentially improve existing earth system models and large-scale research on ecosystem
+  nutrients.
+datasets:
+- https://doi.org/10.5061/dryad.6hdr7sqzx
+authors:
+- name: Yi-Wei Zhang
+  role: author
+- orcid: 0000-0001-7724-0473
+  role: author
+- name: Zhiyao Tang
+  role: author
+- name: Yuhao Feng
+  role: author
+- name: Xinrong Zhu
+  role: author
+- name: Wenting Xu
+  role: author
+- name: Yongfei Bai
+  role: author
+- name: Guoyi Zhou
+  role: author
+- orcid: 0000-0001-8312-2318
+  role: author
+- name: Jingyun Fang
+  role: author
+bibliography:
+- https://doi.org/10.5194/essd-13-5337-2021
+- 'Source PDF: essd-13-5337-2021.pdf'
+- 'Dataset extraction file: essd-13-5337-2021.dataset.json'

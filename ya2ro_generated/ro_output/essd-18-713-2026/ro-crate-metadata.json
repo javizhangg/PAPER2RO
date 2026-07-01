@@ -1,0 +1,115 @@
+{
+    "@context": "https://w3id.org/ro/crate/1.1/context",
+    "@graph": [
+        {
+            "@id": "ro-crate-metadata.json",
+            "@type": "CreativeWork",
+            "about": {
+                "@id": "./"
+            },
+            "conformsTo": {
+                "@id": "https://w3id.org/ro/crate/1.1"
+            },
+            "description": "RO-Crate Metadata File Descriptor (this file)"
+        },
+        {
+            "@id": "./",
+            "@type": "Dataset",
+            "DataType": "Paper",
+            "author": [
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#ana_prieto-nemesio"
+                },
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#marlies_van_der_schee"
+                },
+                {
+                    "@id": "#none"
+                }
+            ],
+            "description": "Forecast verification is an essential task when developing a forecasting model. How well does a model perform? How does the forecast performance compare with previous versions or other models? Which aspects of the forecast could be improved? In weather forecasting, these questions apply in particular to precipitation, a key weather parameter with vital societal applications. Scores specifically designed to assess the performance of precipitation forecasts have been developed over the years. One example is the Stable and Equitable Error in Probability Space (SEEPS, Rodwell et al., 2010). The computation of this score is however not straightforward because it requires information about the precipitation climatology at the verification locations. More generally, climate statistics are key to assessing forecasts for extreme precipitation and high-impact events. Here, we introduce SEEPS4ALL, a set of data and tools that democratize the use of climate statistics for verification purposes. In particular, verification results for daily precipitation are showcased with both deterministic and probabilistic forecasts.",
+            "hasPart": [
+                {
+                    "@id": "#seeps4all_version_1.1"
+                },
+                {
+                    "@id": "#ecmwf/rodeo-ai-static-datasets:_v1.0.0"
+                },
+                {
+                    "@id": "#ecmwf/rodeo-ai-static-datasets:_v1.0.0"
+                },
+                {
+                    "@id": "ro-crate-preview.html"
+                }
+            ],
+            "name": "SEEPS4ALL: an open dataset for the verification of daily precipitation forecasts using station climate statistics"
+        },
+        {
+            "@id": "#none",
+            "@type": "Person"
+        },
+        {
+            "@id": "#ana_prieto-nemesio",
+            "@type": "Person",
+            "name": "Ana Prieto-Nemesio"
+        },
+        {
+            "@id": "#none",
+            "@type": "Person"
+        },
+        {
+            "@id": "#none",
+            "@type": "Person"
+        },
+        {
+            "@id": "#marlies_van_der_schee",
+            "@type": "Person",
+            "name": "Marlies Van Der Schee"
+        },
+        {
+            "@id": "#none",
+            "@type": "Person"
+        },
+        {
+            "@id": "#seeps4all_version_1.1",
+            "@type": "Dataset",
+            "description": "Short description\n\nSEEPS4ALL is a dataset ressembling station observations of daily precipitation over (mainly) Europe and climate statistics for forecast verification purposes.\u00a0\n\nDataset v1.0 covers the years 2022 to 2024 with climate statistics computed over the period 1991-2020.\u00a0\n\nClimate statistics correspond to:\n\n\n\nthe SEEPS parameters that is the thresholds and probabilities of occurence require to compute the score\n\npercentiles of the climatological distribution at level 1, 2, ..., 98, 99%. These statistisc are time-of-the-year and station dependent.\n\n\nDocumentation and software\u00a0\n\nhttps://github.com/ecmwf/rodeo-ai-static-datasets/tree/main/seeps4all\n\nLicense\n\nCreative Commons Attribution-Non-Commercial License (CC-BY-NC).This work is licensed under the Creative Commons Attribution Attribution-Non-Commercial License.\n\nTo view a copy of this license, visit http://creativecommons.org/licenses/by-nc/4.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.",
+            "distribution": {
+                "@id": "https://doi.org/10.5281/zenodo.18197534"
+            },
+            "name": "SEEPS4ALL version 1.1"
+        },
+        {
+            "@id": "#ecmwf/rodeo-ai-static-datasets:_v1.0.0",
+            "@type": "Dataset",
+            "description": "First release for publication in ESSD. Please see \"SEEPS4ALL: an open dataset for the verification of daily precipitation forecasts using station climate statistics\", https://doi.org/10.5194/essd-2025-553.",
+            "distribution": {
+                "@id": "https://doi.org/10.5281/zenodo.18392043"
+            },
+            "name": "ecmwf/rodeo-ai-static-datasets: v1.0.0"
+        },
+        {
+            "@id": "#ecmwf/rodeo-ai-static-datasets:_v1.0.0",
+            "@type": "Dataset",
+            "description": "First release for publication in ESSD. Please see \"SEEPS4ALL: an open dataset for the verification of daily precipitation forecasts using station climate statistics\", https://doi.org/10.5194/essd-2025-553.",
+            "distribution": {
+                "@id": "https://doi.org/10.5281/zenodo.18392042"
+            },
+            "name": "ecmwf/rodeo-ai-static-datasets: v1.0.0"
+        },
+        {
+            "@id": "ro-crate-preview.html",
+            "@type": "WebPage",
+            "name": "HTML representation of this data."
+        }
+    ]
+}

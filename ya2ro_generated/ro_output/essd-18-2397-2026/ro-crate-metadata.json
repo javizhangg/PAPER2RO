@@ -1,0 +1,175 @@
+{
+    "@context": "https://w3id.org/ro/crate/1.1/context",
+    "@graph": [
+        {
+            "@id": "ro-crate-metadata.json",
+            "@type": "CreativeWork",
+            "about": {
+                "@id": "./"
+            },
+            "conformsTo": {
+                "@id": "https://w3id.org/ro/crate/1.1"
+            },
+            "description": "RO-Crate Metadata File Descriptor (this file)"
+        },
+        {
+            "@id": "./",
+            "@type": "Dataset",
+            "DataType": "Paper",
+            "author": [
+                {
+                    "@id": "#vanessa_santos"
+                },
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#mara_montag"
+                },
+                {
+                    "@id": "#sabrina_ries"
+                },
+                {
+                    "@id": "#ziming_wang"
+                },
+                {
+                    "@id": "#kai_widmaier"
+                },
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#elena_de_la"
+                },
+                {
+                    "@id": "#torre_castro"
+                },
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#monika_scheibe"
+                },
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#european_space_agency,_frascati,_italy_european_space_agency_frascati_italy"
+                }
+            ],
+            "description": "Contrails-thin ice clouds formed by aircraft-are a major contributor to aviation-induced climate forcing, yet their observational characterization remains limited. We present a manually labeled contrail dataset derived from observations of the Meteosat Second Generation (MSG) SEVIRI instrument over Europe and the North Atlantic, comprising 140 scenes of 256 \u00d7 256 pixels at 3 km nominal resolution. The dataset covers the time period in which Meteosat-10 was the operational satellite (from January 2013 through February 2018 and from March 2023 through March 2024) and scenes are distributed randomly over the whole SEVIRI disk. Each scene was independently annotated by three labelers, with ground truth established via majority consensus. To provide additional context, the dataset includes outputs from two satellite retrievals: CiPS (Cirrus Properties from SEVIRI) and ProPS (Probabilistic Cloud Top Phase retrieval), offering information on cloud cover and cloud top phase, cirrus probability, ice optical thickness, and ice cloud top height. These complementary variables enable detailed investigations, such as factors influencing contrail visibility. The dataset supports analyses of contrail detection, contrail characteristics, cloud-contrail interactions, and environmental conditions affecting detection. By providing high-quality labeled data with auxiliary cloud information, this resource facilitates the development and evaluation of contrail studies, contributes to improved understanding of aviationrelated cloud effects, and informs strategies for climate impact mitigation. The full dataset is available under:",
+            "hasPart": [
+                {
+                    "@id": "#annotated_contrail_dataset_for_meteosat_second_generation_(msg)"
+                },
+                {
+                    "@id": "ro-crate-preview.html"
+                }
+            ],
+            "name": "A manually labeled contrail dataset from MSG/SEVIRI"
+        },
+        {
+            "@id": "#vanessa_santos",
+            "@type": "Person",
+            "name": "Vanessa Santos"
+        },
+        {
+            "@id": "#none",
+            "@type": "Person"
+        },
+        {
+            "@id": "#mara_montag",
+            "@type": "Person",
+            "name": "Mara Montag"
+        },
+        {
+            "@id": "#sabrina_ries",
+            "@type": "Person",
+            "name": "Sabrina Ries"
+        },
+        {
+            "@id": "#ziming_wang",
+            "@type": "Person",
+            "name": "Ziming Wang"
+        },
+        {
+            "@id": "#kai_widmaier",
+            "@type": "Person",
+            "name": "Kai Widmaier"
+        },
+        {
+            "@id": "#none",
+            "@type": "Person"
+        },
+        {
+            "@id": "#none",
+            "@type": "Person"
+        },
+        {
+            "@id": "#none",
+            "@type": "Person"
+        },
+        {
+            "@id": "#none",
+            "@type": "Person"
+        },
+        {
+            "@id": "#none",
+            "@type": "Person"
+        },
+        {
+            "@id": "#elena_de_la",
+            "@type": "Person",
+            "name": "Elena De La"
+        },
+        {
+            "@id": "#torre_castro",
+            "@type": "Person",
+            "name": "Torre Castro"
+        },
+        {
+            "@id": "#none",
+            "@type": "Person"
+        },
+        {
+            "@id": "#monika_scheibe",
+            "@type": "Person",
+            "name": "Monika Scheibe"
+        },
+        {
+            "@id": "#none",
+            "@type": "Person"
+        },
+        {
+            "@id": "#european_space_agency,_frascati,_italy_european_space_agency_frascati_italy",
+            "@type": "Person",
+            "name": "European Space Agency, Frascati, Italy European Space Agency Frascati Italy"
+        },
+        {
+            "@id": "#annotated_contrail_dataset_for_meteosat_second_generation_(msg)",
+            "@type": "Dataset",
+            "description": "This dataset contains manually annotated contrail masks derived from Meteosat Second Generation (MSG) SEVIRI imagery between 2013 and 2024. Additionally, cloud properties are provided. It is intended for developing and validating contrail detection algorithms and for studying human labeling consistency.",
+            "distribution": {
+                "@id": "https://doi.org/10.5281/zenodo.17669443"
+            },
+            "name": "Annotated Contrail Dataset for Meteosat Second Generation (MSG)"
+        },
+        {
+            "@id": "ro-crate-preview.html",
+            "@type": "WebPage",
+            "name": "HTML representation of this data."
+        }
+    ]
+}

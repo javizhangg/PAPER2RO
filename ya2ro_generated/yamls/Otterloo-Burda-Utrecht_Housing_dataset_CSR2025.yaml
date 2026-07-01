@@ -1,0 +1,21 @@
+type: paper
+title: 'The Utrecht Housing dataset: A housing appraisal dataset'
+summary: This paper introduces a real-world dataset for analysing and predicting house prices. The dataset consists of actual
+  data on the Dutch housing market collected in 2024 for a total of 153 houses in one city (Utrecht in The Netherlands). The
+  dataset incorporates diverse variables on individual houses, including property characteristics (e.g., house type, build
+  year, geolocation, area, energy label) and market metrics (e.g., asking price, final price). The data was collected from
+  two public sources. The dataset has been created to help researchers and educators to demonstrate machine learning principles
+  on several problem types. It can be used for classification (energy label and energy efficiency) and regression/ price estimation.
+  There are ten original input features and one derived feature. The dataset can be freely used without restrictions under
+  a Creative Commons license and is available via open data platform Kaggle.
+datasets:
+- https://www.kaggle.com/datasets/shashanknecrothapa/ames-housing-dataset
+authors:
+- orcid: 0009-0004-0249-2122
+  role: author
+- orcid: 0000-0003-4554-5410
+  role: author
+bibliography:
+- https://doi.org/10.54822/QVHM1662
+- 'Source PDF: Otterloo-Burda-Utrecht_Housing_dataset_CSR2025.pdf'
+- 'Dataset extraction file: Otterloo-Burda-Utrecht_Housing_dataset_CSR2025.dataset.json'

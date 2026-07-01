@@ -1,0 +1,28 @@
+type: paper
+title: 'BirdsEye-RU: A Dataset For Detecting Faces from Overhead Images'
+summary: Detecting faces in overhead images remains a significant challenge due to extreme scale variations and environmental
+  clutter. To address this, we created the BirdsEye-RU dataset, a comprehensive collection of 2,978 images containing over
+  eight thousand annotated faces. This dataset is specifically designed to capture small and distant faces across diverse
+  environments, containing both drone images and smartphone-captured images from high altitude. We present a detailed description
+  of the BirdsEye-RU dataset in this paper. We made our dataset freely available to the public, and it can be accessed at
+  https://www.kaggle.com/datasets/mdahanafarifkhan/birdseye-ru.
+datasets:
+- https://www.kaggle.com/datasets/mdahanafarifkhan/birdseye-ru
+- https://www.kaggle.com/datasets/mdahanafarifkhan/birdseye-ru.6
+authors:
+- name: Md Ahanaf
+  role: author
+- name: Arif Khan
+  role: author
+- name: Md Iqbal
+  role: author
+- name: Aziz Khan
+  role: author
+- name: Sangeeta Biswas
+  role: author
+- name: ', Ariful Islam Ariful Islam'
+  role: author
+bibliography:
+- https://doi.org/10.1145/3083187.3083214
+- 'Source PDF: 2601.12533v2.pdf'
+- 'Dataset extraction file: 2601.12533v2.dataset.json'

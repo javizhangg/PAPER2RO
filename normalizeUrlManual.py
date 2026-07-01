@@ -1,27 +1,3 @@
-# urlNormalizedManual.py
-# Normalizador SUAVE para el Excel manual UrlManual.xlsx.
-#
-# Entrada:
-#   Benchmark/UrlManual.xlsx
-#   o, si no existe, UrlManual.xlsx en la misma carpeta del script.
-#
-# Salidas:
-#   Benchmark/UrlManual_normalized.xlsx
-#   Benchmark/UrlManual_removed.xlsx
-#
-# Resultado final:
-#   pdf | url | es_dataset
-#
-# Hace:
-# - limpia basura de extraccion
-# - NO fuerza www
-# - NO cambia http a https si la URL ya venia con http
-# - elimina parametros de tracking
-# - elimina duplicados exactos
-# - elimina URLs parecidas
-# - conserva la URL mas simple/corta entre URLs parecidas
-# - conserva la etiqueta manual es_dataset / Parece dataset si existe
-
 import re
 import unicodedata
 from pathlib import Path

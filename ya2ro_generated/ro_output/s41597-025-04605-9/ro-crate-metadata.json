@@ -1,0 +1,138 @@
+{
+    "@context": "https://w3id.org/ro/crate/1.1/context",
+    "@graph": [
+        {
+            "@id": "ro-crate-metadata.json",
+            "@type": "CreativeWork",
+            "about": {
+                "@id": "./"
+            },
+            "conformsTo": {
+                "@id": "https://w3id.org/ro/crate/1.1"
+            },
+            "description": "RO-Crate Metadata File Descriptor (this file)"
+        },
+        {
+            "@id": "./",
+            "@type": "Dataset",
+            "DataType": "Paper",
+            "author": [
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#shashidhara_marathe"
+                },
+                {
+                    "@id": "#liam_perera"
+                },
+                {
+                    "@id": "#alberto_leonardi"
+                },
+                {
+                    "@id": "#killian_gmyrek"
+                },
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#none"
+                }
+            ],
+            "description": "Machine learning techniques are being increasingly applied in medical and physical sciences across a variety of imaging modalities; however, an important issue when developing these tools is the availability of good quality training data. Here we present a unique, multimodal synchrotron dataset of a bespoke zinc-doped Zeolite 13X sample that can be used to develop advanced deep learning and data fusion pipelines. Multi-resolution micro X-ray computed tomography was performed on a zincdoped Zeolite 13X fragment to characterise its pores and features before spatially resolved X-ray diffraction computed tomography was carried out to characterise the topographical distribution of sodium and zinc phases. Zinc absorption was controlled to create a simple, spatially isolated, twophase material. Both raw and processed data are available as a series of Zenodo entries. altogether we present a spatially resolved, three-dimensional, multimodal, multi-resolution dataset that can be used to develop machine learning techniques. Such techniques include the development of super-resolution, multimodal data fusion, and 3D reconstruction algorithms.",
+            "hasPart": [
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "ro-crate-preview.html"
+                }
+            ],
+            "name": "three-dimensional, multimodal synchrotron data for machine learning applications"
+        },
+        {
+            "@id": "#none",
+            "@type": "Person"
+        },
+        {
+            "@id": "#shashidhara_marathe",
+            "@type": "Person",
+            "name": "Shashidhara Marathe"
+        },
+        {
+            "@id": "#liam_perera",
+            "@type": "Person",
+            "name": "Liam Perera"
+        },
+        {
+            "@id": "#alberto_leonardi",
+            "@type": "Person",
+            "name": "Alberto Leonardi"
+        },
+        {
+            "@id": "#killian_gmyrek",
+            "@type": "Person",
+            "name": "Killian Gmyrek"
+        },
+        {
+            "@id": "#none",
+            "@type": "Person"
+        },
+        {
+            "@id": "#none",
+            "@type": "Person"
+        },
+        {
+            "@id": "#none",
+            "@type": "Dataset",
+            "distribution": {
+                "@id": "https://zenodo.org/records/13327692"
+            }
+        },
+        {
+            "@id": "#none",
+            "@type": "Dataset",
+            "distribution": {
+                "@id": "https://zenodo.org/records/14245751"
+            }
+        },
+        {
+            "@id": "#none",
+            "@type": "Dataset",
+            "distribution": {
+                "@id": "https://zenodo.org/records/13349402"
+            }
+        },
+        {
+            "@id": "#none",
+            "@type": "Dataset",
+            "distribution": {
+                "@id": "https://zenodo.org/records/12206815"
+            }
+        },
+        {
+            "@id": "#none",
+            "@type": "Dataset",
+            "distribution": {
+                "@id": "https://doi.org/10.5281/zenodo.13329670asaseriesof.ascfiles"
+            }
+        },
+        {
+            "@id": "ro-crate-preview.html",
+            "@type": "WebPage",
+            "name": "HTML representation of this data."
+        }
+    ]
+}

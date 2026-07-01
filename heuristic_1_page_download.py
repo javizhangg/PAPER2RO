@@ -19,10 +19,25 @@ INPUT_CSV = "outputs/all_links_normalized.csv"
 OUTPUT_CSV = "outputs/heuristic_1_results.csv"
 OUTPUT_JSON = "outputs/heuristic_1_results.json"
 
+# Carpeta(s) donde pueden estar los .dataset.json generados por GAP-KGE.
+# El programa buscará recursivamente ficheros tipo <paper>.dataset.json.
+BASE_DIR = Path(__file__).resolve().parent
+GAP_DATASET_SEARCH_DIRS = [
+    BASE_DIR / "papers",
+    BASE_DIR / "pdfs",
+    BASE_DIR / "outputs",
+    BASE_DIR,
+]
+
 REQUEST_TIMEOUT = 5
 MAX_SAMPLE_BYTES = 500_000
 MAX_ZIP_DOWNLOAD_BYTES = 20_000_000  # 20 MB máximo para inspeccionar ZIPs
 MAX_WORKERS = 24
+
+# Si solo quieres detectar dataset a nivel de paper y no necesitas evaluar todas las URLs,
+# ponlo en True. Acelera mucho porque cuando un paper ya tiene dataset confirmado,
+# evita HTML/ZIP de las URLs restantes. Para benchmark por URL, mejor False.
+PAPER_LEVEL_EARLY_STOP_AFTER_DATASET_FOUND = False
 
 # Si está en False, solo acepta descargables:
 # - del mismo dominio raíz
@@ -424,7 +439,7 @@ def check_kaggle_html_contains_dataset(url: str, session=None) -> dict:
             }
         }
 
-    html_response = fetch_html_sample(url, session=session)
+    html_response = fetch_html_sample_cached(url, session=session)
 
     if not html_response.get("ok"):
         return {
@@ -1571,7 +1586,7 @@ def check_html_for_dataset_downloadables(url: str, session=None) -> dict:
     con formato típico de dataset.
     """
 
-    html_response = fetch_html_sample(url, session=session)
+    html_response = fetch_html_sample_cached(url, session=session)
 
     if not html_response.get("ok"):
         return {
@@ -1899,21 +1914,317 @@ def find_direct_dataset_downloadables_no_zip(input_url: str, candidates: list, s
             continue
 
         # Validación por cabeceras sin descargar ZIP.
-        validation = check_url_headers_for_dataset_file_no_zip_download(link, session=session)
+        validation = check_url_headers_for_dataset_file_no_zip_download_cached(link, session=session)
         if validation.get("matched"):
             dataset_links.append(clean_url(validation.get("dataset_url", link)))
 
     return sorted(set(dataset_links))
 
 
-def find_zip_dataset_downloadables_from_body(input_url: str, body_candidates: list, session=None) -> dict:
+
+
+# ==============================
+# GAP-KGE: NOMBRES DE DATASET POR PAPER
+# ==============================
+
+_GAP_DATASET_NAME_CACHE = {}
+
+
+def normalize_text_for_match(value: str) -> str:
     """
-    Último paso:
+    Normaliza texto para comparar nombres de dataset con enlaces ZIP/HTML.
+    """
+    value = unquote(str(value or "")).lower()
+    value = re.sub(r"<[^>]+>", " ", value)
+    value = re.sub(r"[_\-./]+", " ", value)
+    value = re.sub(r"[^a-z0-9áéíóúñ]+", " ", value)
+    value = re.sub(r"\s+", " ", value).strip()
+    return value
+
+
+def tokens_for_match(value: str) -> set:
+    text = normalize_text_for_match(value)
+    return {t for t in text.split() if len(t) >= 3}
+
+
+def stem_variants_from_pdf_name(pdf_name: str) -> list:
+    """
+    Genera variantes del nombre del paper para encontrar su .dataset.json.
+    Ejemplos:
+      paper1.pdf -> paper1.dataset.json
+      paper1 -> paper1.dataset.json
+    """
+    raw = str(pdf_name or "").strip()
+    if not raw:
+        return []
+
+    name = Path(raw).name
+    stem = Path(name).stem
+
+    variants = {
+        name,
+        stem,
+        stem.replace(" ", "_"),
+        stem.replace(" ", "-"),
+    }
+
+    # Si venía como algo.pdf, también probamos algo.pdf.dataset.json
+    if name.lower().endswith(".pdf"):
+        variants.add(name[:-4])
+
+    return sorted(v for v in variants if v)
+
+
+def find_gap_dataset_json_for_pdf(pdf_name: str) -> Path | None:
+    """
+    Busca el .dataset.json generado por GAP-KGE para el mismo paper.
+
+    Busca patrones:
+      <paper>.dataset.json
+      <paper>.pdf.dataset.json
+    dentro de papers/, pdfs/, outputs/ y la carpeta base.
+    """
+    variants = stem_variants_from_pdf_name(pdf_name)
+    if not variants:
+        return None
+
+    patterns = []
+    for v in variants:
+        patterns.append(f"{v}.dataset.json")
+        patterns.append(f"{v}.pdf.dataset.json")
+
+    for base in GAP_DATASET_SEARCH_DIRS:
+        if not base.exists():
+            continue
+
+        for pattern in patterns:
+            direct = base / pattern
+            if direct.exists():
+                return direct
+
+        for pattern in patterns:
+            matches = list(base.rglob(pattern))
+            if matches:
+                return matches[0]
+
+    return None
+
+
+def iter_json_values(obj):
+    """Recorre cualquier JSON y devuelve valores string."""
+    if isinstance(obj, dict):
+        for v in obj.values():
+            yield from iter_json_values(v)
+    elif isinstance(obj, list):
+        for item in obj:
+            yield from iter_json_values(item)
+    elif isinstance(obj, str):
+        value = obj.strip()
+        if value:
+            yield value
+
+
+def iter_json_key_values(obj):
+    """Recorre cualquier JSON y devuelve pares key, value."""
+    if isinstance(obj, dict):
+        for k, v in obj.items():
+            yield str(k).lower(), v
+            yield from iter_json_key_values(v)
+    elif isinstance(obj, list):
+        for item in obj:
+            yield from iter_json_key_values(item)
+
+
+def extract_dataset_names_from_gap_json_obj(obj) -> list:
+    """
+    Extrae posibles nombres de dataset desde el .dataset.json de GAP-KGE.
+    Es genérico porque GAP-KGE puede cambiar la estructura.
+    """
+    names = set()
+
+    preferred_keys = {
+        "dataset", "datasets", "dataset_name", "datasetname", "name",
+        "title", "label", "caption", "file", "filename", "resource",
+        "data", "database", "corpus"
+    }
+
+    for key, value in iter_json_key_values(obj):
+        key_norm = key.replace("_", "").replace("-", "")
+
+        if key_norm in {k.replace("_", "") for k in preferred_keys}:
+            if isinstance(value, str):
+                candidates = [value]
+            elif isinstance(value, list):
+                candidates = list(iter_json_values(value))
+            elif isinstance(value, dict):
+                candidates = list(iter_json_values(value))
+            else:
+                candidates = []
+
+            for c in candidates:
+                cleaned = str(c).strip()
+                norm = normalize_text_for_match(cleaned)
+
+                # Evita meter abstracts/frases gigantes como nombres.
+                if 3 <= len(norm) <= 120:
+                    toks = tokens_for_match(norm)
+                    if toks:
+                        names.add(cleaned)
+
+    # Fallback: strings cortos que parecen nombres/archivos de dataset.
+    for value in iter_json_values(obj):
+        norm = normalize_text_for_match(value)
+        if 3 <= len(norm) <= 100:
+            toks = tokens_for_match(norm)
+            if toks.intersection(DATASET_NAME_KEYWORDS) or any(ext in str(value).lower() for ext in DATASET_DOWNLOAD_EXTENSIONS):
+                names.add(value.strip())
+
+    return sorted(names, key=lambda x: len(x), reverse=True)
+
+
+def load_gap_dataset_names_for_pdf(pdf_name: str) -> dict:
+    """
+    Carga nombres de dataset desde el .dataset.json del paper.
+    Usa caché para no leer el mismo JSON muchas veces.
+    """
+    key = str(pdf_name or "").strip()
+    if key in _GAP_DATASET_NAME_CACHE:
+        return _GAP_DATASET_NAME_CACHE[key]
+
+    result = {
+        "gap_json_found": False,
+        "gap_json_path": "",
+        "gap_dataset_names": [],
+        "gap_error": "",
+    }
+
+    path = find_gap_dataset_json_for_pdf(pdf_name)
+    if not path:
+        _GAP_DATASET_NAME_CACHE[key] = result
+        return result
+
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            obj = json.load(f)
+
+        names = extract_dataset_names_from_gap_json_obj(obj)
+        result.update({
+            "gap_json_found": True,
+            "gap_json_path": str(path),
+            "gap_dataset_names": names,
+        })
+
+    except Exception as e:
+        result.update({
+            "gap_json_found": True,
+            "gap_json_path": str(path),
+            "gap_error": str(e),
+        })
+
+    _GAP_DATASET_NAME_CACHE[key] = result
+    return result
+
+
+def dataset_name_matches_text(dataset_names: list, text: str) -> bool:
+    """
+    Comprueba si algún nombre de dataset aparece en un texto.
+    También acepta coincidencia por tokens relevantes.
+    """
+    if not dataset_names or not text:
+        return False
+
+    text_norm = normalize_text_for_match(text)
+    text_tokens = tokens_for_match(text)
+
+    for name in dataset_names:
+        name_norm = normalize_text_for_match(name)
+        if not name_norm:
+            continue
+
+        # Coincidencia directa del nombre normalizado.
+        if len(name_norm) >= 3 and name_norm in text_norm:
+            return True
+
+        name_tokens = tokens_for_match(name_norm)
+        if not name_tokens:
+            continue
+
+        # Para nombres de varias palabras: exigimos al menos 2 tokens coincidentes,
+        # o todos si el nombre solo tiene 1-2 tokens.
+        common = name_tokens.intersection(text_tokens)
+        if len(name_tokens) <= 2:
+            if len(common) == len(name_tokens):
+                return True
+        else:
+            if len(common) >= 2:
+                return True
+
+    return False
+
+
+def get_html_context_around_url(body_html: str, zip_url: str, window: int = 700) -> str:
+    """
+    Devuelve texto alrededor de donde aparece el enlace ZIP en el body.
+    Si no encuentra la URL absoluta, prueba con el nombre del archivo.
+    """
+    if not body_html or not zip_url:
+        return ""
+
+    candidates = [zip_url, get_filename_from_url(zip_url)]
+    lower_body = body_html.lower()
+
+    for c in candidates:
+        c = str(c or "").lower()
+        if not c:
+            continue
+        pos = lower_body.find(c)
+        if pos != -1:
+            start = max(0, pos - window)
+            end = min(len(body_html), pos + len(c) + window)
+            return body_html[start:end]
+
+    return ""
+
+
+def zip_allowed_by_gap_dataset_name(zip_url: str, body_html: str, gap_info: dict) -> bool:
+    """
+    El ZIP solo se descarga si:
+    - existe .dataset.json del mismo paper,
+    - de ahí se extrajo al menos un posible nombre de dataset,
+    - y ese nombre aparece en el enlace ZIP o cerca del enlace ZIP en el body.
+    """
+    dataset_names = gap_info.get("gap_dataset_names", []) if gap_info else []
+    if not gap_info or not gap_info.get("gap_json_found") or not dataset_names:
+        return False
+
+    zip_text = f"{zip_url} {get_filename_from_url(zip_url)}"
+    if dataset_name_matches_text(dataset_names, zip_text):
+        return True
+
+    nearby_html = get_html_context_around_url(body_html, zip_url)
+    if dataset_name_matches_text(dataset_names, nearby_html):
+        return True
+
+    return False
+
+def find_zip_dataset_downloadables_from_body(
+    input_url: str,
+    body_candidates: list,
+    body_html: str,
+    gap_info: dict,
+    session=None
+) -> dict:
+    """
+    Último paso con GAP-KGE:
     - Solo mira ZIPs encontrados en el body.
-    - Solo los descarga si el enlace/ruta tiene contexto de dataset.
-    - Abre el ZIP y comprueba si dentro hay formatos dataset.
+    - Solo descarga un ZIP si existe .dataset.json del mismo paper.
+    - El nombre del dataset extraído de GAP debe aparecer:
+        a) en la URL/nombre del ZIP, o
+        b) cerca del enlace ZIP dentro del body HTML.
+    - En otros casos NO descarga el ZIP.
     """
     checked_zips = []
+    skipped_zips = []
 
     for link in body_candidates:
         link = clean_url(link)
@@ -1927,8 +2238,8 @@ def find_zip_dataset_downloadables_from_body(input_url: str, body_candidates: li
         if not is_zip_by_url(link):
             continue
 
-        # ZIP solo si el propio enlace parece de datos.
-        if not filename_has_dataset_context(link):
+        if not zip_allowed_by_gap_dataset_name(link, body_html, gap_info):
+            skipped_zips.append(link)
             continue
 
         checked_zips.append(link)
@@ -1936,26 +2247,117 @@ def find_zip_dataset_downloadables_from_body(input_url: str, body_candidates: li
 
         if zip_check.get("matched"):
             zip_check["checked_zip_links"] = checked_zips
+            zip_check["skipped_zip_links"] = skipped_zips
+            zip_check["gap_json_found"] = gap_info.get("gap_json_found", False)
+            zip_check["gap_json_path"] = gap_info.get("gap_json_path", "")
+            zip_check["gap_dataset_names"] = gap_info.get("gap_dataset_names", [])
             return zip_check
 
     return {
         "matched": False,
-        "reason": "no_zip_with_dataset_context_found_or_zip_without_dataset_files",
+        "reason": "no_zip_allowed_by_gap_dataset_name_or_zip_without_dataset_files",
         "checked_zip_links": checked_zips,
+        "skipped_zip_links": skipped_zips,
         "zip_descargado": bool(checked_zips),
         "zip_contiene_csv": False,
         "zip_csv_encontrados": [],
         "zip_total_archivos": 0,
         "zip_archivos_sample": [],
         "zip_error": "",
+        "gap_json_found": gap_info.get("gap_json_found", False) if gap_info else False,
+        "gap_json_path": gap_info.get("gap_json_path", "") if gap_info else "",
+        "gap_dataset_names": gap_info.get("gap_dataset_names", []) if gap_info else [],
+        "gap_error": gap_info.get("gap_error", "") if gap_info else "",
     }
 
+
+
+# ==============================
+# CACHÉ POR URL Y POR PAPER
+# ==============================
+
+_HEADER_NO_ZIP_CACHE = {}
+_HTML_SAMPLE_CACHE = {}
+
+
+def check_url_headers_for_dataset_file_no_zip_download_cached(url: str, session=None) -> dict:
+    """
+    Cachea la revisión de cabeceras por URL.
+    Así si una URL aparece varias veces o se valida como candidata desde HTML,
+    no se repite HEAD/GET.
+    """
+    key = clean_url(url)
+    if key in _HEADER_NO_ZIP_CACHE:
+        return _HEADER_NO_ZIP_CACHE[key]
+
+    result = check_url_headers_for_dataset_file_no_zip_download(key, session=session)
+    _HEADER_NO_ZIP_CACHE[key] = result
+    return result
+
+
+def fetch_html_sample_cached(url: str, session=None) -> dict:
+    """
+    Cachea el HTML por URL.
+    Es útil cuando se agrupa por paper y una misma página se usa para varios enlaces/candidatos.
+    """
+    key = clean_url(url)
+    if key in _HTML_SAMPLE_CACHE:
+        return _HTML_SAMPLE_CACHE[key]
+
+    result = fetch_html_sample(key, session=session)
+    _HTML_SAMPLE_CACHE[key] = result
+    return result
+
+
+def skipped_by_paper_early_stop_result(url: str, pdf_name: str, paper_dataset_url: str) -> dict:
+    """
+    Resultado para URLs que no se analizan en modo early-stop porque el paper
+    ya tiene un dataset confirmado. No se marca como dataset para no inflar positivos por URL.
+    """
+    return {
+        "matched": False,
+        "reason": "skipped_heavy_checks_because_paper_already_has_dataset",
+        "value": {
+            "url": clean_url(url),
+            "es_dataset_directo": False,
+            "tipo_dataset_descargable": "",
+            "pagina_con_descargables": False,
+            "dataset_descargable": "",
+            "dataset_descargables_encontrados": [],
+            "json_descargado": False,
+            "html_descargado": False,
+            "header_checked": False,
+            "zip_descargado": False,
+            "zip_contiene_csv": False,
+            "zip_csv_encontrados": [],
+            "zip_total_archivos": 0,
+            "zip_archivos_sample": [],
+            "zip_error": "",
+            "header_content_type": "",
+            "header_content_disposition": "",
+            "total_descargables_json": 0,
+            "total_descargables_html": 0,
+            "json_dataset_descargables_encontrados": [],
+            "html_dataset_descargables_encontrados": [],
+            "descargables_json_sample": [],
+            "descargables_html_sample": [],
+            "json_content_type": "",
+            "html_content_type": "",
+            "gap_json_found": False,
+            "gap_json_path": "",
+            "gap_dataset_names": [],
+            "gap_error": "",
+            "zip_checked_because_gap_name_matched": False,
+            "paper_dataset_already_found": True,
+            "paper_dataset_descargable": paper_dataset_url,
+        },
+    }
 
 # ==============================
 # HEURÍSTICA 1
 # ==============================
 
-def heuristic_1(url: str, session=None) -> dict:
+def heuristic_1(url: str, pdf_name: str = "", session=None) -> dict:
     """
     Heurística 1 optimizada según el nuevo orden:
 
@@ -2012,12 +2414,17 @@ def heuristic_1(url: str, session=None) -> dict:
         "descargables_html_sample": [],
         "json_content_type": "",
         "html_content_type": "",
+        "gap_json_found": False,
+        "gap_json_path": "",
+        "gap_dataset_names": [],
+        "gap_error": "",
+        "zip_checked_because_gap_name_matched": False,
     }
 
     # ==============================
     # PASO 1: cabeceras rápidas
     # ==============================
-    header_check = check_url_headers_for_dataset_file_no_zip_download(url, session=session)
+    header_check = check_url_headers_for_dataset_file_no_zip_download_cached(url, session=session)
 
     if header_check.get("matched"):
         dataset_url = header_check.get("dataset_url", url)
@@ -2082,7 +2489,7 @@ def heuristic_1(url: str, session=None) -> dict:
     # ==============================
     # PASO 4: HTML body y descargables directos
     # ==============================
-    html_response = fetch_html_sample(url, session=session)
+    html_response = fetch_html_sample_cached(url, session=session)
 
     if html_response.get("ok"):
         final_url = html_response.get("final_url", url)
@@ -2121,12 +2528,16 @@ def heuristic_1(url: str, session=None) -> dict:
             }
 
         # ==============================
-        # PASO 5: ZIP último, solo con contexto dataset en body
+        # PASO 5: ZIP último, solo si GAP-KGE confirma el nombre
         # ==============================
+        gap_info = load_gap_dataset_names_for_pdf(pdf_name)
+
         if html_body_has_dataset_context(body_html):
             zip_check = find_zip_dataset_downloadables_from_body(
                 url,
                 body_candidates,
+                body_html,
+                gap_info,
                 session=session,
             )
 
@@ -2153,6 +2564,11 @@ def heuristic_1(url: str, session=None) -> dict:
                     "descargables_html_sample": body_candidates[:20],
                     "html_content_type": html_response.get("content_type", ""),
                     "html_dataset_descargables_encontrados": [dataset_url],
+                    "gap_json_found": bool(zip_check.get("gap_json_found", False)),
+                    "gap_json_path": zip_check.get("gap_json_path", ""),
+                    "gap_dataset_names": zip_check.get("gap_dataset_names", []),
+                    "gap_error": zip_check.get("gap_error", ""),
+                    "zip_checked_because_gap_name_matched": True,
                 })
                 return {
                     "matched": True,
@@ -2170,6 +2586,10 @@ def heuristic_1(url: str, session=None) -> dict:
             "descargables_html_sample": body_candidates[:20],
             "html_content_type": html_response.get("content_type", ""),
             "html_body_has_dataset_context": html_body_has_dataset_context(body_html),
+            "gap_json_found": bool(gap_info.get("gap_json_found", False)),
+            "gap_json_path": gap_info.get("gap_json_path", ""),
+            "gap_dataset_names": gap_info.get("gap_dataset_names", []),
+            "gap_error": gap_info.get("gap_error", ""),
         })
         return {
             "matched": False,
@@ -2201,29 +2621,82 @@ def heuristic_1(url: str, session=None) -> dict:
 # CARGA CSV
 # ==============================
 
+def _normalize_csv_row(row: dict) -> dict:
+    """
+    Normaliza nombres de columnas del CSV:
+    - quita BOM invisible (\\ufeff)
+    - quita espacios
+    - pasa a minúsculas
+
+    Así detecta bien pdf/paper/url aunque el CSV venga con columnas raras.
+    """
+    cleaned = {}
+
+    for key, value in row.items():
+        key_clean = str(key or "").replace("\\ufeff", "").strip().lower()
+        cleaned[key_clean] = "" if value is None else str(value).strip()
+
+    return cleaned
+
+
 def load_normalized_csv(path: str) -> list:
+    """
+    Carga outputs/all_links_normalized.csv.
+
+    Soporta:
+    - formato simple: pdf,url
+    - formato completo: paper,original_url,normalized_url,...
+
+    Si antes te salía "Papers únicos a procesar: 1", era porque el código
+    no estaba leyendo bien la columna del PDF/paper y todo caía en el mismo grupo.
+    """
     rows = []
 
-    with open(path, "r", encoding="utf-8") as f:
+    with open(path, "r", encoding="utf-8-sig", newline="") as f:
         reader = csv.DictReader(f)
 
-        for row in reader:
+        raw_fieldnames = reader.fieldnames or []
+        fieldnames = [
+            str(c or "").replace("\\ufeff", "").strip().lower()
+            for c in raw_fieldnames
+        ]
+
+        print(f"-> Columnas detectadas en CSV: {fieldnames}", flush=True)
+
+        for raw_row in reader:
+            row = _normalize_csv_row(raw_row)
+
             url_to_process = (
-                row.get("normalized_url", "").strip()
-                or row.get("url", "").strip()
-                or row.get("original_url", "").strip()
-            )
+                row.get("normalized_url", "")
+                or row.get("url", "")
+                or row.get("original_url", "")
+                or row.get("link", "")
+            ).strip()
 
             pdf_name = (
-                row.get("paper", "").strip()
-                or row.get("pdf", "").strip()
-                or row.get("file", "").strip()
-            )
+                row.get("paper", "")
+                or row.get("pdf", "")
+                or row.get("file", "")
+                or row.get("filename", "")
+                or row.get("paper_name", "")
+            ).strip()
 
             rows.append({
                 "pdf": pdf_name,
-                "url": url_to_process
+                "url": clean_url(url_to_process)
             })
+
+    unique_pdfs = sorted({r["pdf"] for r in rows if r.get("pdf")})
+    print(f"-> PDFs detectados no vacíos: {len(unique_pdfs)}", flush=True)
+    print(f"-> Primeros PDFs detectados: {unique_pdfs[:8]}", flush=True)
+
+    empty_pdf_rows = sum(1 for r in rows if not r.get("pdf"))
+    if empty_pdf_rows:
+        print(
+            f"AVISO: {empty_pdf_rows} filas no tienen PDF/paper detectado. "
+            f"Esas filas se agruparán como SIN_PDF.",
+            flush=True
+        )
 
     return rows
 
@@ -2251,6 +2724,10 @@ def save_csv_simple(rows: list, path: str) -> str:
         "zip_csv_encontrados",
         "zip_total_archivos",
         "zip_error",
+        "gap_json_found",
+        "gap_json_path",
+        "gap_dataset_names",
+        "zip_checked_because_gap_name_matched",
         "total_descargables_json",
         "total_descargables_html",
         "header_content_type",
@@ -2313,77 +2790,180 @@ def save_json_full(rows: list, path: str) -> str:
 # MAIN
 # ==============================
 
+def group_rows_by_pdf(input_rows: list) -> dict:
+    """
+    Agrupa las filas por paper/pdf.
+    Devuelve: {pdf_name: [url1, url2, ...]} sin repetir URLs dentro del mismo paper.
+    """
+    groups = {}
+    for row in input_rows:
+        pdf = str(row.get("pdf", "") or "").strip()
+        url = clean_url(row.get("url", ""))
+        if not url:
+            continue
+        groups.setdefault(pdf, [])
+        if url not in groups[pdf]:
+            groups[pdf].append(url)
+    return groups
+
+
+def process_paper_urls(pdf_name: str, urls: list) -> dict:
+    """
+    Procesa todas las URLs de un mismo paper juntas.
+
+    Ventajas:
+    - Carga el .dataset.json de GAP-KGE una sola vez para el paper.
+    - Reutiliza caché de cabeceras y HTML.
+    - Opcionalmente puede saltarse HTML/ZIP de URLs restantes si ya encontró dataset
+      para el paper (PAPER_LEVEL_EARLY_STOP_AFTER_DATASET_FOUND=True).
+
+    Además imprime progreso por PDF y por URL.
+    """
+    results = {}
+
+    display_pdf = pdf_name or "SIN_PDF"
+    total_urls = len(urls)
+
+    print(f"\n[PDF INICIO] {display_pdf} -> {total_urls} URLs", flush=True)
+
+    session = requests.Session()
+    adapter = requests.adapters.HTTPAdapter(
+        pool_connections=max(4, min(8, MAX_WORKERS)),
+        pool_maxsize=max(8, min(16, MAX_WORKERS * 2)),
+    )
+    session.mount("http://", adapter)
+    session.mount("https://", adapter)
+
+    # Precalienta GAP una vez por paper. Luego heuristic_1 lo reutiliza por caché.
+    gap_info = load_gap_dataset_names_for_pdf(pdf_name)
+
+    if gap_info.get("gap_json_found"):
+        print(
+            f"[GAP] {display_pdf} -> encontrado .dataset.json: {gap_info.get('gap_json_path', '')}",
+            flush=True
+        )
+    else:
+        print(f"[GAP] {display_pdf} -> no se encontró .dataset.json", flush=True)
+
+    paper_dataset_found = False
+    paper_dataset_url = ""
+
+    try:
+        for idx, url in enumerate(urls, 1):
+            print(f"  [URL {idx}/{total_urls}] {display_pdf} -> {url}", flush=True)
+
+            if PAPER_LEVEL_EARLY_STOP_AFTER_DATASET_FOUND and paper_dataset_found:
+                results[(pdf_name, url)] = skipped_by_paper_early_stop_result(
+                    url,
+                    pdf_name,
+                    paper_dataset_url,
+                )
+
+                print(
+                    f"     -> SALTADA por early-stop; dataset del paper ya encontrado: {paper_dataset_url}",
+                    flush=True
+                )
+                continue
+
+            h = heuristic_1(url, pdf_name, session=session)
+            results[(pdf_name, url)] = h
+
+            if h.get("matched"):
+                dataset_url = h.get("value", {}).get("dataset_descargable", "") or url
+                print(
+                    f"     -> DATASET=True | {h.get('reason', '')} | {dataset_url}",
+                    flush=True
+                )
+                paper_dataset_found = True
+                paper_dataset_url = dataset_url
+            else:
+                print(f"     -> DATASET=False | {h.get('reason', '')}", flush=True)
+
+    finally:
+        session.close()
+
+    print(f"[PDF FIN] {display_pdf} -> {len(results)}/{total_urls} URLs procesadas", flush=True)
+
+    return results
+
+
 def main():
     if not Path(INPUT_CSV).exists():
         print(f"No existe {INPUT_CSV}")
         return
 
     input_rows = load_normalized_csv(INPUT_CSV)
+    paper_groups = group_rows_by_pdf(input_rows)
 
-    unique_urls = sorted(
-        list({row["url"] for row in input_rows if row["url"]})
-    )
+    total_unique_jobs = sum(len(urls) for urls in paper_groups.values())
 
-    print(f"-> Filas leídas: {len(input_rows)}")
-    print(f"-> URLs únicas a procesar: {len(unique_urls)}")
-    print(f"-> Iniciando heurística 1 precisa con {MAX_WORKERS} hilos...")
+    print(f"-> Filas leídas: {len(input_rows)}", flush=True)
+    print(f"-> Papers únicos a procesar: {len(paper_groups)}", flush=True)
+    print(f"-> Papers detectados: {list(paper_groups.keys())[:10]}", flush=True)
+    print(f"-> Pares únicos (pdf, url): {total_unique_jobs}", flush=True)
+    print(f"-> Early-stop por paper activado: {PAPER_LEVEL_EARLY_STOP_AFTER_DATASET_FOUND}", flush=True)
+    print(f"-> Iniciando heurística 1 agrupada por paper con {MAX_WORKERS} hilos...", flush=True)
 
-    url_results = {}
+    job_results = {}
 
-    session = requests.Session()
-
-    adapter = requests.adapters.HTTPAdapter(
-        pool_connections=MAX_WORKERS,
-        pool_maxsize=MAX_WORKERS * 2
-    )
-
-    session.mount("http://", adapter)
-    session.mount("https://", adapter)
+    paper_items = sorted(paper_groups.items(), key=lambda x: x[0])
 
     with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
-        future_to_url = {
-            executor.submit(heuristic_1, url, session): url
-            for url in unique_urls
+        future_to_pdf = {
+            executor.submit(process_paper_urls, pdf, urls): pdf
+            for pdf, urls in paper_items
         }
 
-        for i, future in enumerate(as_completed(future_to_url), 1):
-            url = future_to_url[future]
+        processed_papers = 0
+        processed_pairs = 0
+
+        for future in as_completed(future_to_pdf):
+            pdf = future_to_pdf[future]
 
             try:
-                url_results[url] = future.result()
+                paper_results = future.result()
+                job_results.update(paper_results)
+                processed_pairs += len(paper_results)
 
             except Exception as e:
-                url_results[url] = {
-                    "matched": False,
-                    "reason": f"thread_error: {str(e)}",
-                    "value": {
-                        "url": url,
-                        "es_dataset_directo": False,
-                        "json_descargado": False,
-                        "html_descargado": False,
-                        "header_checked": False,
-                        "pagina_con_descargables": False,
-                        "dataset_descargable": "",
-                        "tipo_dataset_descargable": "",
-                        "zip_descargado": False,
-                        "zip_contiene_csv": False,
-                        "zip_csv_encontrados": [],
-                        "zip_total_archivos": 0,
-                        "zip_archivos_sample": [],
-                        "zip_error": "",
-                        "total_descargables_json": 0,
-                        "total_descargables_html": 0,
-                        "header_content_type": "",
-                        "header_content_disposition": "",
-                        "json_content_type": "",
-                        "html_content_type": ""
+                for url in paper_groups.get(pdf, []):
+                    job_results[(pdf, url)] = {
+                        "matched": False,
+                        "reason": f"paper_thread_error: {str(e)}",
+                        "value": {
+                            "url": url,
+                            "es_dataset_directo": False,
+                            "json_descargado": False,
+                            "html_descargado": False,
+                            "header_checked": False,
+                            "pagina_con_descargables": False,
+                            "dataset_descargable": "",
+                            "tipo_dataset_descargable": "",
+                            "zip_descargado": False,
+                            "zip_contiene_csv": False,
+                            "zip_csv_encontrados": [],
+                            "zip_total_archivos": 0,
+                            "zip_archivos_sample": [],
+                            "zip_error": "",
+                            "total_descargables_json": 0,
+                            "total_descargables_html": 0,
+                            "header_content_type": "",
+                            "header_content_disposition": "",
+                            "json_content_type": "",
+                            "html_content_type": "",
+                            "gap_json_found": False,
+                            "gap_json_path": "",
+                            "gap_dataset_names": [],
+                            "zip_checked_because_gap_name_matched": False,
+                        },
                     }
-                }
+                processed_pairs += len(paper_groups.get(pdf, []))
 
-            if i % 20 == 0 or i == len(unique_urls):
-                print(f" Progreso: [{i}/{len(unique_urls)}] URLs analizadas.")
-
-    session.close()
+            processed_papers += 1
+            print(
+                f" Progreso: [{processed_papers}/{len(paper_groups)}] papers, "
+                f"[{processed_pairs}/{total_unique_jobs}] pares analizados."
+            )
 
     csv_rows = []
     json_rows = []
@@ -2395,13 +2975,13 @@ def main():
         if not url:
             continue
 
-        h = url_results.get(
-            url,
+        h = job_results.get(
+            (pdf, url),
             {
                 "matched": False,
                 "reason": "not_processed",
-                "value": {}
-            }
+                "value": {},
+            },
         )
 
         value = h.get("value", {})
@@ -2422,19 +3002,23 @@ def main():
             "zip_csv_encontrados": " | ".join(value.get("zip_csv_encontrados", [])),
             "zip_total_archivos": value.get("zip_total_archivos", 0),
             "zip_error": value.get("zip_error", ""),
+            "gap_json_found": bool(value.get("gap_json_found", False)),
+            "gap_json_path": value.get("gap_json_path", ""),
+            "gap_dataset_names": " | ".join(value.get("gap_dataset_names", [])),
+            "zip_checked_because_gap_name_matched": bool(value.get("zip_checked_because_gap_name_matched", False)),
             "total_descargables_json": value.get("total_descargables_json", 0),
             "total_descargables_html": value.get("total_descargables_html", 0),
             "header_content_type": value.get("header_content_type", ""),
             "header_content_disposition": value.get("header_content_disposition", ""),
             "json_content_type": value.get("json_content_type", ""),
             "html_content_type": value.get("html_content_type", ""),
-            "motivo": h.get("reason", "")
+            "motivo": h.get("reason", ""),
         })
 
         json_rows.append({
             "pdf": pdf,
             "url": url,
-            "heuristic_1": h
+            "heuristic_1": h,
         })
 
     saved_csv = save_csv_simple(csv_rows, OUTPUT_CSV)
@@ -2442,14 +3026,20 @@ def main():
 
     total_true = sum(1 for r in csv_rows if r["heuristica"] is True)
     total_false = sum(1 for r in csv_rows if r["heuristica"] is False)
+    total_zip_downloaded = sum(1 for r in csv_rows if r["zip_descargado"] is True)
 
-    print("\n================ RESUMEN HEURÍSTICA 1 ================")
+    print("\n================ RESUMEN HEURÍSTICA 1 AGRUPADA ================")
     print(f" Filas finales procesadas: {len(csv_rows)}")
+    print(f" Papers procesados: {len(paper_groups)}")
     print(f" Confirmados como DATASET: {total_true}")
     print(f" Descartados como NOT DATASET: {total_false}")
+    print(f" ZIPs descargados: {total_zip_downloaded}")
+    print(f" Caché cabeceras: {len(_HEADER_NO_ZIP_CACHE)} URLs")
+    print(f" Caché HTML: {len(_HTML_SAMPLE_CACHE)} URLs")
+    print(f" Caché GAP: {len(_GAP_DATASET_NAME_CACHE)} papers")
     print(f" CSV guardado en: {saved_csv}")
     print(f" JSON guardado en: {saved_json}")
-    print("======================================================")
+    print("===============================================================")
 
 
 if __name__ == "__main__":

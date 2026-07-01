@@ -6,7 +6,13 @@ from urllib.parse import urlparse, unquote
 from datetime import datetime
 
 import requests
+import sys
 
+try:
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+except Exception:
+    pass
 
 # ==============================
 # RUTAS
@@ -57,6 +63,18 @@ def normalize_url(url: str) -> str:
         return ""
 
     url = str(url).strip()
+
+    # Ligaduras raras que salen al extraer texto de PDFs
+    url = url.replace("\ufb00", "ff")
+    url = url.replace("\ufb01", "fi")
+    url = url.replace("\ufb02", "fl")
+    url = url.replace("\ufb03", "ffi")
+    url = url.replace("\ufb04", "ffl")
+
+    url = url.replace("\u200b", "")
+    url = url.replace("\ufeff", "")
+    url = url.replace("\u00ad", "")
+
     url = url.rstrip(".,;:!?)]}>'\"")
     return url
 

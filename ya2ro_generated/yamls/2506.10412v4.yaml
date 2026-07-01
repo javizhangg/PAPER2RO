@@ -1,0 +1,41 @@
+type: paper
+title: 'TIME-IMM: A Dataset and Benchmark for Irregular Multimodal Multivariate Time Series'
+summary: Time series data in real-world applications such as healthcare, climate modeling, and finance are often irregular,
+  multimodal, and messy, with varying sampling rates, asynchronous modalities, and pervasive missingness. However, existing
+  benchmarks typically assume clean, regularly sampled, unimodal data, creating a significant gap between research and real-world
+  deployment. We introduce TIME-IMM, a dataset specifically designed to capture cause-driven irregularity in multimodal multivariate
+  time series. TIME-IMM represents nine distinct types of time series irregularity, categorized into trigger-based, constraint-based,
+  and artifact-based mechanisms. Complementing the dataset, we introduce IMM-TSF, a benchmark library for forecasting on irregular
+  multimodal time series, enabling asynchronous integration and realistic evaluation. IMM-TSF includes specialized fusion
+  modules, including a timestamp-to-text fusion module and a multimodality fusion module, which support both recency-aware
+  averaging and attention-based integration strategies. Empirical results demonstrate that explicitly modeling multimodality
+  on irregular time series data leads to substantial gains in forecasting performance. TIME-IMM and IMM-TSF provide a foundation
+  for advancing time series analysis under real-world conditions. The dataset is publicly available at https://github.com/blacksnail789521/Time-IMM,
+  and the benchmark library can be accessed at https://github.com/blacksnail789521/IMM-TSF.
+datasets:
+- https://physionet.org/content/mimi-civ/1.0
+- https://archive.physionet.org/challenge/2012
+- https://physionet.org/content/mimiciv/3.1
+- https://physionet.org/content/mimiciv/3.1/
+- https://www.kaggle.com/datasets/blacksnail789521/time-imm
+- https://huggingface.co/datasets/Zihan1004/FNSPID
+- https://archive.ics.uci.edu/dataset/321/electricityloaddiagrams20112014
+- https://archive.ics.uci.edu/dataset/196/localization+
+authors:
+- name: Ching Chang
+  role: author
+- name: Jeehyun Hwang
+  role: author
+- name: Yidan Shi
+  role: author
+- name: Haixin Wang
+  role: author
+- name: Wen-Chih Peng
+  role: author
+- name: Tien-Fu Chen
+  role: author
+- name: Wei Wang
+  role: author
+bibliography:
+- 'Source PDF: 2506.10412v4.pdf'
+- 'Dataset extraction file: 2506.10412v4.dataset.json'

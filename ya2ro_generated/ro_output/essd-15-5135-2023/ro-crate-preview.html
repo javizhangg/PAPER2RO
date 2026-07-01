@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<title>Measurements of nearshore ocean-surface kinematics through coherent arrays of free-drifting buoys</title>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="https://www.w3schools.com/w3css/4/w3.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet"/>
+<style id="style">
+
+body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+body {font-size:16px; text-align: justify;}
+.w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
+.w3-half img:hover{opacity:1}
+img {display: block;margin-left: auto;margin-right: auto;}
+.column {float: left;width: 50%;padding: 5px;}
+.row::after {content: ""; clear: both; display: table;}
+.centered-element {margin: 0;position: absolute;top: 50%;transform: translateY(-50%);}
+
+
+
+            h1,h1 b{color:#fff!important}
+            .w3-light-grey{background-color:#ddd!important;color:#222831!important}
+            .w3-green{background-color:#30475e!important}.w3-round{border:5px solid #f05454!important}
+            body{background-color:#222831!important;color:#fff!important}
+            </style>
+<body>
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-green w3-collapse w3-top w3-large w3-padding" id="mySidebar" style="z-index:3;width:300px;font-weight:bold;"><br/>
+<a class="w3-button w3-hide-large w3-display-topleft" href="javascript:void(0)" onclick="w3_close()" style="width:100%;font-size:22px">Close Menu</a>
+<!-- LOGO if recognized -->
+<div class="row" style="margin-bottom:2em;margin-top:2em;">
+<div class="column">
+<!-- Requiremnts okay logo -->
+<span id="recogn_logo"><a href="#">
+<img alt="Complete-Paper" src="images/complete_paper.png" style="width: 8em;" title="This paper has the necessary characteristics to be recognized as an complete paper."/>
+</a></span>
+</div>
+</div>
+<div class="w3-bar-block centered-element">
+<span id="sidebar"><a class="w3-bar-item w3-button w3-hover-white" href="#summary" onclick="w3_close()">Summary</a><a class="w3-bar-item w3-button w3-hover-white" href="#datasets" onclick="w3_close()">Datasets</a><a class="w3-bar-item w3-button w3-hover-white" href="#bibliography" onclick="w3_close()">Bibliography</a><a class="w3-bar-item w3-button w3-hover-white" href="#authors" onclick="w3_close()">About the authors</a></span>
+</div>
+<div class="row" style="position: absolute; bottom: 25px; height: 50px;">
+<div class="column">
+<a href="ro-crate-metadata.json" id="jsonld_svg">
+<img alt="JSON-LD" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/JSON-LD.svg/512px-JSON-LD.svg.png" style="filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(57deg) brightness(101%) contrast(102%); width: 30px; margin: 0; " title="Retrieve the JSON-LD ro-crate representation of this web."/>
+</a>
+</div>
+<div class="column">
+<!-- Help button -->
+<a href="help.html" id="help-button">
+<img alt="help-button" src="https://img.icons8.com/material-outlined/48/000000/help.png" style="filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(57deg) brightness(101%) contrast(102%); width: 30px; margin: 0;" title="Description of each element and how was this web created."/>
+</a>
+</div>
+</div>
+
+</nav>
+<!-- Top menu on small screens -->
+<header class="w3-container w3-top w3-hide-large w3-green w3-xlarge w3-padding">
+<a class="w3-button w3-green w3-margin-right" href="javascript:void(0)" onclick="w3_open()">☰</a>
+</header>
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" id="myOverlay" onclick="w3_close()" style="cursor:pointer" title="close side menu"></div>
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin:auto; padding-left: 340px; max-width: 1500px;">
+<!-- Header -->
+<div class="w3-container" id="showcase" style="margin-top:80px">
+<h1>Measurements of nearshore ocean-surface kinematics through coherent arrays of free-drifting buoys</h1>
+</div>
+<!-- Summary -->
+<span id="summary"><div class="w3-container" style="margin-top:15px">
+<h1 class="w3-xxxlarge w3-text-green"><b>Summary</b></h1>
+<hr class="w3-round" style="width:50px;border:5px solid green"/>
+<p>Surface gravity wave breaking occurs along coastlines in complex spatial and temporal patterns that significantly impact erosion, scalar transport, and flooding. Numerical models are used to predict wave breaking and associated processes but many lack sufficient evaluation with observations. To fill the need for more nearshore wave measurements, we deployed coherent arrays of small-scale, free-drifting buoys named mi-croSWIFTs. The microSWIFT is a small buoy equipped with a GPS module to measure the buoy's position, horizontal velocities, and an inertial measurement unit (IMU) to directly measure the buoy's rotation rates, accelerations, and heading. Measurements were collected over a 27 d field experiment in October 2021 at the US Army Corps of Engineers Field Research Facility in Duck, NC. The microSWIFTs were deployed as a series of coherent arrays, meaning they all sampled simultaneously with a common time reference, leading to a rich spatial and temporal dataset during each deployment. Measurements spanned offshore significant wave heights ranging from 0.5 to 3 m and peak wave periods ranging from 5 to 15 s over the entire experiment. The completed dataset consists of 67 deployment files that contain 971 drift tracks that contain all associated data. We use an attitude and heading reference system (AHRS) 9-degrees-of-freedom Kalman filter to rotate the measured accelerations from the reference frame of the buoy to the Earth reference frame. We then use the corrected accelerations to compute the vertical velocity and sea-surface elevation. We give example evaluations of wave spectral energy density estimates from individual microSWIFTs compared with a nearby acoustic wave and current (AWAC) sensor. A zero-crossing algorithm is applied to each buoy time series of sea-surface elevation to extract realizations of measured surface gravity waves, yielding 116 307 wave realizations throughout the experiment. We also compute significant wave height estimates from the aggregate wave realizations and compare these estimates with the nearby AWAC estimates. An example of spatial variability in cross-shore velocity and vertical acceleration is explored. Wave-breaking events, detected by high-intensity vertical acceleration peaks, are explored, and the cross-shore distribution of all breaking events detected in the experiment is shown. A total of 3419 wave-breaking events were detected across the entire experiment. These data are available at https://doi.org/10.5061/dryad.hx3ffbgk0 (Rainville et al., 2023) and will be used to investigate nearshore wave kinematics, transport of buoyant particles, and wave-breaking processes.</p>
+</div></span>
+<!-- Goal -->
+<span id="goal"></span>
+<!-- Social Motivation -->
+<span id="social_motivation"></span>
+<!-- Areas -->
+<span id="areas"></span>
+<!-- Activities -->
+<span id="activities"></span>
+<!-- Sketch -->
+<span id="sketch"></span>
+<!-- Demo -->
+<span id="demo"></span>
+<!-- datasets -->
+<span id="datasets"><div class="w3-container" id="datasets" style="margin-top:75px">
+<h1 class="w3-xxxlarge w3-text-green"><b>Datasets</b></h1>
+<hr class="w3-round" style="width:50px;border:5px solid green"/>
+<ul><li><p><a href="https://doi.org/10.5061/dryad.hx3ffbgk0">Measurements of nearshore waves through coherent arrays of free-drifting wave buoys</a></p>
+<ul><li><b>Description:</b> Surface gravity wave breaking occurs along coastlines in complex spatial
+ and temporal patterns that significantly impact erosion, scalar transport,
+ and flooding. Numerical models are used to predict these processes, but
+ many models lack sufficient evaluation with observations during storm
+ events. To fill the need for more nearshore wave measurements during
+ extreme conditions, we deployed coherent arrays of small-scale,
+ free-drifting wave buoys named microSWIFTs. The result is a large dataset
+ covering a range of conditions. The microSWIFT is a small wave buoy with a
+ GPS module, and Inertial Measurement Unit (IMU) used to directly measure
+ the buoy's global position, horizontal velocities, rotation rates,
+ accelerations, and heading. We use an Attitude and Heading Reference
+ System (AHRS), 9 degrees-of-freedom Kalman filter to rotate the measured
+ accelerations from the reference frame of the buoy to the Earth reference
+ frame. We then use the corrected accelerations to compute the vertical
+ velocity and sea surface elevation. The measurements were collected over a
+ 27-day field experiment in October 2021 at the US Army Corps of Engineers
+ Field Research Facility in Duck, NC. The microSWIFTs were deployed as a
+ series of coherent arrays. They all sampled simultaneously with a common
+ time reference, leading to a robust spatial and temporal dataset during
+ each deployment. We evaluate wave spectral energy density estimates from
+ individual microSWIFTs by comparing them with a nearby acoustic waves and
+ currents (AWAC) sensor. We also compare significant wave height estimates
+ from the coherent arrays with the nearby AWAC estimates. A zero crossing
+ algorithm is applied to each buoy time series of sea surface elevation to
+ extract realizations of measured surface gravity waves, yielding 116,307
+ wave realizations throughout the experiment. These measurements spanned
+ offshore significant wave heights ranging from 0.5 meters to 3 meters and
+ peak wave periods ranging from 5 to 15 seconds over the entire
+ experiment. </li><li><b>License:</b> https://creativecommons.org/publicdomain/zero/1.0/legalcode</li></ul></li><li><p><a href="https://doi.org/10.5281/zenodo.10198469">DUNEXMainExp</a></p>
+<ul><li><b>License:</b> https://creativecommons.org/licenses/by/4.0/legalcode</li><li><b>Author:</b> Edwin Rainville</li></ul></li></ul>
+</div></span>
+<!-- Software -->
+<span id="software"></span>
+<!-- Bibliography -->
+<span id="bibliography"><div class="w3-container" id="bib" style="margin-top:75px">
+<h1 class="w3-xxxlarge w3-text-green"><b>Bibliography</b></h1>
+<hr class="w3-round" style="width:50px;border:5px solid green"/>
+<ul><li>Rainville, E., Thomson, J., Moulton, M., &amp; Derakhti, M. (2023). Measurements of nearshore ocean-surface kinematics through coherent arrays of free-drifting buoys. Earth System Science Data, 15(11), 5135â5151. <a href="https://doi.org/10.5194/essd-15-5135-2023
+" target="_blank">https://doi.org/10.5194/essd-15-5135-2023
+</a></li><li>Source PDF: essd-15-5135-2023.pdf</li><li>Dataset extraction file: essd-15-5135-2023.dataset.json</li></ul>
+</div></span>
+<!-- Contact -->
+<span id="contact"></span>
+<!-- Authors -->
+<span id="authors"><div class="w3-container" id="authors" style="margin-top:75px">
+<h1 class="w3-xxxlarge w3-text-green"><b>About the authors</b></h1>
+<hr class="w3-round" style="width:50px;border:5px solid green"/>
+<div class="w3-row-padding">
+<div class="w3-col m4 w3-margin-bottom">
+<div class="w3-light-grey" style="padding-bottom: 10px;">
+<div style="width:90%; height:0; overflow:hidden; height:0; padding-top: 12px; padding-bottom: 90%;
+                            margin: auto;">
+<img alt="" src="images\default_author.jpg" style="width:100%;"/>
+</div>
+<div class="w3-container">
+<p class="w3-opacity">author</p>
+</div>
+</div>
+</div>
+<div class="w3-col m4 w3-margin-bottom">
+<div class="w3-light-grey" style="padding-bottom: 10px;">
+<div style="width:90%; height:0; overflow:hidden; height:0; padding-top: 12px; padding-bottom: 90%;
+                            margin: auto;">
+<img alt="Jim Thomson" src="images\default_author.jpg" style="width:100%;"/>
+</div>
+<div class="w3-container">
+<h3><a href="">Jim Thomson</a></h3>
+<p class="w3-opacity">author</p>
+</div>
+</div>
+</div>
+<div class="w3-col m4 w3-margin-bottom">
+<div class="w3-light-grey" style="padding-bottom: 10px;">
+<div style="width:90%; height:0; overflow:hidden; height:0; padding-top: 12px; padding-bottom: 90%;
+                            margin: auto;">
+<img alt="Melissa Moulton" src="images\default_author.jpg" style="width:100%;"/>
+</div>
+<div class="w3-container">
+<h3><a href="">Melissa Moulton</a></h3>
+<p class="w3-opacity">author</p>
+</div>
+</div>
+</div>
+</div><div class="w3-row-padding">
+<div class="w3-col m4 w3-margin-bottom">
+<div class="w3-light-grey" style="padding-bottom: 10px;">
+<div style="width:90%; height:0; overflow:hidden; height:0; padding-top: 12px; padding-bottom: 90%;
+                            margin: auto;">
+<img alt="Morteza Derakhti" src="images\default_author.jpg" style="width:100%;"/>
+</div>
+<div class="w3-container">
+<h3><a href="">Morteza Derakhti</a></h3>
+<p class="w3-opacity">author</p>
+</div>
+</div>
+</div>
+</div></div></span>
+<!-- Bibtext -->
+<span id="bibtext"></span>
+</div>
+
+
+
+
+<!-- End page content -->
+
+<script>
+// Script to open and close sidebar
+function w3_open() {
+	document.getElementById("mySidebar").style.display = "block";
+	document.getElementById("myOverlay").style.display = "block";
+}
+
+function w3_close() {
+	document.getElementById("mySidebar").style.display = "none";
+	document.getElementById("myOverlay").style.display = "none";
+}
+
+// Modal Image Gallery
+function onClick(element) {
+	document.getElementById("img01").src = element.src;
+	document.getElementById("modal01").style.display = "block";
+	var captionText = document.getElementById("caption");
+	captionText.innerHTML = element.alt;
+}
+</script>
+</body>
+</html>

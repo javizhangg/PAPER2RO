@@ -1,0 +1,35 @@
+type: paper
+title: This artifact appendix is included in the Artifact Appendices to the Proceedings of the 33rd USENIX Security Symposium
+  and appends to the paper of the same name that appears in the Proceedings of the 33rd USENIX Security Symposium
+summary: In our paper, we provide a systematization of knowledge that covers 133 research papers that account for 17 years
+  of research on the security of PLCs. This SoK produced two artifacts. A systematic literature review dataset and a threat
+  taxonomy called ICS 2 Matrix.
+datasets:
+- name: plc-sok-dataset
+  description: 'Dataset files detected by the heuristics in the GitHub repository. Files: attack_methods.csv, dataset_papers.csv,
+    defense_methods.csv. Context from GAP-KGE/datastet: The threat taxonomy ICS 2 Matrix is available at https://github.com/efrenlopezm/ics2matrix/tree/e60ba236a45483bec81b16677b8c71314267f235.'
+  link: https://github.com/efrenlopezm/plc-sok-dataset
+- name: ics2matrix
+  description: 'Dataset files detected by the heuristics in the GitHub repository. Files: ics2matrix.xlsx. Context from GAP-KGE/datastet:
+    The threat taxonomy ICS 2 Matrix is available at https://github.com/efrenlopezm/ics2matrix/tree/e60ba236a45483bec81b16677b8c71314267f235.'
+  link: https://github.com/efrenlopezm/ics2matrix
+authors:
+- name: "Efr\xE9n L\xF3pez-Morales"
+  role: author
+- name: Ulysse Planta
+  role: author
+- name: Carlos Rubio-Medrano
+  role: author
+- name: Ali Abbasi
+  role: author
+- name: Alvaro A Cardenas
+  role: author
+- name: Texas A&M University-Corpus Christi; Texas A&M University-Corpus Christi
+  role: author
+- name: Texas A&M University-Corpus Christi Texas A&M University-Corpus Christi
+  role: author
+- name: University of California, Santa Cruz University of California Santa Cruz
+  role: author
+bibliography:
+- 'Source PDF: usenixsecurity24-appendix-lopez-morales.pdf'
+- 'Dataset extraction file: usenixsecurity24-appendix-lopez-morales.dataset.json'

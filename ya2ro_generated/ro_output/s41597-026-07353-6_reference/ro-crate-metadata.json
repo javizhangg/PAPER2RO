@@ -1,0 +1,157 @@
+{
+    "@context": "https://w3id.org/ro/crate/1.1/context",
+    "@graph": [
+        {
+            "@id": "ro-crate-metadata.json",
+            "@type": "CreativeWork",
+            "about": {
+                "@id": "./"
+            },
+            "conformsTo": {
+                "@id": "https://w3id.org/ro/crate/1.1"
+            },
+            "description": "RO-Crate Metadata File Descriptor (this file)"
+        },
+        {
+            "@id": "./",
+            "@type": "Dataset",
+            "DataType": "Paper",
+            "author": [
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#joaquin_jimenez-martinez"
+                },
+                {
+                    "@id": "#mario_schirmer"
+                },
+                {
+                    "@id": "#none"
+                }
+            ],
+            "description": "Groundwater is a vital component of the global supply of freshwater, playing a critical role for human populations, agriculture, and ecosystems. Due to the complex interactions between groundwater, surface water, climate, and human activity, these systems are frequently studied using advanced data analysis and modeling techniques. The effectiveness of these methods is generally enhanced by the availability and quality of data. In Switzerland, the focus area of this study, groundwater data is fragmented and lacks a standardized nationwide compilation. Consequently, the process of conducting nationwide studies with substantial sample sizes is both resourceintensive and time-consuming. In this paper we introduce the Swiss Groundwater Database, a comprehensive compilation of groundwater time series and associated metadata throughout Switzerland. The current database consists of groundwater level data from 985 monitoring wells, which were completed with additional static and time-varying variables. The environmental characteristics and climate indices were compiled and determined for each monitoring well. The database is designed to facilitate and support large-sample hydrological research related to groundwater in Switzerland and beyond.",
+            "hasPart": [
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#the_swiss_groundwater_database"
+                },
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#camels"
+                },
+                {
+                    "@id": "#camels"
+                },
+                {
+                    "@id": "#camels"
+                },
+                {
+                    "@id": "#camels"
+                },
+                {
+                    "@id": "#camels"
+                },
+                {
+                    "@id": "ro-crate-preview.html"
+                }
+            ],
+            "name": "A national-scale database of groundwater level data for Switzerland ARTICLE IN PRESS CONFIDENTIAL COPY OF SUBMISSION FOR PEER REVIEW ONLY Tracking no: SDATA-25-04112B A national-scale database of groundwater level data for Switzerland"
+        },
+        {
+            "@id": "#none",
+            "@type": "Person"
+        },
+        {
+            "@id": "#joaquin_jimenez-martinez",
+            "@type": "Person",
+            "name": "Joaquin Jimenez-Martinez"
+        },
+        {
+            "@id": "#mario_schirmer",
+            "@type": "Person",
+            "name": "Mario Schirmer"
+        },
+        {
+            "@id": "#none",
+            "@type": "Person"
+        },
+        {
+            "@id": "#none",
+            "@type": "Dataset",
+            "distribution": {
+                "@id": "https://zenodo.org/records/14260400"
+            }
+        },
+        {
+            "@id": "#the_swiss_groundwater_database",
+            "@type": "Dataset",
+            "description": "Data related to the manuscript under consideration in Scientific data titled \"A national-scale database of groundwater level data for Switzerland\".\n\nRaoul A. Collenteur (raoul.collenteur@hydroconsult.ch) and Christian Moeck (christian.moeck@eawag.ch).\n\nGeneral Information-------------------\n\nThis repository contains the data of the Swiss Groundwater Database, consisting of nearly 1000 groundwater level time series from all over Switzerland.\u00a0These data are augmented with meteorological data and environmental descriptors. The authors (listed above) appreciate being informed about usage of the data to keep track of its usage, and welcome collaboration to further enhance the database in the future. We recommend using the data in 0_data/final for subsequent analyses. For analyses requiring gap-filled groundwater time series, the groundwater level data from the folder \"0_data/imputation\" can be used.\n\nFile structure--------------\n\n- 0_data/--- final => final Swiss Groundwater Database. USE THIS DATA FOR ANALYSES--- raw => raw data received from the data providers--- processed => processed data--- gis => all the GIS data used--- imputation => gapless time series, imputed time series are provided for the period 1980-2023- 1_scripts => all the scripts to process the data.- 2_figures => Figures produced by the scripts for the paper--- ts => figures of all the time series--- imputed => summary figures for the imputation\n\nData Sources------------\n\nGroundwater levels:- Groundwater level time series data were obtained through direct requests to the Swiss cantonal authorities and the Federal Office for the Environment (FOEN).--- https://www.bafu.admin.ch/de/naqua and https://www.kgk-cgc.ch/geodaten/kantonale_geoportale\n\nSoil:- Soil properties in 250 m resolution--- Tomislav Hengl, Jorge Mendes de Jesus, Gerard B. M. Heuvelink, Maria Ruiperez Gonzalez, Milan Kilibarda, Aleksandar Blagoti\u00a5c, Wei Shangguan, Marvin N. Wright, Xiaoyuan Geng, Bernhard Bauer-Marschallinger, Mario Antonio Guevara, Rodrigo Vargas, Robert A. MacMillan, Niels H. Batjes, Johan G. B. Leenaars, Eloi Ribeiro, Ichsani Wheeler, Stephan Mantel, and Bas Kempen. SoilGrids250m:Global gridded soil information based on machine learning. PLOS ONE, 12(2):e0169748, February 2017. doi: 10.1371/journal.pone.0169748. URL https://doi.org/10.1371/journal.pone.0169748. Publisher: Public Library of Science.\n\nHydrogeology:- \u00a0 Groundwater occurrence/availability and aquifer type - Hydrogeologische Karte der Schweiz: Grundwasservorkommen 1:500000--- opendata.swiss, . URL https://opendata.swiss/de/dataset/hydrogeologische-karte-der-schweiz-grundwasservorkommen-1-500000.\n\nSlope, Altitude, Distance to nearest river:- SwissALTI3D--- https://www.swisstopo.admin.ch/en/height-model-swissalti3d\n\nLand use:- George B\u00b8ttner, Jan Feranec, Gabriel Jaffrain, L\u00a5aszl\u00a5o Mari, Gergely Maucha, and Tomas Soukup. The CORINE land cover 2000 project. EARSeL eProceedings, 3(3):331\u00f1346, 2004. doi: https://doi.org/10.2909/ddacbd5e-068f-4e52-a596-d606e8de7f40.--- https://land.copernicus.eu/en/products/corine-land-cover\n\nMeteorological data:\u00a0- The temperature and precipitation data (RhiresD and TabsD) is provided by the Federal Office of Meteorology and Climatology MeteoSwiss.--- https://opendatadocs.meteoswiss.ch/c-climate-data/c3-ground-based-climate-data\n\nLithology, Tectonic unit, Genesis- Geologische Karte der Schweiz 1:500000--- opendata.swiss, . URL https://opendata.swiss/de/dataset/geologische-karte-der-schweiz-1-500000.\n\nDisclaimer----------\n\nPlease carefully read the License before using or redistributing this data. If you are from a commercial enterprise, please be aware that this data cannot replace the original groundwater data provided by the Authorities and always ask the authorities (i.e., cantonal offices) to deliver the data. This database is primarily aimed at scientists.",
+            "distribution": {
+                "@id": "https://doi.org/10.5281/zenodo.14260400"
+            },
+            "name": "The Swiss Groundwater Database"
+        },
+        {
+            "@id": "#none",
+            "@type": "Dataset",
+            "distribution": {
+                "@id": "https://doi.org/10.5281/zenodo"
+            }
+        },
+        {
+            "@id": "#camels",
+            "@type": "Dataset",
+            "description": "Dataset file detected by the heuristics: essd-15-5755-2023-t01.xlsx. Context from GAP-KGE/datastet: Meanwhile, over a dozen CAMELS datasets have been developed for multiple countries and regions, also culminating in the CARAVAN global dataset .",
+            "distribution": {
+                "@id": "https://essd.copernicus.org/articles/15/5755/2023"
+            },
+            "name": "CAMELS"
+        },
+        {
+            "@id": "#camels",
+            "@type": "Dataset",
+            "description": "Dataset file detected by the heuristics: hess-29-6221-2025-t01.xlsx. Context from GAP-KGE/datastet: Meanwhile, over a dozen CAMELS datasets have been developed for multiple countries and regions, also culminating in the CARAVAN global dataset .",
+            "distribution": {
+                "@id": "https://hess.copernicus.org/articles/29/6221/2025"
+            },
+            "name": "CAMELS"
+        },
+        {
+            "@id": "#camels",
+            "@type": "Dataset",
+            "description": "Dataset file detected by the heuristics: gmd-17-7083-2024-t01.xlsx. Context from GAP-KGE/datastet: Meanwhile, over a dozen CAMELS datasets have been developed for multiple countries and regions, also culminating in the CARAVAN global dataset .",
+            "distribution": {
+                "@id": "https://gmd.copernicus.org/articles/17/7083/2024"
+            },
+            "name": "CAMELS"
+        },
+        {
+            "@id": "#camels",
+            "@type": "Dataset",
+            "description": "Dataset file detected by the heuristics: essd-15-5755-2023-t02.xlsx. Context from GAP-KGE/datastet: Meanwhile, over a dozen CAMELS datasets have been developed for multiple countries and regions, also culminating in the CARAVAN global dataset .",
+            "distribution": {
+                "@id": "https://essd.copernicus.org/articles/15/5755/2023"
+            },
+            "name": "CAMELS"
+        },
+        {
+            "@id": "#camels",
+            "@type": "Dataset",
+            "description": "Dataset file detected by the heuristics: essd-15-5755-2023-t03.xlsx. Context from GAP-KGE/datastet: Meanwhile, over a dozen CAMELS datasets have been developed for multiple countries and regions, also culminating in the CARAVAN global dataset .",
+            "distribution": {
+                "@id": "https://essd.copernicus.org/articles/15/5755/2023"
+            },
+            "name": "CAMELS"
+        },
+        {
+            "@id": "ro-crate-preview.html",
+            "@type": "WebPage",
+            "name": "HTML representation of this data."
+        }
+    ]
+}
